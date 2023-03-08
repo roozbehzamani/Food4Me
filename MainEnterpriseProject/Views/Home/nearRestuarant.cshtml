@@ -1,0 +1,62 @@
+﻿@using MainEnterpriseProject.Models.Repository
+@{
+    ViewBag.Title = "nearRestuarant";
+    Layout = "~/Views/Shared/_index.cshtml";
+    Rep_resturant rep = new Rep_resturant();
+    var q = rep.getResturant();
+    string lat1 = "37.560424";
+    string lat2 = "45.008650";
+    string lng1 = "37.541894";
+    string lng2 = "45.073809";
+}
+<style>
+    #map {
+        margin: 0 auto;
+        width: 960px;
+        height: 450px;
+    }
+</style>
+
+<div id="map"></div>
+<center>Click on a marker to display contact information.</center>
+
+<script src="https://maps.google.com/maps/api/js?sensor=false"></script>
+<script>
+    var locations = [
+        ['<b>Name 1</b><br>Address Line 1<br>Bismarck, ND 58501<br>Phone: 701-555-1234<br><a href="#" >Link<a> of some sort.', @lat1,@lat2, 4],
+        ['<b>Name 2</b><br>Address Line 1<br>Fargo, ND 58103<br>Phone: 701-555-4321<br><a href="#" target="_blank">Link<a> of some sort.', @lng1, @lng2, 5]
+        /*
+         * Next point on map
+         *   -Notice how the last number within the brackets incrementally increases from the prior marker
+         *   -Use http://itouchmap.com/latlong.html to get Latitude and Longitude of a specific address
+         *   -Follow the model below:
+         *      ['<b>Name 3</b><br>Address Line 1<br>City, ST Zipcode<br>Phone: ###-###-####<br><a href="#" target="_blank">Link<a> of some sort.', ##.####, -##.####, #]
+         */
+    ];
+
+    var map = new google.maps.Map(document.getElementById('map'), {
+        zoom: 7,
+        /* Zoom level of your map */
+        center: new google.maps.LatLng(47.47021625, -100.47173475),
+        /* coordinates for the center of your map */
+        mapTypeId: google.maps.MapTypeId.ROADMAP
+    });
+
+    var infowindow = new google.maps.InfoWindow();
+
+    var marker, i;
+
+    for (i = 0; i < locations.length; i++) {
+        marker = new google.maps.Marker({
+            position: new google.maps.LatLng(parseFloat(locations[i][1]), parseFloat(locations[i][2])),
+            map: map
+        });
+
+        google.maps.event.addListener(marker, 'click', (function (marker, i) {
+            return function () {
+                infowindow.setContent(locations[i][0]);
+                infowindow.open(map, marker);
+            }
+        })(marker, i));
+    }
+</script>

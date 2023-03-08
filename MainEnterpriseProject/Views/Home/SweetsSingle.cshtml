@@ -1,0 +1,470 @@
+﻿@model MainEnterpriseProject.Models.Domain.Tbl_Sweets
+@{
+    ViewBag.Title = "SweetsSingle";
+    Layout = "~/Views/Shared/_index.cshtml";
+    MainEnterpriseProject.Models.Repository.SweetsAllRep SweetsAvg = new MainEnterpriseProject.Models.Repository.SweetsAllRep();
+}
+
+
+<link href="~/Content/UserContent/css/css_20.css" rel="stylesheet" />
+<link href="~/Content/UserContent/css/931be1e.css" rel="stylesheet" />
+<link href="~/Content/UserContent/css/jquery.rateyo.min.css" rel="stylesheet" />
+<link href="~/Content/UserContent/css/PopapSignin.css" rel="stylesheet" />
+<script src="~/Scripts/UserScripts/scarab-v2.js"></script>
+<script src="~/Scripts/UserScripts/smartbanner.min.js"></script>
+<script src="~/Scripts/UserScripts/js_82.js"></script>
+<link href="~/Content/UserContent/css/Toast.css" rel="stylesheet" />
+<link href="~/Content/UserContent/css/RatingSingle.css" rel="stylesheet" />
+<link href="~/Content/UserContent/css/fontawesome-all.css" rel="stylesheet" />
+
+<style>
+    .sdiv {
+        padding: 0px !important;
+    }
+</style>
+
+
+
+<br />
+<br />
+<div id="restaurant_banner">
+    <div class="center_width tbl">
+        <div>
+            <div class="tbl" id="restaurant_info">
+                <div>
+
+                    <img src="~/Content/UserContent/@SweetsAvg.ConfectioneryInfo(Model.ConfectionaryID).CImage" />
+                </div>
+                <div>
+                    <span id="rest_info_name">@SweetsAvg.ConfectioneryInfo(Model.ConfectionaryID).CName<span id="rest_info_off">@SweetsAvg.ConfectioneryInfo(Model.ConfectionaryID).CPhone</span></span>
+                    <div id="rest_info_open">
+                        <span class="gray_back"></span>بسته است ...
+                    </div>
+
+
+                    <div class="rest_fo"><span>آدرس</span>@SweetsAvg.ConfectioneryInfo(Model.ConfectionaryID).CAddress</div>
+
+                </div>
+            </div>
+        </div>
+        <div class="left_align hidden-sm hidden-xs" id="restaurant_info_2" style="padding-left:0px;">
+            <div class="tbl" id="restaurant_info">
+                <div>
+                    <img src="~/Content/UserContent/@SweetsAvg.ConfectioneryInfo(Model.ConfectionaryID).CImage" />
+
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</div>
+
+
+
+<div class="inner-page vendor detail-page rtl" itemscope itemtype="http://schema.org/Restaurant">
+
+
+    <div id="main-container" class="container">
+        <div class="row ">
+            <div class="col-lg-offset-6 col-lg-3 col-md-offset-5 col-md-4  col-sm-offset-6 col-sm-6 col-xs-offset-0 col-xs-12 zf-filter-vendor view-mode-top">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-1">
+
+            </div>
+            <div class="col-md-10">
+                <div class="vendor-content-wrapper box" style="border-top:none">
+                    <!-- Nav tabs -->
+                    <ul class="nav nav-tabs nav-justified" role="tablist">
+                        <li class="active">
+                            <a href="satarkhan.htm#vendor-menu" aria-controls="vendor-menu" role="tab" data-toggle="tab">
+                                جزئیات
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="satarkhan.htm#vendor-review" aria-controls="vendor-review" role="tab" data-toggle="tab"
+                               id="vendor-review-link">
+                                نظرات
+                            </a>
+                        </li>
+                    </ul><!-- Tab panes -->
+                    <div class="tab-content">
+
+
+                        <div role="tabpanel" style="width:100%;" class="tab-pane fade in active" id="vendor-menu">
+
+
+                            <div class="col-md-5">
+
+                                <div class="my_slider_dt">
+                                    <h3 class="my_productTitle">
+                                        <span style="position: relative; right: 0px;">@Model.S_Name</span>
+                                    </h3>
+
+                                    <ul class=" rating-review my_productRate">
+                                        <li class="zf-rate-vendor rate-color-8">
+                                            <span>@SweetsAvg.SweetsAverageRateSingle(Model.ID)</span>
+                                        </li>
+                                        <li style="margin-right:4%!important;" class="kk-pp-stars vcenter jq-ry-container" dir="ltr" id="myrateYoo" data-rate="@SweetsAvg.SweetsAverageRateSingle(Model.ID)" readonly="readonly" style="width: 75px;">
+                                            <div class="jq-ry-group-wrapper">
+                                                <div class="jq-ry-normal-group jq-ry-group">
+                                                    <!--?xml version="1.0" encoding="utf-8"?-->
+                                                    <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 12.705 512 486.59" x="0px" y="0px" xml:space="preserve" width="15px" height="15px" fill="#d8d8d8"><polygon points="256.814,12.705 317.205,198.566 512.631,198.566 354.529,313.435 414.918,499.295 256.814,384.427 98.713,499.295 159.102,313.435 1,198.566 196.426,198.566 "></polygon></svg><!--?xml version="1.0" encoding="utf-8"?-->
+                                                    <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 12.705 512 486.59" x="0px" y="0px" xml:space="preserve" width="15px" height="15px" fill="#d8d8d8" style="margin-left: 0px;"><polygon points="256.814,12.705 317.205,198.566 512.631,198.566 354.529,313.435 414.918,499.295 256.814,384.427 98.713,499.295 159.102,313.435 1,198.566 196.426,198.566 "></polygon></svg><!--?xml version="1.0" encoding="utf-8"?-->
+                                                    <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 12.705 512 486.59" x="0px" y="0px" xml:space="preserve" width="15px" height="15px" fill="#d8d8d8" style="margin-left: 0px;"><polygon points="256.814,12.705 317.205,198.566 512.631,198.566 354.529,313.435 414.918,499.295 256.814,384.427 98.713,499.295 159.102,313.435 1,198.566 196.426,198.566 "></polygon></svg><!--?xml version="1.0" encoding="utf-8"?-->
+                                                    <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 12.705 512 486.59" x="0px" y="0px" xml:space="preserve" width="15px" height="15px" fill="#d8d8d8" style="margin-left: 0px;"><polygon points="256.814,12.705 317.205,198.566 512.631,198.566 354.529,313.435 414.918,499.295 256.814,384.427 98.713,499.295 159.102,313.435 1,198.566 196.426,198.566 "></polygon></svg><!--?xml version="1.0" encoding="utf-8"?-->
+                                                    <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 12.705 512 486.59" x="0px" y="0px" xml:space="preserve" width="15px" height="15px" fill="#d8d8d8" style="margin-left: 0px;"><polygon points="256.814,12.705 317.205,198.566 512.631,198.566 354.529,313.435 414.918,499.295 256.814,384.427 98.713,499.295 159.102,313.435 1,198.566 196.426,198.566 "></polygon></svg>
+                                                </div>
+                                                <div class="jq-ry-rated-group jq-ry-group" style="width:@(SweetsAvg.SweetsAverageRateSingle(Model.ID)*20)%;">
+                                                    <!--?xml version="1.0" encoding="utf-8"?-->
+                                                    <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 12.705 512 486.59" x="0px" y="0px" xml:space="preserve" width="15px" height="15px" fill="#868686"><polygon points="256.814,12.705 317.205,198.566 512.631,198.566 354.529,313.435 414.918,499.295 256.814,384.427 98.713,499.295 159.102,313.435 1,198.566 196.426,198.566 "></polygon></svg><!--?xml version="1.0" encoding="utf-8"?-->
+                                                    <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 12.705 512 486.59" x="0px" y="0px" xml:space="preserve" width="15px" height="15px" fill="#868686" style="margin-left: 0px;"><polygon points="256.814,12.705 317.205,198.566 512.631,198.566 354.529,313.435 414.918,499.295 256.814,384.427 98.713,499.295 159.102,313.435 1,198.566 196.426,198.566 "></polygon></svg><!--?xml version="1.0" encoding="utf-8"?-->
+                                                    <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 12.705 512 486.59" x="0px" y="0px" xml:space="preserve" width="15px" height="15px" fill="#868686" style="margin-left: 0px;"><polygon points="256.814,12.705 317.205,198.566 512.631,198.566 354.529,313.435 414.918,499.295 256.814,384.427 98.713,499.295 159.102,313.435 1,198.566 196.426,198.566 "></polygon></svg><!--?xml version="1.0" encoding="utf-8"?-->
+                                                    <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 12.705 512 486.59" x="0px" y="0px" xml:space="preserve" width="15px" height="15px" fill="#868686" style="margin-left: 0px;"><polygon points="256.814,12.705 317.205,198.566 512.631,198.566 354.529,313.435 414.918,499.295 256.814,384.427 98.713,499.295 159.102,313.435 1,198.566 196.426,198.566 "></polygon></svg><!--?xml version="1.0" encoding="utf-8"?-->
+                                                    <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 12.705 512 486.59" x="0px" y="0px" xml:space="preserve" width="15px" height="15px" fill="#868686" style="margin-left: 0px;"><polygon points="256.814,12.705 317.205,198.566 512.631,198.566 354.529,313.435 414.918,499.295 256.814,384.427 98.713,499.295 159.102,313.435 1,198.566 196.426,198.566 "></polygon></svg>
+                                                </div>
+                                            </div>
+                                        </li>
+                                    </ul>
+
+                                    <div class="my_productAllPrice kk-price-container kk-discount" style="position: relative; top: 0px;">
+
+                                        <div class="kk-price-wrapper kk-secondary">
+                                            <span class="kk-price kk-apply-comma kk-comma-done">@Model.S_Price</span>
+                                            <span class="kk-price-unit">تومان</span>
+                                        </div>
+                                    </div>
+                                    <div class="my_all_p_b" style="position: relative; top: 0px; right: 0px; left: 0px;">
+
+                                        @{
+                                            if (Session["email"] == null)
+                                            {
+                                                <div class="my_productPlusButton">
+                                                    <a class="add-product-btn kk-add-product-btn" data-toggle="modal" data-target="#mm" title="افزودن در سبد خرید">
+                                                        <span>افزودن به سبد خرید</span>
+                                                    </a>
+                                                </div>
+                                            }
+                                            else
+                                            {
+                                                if (Session["cartType"] == null)
+                                                {
+                                                    <div class="my_productPlusButton">
+                                                        <a id="SweetsAddToShoppingCart" name="SweetsAddToShoppingCart" class="add-product-btn kk-add-product-btn" data-hashtags="pzng4j::1799902::1" title="افزودن در سبد خرید">
+                                                            <span>افزودن به سبد خرید</span>
+                                                        </a>
+                                                    </div>
+                                                }
+                                                else
+                                                {
+                                                    if (Session["cartType"].ToString().Equals("Sweet"))
+                                                    {
+                                                        <div class="my_productPlusButton">
+                                                            <a id="SweetsAddToShoppingCart" name="SweetsAddToShoppingCart" class="add-product-btn kk-add-product-btn" data-hashtags="pzng4j::1799902::1" title="افزودن در سبد خرید">
+                                                                <span>افزودن به سبد خرید</span>
+                                                            </a>
+                                                        </div>
+                                                    }
+                                                    else
+                                                    {
+                                                        <div class="my_productPlusButton">
+                                                            <a class="add-product-btn kk-add-product-btn" onclick="alert('سبد خرید شما پر میباشد');" title="افزودن در سبد خرید">
+                                                                <span>افزودن به سبد خرید</span>
+                                                            </a>
+                                                        </div>
+                                                    }
+                                                }
+                                            }
+                                        }
+                                        <div class="afteradd_productPlusButton">
+
+                                            <a data-hashtags="pzng4j::1799902::2" class="inc action-btn" id="decbtn-1799902">
+                                                <i class="zfi zf-android-add"></i>
+                                            </a>
+
+                                            <span class="quantity" qnt="0">
+                                                <span class="kk-fa-digit my_detail_quantity kk-fa-digit-done">۰</span>
+                                            </span>
+
+                                            <a data-hashtags="pzng4j::1799902::3" class="dec action-btn" id="incbtn-1799902">
+                                                <i class="zfi zf-android-remove"></i>
+                                            </a>
+
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                            <div class="col-md-7">
+
+
+
+                                <img src="~/Content/UserContent/@Model.SImage" class="img-responsive" style="width:513px !important; height:300px !important;">
+
+
+                            </div>
+
+                        </div>
+
+                        <div role="tabpanel" style="width:100%;" class="tab-pane fade" id="vendor-review">
+
+                            <div class="col-md-12">
+
+
+
+
+                                <div class="kk-review-container">
+                                    <ul class="col-md-offset-3 col-md-6 col-xs-12 rating-review">
+                                        <li class="zf-rate-vendor rate-color-8">
+                                            <span>@SweetsAvg.SweetsAverageRateSingle(Model.ID)</span>
+                                        </li>
+                                        <li class="kk-pp-stars vcenter" dir="ltr" id="rateYoo"
+                                            data-rate="@SweetsAvg.SweetsAverageRateSingle(Model.ID)"></li>
+                                        <li class="reviewCount">
+                                            از
+                                            مجموع @SweetsAvg.SweetsCommentCountSingle(Model.ID) رای
+                                        </li>
+                                    </ul>
+                                    <ul class="col-md-offset-3 col-md-6 col-xs-12 feelingList">
+                                        <li class="happy row">
+                                            <div class="col-sm-offset-0 col-sm-3 col-xs-offset-1 col-xs-1">
+                                                <span class="happyIcon"></span>
+                                            </div>
+                                            <span class="col-sm-6 col-xs-7 ratingBar"><span></span></span>
+                                            <span class="col-xs-3" style="padding-left:0">
+                                                <span class="blackFont">%۸۱.۴</span> راضی
+                                            </span>
+                                        </li>
+                                        <li class="nothing row">
+                                            <div class="col-sm-offset-0 col-sm-3 col-xs-offset-1 col-xs-1">
+                                                <span class="NothingIcon"></span>
+                                            </div>
+                                            <span class="col-sm-6 col-xs-7 ratingBar"><span></span></span>
+                                            <span class="col-xs-3" style="padding-left:0">
+                                                <span class="blackFont">%۴.۳</span> بدون نظر
+                                            </span>
+                                        </li>
+                                        <li class="sad row">
+                                            <div class="col-sm-offset-0 col-sm-3 col-xs-offset-1 col-xs-1">
+                                                <span class="SadIcon"></span>
+                                            </div>
+                                            <span class="col-sm-6 col-xs-7 ratingBar"><span></span></span>
+                                            <span class="col-xs-3" style="padding-left:0">
+                                                <span class="blackFont">%۱۴.۳</span> ناراضی
+                                            </span>
+                                        </li>
+                                    </ul>
+                                    <div class="col-md-offset-1 col-md-10 col-xs-12"></div>
+                                    <div class="col-md-offset-1 col-md-10 col-xs-12" id="user-reviews"></div>
+                                    <div class="clear"></div>
+                                </div>
+                                <div class="kk-review-container">
+
+
+                                    <div class="row">
+                                        <form action="" id="myForm" method="post" style="text-align:center !important; margin-right:40px;">
+
+                                            <div class="form-inline">
+
+
+                                                <div class="row">
+                                                    <div class="col-md-3"></div>
+                                                    <div class="col-md-5">
+                                                        <fieldset class="rating" style="margin-bottom:0px;">
+                                                            <input type="radio" id="star5" name="rating" value="5" /><label for="star5" title="Rocks!"></label>
+                                                            <input type="radio" id="star4" name="rating" value="4" /><label for="star4" title="Pretty good"></label>
+                                                            <input type="radio" id="star3" name="rating" value="3" /><label for="star3" title="Meh"></label>
+                                                            <input type="radio" id="star2" name="rating" value="2" /><label for="star2" title="Kinda bad"></label>
+                                                            <input type="radio" id="star1" name="rating" value="1" /><label for="star1" title="Sucks big time"></label>
+                                                        </fieldset>
+                                                    </div>
+                                                    <div class="col-md-2"></div>
+
+                                                </div>
+
+                                                <input type="hidden" name="Rate" id="Rate" value="" />
+
+
+                                                <div class="form-horizontal">
+                                                    <div class="form-group" style="display:block !important; margin-top:10px;">
+
+
+                                                        <textarea name="Text" id="Text" cols="48" rows="5" style="background-color:#efdab9d6 !important;border: 1px solid #efdab9d6; border-radius:5px;"></textarea>
+
+                                                    </div>
+                                                    <input class="form-control" style="display:none;" value="@Model.ID" name="SweetsID" id="SweetsID">
+                                                </div>
+
+                                                <div class="form-group" style="display:block !important; margin-top:10px;">
+
+
+                                                    <input id="submit" name="submit" type="submit" class="form-control" value="ارسال" style="background-color:#c39a58a3 !important;width: 48%; color:#fff!important;border: 1px solid #c39a58a3;">
+
+                                                </div>
+
+                                            </div>
+
+                                        </form>
+                                    </div>
+
+                                    <br />
+                                    <br />
+
+                                    @foreach (var item in SweetsAvg.lstAllComment(Model.ID))
+                                    {
+                                        <div class="row" style="margin-top:15px;">
+                                            <div class="container" style="border: 2px solid #d9be94;width:90%;padding-top: 5px;border-radius: 5px;">
+
+
+
+                                                <div class="col-md-2">
+
+                                                    <div class="row" style="text-align:center;">
+                                                        <p style="color:#c39a58; margin-bottom:0px!important;">@item.Name</p>
+                                                    </div>
+
+                                                    <div class="row" style="text-align:center;">
+
+
+                                                        @for (int i = 0; i < (5 - item.Star); i++)
+                                                        {
+                                                            <i class="fa fa-star" style="color:#f2e0c4;"></i>
+                                                        }
+                                                        @for (int i = 0; i < item.Star; i++)
+                                                        {
+                                                            <i class="fa fa-star" style="color:#caa66d;"></i>
+                                                        }
+
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-md-2">
+
+                                                    <div class="row" style="text-align:center;">
+                                                        <p style="color:#ad7c2b;">@item.CommentDate.ToString("D")</p>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-md-8">
+                                                    <p style="width:100%;color:#ad7c2b;word-break: break-all;overflow-y: auto;height: 40px;">@item.Text</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    }
+                                </div>
+
+
+
+                            </div>
+
+
+
+
+
+
+
+
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-1">
+
+            </div>
+        </div>
+    </div>
+
+    <style>
+        .fiexd-footer.is--hidden {
+            display: block !important;
+        }
+
+        #default-footer {
+            display: none !important;
+        }
+    </style>
+</div>
+
+
+
+@{
+    if (ViewBag.SweetsCommentResult == "S")
+    {
+        <div id="toast">
+            <div id="img">
+                <img src="~/Content/Content/images/Success1.png" />
+            </div>
+            <div id="desc">
+                نظر با موفقیت ثبت شد
+            </div>
+        </div>
+    }
+    else if (ViewBag.SweetsCommentResult == "F")
+    {
+        <div id="toast">
+            <div id="img">
+                <img src="~/Content/Content/images/Close.png" />
+            </div>
+            <div id="desc">
+                نظر ثبت نشد
+            </div>
+        </div>
+    }
+    else
+    {
+
+    }
+}
+
+<style>
+    .modal {
+        z-index: 10400 !important;
+    }
+</style>
+
+
+
+
+
+
+<script src="~/Scripts/UserScripts/toast.js"></script>
+<script>
+    $("#SweetsAddToShoppingCart").on('click', function (e) {
+        $.ajax({
+            type: 'POST',
+            dataType: 'Json',
+            /**/
+            url: '@Url.Action("SweetsAddToShoppingCart", "Home")',
+    /**/
+    /**/
+    data: { confectioneryID: @Model.ID },
+    /**/
+    error: function (err) {
+        alert(err.status);
+    }
+}).done(function (result) {
+    var Text = "";
+    $.each(result, function (index, val) {
+        Text += "<div class='row' style='margin:0px'><div><div class='col-md-1'></div><div class='col-md-10' style='background:#f5f5f5;border-radius:4px; width:100%; border: 1px solid #e3e3e3;height:auto'><div class='row' style=' margin-bottom: 3%; margin-top: 3%;'><button type='button' onclick='SwRemoveCart(" + val.ID + ")' style='line-height:initial; left:0px; font-size: 1rem;color: #cdab74;outline: none;background-color: transparent;top: 0;width: 1.5rem;height: 1.5rem;padding:0 0;margin: 3px;position: absolute;z-index: 1;'><span style='position: relative;'><i class='fas fa-times-circle' style='font-size: 1.5rem;'></i></span> </button><div class='col-md-3'><div class='row' style='text-align: center;'><div style='display: inline-flex;-webkit-box-orient: horizontal; -webkit-box-direction: normal; flex-flow: row wrap;justify-content: space-around; -webkit-box-align: center;    align-items: center; width: 15rem;'><div class='col-md-4' style='z-index:1000000;'><button type='button'onclick='SwCountDown(" + val.ID + ")' id='btnsubtrack' name='btnsubtrack' style='font-size: 1.7rem; color: #cdab74;outline: none; background-color: transparent; top: 0;width: 2.8rem; height: 2.8rem; border: 1.6px solid #cdab74; border: .1rem solid #cdab74;  display: -webkit-box; padding:0 0; margin:0 0 0 0;'> <span style='position: relative;'>-</span></button></div> <div class='col-md-4' style='position:absolute;display:-webkit-box;-webkit-box-pack:center;  padding:0 0; margin:0 0 0 0;'><span name='CartCounter' id='CartCounter' style='font-size: 1.7rem;color: #cdab74;font-weight: 700; line-height:48px;line-height: 3rem;'>  " + val.SweetsCount + " </span> </div> <div class='col-md-4'><button id='btnAdd' name='btnAdd' onclick='SwCountUp(" + val.ID + ")' style='font-size: 1.7rem; color: #cdab74;outline: none; background-color: transparent; top: 0;width: 2.8rem; height: 2.8rem; border: 1.6px solid #cdab74; border: .1rem solid #cdab74;  display: -webkit-box; padding:0 0; margin:0 0 0 0;'> <span style='position: relative;'>+</span></button></div></div></div> </div><div class='col-md-3'><p style='font-size:1.2em; color:#cdab74; text-align:center; margin-top:0.4em'> " + val.SweetsName + "</p></div><div class='col-md-2'> <p style='font-size:1.2em; color:#cdab74; text-align:center; margin-top:0.4em'>   " + val.SweetsTotalPrice + "  </p></div> <div class='col-md-4'> <div class='row' style='width: 90%;margin: 0 auto;'> <div class='col-md-4' style='float: right;'><div style='margin-top: 0.4em;' class='toggle' id='switch'> <div class='toggle-text-off'>خیر</div><div class='glow-comp'></div><div class='toggle-button'></div><div class='toggle-text-on'>بله</div></div> </div> <div class='col-md-8' style='margin-top: 0.5em;'> <span style='color: #cdab74;'>تحویل در یک جعبه</span> </div> </div> </div> </div></div> <div class='col-md-1'></div></div></div>";
+    })
+    $('#mainRowSw').html(Text);
+});
+});
+</script>
+
+
+
+</div>
+
+
+
+
+

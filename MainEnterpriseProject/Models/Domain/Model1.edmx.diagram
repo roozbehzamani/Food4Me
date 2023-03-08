@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="c0b2a9ab4c0c4a8f8a7a6fd01162164c" Name="Diagram1" ZoomLevel="78">
+        <EntityTypeShape EntityType="amirangh_APISiteModel.Tab_comments" Width="1.5" PointX="7.75" PointY="15.75" />
+        <EntityTypeShape EntityType="amirangh_APISiteModel.Tab_mail" Width="1.5" PointX="14.75" PointY="0.75" />
+        <EntityTypeShape EntityType="amirangh_APISiteModel.tab_products" Width="1.5" PointX="5.25" PointY="7.5" />
+        <EntityTypeShape EntityType="amirangh_APISiteModel.Tab_users" Width="1.5" PointX="0.75" PointY="8.25" />
+        <EntityTypeShape EntityType="amirangh_APISiteModel.Tbl_Address" Width="1.5" PointX="3" PointY="19.25" />
+        <EntityTypeShape EntityType="amirangh_APISiteModel.Tbl_AlbumCart" Width="1.5" PointX="19" PointY="17" />
+        <EntityTypeShape EntityType="amirangh_APISiteModel.Tbl_AlbumFactorItem" Width="1.5" PointX="10.75" PointY="0.75" />
+        <EntityTypeShape EntityType="amirangh_APISiteModel.Tbl_Banner" Width="1.5" PointX="14.75" PointY="8.75" />
+        <EntityTypeShape EntityType="amirangh_APISiteModel.Tbl_Confectionary" Width="1.5" PointX="14.75" PointY="4" />
+        <EntityTypeShape EntityType="amirangh_APISiteModel.Tbl_ConfectioneryUserImage" Width="1.5" PointX="16.75" PointY="19.75" />
+        <EntityTypeShape EntityType="amirangh_APISiteModel.Tbl_Credit" Width="1.5" PointX="3" PointY="15.875" />
+        <EntityTypeShape EntityType="amirangh_APISiteModel.Tbl_CustomizationFood" Width="1.5" PointX="19" PointY="11.875" />
+        <EntityTypeShape EntityType="amirangh_APISiteModel.Tbl_Floriest" Width="1.5" PointX="9.75" PointY="10.75" />
+        <EntityTypeShape EntityType="amirangh_APISiteModel.Tbl_FloristUserImage" Width="1.5" PointX="12" PointY="3.375" />
+        <EntityTypeShape EntityType="amirangh_APISiteModel.Tbl_Flower" Width="1.5" PointX="12" PointY="15.75" />
+        <EntityTypeShape EntityType="amirangh_APISiteModel.Tbl_FlowerComment" Width="1.5" PointX="14.25" PointY="16" />
+        <EntityTypeShape EntityType="amirangh_APISiteModel.Tbl_FlowerOrder" Width="1.5" PointX="12" PointY="6.25" />
+        <EntityTypeShape EntityType="amirangh_APISiteModel.Tbl_FlowerOrderItem" Width="1.5" PointX="14.25" PointY="20.125" />
+        <EntityTypeShape EntityType="amirangh_APISiteModel.Tbl_FlowerReservationFactor" Width="1.5" PointX="12" PointY="9.75" />
+        <EntityTypeShape EntityType="amirangh_APISiteModel.Tbl_FlowerReservationFactorList" Width="1.5" PointX="14.25" PointY="12.375" />
+        <EntityTypeShape EntityType="amirangh_APISiteModel.Tbl_FlowerShoppingCart" Width="1.5" PointX="14.25" PointY="22.875" />
+        <EntityTypeShape EntityType="amirangh_APISiteModel.Tbl_FoodAlbume" Width="1.5" PointX="16.75" PointY="16.875" />
+        <EntityTypeShape EntityType="amirangh_APISiteModel.Tbl_FoodItemGroup" Width="1.5" PointX="16.75" PointY="12.375" />
+        <EntityTypeShape EntityType="amirangh_APISiteModel.Tbl_FoodOption" Width="1.5" PointX="21.25" PointY="11" />
+        <EntityTypeShape EntityType="amirangh_APISiteModel.Tbl_FoodReservationFactor" Width="1.5" PointX="5.75" PointY="4" />
+        <EntityTypeShape EntityType="amirangh_APISiteModel.Tbl_FoodReservationFactorList" Width="1.5" PointX="8" PointY="4.125" />
+        <EntityTypeShape EntityType="amirangh_APISiteModel.Tbl_Menu" Width="1.5" PointX="3" PointY="11.75" />
+        <EntityTypeShape EntityType="amirangh_APISiteModel.Tbl_OptionCart" Width="1.5" PointX="21.25" PointY="13.625" />
+        <EntityTypeShape EntityType="amirangh_APISiteModel.Tbl_OptionFactorItem" Width="1.5" PointX="18.75" PointY="19.75" />
+        <EntityTypeShape EntityType="amirangh_APISiteModel.Tbl_OrderFactor" Width="1.5" PointX="5.25" PointY="12.625" />
+        <EntityTypeShape EntityType="amirangh_APISiteModel.Tbl_OrderFactorItem" Width="1.5" PointX="7.5" PointY="11.125" />
+        <EntityTypeShape EntityType="amirangh_APISiteModel.Tbl_PacketCart" Width="1.5" PointX="8" PointY="1" />
+        <EntityTypeShape EntityType="amirangh_APISiteModel.Tbl_PacketingFactorItem" Width="1.5" PointX="5.75" PointY="20.75" />
+        <EntityTypeShape EntityType="amirangh_APISiteModel.Tbl_Packing" Width="1.5" PointX="5.75" PointY="0.875" />
+        <EntityTypeShape EntityType="amirangh_APISiteModel.Tbl_ResPrintFactor" Width="1.5" PointX="7.75" PointY="20.75" />
+        <EntityTypeShape EntityType="amirangh_APISiteModel.Tbl_ResPrintItem" Width="1.5" PointX="9.75" PointY="20.75" />
+        <EntityTypeShape EntityType="amirangh_APISiteModel.Tbl_ResReservationFactor" Width="1.5" PointX="20.75" PointY="19.75" />
+        <EntityTypeShape EntityType="amirangh_APISiteModel.Tbl_ResReservationFactorItem" Width="1.5" PointX="21.75" PointY="0.75" />
+        <EntityTypeShape EntityType="amirangh_APISiteModel.Tbl_ResTables" Width="1.5" PointX="21.75" PointY="3.75" />
+        <EntityTypeShape EntityType="amirangh_APISiteModel.Tbl_Restaurant" Width="1.5" PointX="3" PointY="5.25" />
+        <EntityTypeShape EntityType="amirangh_APISiteModel.Tbl_RestaurantImage" Width="1.5" PointX="21.75" PointY="6.75" />
+        <EntityTypeShape EntityType="amirangh_APISiteModel.Tbl_ShoppingCart" Width="1.5" PointX="7.5" PointY="7.75" />
+        <EntityTypeShape EntityType="amirangh_APISiteModel.Tbl_SweetOrderFactor" Width="1.5" PointX="22.75" PointY="16.75" />
+        <EntityTypeShape EntityType="amirangh_APISiteModel.Tbl_SweetOrderFactorItem" Width="1.5" PointX="19.25" PointY="8" />
+        <EntityTypeShape EntityType="amirangh_APISiteModel.Tbl_SweetReservationFactor" Width="1.5" PointX="0.75" PointY="1" />
+        <EntityTypeShape EntityType="amirangh_APISiteModel.Tbl_SweetReservationFactorList" Width="1.5" PointX="3" PointY="1.375" />
+        <EntityTypeShape EntityType="amirangh_APISiteModel.Tbl_Sweets" Width="1.5" PointX="17" PointY="4" />
+        <EntityTypeShape EntityType="amirangh_APISiteModel.Tbl_SweetsComment" Width="1.5" PointX="19.25" PointY="4" />
+        <EntityTypeShape EntityType="amirangh_APISiteModel.Tbl_SweetsShoppingCart" Width="1.5" PointX="19.25" PointY="1.25" />
+        <EntityTypeShape EntityType="amirangh_APISiteModel.Tbl_UserImages" Width="1.5" PointX="16.75" PointY="22.75" />
+        <EntityTypeShape EntityType="amirangh_APISiteModel.Tbl_Loading" Width="1.5" PointX="18.75" PointY="22.75" />
+        <AssociationConnector Association="amirangh_APISiteModel.FK_tab_products_Tab_users" />
+        <AssociationConnector Association="amirangh_APISiteModel.FK_tab_products_Tbl_Menu" />
+        <AssociationConnector Association="amirangh_APISiteModel.FK_tab_products_Tbl_Restaurant" />
+        <AssociationConnector Association="amirangh_APISiteModel.FK_Tbl_OrderFactorItem_tab_products" />
+        <AssociationConnector Association="amirangh_APISiteModel.FK_Tbl_ShoppingCart_tab_products" />
+        <AssociationConnector Association="amirangh_APISiteModel.FK_Tbl_Address_Tab_users" />
+        <AssociationConnector Association="amirangh_APISiteModel.FK_Tbl_Credit_Tab_users" />
+        <AssociationConnector Association="amirangh_APISiteModel.FK_Tbl_OrderFactor_Tab_users" />
+        <AssociationConnector Association="amirangh_APISiteModel.FK_Tbl_Restaurant_Tab_users" />
+        <AssociationConnector Association="amirangh_APISiteModel.FK_Tbl_ShoppingCart_Tab_users" />
+        <AssociationConnector Association="amirangh_APISiteModel.FK_Tbl_OrderFactor_Tbl_Address" />
+        <AssociationConnector Association="amirangh_APISiteModel.FK_Tbl_AlbumCart_Tbl_FoodAlbume" />
+        <AssociationConnector Association="amirangh_APISiteModel.FK_Tbl_Sweets_Tbl_Confectionary" />
+        <AssociationConnector Association="amirangh_APISiteModel.FK_Tbl_CustomizationFood_Tbl_FoodItemGroup" />
+        <AssociationConnector Association="amirangh_APISiteModel.FK_Tbl_FoodOption_Tbl_CustomizationFood" />
+        <AssociationConnector Association="amirangh_APISiteModel.FK_Tbl_OptionCart_Tbl_CustomizationFood" />
+        <AssociationConnector Association="amirangh_APISiteModel.FK_Tbl_FloristUserImage_Tbl_Floriest" />
+        <AssociationConnector Association="amirangh_APISiteModel.FK_Tbl_Flower_Tbl_Floriest" />
+        <AssociationConnector Association="amirangh_APISiteModel.FK_Tbl_FlowerOrder_Tbl_Floriest" />
+        <AssociationConnector Association="amirangh_APISiteModel.FK_Tbl_FlowerReservationFactor_Tbl_Floriest" />
+        <AssociationConnector Association="amirangh_APISiteModel.FK_Tbl_FlowerComment_Tbl_Flower" />
+        <AssociationConnector Association="amirangh_APISiteModel.FK_Tbl_FlowerOrderItem_Tbl_Flower" />
+        <AssociationConnector Association="amirangh_APISiteModel.FK_Tbl_FlowerReservationFactorList_Tbl_Flower" />
+        <AssociationConnector Association="amirangh_APISiteModel.FK_Tbl_FlowerShoppingCart_Tbl_Flower" />
+        <AssociationConnector Association="amirangh_APISiteModel.FK_Tbl_FlowerReservationFactorList_Tbl_FlowerReservationFactor" />
+        <AssociationConnector Association="amirangh_APISiteModel.FK_Tbl_FoodReservationFactorList_Tbl_FoodReservationFactor" />
+        <AssociationConnector Association="amirangh_APISiteModel.FK_Tbl_OrderFactor_Tbl_Restaurant" />
+        <AssociationConnector Association="amirangh_APISiteModel.FK_Tbl_OrderFactorItem_Tbl_OrderFactor" />
+        <AssociationConnector Association="amirangh_APISiteModel.FK_Tbl_PacketCart_Tbl_Packing" />
+        <AssociationConnector Association="amirangh_APISiteModel.FK_Tbl_SweetOrderFactorItem_Tbl_Sweets" />
+        <AssociationConnector Association="amirangh_APISiteModel.FK_Tbl_SweetReservationFactorList_Tbl_SweetReservationFactor" />
+        <AssociationConnector Association="amirangh_APISiteModel.FK_Tbl_SweetsComment_Tbl_Sweets" />
+        <AssociationConnector Association="amirangh_APISiteModel.FK_Tbl_SweetsShoppingCart_Tbl_Sweets" />
+        <EntityTypeShape EntityType="amirangh_APISiteModel.Tbl_TempOrder" Width="1.5" PointX="21.375" PointY="22.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

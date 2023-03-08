@@ -1,0 +1,147 @@
+D:\Universuty\Web\WebDesign\Projects\MainEnterpriseProject\MainEnterpriseProject\bin\ApplicationInsights.config
+D:\Universuty\Web\WebDesign\Projects\MainEnterpriseProject\MainEnterpriseProject\bin\MainEnterpriseProject.dll.config
+D:\Universuty\Web\WebDesign\Projects\MainEnterpriseProject\MainEnterpriseProject\bin\MainEnterpriseProject.dll
+D:\Universuty\Web\WebDesign\Projects\MainEnterpriseProject\MainEnterpriseProject\bin\MainEnterpriseProject.pdb
+D:\Universuty\Web\WebDesign\Projects\MainEnterpriseProject\MainEnterpriseProject\bin\Antlr3.Runtime.dll
+D:\Universuty\Web\WebDesign\Projects\MainEnterpriseProject\MainEnterpriseProject\bin\Microsoft.AI.Agent.Intercept.dll
+D:\Universuty\Web\WebDesign\Projects\MainEnterpriseProject\MainEnterpriseProject\bin\Microsoft.AI.DependencyCollector.dll
+D:\Universuty\Web\WebDesign\Projects\MainEnterpriseProject\MainEnterpriseProject\bin\Microsoft.AI.PerfCounterCollector.dll
+D:\Universuty\Web\WebDesign\Projects\MainEnterpriseProject\MainEnterpriseProject\bin\Microsoft.AI.ServerTelemetryChannel.dll
+D:\Universuty\Web\WebDesign\Projects\MainEnterpriseProject\MainEnterpriseProject\bin\Microsoft.AI.Web.dll
+D:\Universuty\Web\WebDesign\Projects\MainEnterpriseProject\MainEnterpriseProject\bin\Microsoft.AI.WindowsServer.dll
+D:\Universuty\Web\WebDesign\Projects\MainEnterpriseProject\MainEnterpriseProject\bin\Microsoft.ApplicationInsights.dll
+D:\Universuty\Web\WebDesign\Projects\MainEnterpriseProject\MainEnterpriseProject\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+D:\Universuty\Web\WebDesign\Projects\MainEnterpriseProject\MainEnterpriseProject\bin\Microsoft.Web.Infrastructure.dll
+D:\Universuty\Web\WebDesign\Projects\MainEnterpriseProject\MainEnterpriseProject\bin\Newtonsoft.Json.dll
+D:\Universuty\Web\WebDesign\Projects\MainEnterpriseProject\MainEnterpriseProject\bin\System.Web.Helpers.dll
+D:\Universuty\Web\WebDesign\Projects\MainEnterpriseProject\MainEnterpriseProject\bin\System.Web.Mvc.dll
+D:\Universuty\Web\WebDesign\Projects\MainEnterpriseProject\MainEnterpriseProject\bin\System.Web.Optimization.dll
+D:\Universuty\Web\WebDesign\Projects\MainEnterpriseProject\MainEnterpriseProject\bin\System.Web.Razor.dll
+D:\Universuty\Web\WebDesign\Projects\MainEnterpriseProject\MainEnterpriseProject\bin\System.Web.WebPages.Deployment.dll
+D:\Universuty\Web\WebDesign\Projects\MainEnterpriseProject\MainEnterpriseProject\bin\System.Web.WebPages.dll
+D:\Universuty\Web\WebDesign\Projects\MainEnterpriseProject\MainEnterpriseProject\bin\System.Web.WebPages.Razor.dll
+D:\Universuty\Web\WebDesign\Projects\MainEnterpriseProject\MainEnterpriseProject\bin\WebGrease.dll
+D:\Universuty\Web\WebDesign\Projects\MainEnterpriseProject\MainEnterpriseProject\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+D:\Universuty\Web\WebDesign\Projects\MainEnterpriseProject\MainEnterpriseProject\bin\System.Web.Helpers.xml
+D:\Universuty\Web\WebDesign\Projects\MainEnterpriseProject\MainEnterpriseProject\bin\System.Web.Mvc.xml
+D:\Universuty\Web\WebDesign\Projects\MainEnterpriseProject\MainEnterpriseProject\bin\System.Web.Optimization.xml
+D:\Universuty\Web\WebDesign\Projects\MainEnterpriseProject\MainEnterpriseProject\bin\System.Web.Razor.xml
+D:\Universuty\Web\WebDesign\Projects\MainEnterpriseProject\MainEnterpriseProject\bin\System.Web.WebPages.xml
+D:\Universuty\Web\WebDesign\Projects\MainEnterpriseProject\MainEnterpriseProject\bin\System.Web.WebPages.Deployment.xml
+D:\Universuty\Web\WebDesign\Projects\MainEnterpriseProject\MainEnterpriseProject\bin\System.Web.WebPages.Razor.xml
+D:\Universuty\Web\WebDesign\Projects\MainEnterpriseProject\MainEnterpriseProject\bin\Antlr3.Runtime.pdb
+D:\Universuty\Web\WebDesign\Projects\MainEnterpriseProject\MainEnterpriseProject\bin\Newtonsoft.Json.xml
+D:\Universuty\Web\WebDesign\Projects\MainEnterpriseProject\MainEnterpriseProject\bin\Microsoft.ApplicationInsights.xml
+D:\Universuty\Web\WebDesign\Projects\MainEnterpriseProject\MainEnterpriseProject\bin\Microsoft.AI.DependencyCollector.xml
+D:\Universuty\Web\WebDesign\Projects\MainEnterpriseProject\MainEnterpriseProject\bin\Microsoft.AI.ServerTelemetryChannel.xml
+D:\Universuty\Web\WebDesign\Projects\MainEnterpriseProject\MainEnterpriseProject\bin\Microsoft.AI.WindowsServer.xml
+D:\Universuty\Web\WebDesign\Projects\MainEnterpriseProject\MainEnterpriseProject\bin\Microsoft.AI.Web.xml
+D:\Universuty\Web\WebDesign\Projects\MainEnterpriseProject\MainEnterpriseProject\obj\Debug\MainEnterpriseProject.csprojResolveAssemblyReference.cache
+D:\Universuty\Web\WebDesign\Projects\MainEnterpriseProject\MainEnterpriseProject\obj\Debug\MainEnterpriseProject.csproj.CoreCompileInputs.cache
+D:\Universuty\Web\WebDesign\Projects\MainEnterpriseProject\MainEnterpriseProject\obj\Debug\MainEnterpriseProject.dll
+D:\Universuty\Web\WebDesign\Projects\MainEnterpriseProject\MainEnterpriseProject\obj\Debug\MainEnterpriseProject.pdb
+D:\Universuty\Web\WebDesign\Projects\MainEnterpriseProject\MainEnterpriseProject\bin\EntityFramework.dll
+D:\Universuty\Web\WebDesign\Projects\MainEnterpriseProject\MainEnterpriseProject\bin\EntityFramework.SqlServer.dll
+D:\Universuty\Web\WebDesign\Projects\MainEnterpriseProject\MainEnterpriseProject\bin\EntityFramework.xml
+D:\Universuty\Web\WebDesign\Projects\MainEnterpriseProject\MainEnterpriseProject\bin\EntityFramework.SqlServer.xml
+E:\WebProjects\MainEnterpriseProject\MainEnterpriseProject\bin\ApplicationInsights.config
+E:\WebProjects\MainEnterpriseProject\MainEnterpriseProject\bin\MainEnterpriseProject.dll.config
+E:\WebProjects\MainEnterpriseProject\MainEnterpriseProject\bin\MainEnterpriseProject.dll
+E:\WebProjects\MainEnterpriseProject\MainEnterpriseProject\bin\MainEnterpriseProject.pdb
+E:\WebProjects\MainEnterpriseProject\MainEnterpriseProject\bin\Antlr3.Runtime.dll
+E:\WebProjects\MainEnterpriseProject\MainEnterpriseProject\bin\EntityFramework.dll
+E:\WebProjects\MainEnterpriseProject\MainEnterpriseProject\bin\EntityFramework.SqlServer.dll
+E:\WebProjects\MainEnterpriseProject\MainEnterpriseProject\bin\Microsoft.AI.Agent.Intercept.dll
+E:\WebProjects\MainEnterpriseProject\MainEnterpriseProject\bin\Microsoft.AI.DependencyCollector.dll
+E:\WebProjects\MainEnterpriseProject\MainEnterpriseProject\bin\Microsoft.AI.PerfCounterCollector.dll
+E:\WebProjects\MainEnterpriseProject\MainEnterpriseProject\bin\Microsoft.AI.ServerTelemetryChannel.dll
+E:\WebProjects\MainEnterpriseProject\MainEnterpriseProject\bin\Microsoft.AI.Web.dll
+E:\WebProjects\MainEnterpriseProject\MainEnterpriseProject\bin\Microsoft.AI.WindowsServer.dll
+E:\WebProjects\MainEnterpriseProject\MainEnterpriseProject\bin\Microsoft.ApplicationInsights.dll
+E:\WebProjects\MainEnterpriseProject\MainEnterpriseProject\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+E:\WebProjects\MainEnterpriseProject\MainEnterpriseProject\bin\Microsoft.Web.Infrastructure.dll
+E:\WebProjects\MainEnterpriseProject\MainEnterpriseProject\bin\Newtonsoft.Json.dll
+E:\WebProjects\MainEnterpriseProject\MainEnterpriseProject\bin\System.Web.Helpers.dll
+E:\WebProjects\MainEnterpriseProject\MainEnterpriseProject\bin\System.Web.Mvc.dll
+E:\WebProjects\MainEnterpriseProject\MainEnterpriseProject\bin\System.Web.Optimization.dll
+E:\WebProjects\MainEnterpriseProject\MainEnterpriseProject\bin\System.Web.Razor.dll
+E:\WebProjects\MainEnterpriseProject\MainEnterpriseProject\bin\System.Web.WebPages.Deployment.dll
+E:\WebProjects\MainEnterpriseProject\MainEnterpriseProject\bin\System.Web.WebPages.dll
+E:\WebProjects\MainEnterpriseProject\MainEnterpriseProject\bin\System.Web.WebPages.Razor.dll
+E:\WebProjects\MainEnterpriseProject\MainEnterpriseProject\bin\WebGrease.dll
+E:\WebProjects\MainEnterpriseProject\MainEnterpriseProject\bin\EntityFramework.xml
+E:\WebProjects\MainEnterpriseProject\MainEnterpriseProject\bin\EntityFramework.SqlServer.xml
+E:\WebProjects\MainEnterpriseProject\MainEnterpriseProject\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+E:\WebProjects\MainEnterpriseProject\MainEnterpriseProject\bin\System.Web.Helpers.xml
+E:\WebProjects\MainEnterpriseProject\MainEnterpriseProject\bin\System.Web.Mvc.xml
+E:\WebProjects\MainEnterpriseProject\MainEnterpriseProject\bin\System.Web.Optimization.xml
+E:\WebProjects\MainEnterpriseProject\MainEnterpriseProject\bin\System.Web.Razor.xml
+E:\WebProjects\MainEnterpriseProject\MainEnterpriseProject\bin\System.Web.WebPages.xml
+E:\WebProjects\MainEnterpriseProject\MainEnterpriseProject\bin\System.Web.WebPages.Deployment.xml
+E:\WebProjects\MainEnterpriseProject\MainEnterpriseProject\bin\System.Web.WebPages.Razor.xml
+E:\WebProjects\MainEnterpriseProject\MainEnterpriseProject\bin\Antlr3.Runtime.pdb
+E:\WebProjects\MainEnterpriseProject\MainEnterpriseProject\bin\Newtonsoft.Json.xml
+E:\WebProjects\MainEnterpriseProject\MainEnterpriseProject\bin\Microsoft.ApplicationInsights.xml
+E:\WebProjects\MainEnterpriseProject\MainEnterpriseProject\bin\Microsoft.AI.DependencyCollector.xml
+E:\WebProjects\MainEnterpriseProject\MainEnterpriseProject\bin\Microsoft.AI.ServerTelemetryChannel.xml
+E:\WebProjects\MainEnterpriseProject\MainEnterpriseProject\bin\Microsoft.AI.WindowsServer.xml
+E:\WebProjects\MainEnterpriseProject\MainEnterpriseProject\bin\Microsoft.AI.Web.xml
+E:\WebProjects\MainEnterpriseProject\MainEnterpriseProject\obj\Debug\MainEnterpriseProject.csprojResolveAssemblyReference.cache
+E:\WebProjects\MainEnterpriseProject\MainEnterpriseProject\obj\Debug\MainEnterpriseProject.csproj.CoreCompileInputs.cache
+E:\WebProjects\MainEnterpriseProject\MainEnterpriseProject\obj\Debug\MainEnterpriseProject.dll
+E:\WebProjects\MainEnterpriseProject\MainEnterpriseProject\obj\Debug\MainEnterpriseProject.pdb
+C:\Users\Roozbeh Zamani\Desktop\New folder\MainEnterpriseProject\MainEnterpriseProject\bin\ApplicationInsights.config
+C:\Users\Roozbeh Zamani\Desktop\New folder\MainEnterpriseProject\MainEnterpriseProject\bin\MainEnterpriseProject.dll.config
+C:\Users\Roozbeh Zamani\Desktop\New folder\MainEnterpriseProject\MainEnterpriseProject\bin\MainEnterpriseProject.dll
+C:\Users\Roozbeh Zamani\Desktop\New folder\MainEnterpriseProject\MainEnterpriseProject\bin\MainEnterpriseProject.pdb
+C:\Users\Roozbeh Zamani\Desktop\New folder\MainEnterpriseProject\MainEnterpriseProject\bin\Antlr3.Runtime.dll
+C:\Users\Roozbeh Zamani\Desktop\New folder\MainEnterpriseProject\MainEnterpriseProject\bin\EntityFramework.dll
+C:\Users\Roozbeh Zamani\Desktop\New folder\MainEnterpriseProject\MainEnterpriseProject\bin\EntityFramework.SqlServer.dll
+C:\Users\Roozbeh Zamani\Desktop\New folder\MainEnterpriseProject\MainEnterpriseProject\bin\Microsoft.AI.Agent.Intercept.dll
+C:\Users\Roozbeh Zamani\Desktop\New folder\MainEnterpriseProject\MainEnterpriseProject\bin\Microsoft.AI.DependencyCollector.dll
+C:\Users\Roozbeh Zamani\Desktop\New folder\MainEnterpriseProject\MainEnterpriseProject\bin\Microsoft.AI.PerfCounterCollector.dll
+C:\Users\Roozbeh Zamani\Desktop\New folder\MainEnterpriseProject\MainEnterpriseProject\bin\Microsoft.AI.ServerTelemetryChannel.dll
+C:\Users\Roozbeh Zamani\Desktop\New folder\MainEnterpriseProject\MainEnterpriseProject\bin\Microsoft.AI.Web.dll
+C:\Users\Roozbeh Zamani\Desktop\New folder\MainEnterpriseProject\MainEnterpriseProject\bin\Microsoft.AI.WindowsServer.dll
+C:\Users\Roozbeh Zamani\Desktop\New folder\MainEnterpriseProject\MainEnterpriseProject\bin\Microsoft.ApplicationInsights.dll
+C:\Users\Roozbeh Zamani\Desktop\New folder\MainEnterpriseProject\MainEnterpriseProject\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\Users\Roozbeh Zamani\Desktop\New folder\MainEnterpriseProject\MainEnterpriseProject\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\Roozbeh Zamani\Desktop\New folder\MainEnterpriseProject\MainEnterpriseProject\bin\Newtonsoft.Json.dll
+C:\Users\Roozbeh Zamani\Desktop\New folder\MainEnterpriseProject\MainEnterpriseProject\bin\System.Web.Helpers.dll
+C:\Users\Roozbeh Zamani\Desktop\New folder\MainEnterpriseProject\MainEnterpriseProject\bin\System.Web.Mvc.dll
+C:\Users\Roozbeh Zamani\Desktop\New folder\MainEnterpriseProject\MainEnterpriseProject\bin\System.Web.Optimization.dll
+C:\Users\Roozbeh Zamani\Desktop\New folder\MainEnterpriseProject\MainEnterpriseProject\bin\System.Web.Razor.dll
+C:\Users\Roozbeh Zamani\Desktop\New folder\MainEnterpriseProject\MainEnterpriseProject\bin\System.Web.WebPages.Deployment.dll
+C:\Users\Roozbeh Zamani\Desktop\New folder\MainEnterpriseProject\MainEnterpriseProject\bin\System.Web.WebPages.dll
+C:\Users\Roozbeh Zamani\Desktop\New folder\MainEnterpriseProject\MainEnterpriseProject\bin\System.Web.WebPages.Razor.dll
+C:\Users\Roozbeh Zamani\Desktop\New folder\MainEnterpriseProject\MainEnterpriseProject\bin\WebGrease.dll
+C:\Users\Roozbeh Zamani\Desktop\New folder\MainEnterpriseProject\MainEnterpriseProject\bin\EntityFramework.xml
+C:\Users\Roozbeh Zamani\Desktop\New folder\MainEnterpriseProject\MainEnterpriseProject\bin\EntityFramework.SqlServer.xml
+C:\Users\Roozbeh Zamani\Desktop\New folder\MainEnterpriseProject\MainEnterpriseProject\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\Roozbeh Zamani\Desktop\New folder\MainEnterpriseProject\MainEnterpriseProject\bin\System.Web.Helpers.xml
+C:\Users\Roozbeh Zamani\Desktop\New folder\MainEnterpriseProject\MainEnterpriseProject\bin\System.Web.Mvc.xml
+C:\Users\Roozbeh Zamani\Desktop\New folder\MainEnterpriseProject\MainEnterpriseProject\bin\System.Web.Optimization.xml
+C:\Users\Roozbeh Zamani\Desktop\New folder\MainEnterpriseProject\MainEnterpriseProject\bin\System.Web.Razor.xml
+C:\Users\Roozbeh Zamani\Desktop\New folder\MainEnterpriseProject\MainEnterpriseProject\bin\System.Web.WebPages.xml
+C:\Users\Roozbeh Zamani\Desktop\New folder\MainEnterpriseProject\MainEnterpriseProject\bin\System.Web.WebPages.Deployment.xml
+C:\Users\Roozbeh Zamani\Desktop\New folder\MainEnterpriseProject\MainEnterpriseProject\bin\System.Web.WebPages.Razor.xml
+C:\Users\Roozbeh Zamani\Desktop\New folder\MainEnterpriseProject\MainEnterpriseProject\bin\Antlr3.Runtime.pdb
+C:\Users\Roozbeh Zamani\Desktop\New folder\MainEnterpriseProject\MainEnterpriseProject\bin\Newtonsoft.Json.xml
+C:\Users\Roozbeh Zamani\Desktop\New folder\MainEnterpriseProject\MainEnterpriseProject\bin\Microsoft.ApplicationInsights.xml
+C:\Users\Roozbeh Zamani\Desktop\New folder\MainEnterpriseProject\MainEnterpriseProject\bin\Microsoft.AI.DependencyCollector.xml
+C:\Users\Roozbeh Zamani\Desktop\New folder\MainEnterpriseProject\MainEnterpriseProject\bin\Microsoft.AI.ServerTelemetryChannel.xml
+C:\Users\Roozbeh Zamani\Desktop\New folder\MainEnterpriseProject\MainEnterpriseProject\bin\Microsoft.AI.WindowsServer.xml
+C:\Users\Roozbeh Zamani\Desktop\New folder\MainEnterpriseProject\MainEnterpriseProject\bin\Microsoft.AI.Web.xml
+C:\Users\Roozbeh Zamani\Desktop\New folder\MainEnterpriseProject\MainEnterpriseProject\obj\Debug\MainEnterpriseProject.csprojResolveAssemblyReference.cache
+C:\Users\Roozbeh Zamani\Desktop\New folder\MainEnterpriseProject\MainEnterpriseProject\obj\Debug\MainEnterpriseProject.csproj.CoreCompileInputs.cache
+C:\Users\Roozbeh Zamani\Desktop\New folder\MainEnterpriseProject\MainEnterpriseProject\obj\Debug\MainEnterpriseProject.dll
+C:\Users\Roozbeh Zamani\Desktop\New folder\MainEnterpriseProject\MainEnterpriseProject\obj\Debug\MainEnterpriseProject.pdb
+C:\Users\Roozbeh Zamani\Desktop\New folder\MainEnterpriseProject\MainEnterpriseProject\bin\CaptchaMvc.dll
+C:\Users\Roozbeh Zamani\Desktop\New folder\MainEnterpriseProject\MainEnterpriseProject\bin\CaptchaMvc.pdb
+C:\Users\Roozbeh Zamani\Desktop\New folder\MainEnterpriseProject\MainEnterpriseProject\bin\CaptchaMvc.xml
+C:\Users\Roozbeh Zamani\Desktop\New folder\MainEnterpriseProject\MainEnterpriseProject\bin\Stimulsoft.Base.dll
+C:\Users\Roozbeh Zamani\Desktop\New folder\MainEnterpriseProject\MainEnterpriseProject\bin\Stimulsoft.Report.dll
+C:\Users\Roozbeh Zamani\Desktop\New folder\MainEnterpriseProject\MainEnterpriseProject\bin\Stimulsoft.Report.Mvc.dll
+C:\Users\Roozbeh Zamani\Desktop\New folder\MainEnterpriseProject\MainEnterpriseProject\bin\System.Net.Http.dll
+C:\Users\Roozbeh Zamani\Desktop\New folder\MainEnterpriseProject\MainEnterpriseProject\bin\System.Net.Http.Formatting.dll
+C:\Users\Roozbeh Zamani\Desktop\New folder\MainEnterpriseProject\MainEnterpriseProject\bin\System.Net.Http.Formatting.xml

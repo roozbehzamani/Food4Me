@@ -1,0 +1,276 @@
+﻿
+@{
+    ViewBag.Title = "FinancialManager";
+    Layout = "~/Views/Shared/_Admin.cshtml";
+    List<string> lstWeek = new List<string>();
+    List<DateTime> lstDateTime = new List<DateTime>();
+    MainEnterpriseProject.Models.Repository.UserRepository userRep = new MainEnterpriseProject.Models.Repository.UserRepository();
+
+    lstWeek.Add("شنبه");
+    lstWeek.Add("یکشنبه");
+    lstWeek.Add("دوشنبه");
+    lstWeek.Add("سه شنبه");
+    lstWeek.Add("چهارشنبه");
+    lstWeek.Add("پنج شنبه");
+    lstWeek.Add("جمعه");
+
+    int d = (int)System.DateTime.Now.DayOfWeek;
+    DateTime dt = DateTime.Now;
+    if (d == 0)
+    {
+        d = 1;
+        lstDateTime.Add(dt.AddDays(-1));
+        lstDateTime.Add(dt);
+    }
+    else if (d == 1)
+    {
+        d = 2;
+        lstDateTime.Add(dt.AddDays(-2));
+        lstDateTime.Add(dt.AddDays(-1));
+        lstDateTime.Add(dt);
+    }
+    else if (d == 2)
+    {
+        d = 3;
+        lstDateTime.Add(dt.AddDays(-3));
+        lstDateTime.Add(dt.AddDays(-2));
+        lstDateTime.Add(dt.AddDays(-1));
+        lstDateTime.Add(dt);
+    }
+    else if (d == 3)
+    {
+        d = 4;
+        lstDateTime.Add(dt.AddDays(-4));
+        lstDateTime.Add(dt.AddDays(-3));
+        lstDateTime.Add(dt.AddDays(-2));
+        lstDateTime.Add(dt.AddDays(-1));
+        lstDateTime.Add(dt);
+    }
+    else if (d == 4)
+    {
+        d = 5;
+        lstDateTime.Add(dt.AddDays(-5));
+        lstDateTime.Add(dt.AddDays(-4));
+        lstDateTime.Add(dt.AddDays(-3));
+        lstDateTime.Add(dt.AddDays(-2));
+        lstDateTime.Add(dt.AddDays(-1));
+        lstDateTime.Add(dt);
+    }
+    else if (d == 5)
+    {
+        d = 6;
+        lstDateTime.Add(dt.AddDays(-6));
+        lstDateTime.Add(dt.AddDays(-5));
+        lstDateTime.Add(dt.AddDays(-4));
+        lstDateTime.Add(dt.AddDays(-3));
+        lstDateTime.Add(dt.AddDays(-2));
+        lstDateTime.Add(dt.AddDays(-1));
+        lstDateTime.Add(dt);
+    }
+    else if (d == 6)
+    {
+        d = 7;
+        lstDateTime.Add(dt);
+    }
+}
+<link href="~/Content/css/manager-icon-button.css" rel="stylesheet" />
+<link href="~/Content/css/popup_style.css" rel="stylesheet" />
+<link href="~/Content/css/font-awesome.css" rel="stylesheet" />
+<style>
+    .lr-sticky-header {
+        color: white;
+        background: lightblue;
+        transition: all 0.6s;
+    }
+
+    #scrollPanel {
+        height: 500px;
+        overflow-y: auto;
+    }
+
+    .table > thead > tr > th {
+        text-align: center;
+        vertical-align: middle;
+    }
+
+    .table > tbody > tr > td {
+        text-align: center;
+    }
+</style>
+
+
+
+<div class="container">
+    <div class="row">
+
+        <div class="col-md-4">
+
+        </div>
+
+        <div class="col-md-4">
+            <div class="form-group">
+                <div class="col-md-11">
+                    <div class="input-group">
+                        <span class="input-group-addon">
+                            <i class="fa fa-list"></i>
+                        </span>
+                        <select class="form-control1" style="direction:rtl;" id="showType" name="showType">
+                            <option>هفتگی</option>
+                            <option>روزانه</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+
+        </div>
+
+    </div>
+    <div class="row" style="width:95%;word-break: keep-all;">
+        <div style="direction:rtl;">
+            <table class="table table-bordered">
+                <thead style="z-index: 1;">
+                    <tr>
+                        <th width="100" class="headerSort headerSortDown" tabindex="0" role="columnheader button" title="Sort descending">
+                            شماره
+                        </th>
+                        <th width="100" class="headerSort" tabindex="0" role="columnheader button" title="Sort ascending">عنوان</th>
+                        <th width="200" class="headerSort" tabindex="0" role="columnheader button" title="Sort ascending">مجموع کل درآمد سیستم </th>
+                        <th width="200" class="headerSort" tabindex="0" role="columnheader button" title="Sort ascending">مجموع پرداختی برای پیک</th>
+                        <th width="200" class="headerSort" tabindex="0" role="columnheader button" title="Sort ascending">مجموع پرداختی برای رستوران</th>
+
+                    </tr>
+                </thead>
+                <tbody id="MainBody">
+                    @for (int i = 0; i <= d; i++)
+                    {
+                        <tr>
+                            <td><span style="font-family: monospace, monospace;">@(i + 1)</span></td>
+                            <td>@lstWeek.ElementAt(i)</td>
+                            <td>@(userRep.DailyTotalSales(lstDateTime.ElementAt(i)))</td>
+                            <td>@(userRep.DailyTotalDelivery(lstDateTime.ElementAt(i)))</td>
+                            <td>@(userRep.DailyTotalSales(lstDateTime.ElementAt(i)) - userRep.DailyTotalDelivery(lstDateTime.ElementAt(i)))</td>
+                        </tr>
+                    }
+                    @for (int i = d + 1; i < 7; i++)
+                    {
+                        <tr>
+                            <td><span style="font-family: monospace, monospace;">@(i + 1)</span></td>
+                            <td>@lstWeek.ElementAt(i)</td>
+                            <td>-------</td>
+                            <td>-------</td>
+                            <td>-------</td>
+                        </tr>
+                    }
+
+
+                </tbody>
+                <tfoot></tfoot>
+            </table>
+        </div>
+    </div>
+</div>
+@for (int i = 0; i < userRep.DateCount(); i++)
+{
+    <div class="modal fade" id="@i.ToString()" role="dialog" aria-labelledby="#@i.ToString()" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog" style=" width: 38% !important; min-width:360px; margin:5em auto 0 !important">
+            <div style="background:rgba(255,255,255,.28);height:18px;position:absolute;border-radius:10px;border:none;right:3%;left:3%;top:-8px;"></div>
+            <div style="background:rgba(255,255,255,.08);height:33px;position:absolute;border-radius:10px;border:none;right:5%;left:5%;top:-14px;"></div>
+            <div class="modal-content" style="border-radius:25px!important;">
+                <div class="modal-body">
+                    <div style="min-width: 360px; ">
+                        <div class="row">
+                            <div class="col-md-5" style="text-align:center;">
+                                مبلغ بدهکاری
+                            </div>
+                            <div class="col-md-6" style="text-align:center;">
+                                نام رستوران
+                            </div>
+
+                            <br />
+                            @{
+                                int subCounter = 1;
+                            }
+                            @foreach (var item2 in userRep.lstResIDs())
+                            {
+                                <div class="row">
+
+
+                                    <div class="col-md-5" style="text-align:center;">
+                                        <div class="span3 well">
+                                            @userRep.singleResSales(item2, i)
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6" style="text-align:center;">
+                                        <div class="span3 well">
+                                            @userRep.SingleResName(item2)
+                                        </div>
+                                    </div>
+                                    <div class="col-md-1" style="text-align:center;">
+                                        <p style="text-align:center;padding:8px;">@subCounter</p>
+                                    </div>
+                                </div>
+
+                                subCounter++;
+                            }
+
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+
+        </div>
+    </div>
+}
+
+
+
+
+<script src="~/Scripts/lrStickyHeader.js"></script>
+<script>
+    var tables = document.getElementsByTagName('table');
+    lrStickyHeader(tables[0]);
+    lrStickyHeader(tables[1]);
+    lrStickyHeader(tables[2], { parent: document.getElementById('scrollPanel') });
+</script>
+
+<script>
+    var counter = 0;
+    var popCounter = 0;
+    $("#showType").on('change', function (e) {
+        var type = $('select[name=showType]').val();
+        if (type == "روزانه") {
+
+            $.ajax({
+                type: 'GET',
+                dataType: 'Json',
+                url: '@Url.Action("GetTransactions", "Admin")',
+                data: { ID: 0 },
+                error: function (err) {
+                    alert(err.status);
+                }
+            }).done(function (result) {
+                var Text = "";
+                $.each(result, function (index, val) {
+                    counter++;
+                    var a = parseInt(val.TotalCredit);
+                    var b = parseInt(val.TotalOrder);
+                    var c = a - b;
+                    Text += "<tr><td><span style='font-family: monospace, monospace;'>" + counter + "</span></td><td>" + val.NowDate + "</td><td>" + val.TotalCredit + "</td><td>" + val.TotalOrder + "</td><td data-toggle='modal' data-target='#" + popCounter + "'>" + c + "</td></tr>";
+                    popCounter++;
+                })
+                $('#MainBody').html(Text);
+            });
+        } else {
+            window.location.reload(true);
+        }
+
+    });
+</script>
+
+

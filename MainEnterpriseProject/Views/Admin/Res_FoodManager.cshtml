@@ -1,0 +1,306 @@
+﻿@model List<MainEnterpriseProject.Models.Domain.tab_products>
+@{
+    ViewBag.Title = "AddFoodManager";
+    Layout = "~/Views/Shared/_Admin.cshtml";
+    int counter = 1;
+    int detailCounter = 10000;
+    int recipeCounter = 10000000;
+    MainEnterpriseProject.Models.Repository.FoodRepository rep_food = new MainEnterpriseProject.Models.Repository.FoodRepository();
+}
+
+<link href="~/Content/css/manager-icon-button.css" rel="stylesheet" />
+<link href="~/Content/css/popup_style.css" rel="stylesheet" />
+<style>
+    .lr-sticky-header {
+        color: white;
+        background: lightblue;
+        transition: all 0.6s;
+    }
+
+    #scrollPanel {
+        height: 500px;
+        overflow-y: auto;
+    }
+
+    .table > thead > tr > th {
+        text-align: center;
+    }
+
+    .table > tbody > tr > td {
+        text-align: center;
+        vertical-align: middle;
+    }
+</style>
+
+
+<div class="container">
+    <div class="row">
+        <div style="width:95%; direction:rtl;">
+            <table class="table table-bordered">
+                <thead style="z-index: 1;">
+                    <tr>
+                        <th class="headerSort headerSortDown" tabindex="0" role="columnheader button" title="Sort descending">
+                            شماره
+                        </th>
+                        <th width="115" class="headerSort" tabindex="0" role="columnheader button" title="Sort ascending">نام غذا</th>
+                        <th width="90" class="headerSort" tabindex="0" role="columnheader button" title="Sort ascending">قیمت</th>
+                        <th width="150" class="headerSort" tabindex="0" role="columnheader button" title="Sort ascending">عکس</th>
+                        <th width="100" class="headerSort" tabindex="0" role="columnheader button" title="Sort ascending">نوع منو</th>
+                        <th width="200" class="headerSort" tabindex="0" role="columnheader button" title="Sort ascending">تعداد موجودی</th>
+                        <th width="140" class="headerSort" tabindex="0" role="columnheader button" title="Sort ascending">طرز پخت</th>
+                        <th class="" title=""></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td><span style="font-family: monospace, monospace;">@counter</span></td>
+                            <td>@item.name</td>
+                            <td>@item.cost</td>
+                            <td>
+                                <span class="nowrap">
+                                    <img style="margin:auto; height:66px; width:100px;" src="~/Content/UserContent/images/@item.foodImage" alt="Alternate Text" class="img-responsive" />
+                                </span>
+                            </td>
+                            <td><a style="color:#333333">@rep_food.GetSingleMenu(item.menuID).menuTitle</a></td>
+                            <td>
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        <button name="btnEditCount" id="btnEditCount" onclick="EditCount(@counter , @item.id)" style="border:1px solid black; border-radius:50px; background-color:transparent;"><i class="fa fa-download"></i></button>
+                                    </div>
+                                    <div class="col-md-9">
+                                        @{
+                                            if (item.FoodCount == -1)
+                                            {
+                                                <input type="text" name="@counter.ToString()" id="@counter.ToString()" value="نامحدود" style="width:100%; text-align:center;" />
+                                            }
+                                            else
+                                            {
+                                                <input type="text" name="@counter.ToString()" id="@counter.ToString()" value="@item.FoodCount" style="width:100%; text-align:center;" />
+                                            }
+                                        }
+
+                                    </div>
+                                </div>
+                            </td>
+                            <td><span class="nowrap">@item.Recipe.Substring(0, 5)<a data-toggle="modal" data-target="#@recipeCounter.ToString()">...</a></span></td>
+
+                            <td>
+                                <div class="col-md-3">
+
+                                </div>
+                                <div class="col-md-2">
+                                    <div class="social_lock">
+                                        <div class="social_case3"></div>
+                                        <div class="mk">
+                                            <a href="~/Admin/Res_EditFood/@item.id">
+                                                <i class="fa fa-edit vmk1 vm" title="ویرایش"></i>
+                                            </a>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <div class="social_lock">
+                                        <div class="social_case3"></div>
+                                        <div class="mk">
+                                            <a href="~/Admin/Res_DeleteFood/@item.id">
+                                                <i class="fa fa-remove vmk1 vm" title="حذف"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <div class="social_lock">
+                                        <div class="social_case3"></div>
+                                        <div class="mk"><a data-toggle="modal" data-target="#@detailCounter.ToString()"><i class="fa fa-sign-in vmk1 vm" title="جزییات"></i></a></div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+
+                                </div>
+                            </td>
+                        </tr>
+
+
+
+
+
+
+
+                        <!--MODAL recipe-->
+                        <div class="modal fade" id="@recipeCounter.ToString()" role="dialog" aria-labelledby="#@recipeCounter.ToString()" tabindex="-1" aria-hidden="true">
+
+                            <div class="modal-dialog" style=" width: 38% !important; min-width:360px; margin:5em auto 0 !important">
+                                <div style="background:rgba(255,255,255,.28);height:18px;position:absolute;border-radius:10px;border:none;right:3%;left:3%;top:-8px;"></div>
+                                <div style="background:rgba(255,255,255,.08);height:33px;position:absolute;border-radius:10px;border:none;right:5%;left:5%;top:-14px;"></div>
+                                <div class="modal-content" style="border-radius:25px!important;">
+                                    <div class="modal-body">
+                                        <div style="min-width: 360px;">
+                                            <br />
+                                            <div class="span3 well">
+                                                @item.Recipe
+                                            </div>
+
+
+
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+
+
+                        </div>
+                        <!--END OF MODAL  recip-->
+
+                        <!--MODAL details-->
+                        <div class="modal fade" id="@detailCounter.ToString()" role="dialog" aria-labelledby="#@detailCounter.ToString()" tabindex="-1" aria-hidden="true">
+
+
+                            <div class="modal-dialog" width: 38% !important; min-width:360px; margin:5em auto 0 !important">
+                                <div style="background:rgba(255,255,255,.28);height:18px;position:absolute;border-radius:10px;border:none;right:3%;left:3%;top:-8px;"></div>
+                                <div style="background:rgba(255,255,255,.08);height:33px;position:absolute;border-radius:10px;border:none;right:5%;left:5%;top:-14px;"></div>
+                                <div class="row">
+                                    <div class="modal-content" border-radius:25px!important;">
+                                        <div class="modal-body">
+                                            <div style="min-width: 360px; ">
+
+                                                <div class="col-md-8">
+                                                    <div class="span3 well">
+                                                        @item.bakingTime
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <div style="text-align:right">
+                                                        مدت زمان تحویل
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="row">
+
+                                                <div style="min-width: 360px; ">
+
+                                                    <div class="col-md-8">
+                                                        <div class="span3 well">
+                                                            @item.CreateMaterial
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <div style="text-align:right">
+                                                            مواد تشکیل دهنده
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+                                </div>
+
+
+                                <!--END OF MODAL details-->
+
+
+
+                                counter++;
+                                detailCounter++;
+                                recipeCounter++;
+                            }
+        </tbody>
+        <tfoot></tfoot>
+    </table>
+</div>
+</div>
+</div>
+
+
+
+
+<!--MODAL details-->
+<div class="modal fade" id="fd" role="dialog" aria-labelledby="#fd" tabindex="-1" aria-hidden="true">
+
+
+    <div class="modal-dialog" width: 38% !important; min-width:360px; margin:5em auto 0 !important">
+        <div style="background:rgba(255,255,255,.28);height:18px;position:absolute;border-radius:10px;border:none;right:3%;left:3%;top:-8px;"></div>
+        <div style="background:rgba(255,255,255,.08);height:33px;position:absolute;border-radius:10px;border:none;right:5%;left:5%;top:-14px;"></div>
+        <div class="row">
+            <div class="modal-content" border-radius:25px!important;">
+                <div class="modal-body">
+                    <div style="min-width: 360px; ">
+
+                        <div class="col-md-8">
+                            <div class="span3 well">
+
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div style="text-align:right">
+                                مدت زمان آماده سازی
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+
+                        <div style="min-width: 360px; ">
+
+                            <div class="col-md-8">
+                                <div class="span3 well">
+
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div style="text-align:right">
+                                    مواد تشکیل دهنده
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+
+
+    </div>
+
+
+
+</div>
+<!--END OF MODAL details-->
+
+
+<script src="~/Scripts/lrStickyHeader.js"></script>
+<script>
+    var tables = document.getElementsByTagName('table');
+    lrStickyHeader(tables[0]);
+    lrStickyHeader(tables[1]);
+    lrStickyHeader(tables[2], { parent: document.getElementById('scrollPanel') });
+</script>
+
+<script>
+    function EditCount(id, itemID) {
+        var count = $('#' + id).val();
+        $.ajax({
+            type: 'POST',
+            dataType: 'Json',
+            url: '@Url.Action("EditFoodCount", "Admin")',
+            data: { ID: itemID, value: count },
+            error: function (err) {
+                alert(err.status);
+            }
+        }).done(function (result) {
+            window.location.reload(true);
+        });
+    }
+</script>
+

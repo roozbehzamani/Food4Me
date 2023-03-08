@@ -1,0 +1,288 @@
+﻿
+@{
+    ViewBag.Title = "Filter";
+    Layout = "~/Views/Shared/_index.cshtml";
+}
+
+
+<link href="~/Content/css/RingeSlider.css" rel="stylesheet" />
+<link href="~/Content/css/Combobax.css" rel="stylesheet" />
+<link href="~/Content/css/jquery.rateyo.min.css" rel="stylesheet" />
+
+
+
+<div style="height:150px; background:#c39a584d;">
+
+</div>
+
+<div style="background:#c39a584d;">
+
+    <div class="row">
+        <div class="container">
+
+            <div class="col-md-2"></div>
+            <div class="col-md-8">
+                <div style="background:rgb(240, 235, 222);height:18px;position:absolute;border-radius:10px;border:1px solid #c39a5854;right:3%;left:3%;top:-8px;z-index:2;"></div>
+                <div style="background:rgba(241, 236, 225, 0.54);height:33px;position:absolute;border-radius:10px;border:1px solid #c39a584d;right:5%;left:5%;top:-14px;z-index:1;"></div>
+
+                <div style="background-color:rgb(240, 235, 222); border:2px solid #c39a58d9; border-radius:10px; padding:15px;margin-bottom: 2%; position:inherit;z-index:3;">
+
+                    <div class="row">
+
+                        <div class="container">
+                            <div class="col-md-3">
+
+                                <input type="text" name="name" value="" class="input-md" placeholder="نام رستوران " style="border-radius: 5px;border-color:#c39a58a1; width:90%; height:29px; text-align:center; border-width:1px; color:#c39a58" />
+
+
+
+                            </div>
+                            <div class="col-md-6">
+                                <div class="container">
+                                    <div class="slider">
+                                        <input id="ConterStart" value=20 type="range" min="10000" max="100000" oninput="counterrangevalue.value=value+'-'+CounterEnd.value" />
+                                        <input id="CounterEnd" value=80 type="range" min="10000" max="100000" oninput="counterrangevalue.value=ConterStart.value+'-'+value" />
+                                        <div class="row">
+                                            <div class="col-md-2"></div>
+                                            <div class="col-md-1">
+                                                <span id="mySpan">قیمت</span>
+                                            </div>
+                                            <div class="col-md-7">
+                                                <output id="counterrangevalue">500000</output>
+                                            </div>
+                                            <div class="col-md-2"></div>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+
+                            </div>
+                            <div class="col-md-3">
+                                <input type="text" name="name" value="" class="input-md" placeholder="نام غذا " style="border-radius: 5px;border-color:#c39a58a1; width:90%; height:29px; text-align:center; border-width:1px; color:#c39a58" />
+                            </div>
+
+
+
+                        </div>
+                    </div>
+
+                    <div class="row" style="margin-bottom:2%">
+                        <div class="container">
+                            <div class="col-md-3">
+                                <div class="ui-widget">
+                                    <select id="combobox" style="border-radius: 5px;height: 30px!important;width: 90%; border-color:#c39a58a1;">
+                                        <option></option>
+                                        <option value="Ultrasound Knee Right">Ultrasound Knee Right</option>
+                                        <option value="Ultrasound Knee Left">Ultrasound Knee Left</option>
+                                        <option value="Ultrasound Forearm/Elbow Right">Ultrasound Forearm/  Elbow Right</option>
+                                        <option value="Ultrasound Forearm/Elbow Left">Ultrasound Forearm/Elbow Left</option>
+                                        <option value="MRI Knee Right">MRI Knee Right</option>
+                                        <option value="MRI Knee Left">MRI Knee Left</option>
+                                        <option value="MRI Forearm/Elbow Right">MRI Forearm/Elbow Right</option>
+                                        <option value="MRI Forearm/Elbow Left">MRI Forearm/Elbow Left</option>
+                                        <option value="CT Knee Right">CT Knee Right</option>
+                                        <option value="CT Knee Left">CT Knee Left</option>
+                                        <option value="CT Forearm/Elbow Right">CT Forearm/Elbow Right</option>
+                                        <option value="CT Forearm/Elbow Left">CT Forearm/Elbow Left</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="container">
+                                    <div class="slider">
+                                        <input id="start" value=20 type="range" min="0" max="5" oninput="rangevalue.value=value+'-'+end.value" />
+                                        <input id="end" value=80 type="range" min="0" max="5" oninput="rangevalue.value=start.value+'-'+value" />
+                                        <div class="row">
+                                            <div class="col-md-2"></div>
+                                            <div class="col-md-1">
+                                                <span id="mySpan">امتیاز</span>
+                                            </div>
+                                            <div class="col-md-7">
+                                                <output id="rangevalue">2.5</output>
+                                            </div>
+                                            <div class="col-md-2"></div>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                            </div>
+                            <div class="col-md-3">
+                                <div class="ui-widget">
+                                    <select id="combobox" style=" border-radius: 5px;height: 30px!important;width: 90%; border-color:#c39a58a1;">
+                                        <option></option>
+                                        <option value="Ultrasound Knee Right">Ultrasound Knee Right</option>
+                                        <option value="Ultrasound Knee Left">Ultrasound Knee Left</option>
+                                        <option value="Ultrasound Forearm/Elbow Right">Ultrasound Forearm/  Elbow Right</option>
+                                        <option value="Ultrasound Forearm/Elbow Left">Ultrasound Forearm/Elbow Left</option>
+                                        <option value="MRI Knee Right">MRI Knee Right</option>
+                                        <option value="MRI Knee Left">MRI Knee Left</option>
+                                        <option value="MRI Forearm/Elbow Right">MRI Forearm/Elbow Right</option>
+                                        <option value="MRI Forearm/Elbow Left">MRI Forearm/Elbow Left</option>
+                                        <option value="CT Knee Right">CT Knee Right</option>
+                                        <option value="CT Knee Left">CT Knee Left</option>
+                                        <option value="CT Forearm/Elbow Right">CT Forearm/Elbow Right</option>
+                                        <option value="CT Forearm/Elbow Left">CT Forearm/Elbow Left</option>
+                                    </select>
+                                </div>
+                            </div>
+
+
+
+                        </div>
+                    </div>
+
+
+
+                    <div class="row" style="margin-bottom:2%">
+                        <div class="container">
+                            <div class="col-md-3">
+
+                            </div>
+                            <div class="col-md-6">
+                                <button style="width:70%; padding:13px 30px !important;">جست وجو</button>
+
+
+
+                            </div>
+                            <div class="col-md-3">
+
+                            </div>
+
+
+
+                        </div>
+                    </div>
+
+                </div>
+
+
+            </div>
+            <div class="col-md-2"></div>
+
+
+
+
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-2"></div>
+
+        <section class="col-md-8 col-sm-12 col-xs-12">
+            <div class="vendor-list-wrapper row kk-restaurant kk-grid-view" itemscope="" itemtype="http://schema.org/Restaurant">
+                <div id="productsss">
+
+                    <div class="col-md-4 col-xs-12 kk-grid-view">
+                        <div class="kk-item kk-has-cover">
+                            <div class="kk-pp-bg" style="background-image: url('https://static.zoodfood.com/bundles/bodofoodfrontend/images/vendor-cover-app/RESTAURANT/4/5.jpg');">
+                                <span class="discount-badge discount-badge-grid">
+                                    ۱۴%
+                                </span>
+                                <div class="kk-image-container">
+                                    <a href="/restaurant/menu/0wlr8p/burgerator/tehran">
+                                        <div class="vendor-logo-no-shadow" style="background: url('http://snapp-food.com/media/cache/vendor_logo/uploads/images/vendors/logos/58b6bcaf38a23.jpg') no-repeat center center; background-size:100%"></div>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="kk-pp-title">
+                                <a class="idn-restaurant-title" href="/restaurant/menu/0wlr8p/burgerator/tehran">
+                                    sddfglfghmlkf
+                                </a>
+                            </div>
+                            <ul class="vendor-comments vendor-comments-grid">
+                                <li class="kk-comments  idn-rate-txt vcenter rate-color-9">
+                                    <span> 2 </span>
+                                </li>
+                                <li class="kk-pp-stars  vcenter" data-rate="4">
+                                    <div dir="ltr" class="rateYoo jq-ry-container" style="margin-top: -5px; width: 75px;" data-rate="5" readonly="readonly">
+                                        <div class="jq-ry-group-wrapper">
+                                            <div class="jq-ry-normal-group jq-ry-group">
+                                                <!--?xml version="1.0" encoding="utf-8"?-->
+                                                <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 12.705 512 486.59" x="0px" y="0px" xml:space="preserve" width="15px" height="15px" fill="#d8d8d8"><polygon points="256.814,12.705 317.205,198.566 512.631,198.566 354.529,313.435 414.918,499.295 256.814,384.427 98.713,499.295 159.102,313.435 1,198.566 196.426,198.566 "></polygon></svg><!--?xml version="1.0" encoding="utf-8"?-->
+                                                <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 12.705 512 486.59" x="0px" y="0px" xml:space="preserve" width="15px" height="15px" fill="#d8d8d8" style="margin-left: 0px;"><polygon points="256.814,12.705 317.205,198.566 512.631,198.566 354.529,313.435 414.918,499.295 256.814,384.427 98.713,499.295 159.102,313.435 1,198.566 196.426,198.566 "></polygon></svg><!--?xml version="1.0" encoding="utf-8"?-->
+                                                <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 12.705 512 486.59" x="0px" y="0px" xml:space="preserve" width="15px" height="15px" fill="#d8d8d8" style="margin-left: 0px;"><polygon points="256.814,12.705 317.205,198.566 512.631,198.566 354.529,313.435 414.918,499.295 256.814,384.427 98.713,499.295 159.102,313.435 1,198.566 196.426,198.566 "></polygon></svg><!--?xml version="1.0" encoding="utf-8"?-->
+                                                <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 12.705 512 486.59" x="0px" y="0px" xml:space="preserve" width="15px" height="15px" fill="#d8d8d8" style="margin-left: 0px;"><polygon points="256.814,12.705 317.205,198.566 512.631,198.566 354.529,313.435 414.918,499.295 256.814,384.427 98.713,499.295 159.102,313.435 1,198.566 196.426,198.566 "></polygon></svg><!--?xml version="1.0" encoding="utf-8"?-->
+                                                <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 12.705 512 486.59" x="0px" y="0px" xml:space="preserve" width="15px" height="15px" fill="#d8d8d8" style="margin-left: 0px;"><polygon points="256.814,12.705 317.205,198.566 512.631,198.566 354.529,313.435 414.918,499.295 256.814,384.427 98.713,499.295 159.102,313.435 1,198.566 196.426,198.566 "></polygon></svg>
+                                            </div>
+                                            <div class="jq-ry-rated-group jq-ry-group" style="width: @(1.5 * 20)%;">
+                                                <!--?xml version="1.0" encoding="utf-8"?-->
+                                                <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 12.705 512 486.59" x="0px" y="0px" xml:space="preserve" width="15px" height="15px" fill="#868686"><polygon points="256.814,12.705 317.205,198.566 512.631,198.566 354.529,313.435 414.918,499.295 256.814,384.427 98.713,499.295 159.102,313.435 1,198.566 196.426,198.566 "></polygon></svg><!--?xml version="1.0" encoding="utf-8"?-->
+                                                <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 12.705 512 486.59" x="0px" y="0px" xml:space="preserve" width="15px" height="15px" fill="#868686" style="margin-left: 0px;"><polygon points="256.814,12.705 317.205,198.566 512.631,198.566 354.529,313.435 414.918,499.295 256.814,384.427 98.713,499.295 159.102,313.435 1,198.566 196.426,198.566 "></polygon></svg><!--?xml version="1.0" encoding="utf-8"?-->
+                                                <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 12.705 512 486.59" x="0px" y="0px" xml:space="preserve" width="15px" height="15px" fill="#868686" style="margin-left: 0px;"><polygon points="256.814,12.705 317.205,198.566 512.631,198.566 354.529,313.435 414.918,499.295 256.814,384.427 98.713,499.295 159.102,313.435 1,198.566 196.426,198.566 "></polygon></svg><!--?xml version="1.0" encoding="utf-8"?-->
+                                                <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 12.705 512 486.59" x="0px" y="0px" xml:space="preserve" width="15px" height="15px" fill="#868686" style="margin-left: 0px;"><polygon points="256.814,12.705 317.205,198.566 512.631,198.566 354.529,313.435 414.918,499.295 256.814,384.427 98.713,499.295 159.102,313.435 1,198.566 196.426,198.566 "></polygon></svg><!--?xml version="1.0" encoding="utf-8"?-->
+                                                <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 12.705 512 486.59" x="0px" y="0px" xml:space="preserve" width="15px" height="15px" fill="#868686" style="margin-left: 0px;"><polygon points="256.814,12.705 317.205,198.566 512.631,198.566 354.529,313.435 414.918,499.295 256.814,384.427 98.713,499.295 159.102,313.435 1,198.566 196.426,198.566 "></polygon></svg>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class=" vcenter">
+                                    <span class="vendor-comments-btn" data-src="/restaurant/vendor-customer-comment" vendor-id="13700"> (2   نظر) </span>
+                                </li>
+                            </ul>
+                            <div class="kk-pp-address">
+                                <span>dfhfghjfghj، ...</span>
+                                <br>
+                                <span>
+                                    شسیبشسبیسبل
+                                </span>
+                                <span class="kk-cover-ids">|1||1|</span>
+                            </div>
+                            <div class="kk-pp-btn">
+                                <a href="/restaurant/menu/0wlr8p/burgerator/tehran"><span>نمایش منو</span></a>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+
+            </div>
+            <div class="vendor-loading-wrapper col-xs-12" style="display: none;">
+                <div class="loader loading">
+                    <svg><circle class="loader-circle" cx="50%" cy="50%" r="40%"></circle></svg>
+                </div>
+            </div>
+        </section>
+        <div class="col-md-2"></div>
+
+    </div>
+
+
+
+
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="clearfix"> </div>
+<script src="~/Scripts/combobax.js"></script>

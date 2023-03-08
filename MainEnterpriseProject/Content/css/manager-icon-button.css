@@ -1,0 +1,97 @@
+﻿.social_case {
+    width: 100px;
+    height: 100px;
+    background: #385596;
+    transform: rotate(45deg);
+    animation: my_anm1 1s linear infinite;
+}
+
+.social_lock {
+    position: relative;
+    width: 28px;
+    height: 28px;
+}
+
+.vmk1 {
+    font-size: 15px !important;
+    color: #fff;
+}
+
+.social_lock:hover .vm {
+    animation: moving 1s linear infinite alternate;
+}
+
+.mvm {
+    animation: moving 1s linear infinite alternate;
+}
+
+@keyframes moving {
+    from {
+        transform: skew(15deg);
+    }
+
+    to {
+        transform: skew(0deg)
+    }
+}
+
+.social_case2 {
+    width: 100px;
+    height: 100px;
+    background: #0070B0;
+    transform: rotate(45deg);
+}
+
+    .social_case2:hover {
+        animation: my_anm2 1s linear infinite
+    }
+
+.social_case3 {
+    width: 28px;
+    height: 28px;
+    background: #C39a58;
+    transform: rotate(45deg);
+}
+
+    .social_case3:hover {
+        animation: my_anm1 1s linear infinite
+    }
+
+.social_case4 {
+    width: 100px;
+    height: 100px;
+    background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%,#d6249f 60%,#285AEB 90%) !important;
+    transform: rotate(45deg);
+}
+
+    .social_case4:hover {
+        animation: my_anm2 1s linear infinite
+    }
+
+
+.mk {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+
+@keyframes my_anm1 {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes my_anm2 {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(-360deg);
+    }
+}

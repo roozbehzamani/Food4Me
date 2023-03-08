@@ -1,0 +1,633 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="amirangh_APISiteModelStoreContainer" CdmEntityContainer="DataBase">
+    <EntitySetMapping Name="Tab_comments">
+      <EntityTypeMapping TypeName="amirangh_APISiteModel.Tab_comments">
+        <MappingFragment StoreEntitySet="Tab_comments">
+          <ScalarProperty Name="Stars" ColumnName="Stars" />
+          <ScalarProperty Name="phone" ColumnName="phone" />
+          <ScalarProperty Name="cm_dislike" ColumnName="cm_dislike" />
+          <ScalarProperty Name="cm_like" ColumnName="cm_like" />
+          <ScalarProperty Name="parent_id" ColumnName="parent_id" />
+          <ScalarProperty Name="read" ColumnName="read" />
+          <ScalarProperty Name="confirm" ColumnName="confirm" />
+          <ScalarProperty Name="data" ColumnName="data" />
+          <ScalarProperty Name="text" ColumnName="text" />
+          <ScalarProperty Name="ip" ColumnName="ip" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="product_id" ColumnName="product_id" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tab_mail">
+      <EntityTypeMapping TypeName="amirangh_APISiteModel.Tab_mail">
+        <MappingFragment StoreEntitySet="Tab_mail">
+          <ScalarProperty Name="phonenumber" ColumnName="phonenumber" />
+          <ScalarProperty Name="text" ColumnName="text" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tab_products">
+      <EntityTypeMapping TypeName="amirangh_APISiteModel.tab_products">
+        <MappingFragment StoreEntitySet="tab_products">
+          <ScalarProperty Name="OrderType" ColumnName="OrderType" />
+          <ScalarProperty Name="FoodCount" ColumnName="FoodCount" />
+          <ScalarProperty Name="bakingTime" ColumnName="bakingTime" />
+          <ScalarProperty Name="CreateMaterial" ColumnName="CreateMaterial" />
+          <ScalarProperty Name="foodImage" ColumnName="foodImage" />
+          <ScalarProperty Name="Recipe" ColumnName="Recipe" />
+          <ScalarProperty Name="menuID" ColumnName="menuID" />
+          <ScalarProperty Name="resID" ColumnName="resID" />
+          <ScalarProperty Name="User_Email" ColumnName="User_Email" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="cost" ColumnName="cost" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tab_users">
+      <EntityTypeMapping TypeName="amirangh_APISiteModel.Tab_users">
+        <MappingFragment StoreEntitySet="Tab_users">
+          <ScalarProperty Name="Family" ColumnName="Family" />
+          <ScalarProperty Name="SNumber" ColumnName="SNumber" />
+          <ScalarProperty Name="description" ColumnName="description" />
+          <ScalarProperty Name="activeCode" ColumnName="activeCode" />
+          <ScalarProperty Name="SMS_Enable" ColumnName="SMS_Enable" />
+          <ScalarProperty Name="IMEI" ColumnName="IMEI" />
+          <ScalarProperty Name="home_address" ColumnName="home_address" />
+          <ScalarProperty Name="sex" ColumnName="sex" />
+          <ScalarProperty Name="birth_date" ColumnName="birth_date" />
+          <ScalarProperty Name="home_phone" ColumnName="home_phone" />
+          <ScalarProperty Name="ncode" ColumnName="ncode" />
+          <ScalarProperty Name="mob_phone" ColumnName="mob_phone" />
+          <ScalarProperty Name="enable" ColumnName="enable" />
+          <ScalarProperty Name="image" ColumnName="image" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="access" ColumnName="access" />
+          <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tbl_Address">
+      <EntityTypeMapping TypeName="amirangh_APISiteModel.Tbl_Address">
+        <MappingFragment StoreEntitySet="Tbl_Address">
+          <ScalarProperty Name="Unit" ColumnName="Unit" />
+          <ScalarProperty Name="Floor" ColumnName="Floor" />
+          <ScalarProperty Name="apartmentName" ColumnName="apartmentName" />
+          <ScalarProperty Name="addressLatLng" ColumnName="addressLatLng" />
+          <ScalarProperty Name="addressType" ColumnName="addressType" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="userEmail" ColumnName="userEmail" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tbl_AlbumCart">
+      <EntityTypeMapping TypeName="amirangh_APISiteModel.Tbl_AlbumCart">
+        <MappingFragment StoreEntitySet="Tbl_AlbumCart">
+          <ScalarProperty Name="ShoppingCartID" ColumnName="ShoppingCartID" />
+          <ScalarProperty Name="AlbumID" ColumnName="AlbumID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tbl_AlbumFactorItem">
+      <EntityTypeMapping TypeName="amirangh_APISiteModel.Tbl_AlbumFactorItem">
+        <MappingFragment StoreEntitySet="Tbl_AlbumFactorItem">
+          <ScalarProperty Name="AlbumID" ColumnName="AlbumID" />
+          <ScalarProperty Name="factorItemID" ColumnName="factorItemID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tbl_Banner">
+      <EntityTypeMapping TypeName="amirangh_APISiteModel.Tbl_Banner">
+        <MappingFragment StoreEntitySet="Tbl_Banner">
+          <ScalarProperty Name="Image" ColumnName="Image" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tbl_Confectionary">
+      <EntityTypeMapping TypeName="amirangh_APISiteModel.Tbl_Confectionary">
+        <MappingFragment StoreEntitySet="Tbl_Confectionary">
+          <ScalarProperty Name="CPoint" ColumnName="CPoint" />
+          <ScalarProperty Name="CEnable" ColumnName="CEnable" />
+          <ScalarProperty Name="CBusinessLicense" ColumnName="CBusinessLicense" />
+          <ScalarProperty Name="CImage" ColumnName="CImage" />
+          <ScalarProperty Name="userEmail" ColumnName="userEmail" />
+          <ScalarProperty Name="CLatLng" ColumnName="CLatLng" />
+          <ScalarProperty Name="CPhone" ColumnName="CPhone" />
+          <ScalarProperty Name="CAddress" ColumnName="CAddress" />
+          <ScalarProperty Name="CName" ColumnName="CName" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tbl_ConfectioneryUserImage">
+      <EntityTypeMapping TypeName="amirangh_APISiteModel.Tbl_ConfectioneryUserImage">
+        <MappingFragment StoreEntitySet="Tbl_ConfectioneryUserImage">
+          <ScalarProperty Name="Text" ColumnName="Text" />
+          <ScalarProperty Name="ConfectioneryID" ColumnName="ConfectioneryID" />
+          <ScalarProperty Name="UserEmail" ColumnName="UserEmail" />
+          <ScalarProperty Name="ImageName" ColumnName="ImageName" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tbl_Credit">
+      <EntityTypeMapping TypeName="amirangh_APISiteModel.Tbl_Credit">
+        <MappingFragment StoreEntitySet="Tbl_Credit">
+          <ScalarProperty Name="RootUser" ColumnName="RootUser" />
+          <ScalarProperty Name="TransactionCode" ColumnName="TransactionCode" />
+          <ScalarProperty Name="UserEmail" ColumnName="UserEmail" />
+          <ScalarProperty Name="Time" ColumnName="Time" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="Credit" ColumnName="Credit" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tbl_CustomizationFood">
+      <EntityTypeMapping TypeName="amirangh_APISiteModel.Tbl_CustomizationFood">
+        <MappingFragment StoreEntitySet="Tbl_CustomizationFood">
+          <ScalarProperty Name="Used" ColumnName="Used" />
+          <ScalarProperty Name="itemGroupID" ColumnName="itemGroupID" />
+          <ScalarProperty Name="itemPrice" ColumnName="itemPrice" />
+          <ScalarProperty Name="foodItem" ColumnName="foodItem" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tbl_Floriest">
+      <EntityTypeMapping TypeName="amirangh_APISiteModel.Tbl_Floriest">
+        <MappingFragment StoreEntitySet="Tbl_Floriest">
+          <ScalarProperty Name="FPoints" ColumnName="FPoints" />
+          <ScalarProperty Name="FEnable" ColumnName="FEnable" />
+          <ScalarProperty Name="FBusinessLicense" ColumnName="FBusinessLicense" />
+          <ScalarProperty Name="FPhone" ColumnName="FPhone" />
+          <ScalarProperty Name="FLatLng" ColumnName="FLatLng" />
+          <ScalarProperty Name="userEmail" ColumnName="userEmail" />
+          <ScalarProperty Name="FImage" ColumnName="FImage" />
+          <ScalarProperty Name="FAddress" ColumnName="FAddress" />
+          <ScalarProperty Name="FName" ColumnName="FName" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tbl_FloristUserImage">
+      <EntityTypeMapping TypeName="amirangh_APISiteModel.Tbl_FloristUserImage">
+        <MappingFragment StoreEntitySet="Tbl_FloristUserImage">
+          <ScalarProperty Name="Text" ColumnName="Text" />
+          <ScalarProperty Name="FloristID" ColumnName="FloristID" />
+          <ScalarProperty Name="UserEmail" ColumnName="UserEmail" />
+          <ScalarProperty Name="ImageName" ColumnName="ImageName" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tbl_Flower">
+      <EntityTypeMapping TypeName="amirangh_APISiteModel.Tbl_Flower">
+        <MappingFragment StoreEntitySet="Tbl_Flower">
+          <ScalarProperty Name="FlwImage" ColumnName="FlwImage" />
+          <ScalarProperty Name="FlwMaintenance" ColumnName="FlwMaintenance" />
+          <ScalarProperty Name="FlorestID" ColumnName="FlorestID" />
+          <ScalarProperty Name="FlwType" ColumnName="FlwType" />
+          <ScalarProperty Name="FlwColor" ColumnName="FlwColor" />
+          <ScalarProperty Name="FlwPrice" ColumnName="FlwPrice" />
+          <ScalarProperty Name="FlwName" ColumnName="FlwName" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tbl_FlowerComment">
+      <EntityTypeMapping TypeName="amirangh_APISiteModel.Tbl_FlowerComment">
+        <MappingFragment StoreEntitySet="Tbl_FlowerComment">
+          <ScalarProperty Name="Stars" ColumnName="Stars" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="read" ColumnName="read" />
+          <ScalarProperty Name="confirm" ColumnName="confirm" />
+          <ScalarProperty Name="commentDate" ColumnName="commentDate" />
+          <ScalarProperty Name="Text" ColumnName="Text" />
+          <ScalarProperty Name="IP" ColumnName="IP" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="flowerID" ColumnName="flowerID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tbl_FlowerOrder">
+      <EntityTypeMapping TypeName="amirangh_APISiteModel.Tbl_FlowerOrder">
+        <MappingFragment StoreEntitySet="Tbl_FlowerOrder">
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="Comment" ColumnName="Comment" />
+          <ScalarProperty Name="AddresID" ColumnName="AddresID" />
+          <ScalarProperty Name="Time" ColumnName="Time" />
+          <ScalarProperty Name="OrderStatus" ColumnName="OrderStatus" />
+          <ScalarProperty Name="UserEmail" ColumnName="UserEmail" />
+          <ScalarProperty Name="FloristID" ColumnName="FloristID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tbl_FlowerOrderItem">
+      <EntityTypeMapping TypeName="amirangh_APISiteModel.Tbl_FlowerOrderItem">
+        <MappingFragment StoreEntitySet="Tbl_FlowerOrderItem">
+          <ScalarProperty Name="FlowerCount" ColumnName="FlowerCount" />
+          <ScalarProperty Name="ParentID" ColumnName="ParentID" />
+          <ScalarProperty Name="FlowerID" ColumnName="FlowerID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tbl_FlowerReservationFactor">
+      <EntityTypeMapping TypeName="amirangh_APISiteModel.Tbl_FlowerReservationFactor">
+        <MappingFragment StoreEntitySet="Tbl_FlowerReservationFactor">
+          <ScalarProperty Name="OrderTyoe" ColumnName="OrderTyoe" />
+          <ScalarProperty Name="Time" ColumnName="Time" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="UserEmail" ColumnName="UserEmail" />
+          <ScalarProperty Name="FloristID" ColumnName="FloristID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tbl_FlowerReservationFactorList">
+      <EntityTypeMapping TypeName="amirangh_APISiteModel.Tbl_FlowerReservationFactorList">
+        <MappingFragment StoreEntitySet="Tbl_FlowerReservationFactorList">
+          <ScalarProperty Name="FoodCount" ColumnName="FoodCount" />
+          <ScalarProperty Name="FoodFactorID" ColumnName="FoodFactorID" />
+          <ScalarProperty Name="FoodID" ColumnName="FoodID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tbl_FlowerShoppingCart">
+      <EntityTypeMapping TypeName="amirangh_APISiteModel.Tbl_FlowerShoppingCart">
+        <MappingFragment StoreEntitySet="Tbl_FlowerShoppingCart">
+          <ScalarProperty Name="UserEmail" ColumnName="UserEmail" />
+          <ScalarProperty Name="FlowerID" ColumnName="FlowerID" />
+          <ScalarProperty Name="FlowerCount" ColumnName="FlowerCount" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tbl_FoodAlbume">
+      <EntityTypeMapping TypeName="amirangh_APISiteModel.Tbl_FoodAlbume">
+        <MappingFragment StoreEntitySet="Tbl_FoodAlbume">
+          <ScalarProperty Name="albumImage" ColumnName="albumImage" />
+          <ScalarProperty Name="albumName" ColumnName="albumName" />
+          <ScalarProperty Name="foodID" ColumnName="foodID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tbl_FoodItemGroup">
+      <EntityTypeMapping TypeName="amirangh_APISiteModel.Tbl_FoodItemGroup">
+        <MappingFragment StoreEntitySet="Tbl_FoodItemGroup">
+          <ScalarProperty Name="GroupName" ColumnName="GroupName" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tbl_FoodOption">
+      <EntityTypeMapping TypeName="amirangh_APISiteModel.Tbl_FoodOption">
+        <MappingFragment StoreEntitySet="Tbl_FoodOption">
+          <ScalarProperty Name="OptionID" ColumnName="OptionID" />
+          <ScalarProperty Name="FoodID" ColumnName="FoodID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tbl_FoodReservationFactor">
+      <EntityTypeMapping TypeName="amirangh_APISiteModel.Tbl_FoodReservationFactor">
+        <MappingFragment StoreEntitySet="Tbl_FoodReservationFactor">
+          <ScalarProperty Name="OrderTyoe" ColumnName="OrderTyoe" />
+          <ScalarProperty Name="Time" ColumnName="Time" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="UserEmail" ColumnName="UserEmail" />
+          <ScalarProperty Name="ResID" ColumnName="ResID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tbl_FoodReservationFactorList">
+      <EntityTypeMapping TypeName="amirangh_APISiteModel.Tbl_FoodReservationFactorList">
+        <MappingFragment StoreEntitySet="Tbl_FoodReservationFactorList">
+          <ScalarProperty Name="FoodCount" ColumnName="FoodCount" />
+          <ScalarProperty Name="FoodFactorID" ColumnName="FoodFactorID" />
+          <ScalarProperty Name="FoodID" ColumnName="FoodID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tbl_Menu">
+      <EntityTypeMapping TypeName="amirangh_APISiteModel.Tbl_Menu">
+        <MappingFragment StoreEntitySet="Tbl_Menu">
+          <ScalarProperty Name="menuImage" ColumnName="menuImage" />
+          <ScalarProperty Name="menuType" ColumnName="menuType" />
+          <ScalarProperty Name="menuTitle" ColumnName="menuTitle" />
+          <ScalarProperty Name="menuID" ColumnName="menuID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tbl_OptionCart">
+      <EntityTypeMapping TypeName="amirangh_APISiteModel.Tbl_OptionCart">
+        <MappingFragment StoreEntitySet="Tbl_OptionCart">
+          <ScalarProperty Name="ShoppingCartID" ColumnName="ShoppingCartID" />
+          <ScalarProperty Name="OptionID" ColumnName="OptionID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tbl_OptionFactorItem">
+      <EntityTypeMapping TypeName="amirangh_APISiteModel.Tbl_OptionFactorItem">
+        <MappingFragment StoreEntitySet="Tbl_OptionFactorItem">
+          <ScalarProperty Name="OptionItemID" ColumnName="OptionItemID" />
+          <ScalarProperty Name="factorItemID" ColumnName="factorItemID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tbl_OrderFactor">
+      <EntityTypeMapping TypeName="amirangh_APISiteModel.Tbl_OrderFactor">
+        <MappingFragment StoreEntitySet="Tbl_OrderFactor">
+          <ScalarProperty Name="ReceveTime" ColumnName="ReceveTime" />
+          <ScalarProperty Name="CreditAmount" ColumnName="CreditAmount" />
+          <ScalarProperty Name="Delivery" ColumnName="Delivery" />
+          <ScalarProperty Name="Credit" ColumnName="Credit" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="Comment" ColumnName="Comment" />
+          <ScalarProperty Name="AddressID" ColumnName="AddressID" />
+          <ScalarProperty Name="UserEmail" ColumnName="UserEmail" />
+          <ScalarProperty Name="Time" ColumnName="Time" />
+          <ScalarProperty Name="OrderStatus" ColumnName="OrderStatus" />
+          <ScalarProperty Name="ResID" ColumnName="ResID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tbl_OrderFactorItem">
+      <EntityTypeMapping TypeName="amirangh_APISiteModel.Tbl_OrderFactorItem">
+        <MappingFragment StoreEntitySet="Tbl_OrderFactorItem">
+          <ScalarProperty Name="FoodCount" ColumnName="FoodCount" />
+          <ScalarProperty Name="FoodID" ColumnName="FoodID" />
+          <ScalarProperty Name="FactorID" ColumnName="FactorID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tbl_PacketCart">
+      <EntityTypeMapping TypeName="amirangh_APISiteModel.Tbl_PacketCart">
+        <MappingFragment StoreEntitySet="Tbl_PacketCart">
+          <ScalarProperty Name="PacketID" ColumnName="PacketID" />
+          <ScalarProperty Name="ShoppingCartID" ColumnName="ShoppingCartID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tbl_PacketingFactorItem">
+      <EntityTypeMapping TypeName="amirangh_APISiteModel.Tbl_PacketingFactorItem">
+        <MappingFragment StoreEntitySet="Tbl_PacketingFactorItem">
+          <ScalarProperty Name="PacketingID" ColumnName="PacketingID" />
+          <ScalarProperty Name="factorItemID" ColumnName="factorItemID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tbl_Packing">
+      <EntityTypeMapping TypeName="amirangh_APISiteModel.Tbl_Packing">
+        <MappingFragment StoreEntitySet="Tbl_Packing">
+          <ScalarProperty Name="packingImage" ColumnName="packingImage" />
+          <ScalarProperty Name="packingDescription" ColumnName="packingDescription" />
+          <ScalarProperty Name="foodID" ColumnName="foodID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tbl_ResPrintFactor">
+      <EntityTypeMapping TypeName="amirangh_APISiteModel.Tbl_ResPrintFactor">
+        <MappingFragment StoreEntitySet="Tbl_ResPrintFactor">
+          <ScalarProperty Name="TotalPrice" ColumnName="TotalPrice" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="ResName" ColumnName="ResName" />
+          <ScalarProperty Name="ResUserName" ColumnName="ResUserName" />
+          <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+          <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tbl_ResPrintItem">
+      <EntityTypeMapping TypeName="amirangh_APISiteModel.Tbl_ResPrintItem">
+        <MappingFragment StoreEntitySet="Tbl_ResPrintItem">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="SNumber" ColumnName="SNumber" />
+          <ScalarProperty Name="OrderPrice" ColumnName="OrderPrice" />
+          <ScalarProperty Name="OrderTime" ColumnName="OrderTime" />
+          <ScalarProperty Name="OrderDate" ColumnName="OrderDate" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Counter" ColumnName="Counter" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tbl_ResReservationFactor">
+      <EntityTypeMapping TypeName="amirangh_APISiteModel.Tbl_ResReservationFactor">
+        <MappingFragment StoreEntitySet="Tbl_ResReservationFactor">
+          <ScalarProperty Name="Time" ColumnName="Time" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="TableID" ColumnName="TableID" />
+          <ScalarProperty Name="UserEmail" ColumnName="UserEmail" />
+          <ScalarProperty Name="ResID" ColumnName="ResID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tbl_ResReservationFactorItem">
+      <EntityTypeMapping TypeName="amirangh_APISiteModel.Tbl_ResReservationFactorItem">
+        <MappingFragment StoreEntitySet="Tbl_ResReservationFactorItem">
+          <ScalarProperty Name="FoodCount" ColumnName="FoodCount" />
+          <ScalarProperty Name="FoodID" ColumnName="FoodID" />
+          <ScalarProperty Name="FactorID" ColumnName="FactorID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tbl_ResTables">
+      <EntityTypeMapping TypeName="amirangh_APISiteModel.Tbl_ResTables">
+        <MappingFragment StoreEntitySet="Tbl_ResTables">
+          <ScalarProperty Name="TableCapacity" ColumnName="TableCapacity" />
+          <ScalarProperty Name="TableNumber" ColumnName="TableNumber" />
+          <ScalarProperty Name="ResID" ColumnName="ResID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tbl_Restaurant">
+      <EntityTypeMapping TypeName="amirangh_APISiteModel.Tbl_Restaurant">
+        <MappingFragment StoreEntitySet="Tbl_Restaurant">
+          <ScalarProperty Name="SecendTime" ColumnName="SecendTime" />
+          <ScalarProperty Name="FirstTime" ColumnName="FirstTime" />
+          <ScalarProperty Name="isGetOrder" ColumnName="isGetOrder" />
+          <ScalarProperty Name="FoodAvragePrice" ColumnName="FoodAvragePrice" />
+          <ScalarProperty Name="ResBusinessLicense" ColumnName="ResBusinessLicense" />
+          <ScalarProperty Name="StudentRes" ColumnName="StudentRes" />
+          <ScalarProperty Name="resEnable" ColumnName="resEnable" />
+          <ScalarProperty Name="userEmail" ColumnName="userEmail" />
+          <ScalarProperty Name="resImage" ColumnName="resImage" />
+          <ScalarProperty Name="resPhone" ColumnName="resPhone" />
+          <ScalarProperty Name="resLatLng" ColumnName="resLatLng" />
+          <ScalarProperty Name="resPoints" ColumnName="resPoints" />
+          <ScalarProperty Name="resAvgServiceTime" ColumnName="resAvgServiceTime" />
+          <ScalarProperty Name="resType" ColumnName="resType" />
+          <ScalarProperty Name="resAddress" ColumnName="resAddress" />
+          <ScalarProperty Name="resName" ColumnName="resName" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tbl_RestaurantImage">
+      <EntityTypeMapping TypeName="amirangh_APISiteModel.Tbl_RestaurantImage">
+        <MappingFragment StoreEntitySet="Tbl_RestaurantImage">
+          <ScalarProperty Name="resImage" ColumnName="resImage" />
+          <ScalarProperty Name="resID" ColumnName="resID" />
+          <ScalarProperty Name="resImageID" ColumnName="resImageID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tbl_ShoppingCart">
+      <EntityTypeMapping TypeName="amirangh_APISiteModel.Tbl_ShoppingCart">
+        <MappingFragment StoreEntitySet="Tbl_ShoppingCart">
+          <ScalarProperty Name="UserEmail" ColumnName="UserEmail" />
+          <ScalarProperty Name="FoodID" ColumnName="FoodID" />
+          <ScalarProperty Name="FoodCount" ColumnName="FoodCount" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tbl_SweetOrderFactor">
+      <EntityTypeMapping TypeName="amirangh_APISiteModel.Tbl_SweetOrderFactor">
+        <MappingFragment StoreEntitySet="Tbl_SweetOrderFactor">
+          <ScalarProperty Name="Weight" ColumnName="Weight" />
+          <ScalarProperty Name="Comment" ColumnName="Comment" />
+          <ScalarProperty Name="AddresID" ColumnName="AddresID" />
+          <ScalarProperty Name="Time" ColumnName="Time" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="OrderStatus" ColumnName="OrderStatus" />
+          <ScalarProperty Name="UserEmail" ColumnName="UserEmail" />
+          <ScalarProperty Name="ConfectioneryID" ColumnName="ConfectioneryID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tbl_SweetOrderFactorItem">
+      <EntityTypeMapping TypeName="amirangh_APISiteModel.Tbl_SweetOrderFactorItem">
+        <MappingFragment StoreEntitySet="Tbl_SweetOrderFactorItem">
+          <ScalarProperty Name="FactorID" ColumnName="FactorID" />
+          <ScalarProperty Name="SweetsID" ColumnName="SweetsID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tbl_SweetReservationFactor">
+      <EntityTypeMapping TypeName="amirangh_APISiteModel.Tbl_SweetReservationFactor">
+        <MappingFragment StoreEntitySet="Tbl_SweetReservationFactor">
+          <ScalarProperty Name="OrderWeight" ColumnName="OrderWeight" />
+          <ScalarProperty Name="OrderTyoe" ColumnName="OrderTyoe" />
+          <ScalarProperty Name="Time" ColumnName="Time" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="UserEmail" ColumnName="UserEmail" />
+          <ScalarProperty Name="ConfectionaryID" ColumnName="ConfectionaryID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tbl_SweetReservationFactorList">
+      <EntityTypeMapping TypeName="amirangh_APISiteModel.Tbl_SweetReservationFactorList">
+        <MappingFragment StoreEntitySet="Tbl_SweetReservationFactorList">
+          <ScalarProperty Name="FoodFactorID" ColumnName="FoodFactorID" />
+          <ScalarProperty Name="FoodID" ColumnName="FoodID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tbl_Sweets">
+      <EntityTypeMapping TypeName="amirangh_APISiteModel.Tbl_Sweets">
+        <MappingFragment StoreEntitySet="Tbl_Sweets">
+          <ScalarProperty Name="SImage" ColumnName="SImage" />
+          <ScalarProperty Name="ConfectionaryID" ColumnName="ConfectionaryID" />
+          <ScalarProperty Name="S_Description" ColumnName="S_Description" />
+          <ScalarProperty Name="S_Price" ColumnName="S_Price" />
+          <ScalarProperty Name="S_Type" ColumnName="S_Type" />
+          <ScalarProperty Name="S_Name" ColumnName="S_Name" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tbl_SweetsComment">
+      <EntityTypeMapping TypeName="amirangh_APISiteModel.Tbl_SweetsComment">
+        <MappingFragment StoreEntitySet="Tbl_SweetsComment">
+          <ScalarProperty Name="Star" ColumnName="Star" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="read" ColumnName="read" />
+          <ScalarProperty Name="confirm" ColumnName="confirm" />
+          <ScalarProperty Name="CommentDate" ColumnName="CommentDate" />
+          <ScalarProperty Name="Text" ColumnName="Text" />
+          <ScalarProperty Name="IP" ColumnName="IP" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="SweetsID" ColumnName="SweetsID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tbl_SweetsShoppingCart">
+      <EntityTypeMapping TypeName="amirangh_APISiteModel.Tbl_SweetsShoppingCart">
+        <MappingFragment StoreEntitySet="Tbl_SweetsShoppingCart">
+          <ScalarProperty Name="UserEmail" ColumnName="UserEmail" />
+          <ScalarProperty Name="SweetID" ColumnName="SweetID" />
+          <ScalarProperty Name="SweetCount" ColumnName="SweetCount" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tbl_UserImages">
+      <EntityTypeMapping TypeName="amirangh_APISiteModel.Tbl_UserImages">
+        <MappingFragment StoreEntitySet="Tbl_UserImages">
+          <ScalarProperty Name="Text" ColumnName="Text" />
+          <ScalarProperty Name="ResID" ColumnName="ResID" />
+          <ScalarProperty Name="UserEmail" ColumnName="UserEmail" />
+          <ScalarProperty Name="ImageName" ColumnName="ImageName" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tbl_Loading">
+      <EntityTypeMapping TypeName="amirangh_APISiteModel.Tbl_Loading">
+        <MappingFragment StoreEntitySet="Tbl_Loading">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tbl_TempOrder">
+      <EntityTypeMapping TypeName="amirangh_APISiteModel.Tbl_TempOrder">
+        <MappingFragment StoreEntitySet="Tbl_TempOrder">
+          <ScalarProperty Name="Comment" ColumnName="Comment" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="CreditChecked" ColumnName="CreditChecked" />
+          <ScalarProperty Name="InTimeStatus" ColumnName="InTimeStatus" />
+          <ScalarProperty Name="UserEmail" ColumnName="UserEmail" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

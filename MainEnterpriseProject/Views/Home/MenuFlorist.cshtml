@@ -1,0 +1,489 @@
+﻿@model List<MainEnterpriseProject.Models.Domain.Tbl_Flower>
+@{
+    ViewBag.Title = "Menu";
+    Layout = "~/Views/Shared/_index.cshtml";
+    MainEnterpriseProject.Models.Repository.FlowerAllRep Flower = new MainEnterpriseProject.Models.Repository.FlowerAllRep();
+    int start = 0, end = 5;
+    List<string> lstFlowerType = new List<string>();
+    lstFlowerType.Add("درختچه");
+    lstFlowerType.Add("گلدانی");
+    lstFlowerType.Add("شاخه گل");
+    lstFlowerType.Add("دسته گل");
+    lstFlowerType.Add("مصنوعی");
+    string imgName = "";
+    int id = Model.ElementAt(1).FlorestID;
+}
+
+
+<link href="~/Content/UserContent/css/fontawesome-all.css" rel="stylesheet" />
+<link href="~/Content/UserContent/css/20df0e8.css" rel="stylesheet" />
+<link href="~/Content/UserContent/css/931be1e.css" rel="stylesheet" />
+<link href="~/Content/UserContent/css/92c8e62.css" rel="stylesheet" />
+<link href="~/Content/UserContent/css/jquery.rateyo.min.css" rel="stylesheet" />
+<link href="~/Content/UserContent/css/app-all-e2d1ee721e.css" rel="stylesheet" />
+<link href="~/Content/UserContent/css/snapfood/style.css" rel="stylesheet" />
+@*<script src="~/Scripts/UserScripts/11c6b17.js"></script>*@
+<link href="~/Content/UserContent/css/Toast.css" rel="stylesheet" />
+
+
+<style>
+    .tab-content > .active {
+        display: inline-block !important;
+    }
+</style>
+
+
+<div class="inner-page vendor detail-page rtl" itemscope itemtype="http://schema.org/Restaurant">
+
+    <div class="main-content" style="background-color:white;">
+        <div class="idn-main-loader-inner" style="display:none;">
+            <div class="idn-main-loader-outer"></div>
+        </div>
+        <div class="bottom-nav-section" style="background:transparent;">
+
+        </div>
+        <div id="kk-animation-container"></div>
+        <div id="main-container" class="container">
+            <div class="row ">
+                <div class="col-lg-offset-6 col-lg-3 col-md-offset-5 col-md-4  col-sm-offset-6 col-sm-6 col-xs-offset-0 col-xs-12 zf-filter-vendor view-mode-top"></div>
+            </div>
+            <div class="row">
+                <div class="col-md-1">
+
+                </div>
+                <div class="col-md-10 col-sm-12 col-xs-12">
+                    <div class="vendor-content-wrapper box" style="border-top:none">
+                        <!-- Nav tabs -->
+                        <ul class="nav nav-tabs nav-justified" role="tablist" style=" background: #fbfbfb;">
+                            <li class="active" style="min-width:32%">
+                                <a href="satarkhan.htm#vendor-menu" aria-controls="vendor-menu" role="tab" data-toggle="tab" style="display:block !important;">
+                                    منو
+                                </a>
+                            </li>
+                            <li style="min-width:32%">
+                                <a href="satarkhan.htm#vendor-info" aria-controls="vendor-info" role="tab" data-toggle="tab"
+                                   id="vendor-info-btn" style="display:block !important;">
+                                    اطلاعات
+                                </a>
+                            </li>
+                            <li style="min-width:32%">
+                                <a href="satarkhan.htm#vendor-gallery" aria-controls="vendor-gallery" role="tab" data-toggle="tab"
+                                   id="vendor-gallery-link" style="display:block !important;">
+                                    گالری تصاویر
+                                </a>
+                            </li>
+                        </ul><!-- Tab panes -->
+                        <div class="tab-content" style="font-family:BYekan,Tahoma,Geneva,sans-serif !important;">
+                            <div role="tabpanel" class="tab-pane fade in active" id="vendor-menu" style="padding-top:0px !important;">
+                                <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12 col-xxs-12 default-tab-content-container" style="display:contents !important;">
+                                    <!-- ngIf: restaurant --><!-- uiView:  -->
+                                    <div ui-view="" ng-if="restaurant" class="ng-scope">
+                                        <!-- ngIf: selectedTab.bool === 0 -->
+                                        <div class="fullWidth default-tab-content ng-scope" ng-if="selectedTab.bool === 0">
+                                            <div class="wrapper-sticky" style="display: block; height: 93px; width: auto; margin: auto; position: relative; float: none; left: auto; right: auto; top: auto; bottom: auto; vertical-align: top;">
+                                                <div class="row smooth-fix" style="width: 100%; top: 0px; bottom: auto; left: 0px; right: auto; position: absolute;">
+                                                    <div class="col-lg-12 col-md-12 nopadding-x" id="main-top-menu" style="right:-15px !important;">
+                                                        <div class="clearfix" style="width:97%;">
+                                                            <div id="top-menu" class="content-jump owl-text slick-initialized slick-slider" style="background:#fff">
+
+                                                                <!-- ngRepeat: (sectionId, section) in restaurant.menuSections -->
+                                                                <div aria-live="polite" class="slick-list draggable">
+                                                                    <div class="slick-track" style="opacity: 1; width: 100%; display: flex; transform: translate3d(0px, 0px, 0px);" role="listbox">
+                                                                        @for (int i = start; i < end; i++)
+                                                                        {
+                                                                            <div ng-repeat="(sectionId, section) in restaurant.menuSections" data-hash="@i" ng-class="{'selected-section' : selectedMenuSection.id == section.id}" class="ng-scope selected-section slick-slide slick-current slick-active" data-slick-index="0" aria-hidden="false" tabindex="-1" role="option" aria-describedby="slick-slide00">
+                                                                                <a class="smallFirstFont section-name " href="#@i" ng-click="menuSectionClick($event, section)" tabindex="0">
+                                                                                    <div class="ng-binding">
+                                                                                        @lstFlowerType.ElementAt(i)
+
+                                                                                    </div>
+                                                                                    <div class="section-icon hidden-xs hidden-xxs" style="align-items: center; justify-content: center; flex-direction: column; display: flex;">
+                                                                                        <span ng-class="['new-icon-' + (section.iconSlug ? section.iconSlug : 'food')]">
+                                                                                            @{
+                                                                                                imgName = i.ToString() + ".png";
+                                                                                            }
+                                                                                            <img src="~/Content/MenuFlorist/@imgName" alt="Alternate Text" style="width:30px; height:30px;" />
+                                                                                        </span>
+                                                                                    </div>
+                                                                                </a>
+                                                                            </div>
+                                                                        }
+
+                                                                    </div>
+                                                                </div><!-- end ngRepeat: (sectionId, section) in restaurant.menuSections --><!-- end ngRepeat: (sectionId, section) in restaurant.menuSections --><!-- end ngRepeat: (sectionId, section) in restaurant.menuSections --><!-- end ngRepeat: (sectionId, section) in restaurant.menuSections --><!-- end ngRepeat: (sectionId, section) in restaurant.menuSections --><!-- end ngRepeat: (sectionId, section) in restaurant.menuSections --><!-- end ngRepeat: (sectionId, section) in restaurant.menuSections -->
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row" style="margin: 30px 0; padding-left:30px; padding-right:30px;">
+                                                @for (int i = start; i < end; i++)
+                                                {
+
+                                                    <div class="fullWidth ng-scope" ng-repeat="section in restaurant.menuSections">
+                                                        <div class="row">
+                                                            <menu-section icon="section.iconSlug" image="section.image" menu-title="section.name" section-id="section.id" class="ng-isolate-scope">
+                                                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 col-xxs-12 menu-section-wrapper" id="@i">
+                                                                    <div class="fullWidth menu-section relativeMatter menu-section-without-image" ng-style="menuBackground" ng-class="{'menu-section-without-image': withoutImage}">
+                                                                        <div class="menu-section-info">
+                                                                            <div class="fullWidth tenPaddingBottom bordered-info-child">
+                                                                                <span ng-class="['new-icon-' + (icon ? icon : 'food')]">
+                                                                                    @{
+                                                                                        imgName = i.ToString() + ".png";
+                                                                                    }
+                                                                                    <img src="~/Content/MenuFlorist/@imgName" alt="Alternate Text" style="width:30px; height:30px;" />
+                                                                                </span>
+                                                                                <span class="title-in-menu-section ng-binding">@lstFlowerType.ElementAt(i)</span>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </menu-section>
+                                                        </div>
+                                                        @foreach (var item in Model)
+                                                        {
+                                                            if (item.FlwType == lstFlowerType.ElementAt(i))
+                                                            {
+                                                                <div ng-repeat="food in section.foods" class="food-item-row ng-scope hidden-sm hidden-xs" ng-class="{'food-gride-view' : selectedView === 2, 'food-list-view': selectedView === 2, 'food-list-simple': restaurant.menuView === 3}">
+                                                                    <!-- ngIf: selectedView === 2 -->
+                                                                    <!-- ngIf: selectedView === 1 -->
+                                                                    <div class="col-lg-4 col-md-4 pull-right ng-scope" ng-if="selectedView === 1">
+                                                                        <div class="fullWidth food-item-wrapper food-item-vertical-wrapper relativeMatter" ng-class="{'there-is-no-food': food.status !== 1 &amp;&amp; restaurant.isOpen === true}">
+                                                                            <div class="fullWidth relativeMatter image-holder">
+                                                                                <img class="cursor-pointer" ng-click="openDetailModal(food)" img-lazy-src="~/Content/UserContent/@item.FlwImage" which="food" alt="@item.FlwName" src="~/Content/UserContent/@item.FlwImage">
+
+                                                                            </div>
+                                                                            <div class="fullWidth food-item-bottom-section">
+                                                                                <div class="fullWidth">
+                                                                                    <p class="food-title cursor-pointer ng-binding" ng-click="nameAction(food)">@item.FlwName</p>
+                                                                                    <span class="food-tags truncateText inline-block ng-binding">
+                                                                                        @item.FlwMaintenance
+
+                                                                                    </span>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="fullWidth food-item-price-section absoluteMatter">
+                                                                                <div class="fullWidth text-left food-tags-container">
+                                                                                    <span style="display: none;" class="new-icon new-icon-veg_tag veg-icon"></span>
+                                                                                    <span style="display: none;" class="new-icon new-icon-spicy_tag spicy-icon"></span>
+                                                                                </div>
+                                                                                <div class="fullWidth food-item-price-container">
+                                                                                    <div class="halfWidth price-wrapper" ng-class="{'with-discount' : food.lastPrice != null}">
+                                                                                        <p class="price-text ng-binding">@item.FlwPrice تومان</p>
+
+                                                                                    </div>
+
+                                                                                    <div class="halfWidth" ng-show="restaurant.isOpen === true &amp;&amp; food.status === 1">
+                                                                                        <div class="operat-wrapper text-left">
+                                                                                            <a href="~/Home/FlowerSingle/@item.ID" class="side-dish-selection ng-hide" ng-click="openDetailModal(food)" ng-show="food.hasOption === true" style="background-color:#c59f61 !important;">
+                                                                                                <span class="selection-text" style="color:#fff;border:1px solid #c59f61; ">انتخاب</span>
+
+                                                                                            </a>
+
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div><!-- end ngIf: selectedView === 1 -->
+                                                                </div>
+                                                                <div ng-repeat="food in section.foods" class="food-item-row ng-scope hidden-lg hidden-md" ng-class="{'food-gride-view' : selectedView === 2, 'food-list-view': selectedView === 2, 'food-list-simple': restaurant.menuView === 3}">
+                                                                    <!-- ngIf: selectedView === 2 -->
+                                                                    <!-- ngIf: selectedView === 1 -->
+                                                                    <div class="row" style=" width: 70%;margin: 0 auto;">
+
+                                                                        <div class="col-lg-4 col-md-4 pull-right ng-scope" ng-if="selectedView === 1" style="width:100%;">
+                                                                            <div class="fullWidth food-item-wrapper food-item-vertical-wrapper relativeMatter" ng-class="{'there-is-no-food': food.status !== 1 &amp;&amp; restaurant.isOpen === true}">
+                                                                                <div class="fullWidth relativeMatter image-holder" style="height:auto;">
+                                                                                    <img class="cursor-pointer" ng-click="openDetailModal(food)" img-lazy-src="~/Content/UserContent/@item.FlwImage" which="food" alt="@item.FlwName" src="~/Content/UserContent/@item.FlwImage" style="height:190px;">
+
+                                                                                </div>
+                                                                                <div class="fullWidth food-item-bottom-section">
+                                                                                    <div class="fullWidth">
+                                                                                        <div class="row">
+                                                                                            <div class="col-md-1">
+                                                                                                <p class="food-title cursor-pointer ng-binding" ng-click="nameAction(food)">@item.FlwName</p>
+                                                                                            </div>
+                                                                                            <div class="col-md-1">
+                                                                                                <p class="price-text ng-binding">@item.FlwPrice</p>
+                                                                                            </div>
+
+
+                                                                                        </div>
+
+                                                                                        <div class="halfWidth" ng-show="restaurant.isOpen === true &amp;&amp; food.status === 1" style="width:100%">
+                                                                                            <div class="operat-wrapper text-left">
+                                                                                                <a href="~/Home/FlowerSingle/@item.ID" class="side-dish-selection ng-hide" ng-click="openDetailModal(food)" ng-show="food.hasOption === true" style="background-color:#c59f61d4 !important; width:100%; text-align:center;">
+                                                                                                    <span class="selection-text" style="color:#fff; ">انتخاب</span>
+
+                                                                                                </a>
+
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="fullWidth food-item-price-section absoluteMatter">
+                                                                                    <div class="fullWidth text-left food-tags-container">
+                                                                                        <span style="display: none;" class="new-icon new-icon-veg_tag veg-icon"></span>
+                                                                                        <span style="display: none;" class="new-icon new-icon-spicy_tag spicy-icon"></span>
+                                                                                    </div>
+
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+
+
+
+                                                                    </div>
+
+
+
+                                                                    <!-- end ngIf: selectedView === 1 -->
+                                                                </div>
+                                                            }
+                                                        }
+
+                                                    </div>
+                                                }
+
+                                            </div>
+                                        </div><!-- end ngIf: selectedTab.bool === 0 -->
+                                    </div><!-- end ngIf: restaurant -->
+                                </div>
+                            </div>
+                            <div role="tabpanel" class="tab-pane fade" id="vendor-info" style="width: 100%;">
+                                <div class="container-fluid vendor-info-section" style="padding-left:0px;padding-right:0px;font-size:1rem;">
+                                    <div class="row">
+                                        <div id="vendor-general-info" class="col-md-12 info-row text-center" style="padding:0px;">
+
+                                            <div class="col-md-1"></div>
+                                            <div class="col-md-10">
+
+                                                <h3>  موقعیت </h3>
+                                                <div class="kk-fa-digit location-info">@Flower.FloristInfo(id).FAddress</div>
+
+
+                                                <div style="margin-right:5px;">
+                                                    <div class="google-maps" style="background-color:white; border:2px solid #c39a58d9; border-radius:10px; padding:15px;margin-bottom: 2%;">
+                                                        @*<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1145.123319176969!2d51.41705433644568!3d35.728730505290756!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzXCsDQzJzQzLjYiTiA1McKwMjQnNTguNiJF!5e0!3m2!1sar!2seg!4v1463222630093" width="860" height="240" frameborder="0" style="border:0" allowfullscreen=""></iframe>*@
+
+                                                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d809.8975196477321!2d51.37345995217509!3d35.71170383001896!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3f8e00c5845fe793%3A0x830f612c012aae39!2sTehran+Province%2C+Tehran%2C+Gonabad+St!5e0!3m2!1sen!2sir!4v1508418483450" width="100%" height="240" frameborder="0" style="border:0" allowfullscreen=""></iframe>
+
+                                                    </div>
+
+
+
+                                                </div>
+
+                                                <div class="clear"></div>
+                                                <hr style="width:100%; border-color:#cca973;">
+                                                <h3>شماره تماس</h3>
+                                                <div>
+                                                    <span>@Flower.FloristInfo(id).FPhone</span>
+                                                </div>
+
+                                            </div>
+                                            <div class="col-md-1"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div role="tabpanel" class="tab-pane fade" id="vendor-gallery">
+                                <style>
+                                    /*notltr*/
+                                    .fancybox-image, .fancybox-iframe {
+                                        display: block;
+                                        width: 80%;
+                                        height: 80%;
+                                        margin: 0 auto;
+                                        -webkit-box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+                                        -moz-box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+                                        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+                                    }
+
+                                    .fancybox-opened .fancybox-skin {
+                                        -webkit-box-shadow: none;
+                                        -moz-box-shadow: none;
+                                        box-shadow: none;
+                                    }
+
+                                    .fancybox-skin {
+                                        background: transparent;
+                                    }
+
+                                    .fancybox-lock .fancybox-overlay {
+                                        overflow-y: auto;
+                                        overflow-x: hidden
+                                    }
+
+                                    .fancybox-title-float-wrap {
+                                        bottom: 20px;
+                                        right: 48%
+                                    }
+
+                                        .fancybox-title-float-wrap .child {
+                                            background: transparent;
+                                            font-family: 'iransans';
+                                            font-weight: 400;
+                                            text-shadow: none
+                                        }
+
+                                    .fancybox-nav span {
+                                        top: 40%
+                                    }
+
+                                    .fancybox-close {
+                                        left: 13%
+                                    }
+
+                                    .fancybox-overlay {
+                                        background: rgba(0,0,0,0.85)
+                                    }
+                                </style>
+                                <div class="row" style="margin-bottom:50px;">
+                                    <div class="kk-gallery-tab-container" style="width: 100%;direction:rtl;height: 100px;float: right;">
+                                        <form method="post" enctype="multipart/form-data" name="" class="ng-pristine ng-valid ng-valid-email" style="width: 100%;direction: rtl;height: 100px;float: right;display: -webkit-box;position: absolute;margin-bottom: 30px;">
+
+                                            <div class="row hidden-sm hidden-xs" style="direction: rtl;float: right;padding: 0;position: relative;display: inherit;">
+                                                <div class="col-md-4">
+
+                                                    <div class="input-group">
+                                                        <span class="input-group-addon" style="border:0!important; background:transparent; color:#cdab74;font-size:50px;">
+                                                            <i class="fas fa-cloud-download-alt"></i>
+                                                        </span>
+                                                        <button class="btn btn-success form-control1" style="border: 1px solid #ccc;width: 20%;text-align: center; color:#9a7944;  background: transparent;border: 0;display: inline-flex;font-size: 15px;" onclick="document.getElementById('file').click(); return false;">عکس های ارسالی توسط کاربران</button>
+                                                        <input oninvalid="setCustomValidity('عکس پروفایلتان را انتخاب نمایید')" oninput="setCustomValidity('')" type="file" class="form-control1" id="file" name="file" style="direction:rtl; color:transparent; display:none;">
+                                                        <input type="hidden" name="FloristID" id="FloristID" value="@id" />
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4" style="top:14px;">
+                                                    <input name="Text" id="Text" type="text" placeholder="نام گل" style="left:6px; height:36px;" class="form-control default-input singleline-input ng-pristine ng-valid ng-empty ng-touched">
+
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <button class="btn btn-blue btn-default-xs" style="text-align:center;  color:#fff !important; width:50%; background:#c39a58d4; padding:0px;" type="submit" name="SaveChange" id="SaveChange" value="ذخیره">ذخیره</button>
+                                                </div>
+                                            </div>
+
+                                            <div class="row hidden-lg hidden-md" style="margin-bottom:20px;">
+                                                <div class="col-md-4">
+
+                                                    <div class="input-group">
+                                                        <span class="input-group-addon" style="border:0!important; background:transparent; color:#cdab74;font-size:50px;">
+                                                            <i class="fas fa-cloud-download-alt"></i>
+                                                        </span>
+                                                        <button class="btn btn-success form-control1" style="border: 1px solid #ccc;width: 20%;text-align: center; color:#9a7944;  background: transparent;border: 0;display: inline-flex;font-size: 16px;" onclick="document.getElementById('file').click(); return false;">عکس های ارسالی توسط کاربران</button>
+                                                        <input oninvalid="setCustomValidity('عکس پروفایلتان را انتخاب نمایید')" oninput="setCustomValidity('')" type="file" class="form-control1" id="" name="" style="direction:rtl; color:transparent; display:none;">
+                                                        <input type="hidden" name="" id="" value="" />
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4" style=" margin: 0 auto;  bottom: 17px; ">
+                                                    <input name="" id="" type="Text" placeholder="نام غذا" style="height:36px;  margin: 0 auto; width: 80%; padding: 0;direction: rtl; float: right;" class="form-control default-input singleline-input ng-pristine ng-valid ng-empty ng-touched">
+
+                                                </div>
+                                                <div class="col-md-4" style=" margin: 0 auto;">
+                                                    <button class="btn btn-blue btn-default-xs" style="text-align:center;color:#fff !important;background:#c39a58d4;margin: 0 auto;width: 80%;padding: 0;float: right;" type="submit" name="" id="" value="ذخیره">ذخیره</button>
+                                                </div>
+                                            </div>
+
+
+                                        </form>
+                                    </div>
+
+
+                                </div>
+
+
+                                <div class="row">
+                                    <div class="tab-content">
+                                        <div role="tabpanel" class="tab-pane fade in active kk-gallery-container" id="user-gallery">
+                                            @foreach (var item in Flower.lstAllGallery(id))
+                                            {
+                                                <div class="col-lg-4 col-md-4 pull-right ng-scope">
+                                                    <ul id="kk-user-gallery-inner">
+                                                        <li class="kk-gallery-item " photo-id="1000">
+                                                            <div class="kk-gallery-photo">
+                                                                <a class="kk-fancy-gallery" rel="user_photos" href="~/Content/images/11111.jpg"
+                                                                   title="@item.Text"><img src="~/Content/UserContent/@item.ImageName" itemprop="photo"></a>
+
+                                                            </div>
+                                                            <div class="kk-gallery-content">
+                                                                <p style="font-size:11px; color:#868686">
+                                                                    <span>ارسالی از:@Flower.GetSingleUserInfo(Session["Email"].ToString()).name</span>
+
+                                                                </p>
+                                                                <p style="margin-top:10px; font-size:13px; color:#505050">
+                                                                    <span>@item.Text</span>
+                                                                </p>
+
+                                                            </div>
+                                                        </li>
+
+                                                    </ul>
+                                                </div>
+                                            }
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-1">
+
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+
+    <style>
+        .modal {
+            z-index: 10400 !important;
+        }
+    </style>
+
+
+
+
+
+    @{
+        if (ViewBag.MenuFLWgalleryResult == "S")
+        {
+            <div id="toast">
+                <div id="img" style="text-align:center;">
+                    <img src="~/Content/Content/images/Success1.png" />
+                </div>
+                <div id="desc">
+                    آپلود با موفقیت ثبت شد
+                </div>
+            </div>
+        }
+        else if (ViewBag.MenuFLWgalleryResult == "F")
+        {
+            <div id="toast">
+                <div id="img">
+                    <img src="~/Content/Content/images/Close.png" />
+                </div>
+                <div id="desc">
+                    آپلود ثبت نشد
+                </div>
+            </div>
+        }
+        else
+        {
+
+        }
+    }
+
+
+
+    <script src="~/Scripts/UserScripts/toast.js"></script>
+
+
+    <div class="clearfix"></div>
+</div>
+

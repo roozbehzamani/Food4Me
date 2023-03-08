@@ -1,0 +1,511 @@
+﻿@model MainEnterpriseProject.Models.Domain.Tbl_Restaurant
+@{
+    ViewBag.Title = "منو " + Model.resName;
+    Layout = "~/Views/Shared/_index.cshtml";
+    MainEnterpriseProject.Models.Repository.Rep_Food food = new MainEnterpriseProject.Models.Repository.Rep_Food();
+    MainEnterpriseProject.Models.Repository.Rep_resturant img = new MainEnterpriseProject.Models.Repository.Rep_resturant();
+    MainEnterpriseProject.Models.Repository.WalletRep walletRep = new MainEnterpriseProject.Models.Repository.WalletRep();
+    int sectionID, length = 0, start = 0, end = 0;
+    string imgName = "";
+
+}
+
+@if (Model.resType == "رستوران")
+{
+    start = 6;
+    end = 8;
+}
+@if (Model.resType == "فست فود")
+{
+    start = 0;
+    end = 5;
+}
+@if
+    (Model.resType == "کافی شاپ")
+{
+    start = 9;
+    end = 14;
+}
+<link href="~/Content/UserContent/css/fontawesome-all.css" rel="stylesheet" />
+<link href="~/Content/UserContent/css/app-all-e2d1ee721e.css" rel="stylesheet" />
+<link href="~/Content/UserContent/css/Toast.css" rel="stylesheet" />
+
+
+<style>
+
+    @@media (max-width:990px) {
+        .col-md-1 > p {
+            font-size: 11px;
+        }
+
+        .txtFont {
+            font-size: 20px;
+        }
+    }
+
+    .tab-content > .active {
+        display: inline-block !important;
+    }
+</style>
+
+<style>
+    .loading-bar {
+        display: none;
+        position: fixed;
+        z-index: 999999;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-image: url(../../Content/UserContent/images/loading.gif);
+        background-position: 50% 50%;
+        background-color: rgba(255, 255, 255, 0.8);
+        background-repeat: no-repeat;
+    }
+
+    body.loading {
+        overflow: hidden;
+    }
+
+        body.loading .loading-bar {
+            display: block;
+        }
+</style>
+
+<div class="loading-bar">
+
+</div>
+
+
+<div class="inner-page vendor detail-page rtl" itemscope itemtype="http://schema.org/Restaurant">
+
+    <div class="main-content" style="background-color:white;">
+        <div class="idn-main-loader-inner" style="display:none;">
+            <div class="idn-main-loader-outer"></div>
+        </div>
+        <div class="bottom-nav-section" style="background:transparent; padding: 45px 0 20px 0;">
+
+        </div>
+        <div id="kk-animation-container"></div>
+        <div id="main-container" class="container" style="width:100%;margin-top: 15px;margin-bottom: 30px;">
+            <div class="row ">
+                <div class="col-lg-offset-6 col-lg-3 col-md-offset-5 col-md-4 col-sm-offset-6 col-sm-6 col-xs-offset-0 col-xs-12 zf-filter-vendor view-mode-top"></div>
+            </div>
+            <div class="row">
+                <div class="col-md-1">
+
+                </div>
+                <div class="col-md-12 col-sm-12 col-xs-12">
+                    <div class="vendor-content-wrapper box" style="border-top:none">
+                        <!-- Nav tabs -->
+                        <ul class="nav nav-tabs nav-justified" role="tablist" style=" background: #fbfbfb;">
+                            <li class="active" style="min-width:32%">
+                                <a href="satarkhan.htm#vendor-menu" aria-controls="vendor-menu" role="tab" data-toggle="tab" style="display:block !important;">
+                                    منو
+                                </a>
+                            </li>
+                            <li style="min-width:32%">
+                                <a href="satarkhan.htm#vendor-info" aria-controls="vendor-info" role="tab" data-toggle="tab"
+                                   id="vendor-info-btn" style="display:block !important;">
+                                    اطلاعات
+                                </a>
+                            </li>
+                        </ul><!-- Tab panes -->
+                        <div class="tab-content" style="font-family:BYekan,Tahoma,Geneva,sans-serif !important;">
+                            <div role="tabpanel" class="tab-pane fade in active" id="vendor-menu" style="padding-top:0px !important;">
+                                <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12 col-xxs-12 default-tab-content-container" style="display:contents !important;">
+                                    <!-- ngIf: restaurant --><!-- uiView:  -->
+                                    <div ui-view="" class="ng-scope">
+                                        <!-- ngIf: selectedTab.bool === 0 -->
+                                        <div class="fullWidth default-tab-content ng-scope">
+                                            <div class="wrapper-sticky" style="display: block; height: 93px; width: auto; margin: auto; position: relative; float: none; left: auto; right: auto; top: auto; bottom: auto; vertical-align: top;">
+                                                <div class="row smooth-fix" style="width: 100%; top: 0px; bottom: auto; left: 0px; right: auto; position: absolute;">
+                                                    <div class="col-lg-12 col-md-12 nopadding-x" id="main-top-menu" style="right:-15px !important;">
+                                                        <div class="clearfix" style="width:97%">
+                                                            <div id="top-menu" class="content-jump owl-text slick-initialized slick-slider" style="background:#fff">
+
+                                                                <!-- ngRepeat: (sectionId, section) in restaurant.menuSections -->
+                                                                <div aria-live="polite" class="slick-list draggable">
+                                                                    <div class="slick-track" style="opacity: 1; width: 100%; display: flex; transform: translate3d(0px, 0px, 0px);" role="listbox">
+                                                                        @for (int i = start; i <= end; i++)
+                                                                        {
+                                                                            <div data-hash="@i" class="ng-scope selected-section slick-slide slick-current slick-active" data-slick-index="0" aria-hidden="false" tabindex="-1" role="option" aria-describedby="slick-slide00">
+                                                                                <a class="smallFirstFont section-name " href="#@i" tabindex="0">
+                                                                                    <div class="ng-binding">
+                                                                                        @food.getResMenuList().ElementAt(i).menuTitle
+
+                                                                                    </div>
+                                                                                    <div class="section-icon hidden-xs hidden-xxs" style="align-items: center; justify-content: center; flex-direction: column; display: flex;">
+                                                                                        <span>
+                                                                                            @{
+                                                                                                imgName = i.ToString() + ".png";
+                                                                                            }
+                                                                                            <img src="~/Content/UserContent/Menu/@imgName" alt="Alternate Text" style="width:30px; height:30px;" />
+                                                                                        </span>
+                                                                                    </div>
+                                                                                </a>
+                                                                            </div>
+                                                                        }
+
+                                                                    </div>
+                                                                </div><!-- end ngRepeat: (sectionId, section) in restaurant.menuSections --><!-- end ngRepeat: (sectionId, section) in restaurant.menuSections --><!-- end ngRepeat: (sectionId, section) in restaurant.menuSections --><!-- end ngRepeat: (sectionId, section) in restaurant.menuSections --><!-- end ngRepeat: (sectionId, section) in restaurant.menuSections --><!-- end ngRepeat: (sectionId, section) in restaurant.menuSections --><!-- end ngRepeat: (sectionId, section) in restaurant.menuSections -->
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row" style="margin: 30px 0; padding-left:30px; padding-right:30px;">
+                                                @for (int i = start; i <= end; i++)
+                                                {
+
+                                                    <div class="fullWidth ng-scope">
+                                                        <div class="row">
+                                                            <menu-section icon="section.iconSlug" image="section.image" menu-title="section.name" section-id="section.id" class="ng-isolate-scope">
+                                                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 col-xxs-12 menu-section-wrapper" id="@i">
+                                                                    <div class="fullWidth menu-section relativeMatter menu-section-without-image">
+                                                                        <div class="menu-section-info">
+                                                                            <div class="fullWidth tenPaddingBottom bordered-info-child">
+                                                                                <span>
+                                                                                    @{
+                                                                                        imgName = i.ToString() + ".png";
+                                                                                    }
+                                                                                    <img src="~/Content/UserContent/Menu/@imgName" alt="Alternate Text" style="width:30px; height:30px;" />
+                                                                                </span>
+                                                                                <span class="title-in-menu-section ng-binding">@food.getResMenuList().ElementAt(i).menuTitle</span>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </menu-section>
+                                                        </div>
+                                                        @foreach (var item in food.getResFoodList(Model.ID))
+                                                        {
+                                                            if (item.menuID == food.getResMenuList().ElementAt(i).menuID)
+                                                            {
+                                                                <div class="food-item-row ng-scope hidden-sm hidden-xs">
+                                                                    <!-- ngIf: selectedView === 2 -->
+                                                                    <!-- ngIf: selectedView === 1 -->
+                                                                    <div class="col-lg-4 col-md-4 pull-right ng-scope">
+                                                                        <div class="fullWidth food-item-wrapper food-item-vertical-wrapper relativeMatter">
+                                                                            <div class="fullWidth relativeMatter image-holder">
+                                                                                <img class="cursor-pointer" style="width:100%;" img-lazy-src="~/Content/UserContent/@item.foodImage" which="food" alt="@item.name" src="~/Content/UserContent/images/@item.foodImage">
+
+                                                                            </div>
+                                                                            <div class="fullWidth food-item-bottom-section">
+                                                                                <div class="fullWidth">
+                                                                                    <p class="food-title cursor-pointer ng-binding">@item.name</p>
+                                                                                    <span class="food-tags truncateText inline-block ng-binding">
+                                                                                        @item.CreateMaterial
+
+                                                                                    </span>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="fullWidth food-item-price-section absoluteMatter">
+                                                                                <div class="fullWidth text-left food-tags-container">
+                                                                                    <span style="display: none;" class="new-icon new-icon-veg_tag veg-icon"></span>
+                                                                                    <span style="display: none;" class="new-icon new-icon-spicy_tag spicy-icon"></span>
+                                                                                </div>
+                                                                                <div class="fullWidth food-item-price-container">
+                                                                                    <div class="halfWidth price-wrapper">
+                                                                                        <p class="price-text ng-binding">@item.cost تومان</p>
+
+                                                                                    </div>
+
+                                                                                    <div class="halfWidth">
+                                                                                        <div class="operat-wrapper row text-left" style="text-align:end; margin:0;">
+                                                                                            <a href="~/Home/single/@item.id" class="side-dish-selection ng-hide" style="background-color:#c59f61 !important;">
+                                                                                                <span class="selection-text" style="color:#fff;border:1px solid #c59f61; ">جزییات</span>
+
+                                                                                            </a>
+                                                                                            @{
+                                                                                                if (Session["email"] != null && walletRep.TimeToOrder() == 1 && Model.isGetOrder && walletRep.ResGetOrderStatus(Model.ID) == 1)
+                                                                                                {
+                                                                                                    if (item.FoodCount != 0)
+                                                                                                    {
+                                                                                                        if (item.FoodCount == -1)
+                                                                                                        {
+                                                                                                            <a id="@item.id.ToString()" name="@item.id.ToString()" class="side-dish-selection ng-hide" style="background-color:#c59f61 !important; cursor:pointer;">
+                                                                                                                <span class="selection-text" style="color:#fff;border:1px solid #c59f61; ">خرید(نا محدود)</span>
+
+                                                                                                            </a>
+                                                                                                        }
+                                                                                                        else
+                                                                                                        {
+                                                                                                            <a id="@item.id.ToString()" name="@item.id.ToString()" class="side-dish-selection ng-hide" style="background-color:#c59f61 !important; cursor:pointer;">
+                                                                                                                <span class="selection-text" style="color:#fff;border:1px solid #c59f61; ">خرید(@item.FoodCount)</span>
+
+                                                                                                            </a>
+                                                                                                        }
+
+                                                                                                    }
+                                                                                                    else
+                                                                                                    {
+                                                                                                        <a class="side-dish-selection ng-hide" style="background-color:#c59f61 !important; cursor:not-allowed;">
+                                                                                                            <span class="selection-text" style="color:#fff;border:1px solid #c59f61; ">نا موجود</span>
+
+                                                                                                        </a>
+                                                                                                    }
+                                                                                                }
+                                                                                            }
+
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div><!-- end ngIf: selectedView === 1 -->
+                                                                </div>
+
+                                                                <div class="food-item-row ng-scope hidden-lg hidden-md">
+                                                                    <!-- ngIf: selectedView === 2 -->
+                                                                    <!-- ngIf: selectedView === 1 -->
+                                                                    <div class="row" style=" width: 100%;margin: 0 auto;">
+
+                                                                        <div class="col-lg-4 col-md-4 pull-right ng-scope" style="width:100%;">
+                                                                            <div class="fullWidth food-item-wrapper food-item-vertical-wrapper relativeMatter">
+                                                                                <div class="fullWidth relativeMatter image-holder" style="height:auto;">
+                                                                                    <div class="hidden-lg hidden-md col-sm-4 col-xs-4" style="width: 30%; position: absolute; display: block; left: 0; height:100%">
+                                                                                        <div class="fullWidth food-item-bottom-section" style="height:100%;">
+                                                                                            <div class="fullWidth" style="height:100%;">
+                                                                                                <div class="row" style="text-align:center; border-bottom:2px solid #dbdbdb; border-right:2px solid #dbdbdb;">
+                                                                                                    <div class="col-md-1" style="border-bottom:2px solid #dbdbdb;">
+                                                                                                        <p class="food-title cursor-pointer ng-binding">@item.name</p>
+                                                                                                    </div>
+                                                                                                    <div class="col-md-1">
+                                                                                                        <p class="price-text ng-binding" style="direction:ltr">@item.cost </p>
+                                                                                                    </div>
+
+
+                                                                                                </div>
+                                                                                                <div class="operat-wrapper row text-left" style="text-align:center; width:100%; bottom:0; position:absolute;">
+                                                                                                    <a href="~/Home/single/@item.id" class="side-dish-selection ng-hide" style="background-color:#c59f61d4 !important; width:100%; text-align:center;">
+                                                                                                        <span class="selection-text" style="color:#fff; ">جزییات</span>
+
+                                                                                                    </a>
+                                                                                                    @{
+                                                                                                        if (Session["email"] != null && walletRep.TimeToOrder() == 1 && Model.isGetOrder && walletRep.ResGetOrderStatus(Model.ID) == 1)
+                                                                                                        {
+                                                                                                            if (item.FoodCount != 0)
+                                                                                                            {
+                                                                                                                <a id="@item.id.ToString()" name="@item.id.ToString()" class="side-dish-selection ng-hide" style="background-color:#c59f61 !important; cursor:pointer; width:100%;">
+                                                                                                                    <span class="selection-text" style="color:#fff;border:1px solid #c59f61; ">خرید(نا محدود)</span>
+                                                                                                                </a>
+                                                                                                            }
+                                                                                                            else
+                                                                                                            {
+                                                                                                                <a class="side-dish-selection ng-hide" style="background-color:#c59f61 !important; cursor:not-allowed; width:100%;">
+                                                                                                                    <span class="selection-text" style="color:#fff;border:1px solid #c59f61; ">نا موجود</span>
+                                                                                                                </a>
+                                                                                                            }
+                                                                                                        }
+                                                                                                    }
+
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+
+                                                                                    <div class="hidden-lg hidden-md col-sm-8 col-xs-8" style="position: absolute; right: 0px; display: contents;">
+                                                                                        <img style="width: 66.66666667%; padding:0px;" class="cursor-pointer" img-lazy-src="~/Content/UserContent/@item.foodImage" which="food" alt="@item.name" src="~/Content/UserContent/images/@item.foodImage">
+                                                                                    </div>
+                                                                                </div>
+
+                                                                                <div class="fullWidth food-item-price-section absoluteMatter">
+                                                                                    <div class="fullWidth text-left food-tags-container">
+                                                                                        <span style="display: none;" class="new-icon new-icon-veg_tag veg-icon"></span>
+                                                                                        <span style="display: none;" class="new-icon new-icon-spicy_tag spicy-icon"></span>
+                                                                                    </div>
+
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+
+
+
+                                                                    </div>
+
+
+
+                                                                    <!-- end ngIf: selectedView === 1 -->
+                                                                </div>
+                                                            }
+
+                                                        }
+
+                                                    </div>
+                                                }
+
+                                            </div>
+                                        </div><!-- end ngIf: selectedTab.bool === 0 -->
+                                    </div><!-- end ngIf: restaurant -->
+                                </div>
+                            </div>
+                            <div role="tabpanel" class="tab-pane fade" id="vendor-info" style="width: 100%;">
+                                <div class="container-fluid vendor-info-section" style="padding-left:0px;padding-right:0px;font-size:1rem;">
+                                    <div class="row">
+                                        <div id="vendor-general-info" class="col-md-12 info-row text-center" style="padding:0px;">
+
+                                            <div class="col-md-1"></div>
+                                            <div class="col-md-10">
+
+                                                <h2 style="color:#a09292">وضعیت سفارش</h2>
+                                                <div>
+                                                    @if (Model.isGetOrder)
+                                                    {
+                                                        <span style="color:#35870a;">درحال حاضر رستوران سفارش میپذیرد</span>
+                                                    }
+                                                    else
+                                                    {
+                                                        <span style="color:#8b0404">درحال حاضر رستوران قادر به دریافت سفارش نمی باشد</span>
+                                                    }
+
+                                                </div>
+                                                <hr style="width:100%; border-color:#cca973;">
+
+                                                <h3>  موقعیت </h3>
+                                                <div class="kk-fa-digit location-info">@Model.resAddress</div>
+
+
+                                                <div style="margin-right:5px;">
+                                                    <div class="google-maps" style="background-color:white; border:2px solid #c39a58d9; border-radius:10px; padding:15px;margin-bottom: 2%;">
+
+                                                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d809.8975196477321!2d51.37345995217509!3d35.71170383001896!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3f8e00c5845fe793%3A0x830f612c012aae39!2sTehran+Province%2C+Tehran%2C+Gonabad+St!5e0!3m2!1sen!2sir!4v1508418483450" width="100%" height="240" frameborder="0" style="border:0" allowfullscreen=""></iframe>
+
+                                                    </div>
+
+
+
+                                                </div>
+
+                                                <div class="clear"></div>
+                                                <hr style="width:100%; border-color:#cca973;">
+                                                <h2 style="color:#a09292">شماره تماس</h2>
+                                                <div>
+                                                    <span>@Model.resPhone</span>
+                                                </div>
+
+                                                <hr style="width:100%; border-color:#cca973;">
+                                                <h2 style="color:#a09292">ساعات کاری</h2>
+                                                <div>
+                                                    @if (@Model.FirstTime.Split('-')[1].Equals(@Model.SecendTime.Split('-')[0]))
+                                                    {
+                                                        <span>@Model.FirstTime.Split('-')[0] الی @Model.SecendTime.Split('-')[1] </span>
+                                                    }
+                                                    else
+                                                    {
+                                                        <span>@Model.FirstTime.Split('-')[0] الی @Model.FirstTime.Split('-')[1] </span>
+                                                        <br />
+                                                        <span>@Model.SecendTime.Split('-')[0] الی @Model.SecendTime.Split('-')[1] </span>
+                                                    }
+
+                                                </div>
+
+                                            </div>
+                                            <div class="col-md-1"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-1">
+
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+    @foreach (var item in food.getResFoodList(Model.ID))
+    {
+        <script>
+        /**/
+        $("#@item.id.ToString()").on('click', function (e) {
+            /**/
+            document.body.className = "loading";
+            $.ajax({
+                type: 'POST',
+                dataType: 'Json',
+                /**/
+                url: '@Url.Action("AddShoppingCart", "Home")',
+        /**/
+        /**/
+        data: { foodID: @item.id },
+        /**/
+        error: function (err) {
+            alert(err.status);
+        }
+    }).done(function (result) {
+        document.body.className = "";
+        var Text = "";
+        if (result == 5) {
+            alert("تعداد درخواستی بیشتر از تعداد موجودی میباشد")
+        } else {
+            $.each(result, function (index, val) {
+                Text += "<div class='row' style='margin:0px'><div><div class='col-md-10' style='background:#f5f5f5;border-radius:4px;width:100%;border:1px solid #e3e3e3;'><div class='row' style='margin-bottom:1%;margin-top:1%;'><button type='button' onclick='RemoveCart(" + val.ID + ")' style='line-height:initial; left:0px; font-size: 1rem;color: #cdab74;outline: none;background-color: transparent;top: 0;width: 1.5rem;height: 1.5rem;border: .1rem solid #cdab74;padding:0 0;margin: 3px;position: absolute;z-index: 1;'><span style='position: relative;'>X</span></button><div class='col-md-4'><div class='row' style='text-align: center;'><div style='display:inline-flex;-webkit-box-orient:horizontal;-webkit-box-direction:normal;flex-flow:rowwrap;justify-content:space-around;-webkit-box-align:center;align-items:center;width:15rem;'><div class='col-md-4' style='z-index:1000000;'><button type='button' onclick='CountDown(" + val.ID + ")' id='btnsubtrack' name='btnsubtrack' style='font-size:1.7rem;color:#cdab74;outline:none;background-color:transparent;top:0;width:2.8rem;height:2.8rem;border:1.6pxsolid#cdab74;border:.1rem solid #cdab74;display:-webkit-box;padding:0 0;margin:0 0 0 0;'><span style='position:relative;'>-</span></button></div><div class='col-md-4' style='position:absolute;display:-webkit-box;-webkit-box-pack:center;padding:0 0;margin:0 0 0 0;'><span name='CartCounter' id='CartCounter' style='font-size:1.7rem;color:#cdab74;font-weight:700;line-height:48px;line-height:3rem;'>" + val.FoodCount + "</span></div><div class='col-md-4'><button id='btnAdd' onclick='CountUp(" + val.ID + ")' name='btnAdd' style='font-size:1.7rem;color:#cdab74;outline:none;background-color:transparent;top:0;width:2.8rem;height:2.8rem;border:1.6pxsolid#cdab74;border:.1rem solid #cdab74;display:-webkit-box;padding:00;margin:0000;'><span style='position:relative;'>+</span></button></div></div></div></div><div class='col-md-4'><p style='font-size:1.2em;color:#cdab74;text-align:center;margin-top:0.4em'>" + val.FoodName + "</p></div><div class='col-md-4'><p style='font-size:1.2em;color:#cdab74;text-align:center;margin-top:0.4em'>" + val.FoodTotalPrice + "</p></div></div></div></div>";
+            })
+        }
+        $('#mainRow').html(Text);
+
+    });
+    $.ajax({
+        type: 'POST',
+        dataType: 'Json',
+        /**/
+        url: '@Url.Action("UnUseCredit", "Home")',
+        /**/
+        data: { ID: 0 },
+        error: function (err) {
+            alert(err.status);
+        }
+    }).done(function (result) {
+        $('#txtTotalPrice').html(result.price);
+        $('#txtCredit').html(result.credit);
+    });
+});
+        </script>
+    }
+
+
+    <style>
+        .modal {
+            z-index: 10400 !important;
+        }
+    </style>
+
+
+
+    @{
+        if (!Model.isGetOrder)
+        {
+            <div id="toast">
+                <div id="img" style="text-align:center;">
+                    <img src="~/Content/UserContent/images/close.png" style="width:50px; height:50px;" />
+                </div>
+                <div id="desc">
+                    رستوران سفارش نمیپذیرد
+                </div>
+            </div>
+        }
+    }
+
+
+
+    <script src="~/Scripts/UserScripts/toast.js"></script>
+
+
+
+
+
+
+
+
+
+    <div class="clearfix"></div>
+</div>
+

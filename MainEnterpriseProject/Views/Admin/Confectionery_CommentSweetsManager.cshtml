@@ -1,0 +1,186 @@
+﻿@model List<MainEnterpriseProject.Models.Domain.Tbl_SweetsComment>
+@{
+    ViewBag.Title = "CommentSweetsManager";
+    Layout = "~/Views/Shared/_Admin.cshtml";
+    int counter = 1;
+}
+
+<link href="~/Content/css/manager-icon-button.css" rel="stylesheet" />
+<link href="~/Content/css/popup_style.css" rel="stylesheet" />
+<link href="~/Content/css/font-awesome.css" rel="stylesheet" />
+<style>
+    .lr-sticky-header {
+        color: white;
+        background: lightblue;
+        transition: all 0.6s;
+    }
+
+    #scrollPanel {
+        height: 500px;
+        overflow-y: auto;
+    }
+
+    .table > thead > tr > th {
+        text-align: center;
+    }
+
+    .table > tbody > tr > td {
+        text-align: center;
+    }
+</style>
+
+
+<div class="container">
+    <div class="row">
+
+        <div class="col-md-2">
+
+        </div>
+        <div class="col-md-3" style="margin-top:0.7%">
+
+            <div style="text-align:center; ">
+
+                <i class="fa fa-star" style="color:#7b7979;"></i>
+                <i class="fa fa-star" style="color:#7b7979;"></i>
+
+                <i class="fa fa-star" style="color:#cbc8c8;"></i>
+                <i class="fa fa-star" style="color:#cbc8c8;"></i>
+                <i class="fa fa-star" style="color:#cbc8c8;"></i>
+
+
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group">
+                <div class="col-md-11">
+                    <div class="input-group">
+                        <span class="input-group-addon">
+                            <i class="fa fa-list"></i>
+                        </span>
+                        <select required oninvalid="setCustomValidity(' نام شیرینی را انتخاب نمایید')" oninput="setCustomValidity('')" class="form-control1" style="direction:rtl;">
+                            <option value="volvo">نام شیرینی</option>
+                            <option value="saab">شیرینی1</option>
+                            <option value="opel"> شیرینی 2</option>
+                            <option value="audi">شیرینی 3</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+
+        </div>
+
+    </div>
+    <div class="row">
+        <div style="width:95%; direction:rtl;">
+            <table class="table table-bordered">
+                <thead style="z-index: 1;">
+                    <tr>
+                        <th class="headerSort headerSortDown" tabindex="0" role="columnheader button" title="Sort descending">
+                            شماره
+                        </th>
+                        <th width="160" class="headerSort" tabindex="0" role="columnheader button" title="Sort ascending">نام </th>
+                        <th width="120" class="headerSort" tabindex="0" role="columnheader button" title="Sort ascending">امتیاز</th>
+                        <th width="140" class="headerSort" tabindex="0" role="columnheader button" title="Sort ascending">تاریخ</th>
+                        <th width="120" class="headerSort" tabindex="0" role="columnheader button" title="Sort ascending">ساعت</th>
+                        <th width="300" class="headerSort" tabindex="0" role="columnheader button" title="Sort ascending">نظر</th>
+                        <th class="" title=""></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+
+                        <tr>
+                            <td><span style="font-family: monospace, monospace;">@counter</span></td>
+                            <td>@item.Name</td>
+                            <td>
+
+                                <div class="row" style="text-align:center;">
+
+                                    @for (int i = 0; i < (5 - item.Star); i++)
+                                    {
+                                        <i class="fa fa-star" style="color:#cbc8c8;"></i>
+                                    }
+                                    @for (int i = 0; i < item.Star; i++)
+                                    {
+                                        <i class="fa fa-star" style="color:#7b7979;"></i>
+                                    }
+
+                                </div>
+                            </td>
+                            <td>@item.CommentDate.ToString("D")</td>
+                            <td>@item.CommentDate.ToString("T")</td>
+                            <td><span class="nowrap">@item.Text.Substring(0, 1) </span><a data-toggle="modal" data-target="#@counter.ToString()">{ادامه مطلب}</a></td>
+                            <td>
+                                <div class="col-md-4">
+
+                                </div>
+
+                                <div class="col-md-2">
+                                    <div class="social_lock">
+                                        <div class="social_case3"></div>
+                                        <div class="mk"><i class="fa fa-remove vmk1 vm" title="حذف"></i></div>
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <div class="social_lock">
+                                        <div class="social_case3"></div>
+                                        <div class="mk"><i class="fa fa-sign-in vmk1 vm" title="تایید"></i></div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+
+                                </div>
+                            </td>
+                        </tr>
+                        <!--MODAL ADDRESS-->
+                        <div class="modal fade" id="@counter.ToString()" role="dialog" aria-labelledby="#@counter.ToString()" tabindex="-1" aria-hidden="true">
+                            <div class="modal-dialog" style=" width: 38% !important; min-width:360px; margin:5em auto 0 !important">
+                                <div style="background:rgba(255,255,255,.28);height:18px;position:absolute;border-radius:10px;border:none;right:3%;left:3%;top:-8px;"></div>
+                                <div style="background:rgba(255,255,255,.08);height:33px;position:absolute;border-radius:10px;border:none;right:5%;left:5%;top:-14px;"></div>
+                                <div class="modal-content" style="border-radius:25px!important;">
+                                    <div class="modal-body">
+                                        <div style="min-width: 360px;">
+                                            <br>
+
+                                            <div class="span3 well">
+                                                @item.Text
+                                            </div>
+
+
+                                        </div>
+                                    </div>
+
+                                </div>
+
+
+                            </div>
+                        </div>
+                        <!--END OF MODAL ADDRESS-->
+
+                        counter++;
+                    }
+
+                </tbody>
+                <tfoot></tfoot>
+            </table>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+<script src="~/Scripts/lrStickyHeader.js"></script>
+<script>
+    var tables = document.getElementsByTagName('table');
+    lrStickyHeader(tables[0]);
+    lrStickyHeader(tables[1]);
+    lrStickyHeader(tables[2], { parent: document.getElementById('scrollPanel') });
+</script>
+

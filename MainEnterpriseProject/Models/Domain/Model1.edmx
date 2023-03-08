@@ -1,0 +1,3085 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="amirangh_APISiteModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Tab_comments">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="product_id" Type="int" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="email" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="ip" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="text" Type="nvarchar" MaxLength="500" Nullable="false" />
+          <Property Name="data" Type="date" Nullable="false" />
+          <Property Name="confirm" Type="bit" Nullable="false" />
+          <Property Name="read" Type="bit" Nullable="false" />
+          <Property Name="parent_id" Type="int" Nullable="false" />
+          <Property Name="cm_like" Type="int" Nullable="false" />
+          <Property Name="cm_dislike" Type="int" Nullable="false" />
+          <Property Name="phone" Type="nchar" MaxLength="11" Nullable="false" />
+          <Property Name="Stars" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Tab_mail">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="email" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="text" Type="nvarchar" MaxLength="500" Nullable="false" />
+          <Property Name="phonenumber" Type="nchar" MaxLength="11" />
+        </EntityType>
+        <EntityType Name="tab_products">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="cost" Type="int" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="User_Email" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="resID" Type="int" Nullable="false" />
+          <Property Name="menuID" Type="int" Nullable="false" />
+          <Property Name="Recipe" Type="nvarchar" MaxLength="1000" />
+          <Property Name="foodImage" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="CreateMaterial" Type="nvarchar" MaxLength="500" />
+          <Property Name="bakingTime" Type="nvarchar" MaxLength="50" />
+          <Property Name="FoodCount" Type="int" />
+          <Property Name="OrderType" Type="bit" />
+        </EntityType>
+        <EntityType Name="Tab_users">
+          <Key>
+            <PropertyRef Name="email" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="email" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="password" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="access" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="image" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="enable" Type="bit" Nullable="false" />
+          <Property Name="mob_phone" Type="nchar" MaxLength="11" Nullable="false" />
+          <Property Name="ncode" Type="nchar" MaxLength="11" />
+          <Property Name="home_phone" Type="nchar" MaxLength="11" />
+          <Property Name="birth_date" Type="nvarchar" MaxLength="50" />
+          <Property Name="sex" Type="nvarchar" MaxLength="50" />
+          <Property Name="home_address" Type="nvarchar" MaxLength="500" />
+          <Property Name="IMEI" Type="nvarchar" MaxLength="50" />
+          <Property Name="SMS_Enable" Type="bit" />
+          <Property Name="activeCode" Type="nvarchar" MaxLength="50" />
+          <Property Name="description" Type="nvarchar" MaxLength="255" />
+          <Property Name="SNumber" Type="nvarchar" MaxLength="50" />
+          <Property Name="Family" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Tbl_Address">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="userEmail" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="Address" Type="text" Nullable="false" />
+          <Property Name="addressType" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="addressLatLng" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="apartmentName" Type="nvarchar" MaxLength="50" />
+          <Property Name="Floor" Type="nvarchar" MaxLength="50" />
+          <Property Name="Unit" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Tbl_AlbumCart">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AlbumID" Type="int" Nullable="false" />
+          <Property Name="ShoppingCartID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Tbl_AlbumFactorItem">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="factorItemID" Type="int" Nullable="false" />
+          <Property Name="AlbumID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Tbl_Banner">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Image" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Tbl_Confectionary">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="CAddress" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="CPhone" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="CLatLng" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="userEmail" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="CImage" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="CBusinessLicense" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="CEnable" Type="bit" Nullable="false" />
+          <Property Name="CPoint" Type="float" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Tbl_ConfectioneryUserImage">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ImageName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="UserEmail" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="ConfectioneryID" Type="int" Nullable="false" />
+          <Property Name="Text" Type="nvarchar" MaxLength="500" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Tbl_Credit">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Credit" Type="int" Nullable="false" />
+          <Property Name="Date" Type="datetime" Nullable="false" />
+          <Property Name="Time" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="UserEmail" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="TransactionCode" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="RootUser" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Tbl_CustomizationFood">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="foodItem" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="itemPrice" Type="int" Nullable="false" />
+          <Property Name="itemGroupID" Type="int" Nullable="false" />
+          <Property Name="Used" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Tbl_Floriest">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="FAddress" Type="nvarchar" MaxLength="500" Nullable="false" />
+          <Property Name="FImage" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="userEmail" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="FLatLng" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="FPhone" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="FBusinessLicense" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="FEnable" Type="bit" Nullable="false" />
+          <Property Name="FPoints" Type="float" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Tbl_FloristUserImage">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ImageName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="UserEmail" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="FloristID" Type="int" Nullable="false" />
+          <Property Name="Text" Type="nvarchar" MaxLength="500" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Tbl_Flower">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FlwName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="FlwPrice" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="FlwColor" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="FlwType" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="FlorestID" Type="int" Nullable="false" />
+          <Property Name="FlwMaintenance" Type="text" Nullable="false" />
+          <Property Name="FlwImage" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Tbl_FlowerComment">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="flowerID" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="IP" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="Text" Type="nvarchar" MaxLength="500" Nullable="false" />
+          <Property Name="commentDate" Type="datetime" Nullable="false" />
+          <Property Name="confirm" Type="bit" Nullable="false" />
+          <Property Name="read" Type="bit" Nullable="false" />
+          <Property Name="Phone" Type="nchar" MaxLength="11" Nullable="false" />
+          <Property Name="Stars" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Tbl_FlowerOrder">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FloristID" Type="int" Nullable="false" />
+          <Property Name="UserEmail" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="OrderStatus" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Time" Type="time" Precision="0" Nullable="false" />
+          <Property Name="AddresID" Type="int" Nullable="false" />
+          <Property Name="Comment" Type="nvarchar" MaxLength="500" Nullable="false" />
+          <Property Name="Date" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Tbl_FlowerOrderItem">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FlowerID" Type="int" Nullable="false" />
+          <Property Name="ParentID" Type="int" Nullable="false" />
+          <Property Name="FlowerCount" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Tbl_FlowerReservationFactor">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FloristID" Type="int" Nullable="false" />
+          <Property Name="UserEmail" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="Date" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Time" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="OrderTyoe" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Tbl_FlowerReservationFactorList">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FoodID" Type="int" Nullable="false" />
+          <Property Name="FoodFactorID" Type="int" Nullable="false" />
+          <Property Name="FoodCount" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Tbl_FlowerShoppingCart">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FlowerCount" Type="int" Nullable="false" />
+          <Property Name="FlowerID" Type="int" Nullable="false" />
+          <Property Name="UserEmail" Type="nvarchar" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Tbl_FoodAlbume">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="foodID" Type="int" Nullable="false" />
+          <Property Name="albumName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="albumImage" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Tbl_FoodItemGroup">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="GroupName" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Tbl_FoodOption">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FoodID" Type="int" Nullable="false" />
+          <Property Name="OptionID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Tbl_FoodReservationFactor">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ResID" Type="int" Nullable="false" />
+          <Property Name="UserEmail" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="Date" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Time" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="OrderTyoe" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Tbl_FoodReservationFactorList">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FoodID" Type="int" Nullable="false" />
+          <Property Name="FoodFactorID" Type="int" Nullable="false" />
+          <Property Name="FoodCount" Type="int" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'amirangh_APISite.dbo.Tbl_Loading' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Tbl_Loading">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Tbl_Menu">
+          <Key>
+            <PropertyRef Name="menuID" />
+          </Key>
+          <Property Name="menuID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="menuTitle" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="menuType" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="menuImage" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Tbl_OptionCart">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OptionID" Type="int" Nullable="false" />
+          <Property Name="ShoppingCartID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Tbl_OptionFactorItem">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="factorItemID" Type="int" Nullable="false" />
+          <Property Name="OptionItemID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Tbl_OrderFactor">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ResID" Type="int" Nullable="false" />
+          <Property Name="OrderStatus" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Time" Type="time" Precision="0" Nullable="false" />
+          <Property Name="UserEmail" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="AddressID" Type="int" Nullable="false" />
+          <Property Name="Comment" Type="nvarchar" MaxLength="500" />
+          <Property Name="Date" Type="datetime" Nullable="false" />
+          <Property Name="Credit" Type="bit" />
+          <Property Name="Delivery" Type="bit" />
+          <Property Name="CreditAmount" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ReceveTime" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Tbl_OrderFactorItem">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FactorID" Type="int" Nullable="false" />
+          <Property Name="FoodID" Type="int" Nullable="false" />
+          <Property Name="FoodCount" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Tbl_PacketCart">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ShoppingCartID" Type="int" Nullable="false" />
+          <Property Name="PacketID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Tbl_PacketingFactorItem">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="factorItemID" Type="int" Nullable="false" />
+          <Property Name="PacketingID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Tbl_Packing">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="foodID" Type="int" Nullable="false" />
+          <Property Name="packingDescription" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="packingImage" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Tbl_ResPrintFactor">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="StartDate" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="EndDate" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ResUserName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ResName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TotalPrice" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Tbl_ResPrintItem">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="Counter" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="OrderDate" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="OrderTime" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="OrderPrice" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="SNumber" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Tbl_ResReservationFactor">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ResID" Type="int" Nullable="false" />
+          <Property Name="UserEmail" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="TableID" Type="int" Nullable="false" />
+          <Property Name="Date" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Time" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Tbl_ResReservationFactorItem">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FactorID" Type="int" Nullable="false" />
+          <Property Name="FoodID" Type="int" Nullable="false" />
+          <Property Name="FoodCount" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Tbl_ResTables">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ResID" Type="int" Nullable="false" />
+          <Property Name="TableNumber" Type="int" Nullable="false" />
+          <Property Name="TableCapacity" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Tbl_Restaurant">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="resName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="resAddress" Type="nvarchar" MaxLength="500" Nullable="false" />
+          <Property Name="resType" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="resAvgServiceTime" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="resPoints" Type="float" Nullable="false" />
+          <Property Name="resLatLng" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="resPhone" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="resImage" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="userEmail" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="resEnable" Type="bit" Nullable="false" />
+          <Property Name="StudentRes" Type="bit" Nullable="false" />
+          <Property Name="ResBusinessLicense" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="FoodAvragePrice" Type="int" Nullable="false" />
+          <Property Name="isGetOrder" Type="bit" Nullable="false" />
+          <Property Name="FirstTime" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="SecendTime" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Tbl_RestaurantImage">
+          <Key>
+            <PropertyRef Name="resImageID" />
+          </Key>
+          <Property Name="resImageID" Type="int" Nullable="false" />
+          <Property Name="resID" Type="int" Nullable="false" />
+          <Property Name="resImage" Type="nvarchar" MaxLength="500" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Tbl_ShoppingCart">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FoodCount" Type="int" Nullable="false" />
+          <Property Name="FoodID" Type="int" Nullable="false" />
+          <Property Name="UserEmail" Type="nvarchar" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Tbl_SweetOrderFactor">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ConfectioneryID" Type="int" Nullable="false" />
+          <Property Name="UserEmail" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="OrderStatus" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Date" Type="datetime" Nullable="false" />
+          <Property Name="Time" Type="time" Precision="0" Nullable="false" />
+          <Property Name="AddresID" Type="int" Nullable="false" />
+          <Property Name="Comment" Type="nvarchar" MaxLength="500" Nullable="false" />
+          <Property Name="Weight" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Tbl_SweetOrderFactorItem">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SweetsID" Type="int" Nullable="false" />
+          <Property Name="FactorID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Tbl_SweetReservationFactor">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ConfectionaryID" Type="int" Nullable="false" />
+          <Property Name="UserEmail" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="Date" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Time" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="OrderTyoe" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="OrderWeight" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Tbl_SweetReservationFactorList">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FoodID" Type="int" Nullable="false" />
+          <Property Name="FoodFactorID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Tbl_Sweets">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="S_Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="S_Type" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="S_Price" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="S_Description" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ConfectionaryID" Type="int" Nullable="false" />
+          <Property Name="SImage" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Tbl_SweetsComment">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SweetsID" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="IP" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="Text" Type="nvarchar" MaxLength="500" Nullable="false" />
+          <Property Name="CommentDate" Type="date" Nullable="false" />
+          <Property Name="confirm" Type="bit" Nullable="false" />
+          <Property Name="read" Type="bit" Nullable="false" />
+          <Property Name="Phone" Type="nchar" MaxLength="11" Nullable="false" />
+          <Property Name="Star" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Tbl_SweetsShoppingCart">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SweetCount" Type="int" Nullable="false" />
+          <Property Name="SweetID" Type="int" Nullable="false" />
+          <Property Name="UserEmail" Type="nvarchar" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Tbl_TempOrder">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserEmail" Type="nvarchar" MaxLength="500" Nullable="false" />
+          <Property Name="InTimeStatus" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="CreditChecked" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Address" Type="nvarchar" MaxLength="500" Nullable="false" />
+          <Property Name="Comment" Type="nvarchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="Tbl_UserImages">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ImageName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="UserEmail" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="ResID" Type="int" Nullable="false" />
+          <Property Name="Text" Type="nvarchar" MaxLength="500" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_tab_products_Tab_users">
+          <End Role="Tab_users" Type="Self.Tab_users" Multiplicity="1" />
+          <End Role="tab_products" Type="Self.tab_products" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tab_users">
+              <PropertyRef Name="email" />
+            </Principal>
+            <Dependent Role="tab_products">
+              <PropertyRef Name="User_Email" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tab_products_Tbl_Menu">
+          <End Role="Tbl_Menu" Type="Self.Tbl_Menu" Multiplicity="1" />
+          <End Role="tab_products" Type="Self.tab_products" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tbl_Menu">
+              <PropertyRef Name="menuID" />
+            </Principal>
+            <Dependent Role="tab_products">
+              <PropertyRef Name="menuID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tab_products_Tbl_Restaurant">
+          <End Role="Tbl_Restaurant" Type="Self.Tbl_Restaurant" Multiplicity="1" />
+          <End Role="tab_products" Type="Self.tab_products" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tbl_Restaurant">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="tab_products">
+              <PropertyRef Name="resID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tbl_Address_Tab_users">
+          <End Role="Tab_users" Type="Self.Tab_users" Multiplicity="1" />
+          <End Role="Tbl_Address" Type="Self.Tbl_Address" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tab_users">
+              <PropertyRef Name="email" />
+            </Principal>
+            <Dependent Role="Tbl_Address">
+              <PropertyRef Name="userEmail" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tbl_AlbumCart_Tbl_FoodAlbume">
+          <End Role="Tbl_FoodAlbume" Type="Self.Tbl_FoodAlbume" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Tbl_AlbumCart" Type="Self.Tbl_AlbumCart" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tbl_FoodAlbume">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Tbl_AlbumCart">
+              <PropertyRef Name="AlbumID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tbl_Credit_Tab_users">
+          <End Role="Tab_users" Type="Self.Tab_users" Multiplicity="1" />
+          <End Role="Tbl_Credit" Type="Self.Tbl_Credit" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tab_users">
+              <PropertyRef Name="email" />
+            </Principal>
+            <Dependent Role="Tbl_Credit">
+              <PropertyRef Name="UserEmail" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tbl_CustomizationFood_Tbl_FoodItemGroup">
+          <End Role="Tbl_FoodItemGroup" Type="Self.Tbl_FoodItemGroup" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Tbl_CustomizationFood" Type="Self.Tbl_CustomizationFood" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tbl_FoodItemGroup">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Tbl_CustomizationFood">
+              <PropertyRef Name="itemGroupID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tbl_FloristUserImage_Tbl_Floriest">
+          <End Role="Tbl_Floriest" Type="Self.Tbl_Floriest" Multiplicity="1" />
+          <End Role="Tbl_FloristUserImage" Type="Self.Tbl_FloristUserImage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tbl_Floriest">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Tbl_FloristUserImage">
+              <PropertyRef Name="FloristID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tbl_Flower_Tbl_Floriest">
+          <End Role="Tbl_Floriest" Type="Self.Tbl_Floriest" Multiplicity="1" />
+          <End Role="Tbl_Flower" Type="Self.Tbl_Flower" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tbl_Floriest">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Tbl_Flower">
+              <PropertyRef Name="FlorestID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tbl_FlowerComment_Tbl_Flower">
+          <End Role="Tbl_Flower" Type="Self.Tbl_Flower" Multiplicity="1" />
+          <End Role="Tbl_FlowerComment" Type="Self.Tbl_FlowerComment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tbl_Flower">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Tbl_FlowerComment">
+              <PropertyRef Name="flowerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tbl_FlowerOrder_Tbl_Floriest">
+          <End Role="Tbl_Floriest" Type="Self.Tbl_Floriest" Multiplicity="1" />
+          <End Role="Tbl_FlowerOrder" Type="Self.Tbl_FlowerOrder" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tbl_Floriest">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Tbl_FlowerOrder">
+              <PropertyRef Name="FloristID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tbl_FlowerOrderItem_Tbl_Flower">
+          <End Role="Tbl_Flower" Type="Self.Tbl_Flower" Multiplicity="1" />
+          <End Role="Tbl_FlowerOrderItem" Type="Self.Tbl_FlowerOrderItem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tbl_Flower">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Tbl_FlowerOrderItem">
+              <PropertyRef Name="FlowerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tbl_FlowerReservationFactor_Tbl_Floriest">
+          <End Role="Tbl_Floriest" Type="Self.Tbl_Floriest" Multiplicity="1" />
+          <End Role="Tbl_FlowerReservationFactor" Type="Self.Tbl_FlowerReservationFactor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tbl_Floriest">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Tbl_FlowerReservationFactor">
+              <PropertyRef Name="FloristID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tbl_FlowerReservationFactorList_Tbl_Flower">
+          <End Role="Tbl_Flower" Type="Self.Tbl_Flower" Multiplicity="1" />
+          <End Role="Tbl_FlowerReservationFactorList" Type="Self.Tbl_FlowerReservationFactorList" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tbl_Flower">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Tbl_FlowerReservationFactorList">
+              <PropertyRef Name="FoodID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tbl_FlowerReservationFactorList_Tbl_FlowerReservationFactor">
+          <End Role="Tbl_FlowerReservationFactor" Type="Self.Tbl_FlowerReservationFactor" Multiplicity="1" />
+          <End Role="Tbl_FlowerReservationFactorList" Type="Self.Tbl_FlowerReservationFactorList" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tbl_FlowerReservationFactor">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Tbl_FlowerReservationFactorList">
+              <PropertyRef Name="FoodFactorID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tbl_FlowerShoppingCart_Tbl_Flower">
+          <End Role="Tbl_Flower" Type="Self.Tbl_Flower" Multiplicity="1" />
+          <End Role="Tbl_FlowerShoppingCart" Type="Self.Tbl_FlowerShoppingCart" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tbl_Flower">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Tbl_FlowerShoppingCart">
+              <PropertyRef Name="FlowerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tbl_FoodOption_Tbl_CustomizationFood">
+          <End Role="Tbl_CustomizationFood" Type="Self.Tbl_CustomizationFood" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Tbl_FoodOption" Type="Self.Tbl_FoodOption" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tbl_CustomizationFood">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Tbl_FoodOption">
+              <PropertyRef Name="OptionID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tbl_FoodReservationFactorList_Tbl_FoodReservationFactor">
+          <End Role="Tbl_FoodReservationFactor" Type="Self.Tbl_FoodReservationFactor" Multiplicity="1" />
+          <End Role="Tbl_FoodReservationFactorList" Type="Self.Tbl_FoodReservationFactorList" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tbl_FoodReservationFactor">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Tbl_FoodReservationFactorList">
+              <PropertyRef Name="FoodFactorID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tbl_OptionCart_Tbl_CustomizationFood">
+          <End Role="Tbl_CustomizationFood" Type="Self.Tbl_CustomizationFood" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Tbl_OptionCart" Type="Self.Tbl_OptionCart" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tbl_CustomizationFood">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Tbl_OptionCart">
+              <PropertyRef Name="OptionID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tbl_OrderFactor_Tab_users">
+          <End Role="Tab_users" Type="Self.Tab_users" Multiplicity="1" />
+          <End Role="Tbl_OrderFactor" Type="Self.Tbl_OrderFactor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tab_users">
+              <PropertyRef Name="email" />
+            </Principal>
+            <Dependent Role="Tbl_OrderFactor">
+              <PropertyRef Name="UserEmail" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tbl_OrderFactor_Tbl_Address">
+          <End Role="Tbl_Address" Type="Self.Tbl_Address" Multiplicity="1" />
+          <End Role="Tbl_OrderFactor" Type="Self.Tbl_OrderFactor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tbl_Address">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Tbl_OrderFactor">
+              <PropertyRef Name="AddressID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tbl_OrderFactor_Tbl_Restaurant">
+          <End Role="Tbl_Restaurant" Type="Self.Tbl_Restaurant" Multiplicity="1" />
+          <End Role="Tbl_OrderFactor" Type="Self.Tbl_OrderFactor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tbl_Restaurant">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Tbl_OrderFactor">
+              <PropertyRef Name="ResID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tbl_OrderFactorItem_tab_products">
+          <End Role="tab_products" Type="Self.tab_products" Multiplicity="1" />
+          <End Role="Tbl_OrderFactorItem" Type="Self.Tbl_OrderFactorItem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tab_products">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Tbl_OrderFactorItem">
+              <PropertyRef Name="FoodID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tbl_OrderFactorItem_Tbl_OrderFactor">
+          <End Role="Tbl_OrderFactor" Type="Self.Tbl_OrderFactor" Multiplicity="1" />
+          <End Role="Tbl_OrderFactorItem" Type="Self.Tbl_OrderFactorItem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tbl_OrderFactor">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Tbl_OrderFactorItem">
+              <PropertyRef Name="FactorID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tbl_PacketCart_Tbl_Packing">
+          <End Role="Tbl_Packing" Type="Self.Tbl_Packing" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Tbl_PacketCart" Type="Self.Tbl_PacketCart" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tbl_Packing">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Tbl_PacketCart">
+              <PropertyRef Name="PacketID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tbl_Restaurant_Tab_users">
+          <End Role="Tab_users" Type="Self.Tab_users" Multiplicity="1" />
+          <End Role="Tbl_Restaurant" Type="Self.Tbl_Restaurant" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tab_users">
+              <PropertyRef Name="email" />
+            </Principal>
+            <Dependent Role="Tbl_Restaurant">
+              <PropertyRef Name="userEmail" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tbl_ShoppingCart_tab_products">
+          <End Role="tab_products" Type="Self.tab_products" Multiplicity="1" />
+          <End Role="Tbl_ShoppingCart" Type="Self.Tbl_ShoppingCart" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tab_products">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Tbl_ShoppingCart">
+              <PropertyRef Name="FoodID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tbl_ShoppingCart_Tab_users">
+          <End Role="Tab_users" Type="Self.Tab_users" Multiplicity="1" />
+          <End Role="Tbl_ShoppingCart" Type="Self.Tbl_ShoppingCart" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tab_users">
+              <PropertyRef Name="email" />
+            </Principal>
+            <Dependent Role="Tbl_ShoppingCart">
+              <PropertyRef Name="UserEmail" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tbl_SweetOrderFactorItem_Tbl_Sweets">
+          <End Role="Tbl_Sweets" Type="Self.Tbl_Sweets" Multiplicity="1" />
+          <End Role="Tbl_SweetOrderFactorItem" Type="Self.Tbl_SweetOrderFactorItem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tbl_Sweets">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Tbl_SweetOrderFactorItem">
+              <PropertyRef Name="SweetsID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tbl_SweetReservationFactorList_Tbl_SweetReservationFactor">
+          <End Role="Tbl_SweetReservationFactor" Type="Self.Tbl_SweetReservationFactor" Multiplicity="1" />
+          <End Role="Tbl_SweetReservationFactorList" Type="Self.Tbl_SweetReservationFactorList" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tbl_SweetReservationFactor">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Tbl_SweetReservationFactorList">
+              <PropertyRef Name="FoodFactorID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tbl_Sweets_Tbl_Confectionary">
+          <End Role="Tbl_Confectionary" Type="Self.Tbl_Confectionary" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Tbl_Sweets" Type="Self.Tbl_Sweets" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tbl_Confectionary">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Tbl_Sweets">
+              <PropertyRef Name="ConfectionaryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tbl_SweetsComment_Tbl_Sweets">
+          <End Role="Tbl_Sweets" Type="Self.Tbl_Sweets" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Tbl_SweetsComment" Type="Self.Tbl_SweetsComment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tbl_Sweets">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Tbl_SweetsComment">
+              <PropertyRef Name="SweetsID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tbl_SweetsShoppingCart_Tbl_Sweets">
+          <End Role="Tbl_Sweets" Type="Self.Tbl_Sweets" Multiplicity="1" />
+          <End Role="Tbl_SweetsShoppingCart" Type="Self.Tbl_SweetsShoppingCart" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tbl_Sweets">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Tbl_SweetsShoppingCart">
+              <PropertyRef Name="SweetID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="amirangh_APISiteModelStoreContainer">
+          <EntitySet Name="Tab_comments" EntityType="Self.Tab_comments" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tab_mail" EntityType="Self.Tab_mail" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tab_products" EntityType="Self.tab_products" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tab_users" EntityType="Self.Tab_users" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tbl_Address" EntityType="Self.Tbl_Address" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tbl_AlbumCart" EntityType="Self.Tbl_AlbumCart" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tbl_AlbumFactorItem" EntityType="Self.Tbl_AlbumFactorItem" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tbl_Banner" EntityType="Self.Tbl_Banner" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tbl_Confectionary" EntityType="Self.Tbl_Confectionary" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tbl_ConfectioneryUserImage" EntityType="Self.Tbl_ConfectioneryUserImage" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tbl_Credit" EntityType="Self.Tbl_Credit" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tbl_CustomizationFood" EntityType="Self.Tbl_CustomizationFood" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tbl_Floriest" EntityType="Self.Tbl_Floriest" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tbl_FloristUserImage" EntityType="Self.Tbl_FloristUserImage" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tbl_Flower" EntityType="Self.Tbl_Flower" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tbl_FlowerComment" EntityType="Self.Tbl_FlowerComment" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tbl_FlowerOrder" EntityType="Self.Tbl_FlowerOrder" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tbl_FlowerOrderItem" EntityType="Self.Tbl_FlowerOrderItem" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tbl_FlowerReservationFactor" EntityType="Self.Tbl_FlowerReservationFactor" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tbl_FlowerReservationFactorList" EntityType="Self.Tbl_FlowerReservationFactorList" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tbl_FlowerShoppingCart" EntityType="Self.Tbl_FlowerShoppingCart" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tbl_FoodAlbume" EntityType="Self.Tbl_FoodAlbume" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tbl_FoodItemGroup" EntityType="Self.Tbl_FoodItemGroup" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tbl_FoodOption" EntityType="Self.Tbl_FoodOption" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tbl_FoodReservationFactor" EntityType="Self.Tbl_FoodReservationFactor" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tbl_FoodReservationFactorList" EntityType="Self.Tbl_FoodReservationFactorList" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tbl_Menu" EntityType="Self.Tbl_Menu" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tbl_OptionCart" EntityType="Self.Tbl_OptionCart" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tbl_OptionFactorItem" EntityType="Self.Tbl_OptionFactorItem" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tbl_OrderFactor" EntityType="Self.Tbl_OrderFactor" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tbl_OrderFactorItem" EntityType="Self.Tbl_OrderFactorItem" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tbl_PacketCart" EntityType="Self.Tbl_PacketCart" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tbl_PacketingFactorItem" EntityType="Self.Tbl_PacketingFactorItem" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tbl_Packing" EntityType="Self.Tbl_Packing" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tbl_ResPrintFactor" EntityType="Self.Tbl_ResPrintFactor" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tbl_ResPrintItem" EntityType="Self.Tbl_ResPrintItem" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tbl_ResReservationFactor" EntityType="Self.Tbl_ResReservationFactor" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tbl_ResReservationFactorItem" EntityType="Self.Tbl_ResReservationFactorItem" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tbl_ResTables" EntityType="Self.Tbl_ResTables" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tbl_Restaurant" EntityType="Self.Tbl_Restaurant" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tbl_RestaurantImage" EntityType="Self.Tbl_RestaurantImage" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tbl_ShoppingCart" EntityType="Self.Tbl_ShoppingCart" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tbl_SweetOrderFactor" EntityType="Self.Tbl_SweetOrderFactor" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tbl_SweetOrderFactorItem" EntityType="Self.Tbl_SweetOrderFactorItem" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tbl_SweetReservationFactor" EntityType="Self.Tbl_SweetReservationFactor" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tbl_SweetReservationFactorList" EntityType="Self.Tbl_SweetReservationFactorList" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tbl_Sweets" EntityType="Self.Tbl_Sweets" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tbl_SweetsComment" EntityType="Self.Tbl_SweetsComment" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tbl_SweetsShoppingCart" EntityType="Self.Tbl_SweetsShoppingCart" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tbl_TempOrder" EntityType="Self.Tbl_TempOrder" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tbl_UserImages" EntityType="Self.Tbl_UserImages" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tbl_Loading" EntityType="Self.Tbl_Loading" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Tbl_Loading].[ID] AS [ID]
+    FROM [dbo].[Tbl_Loading] AS [Tbl_Loading]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_tab_products_Tab_users" Association="Self.FK_tab_products_Tab_users">
+            <End Role="Tab_users" EntitySet="Tab_users" />
+            <End Role="tab_products" EntitySet="tab_products" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tab_products_Tbl_Menu" Association="Self.FK_tab_products_Tbl_Menu">
+            <End Role="Tbl_Menu" EntitySet="Tbl_Menu" />
+            <End Role="tab_products" EntitySet="tab_products" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tab_products_Tbl_Restaurant" Association="Self.FK_tab_products_Tbl_Restaurant">
+            <End Role="Tbl_Restaurant" EntitySet="Tbl_Restaurant" />
+            <End Role="tab_products" EntitySet="tab_products" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tbl_Address_Tab_users" Association="Self.FK_Tbl_Address_Tab_users">
+            <End Role="Tab_users" EntitySet="Tab_users" />
+            <End Role="Tbl_Address" EntitySet="Tbl_Address" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tbl_AlbumCart_Tbl_FoodAlbume" Association="Self.FK_Tbl_AlbumCart_Tbl_FoodAlbume">
+            <End Role="Tbl_FoodAlbume" EntitySet="Tbl_FoodAlbume" />
+            <End Role="Tbl_AlbumCart" EntitySet="Tbl_AlbumCart" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tbl_Credit_Tab_users" Association="Self.FK_Tbl_Credit_Tab_users">
+            <End Role="Tab_users" EntitySet="Tab_users" />
+            <End Role="Tbl_Credit" EntitySet="Tbl_Credit" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tbl_CustomizationFood_Tbl_FoodItemGroup" Association="Self.FK_Tbl_CustomizationFood_Tbl_FoodItemGroup">
+            <End Role="Tbl_FoodItemGroup" EntitySet="Tbl_FoodItemGroup" />
+            <End Role="Tbl_CustomizationFood" EntitySet="Tbl_CustomizationFood" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tbl_FloristUserImage_Tbl_Floriest" Association="Self.FK_Tbl_FloristUserImage_Tbl_Floriest">
+            <End Role="Tbl_Floriest" EntitySet="Tbl_Floriest" />
+            <End Role="Tbl_FloristUserImage" EntitySet="Tbl_FloristUserImage" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tbl_Flower_Tbl_Floriest" Association="Self.FK_Tbl_Flower_Tbl_Floriest">
+            <End Role="Tbl_Floriest" EntitySet="Tbl_Floriest" />
+            <End Role="Tbl_Flower" EntitySet="Tbl_Flower" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tbl_FlowerComment_Tbl_Flower" Association="Self.FK_Tbl_FlowerComment_Tbl_Flower">
+            <End Role="Tbl_Flower" EntitySet="Tbl_Flower" />
+            <End Role="Tbl_FlowerComment" EntitySet="Tbl_FlowerComment" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tbl_FlowerOrder_Tbl_Floriest" Association="Self.FK_Tbl_FlowerOrder_Tbl_Floriest">
+            <End Role="Tbl_Floriest" EntitySet="Tbl_Floriest" />
+            <End Role="Tbl_FlowerOrder" EntitySet="Tbl_FlowerOrder" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tbl_FlowerOrderItem_Tbl_Flower" Association="Self.FK_Tbl_FlowerOrderItem_Tbl_Flower">
+            <End Role="Tbl_Flower" EntitySet="Tbl_Flower" />
+            <End Role="Tbl_FlowerOrderItem" EntitySet="Tbl_FlowerOrderItem" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tbl_FlowerReservationFactor_Tbl_Floriest" Association="Self.FK_Tbl_FlowerReservationFactor_Tbl_Floriest">
+            <End Role="Tbl_Floriest" EntitySet="Tbl_Floriest" />
+            <End Role="Tbl_FlowerReservationFactor" EntitySet="Tbl_FlowerReservationFactor" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tbl_FlowerReservationFactorList_Tbl_Flower" Association="Self.FK_Tbl_FlowerReservationFactorList_Tbl_Flower">
+            <End Role="Tbl_Flower" EntitySet="Tbl_Flower" />
+            <End Role="Tbl_FlowerReservationFactorList" EntitySet="Tbl_FlowerReservationFactorList" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tbl_FlowerReservationFactorList_Tbl_FlowerReservationFactor" Association="Self.FK_Tbl_FlowerReservationFactorList_Tbl_FlowerReservationFactor">
+            <End Role="Tbl_FlowerReservationFactor" EntitySet="Tbl_FlowerReservationFactor" />
+            <End Role="Tbl_FlowerReservationFactorList" EntitySet="Tbl_FlowerReservationFactorList" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tbl_FlowerShoppingCart_Tbl_Flower" Association="Self.FK_Tbl_FlowerShoppingCart_Tbl_Flower">
+            <End Role="Tbl_Flower" EntitySet="Tbl_Flower" />
+            <End Role="Tbl_FlowerShoppingCart" EntitySet="Tbl_FlowerShoppingCart" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tbl_FoodOption_Tbl_CustomizationFood" Association="Self.FK_Tbl_FoodOption_Tbl_CustomizationFood">
+            <End Role="Tbl_CustomizationFood" EntitySet="Tbl_CustomizationFood" />
+            <End Role="Tbl_FoodOption" EntitySet="Tbl_FoodOption" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tbl_FoodReservationFactorList_Tbl_FoodReservationFactor" Association="Self.FK_Tbl_FoodReservationFactorList_Tbl_FoodReservationFactor">
+            <End Role="Tbl_FoodReservationFactor" EntitySet="Tbl_FoodReservationFactor" />
+            <End Role="Tbl_FoodReservationFactorList" EntitySet="Tbl_FoodReservationFactorList" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tbl_OptionCart_Tbl_CustomizationFood" Association="Self.FK_Tbl_OptionCart_Tbl_CustomizationFood">
+            <End Role="Tbl_CustomizationFood" EntitySet="Tbl_CustomizationFood" />
+            <End Role="Tbl_OptionCart" EntitySet="Tbl_OptionCart" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tbl_OrderFactor_Tab_users" Association="Self.FK_Tbl_OrderFactor_Tab_users">
+            <End Role="Tab_users" EntitySet="Tab_users" />
+            <End Role="Tbl_OrderFactor" EntitySet="Tbl_OrderFactor" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tbl_OrderFactor_Tbl_Address" Association="Self.FK_Tbl_OrderFactor_Tbl_Address">
+            <End Role="Tbl_Address" EntitySet="Tbl_Address" />
+            <End Role="Tbl_OrderFactor" EntitySet="Tbl_OrderFactor" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tbl_OrderFactor_Tbl_Restaurant" Association="Self.FK_Tbl_OrderFactor_Tbl_Restaurant">
+            <End Role="Tbl_Restaurant" EntitySet="Tbl_Restaurant" />
+            <End Role="Tbl_OrderFactor" EntitySet="Tbl_OrderFactor" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tbl_OrderFactorItem_tab_products" Association="Self.FK_Tbl_OrderFactorItem_tab_products">
+            <End Role="tab_products" EntitySet="tab_products" />
+            <End Role="Tbl_OrderFactorItem" EntitySet="Tbl_OrderFactorItem" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tbl_OrderFactorItem_Tbl_OrderFactor" Association="Self.FK_Tbl_OrderFactorItem_Tbl_OrderFactor">
+            <End Role="Tbl_OrderFactor" EntitySet="Tbl_OrderFactor" />
+            <End Role="Tbl_OrderFactorItem" EntitySet="Tbl_OrderFactorItem" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tbl_PacketCart_Tbl_Packing" Association="Self.FK_Tbl_PacketCart_Tbl_Packing">
+            <End Role="Tbl_Packing" EntitySet="Tbl_Packing" />
+            <End Role="Tbl_PacketCart" EntitySet="Tbl_PacketCart" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tbl_Restaurant_Tab_users" Association="Self.FK_Tbl_Restaurant_Tab_users">
+            <End Role="Tab_users" EntitySet="Tab_users" />
+            <End Role="Tbl_Restaurant" EntitySet="Tbl_Restaurant" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tbl_ShoppingCart_tab_products" Association="Self.FK_Tbl_ShoppingCart_tab_products">
+            <End Role="tab_products" EntitySet="tab_products" />
+            <End Role="Tbl_ShoppingCart" EntitySet="Tbl_ShoppingCart" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tbl_ShoppingCart_Tab_users" Association="Self.FK_Tbl_ShoppingCart_Tab_users">
+            <End Role="Tab_users" EntitySet="Tab_users" />
+            <End Role="Tbl_ShoppingCart" EntitySet="Tbl_ShoppingCart" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tbl_SweetOrderFactorItem_Tbl_Sweets" Association="Self.FK_Tbl_SweetOrderFactorItem_Tbl_Sweets">
+            <End Role="Tbl_Sweets" EntitySet="Tbl_Sweets" />
+            <End Role="Tbl_SweetOrderFactorItem" EntitySet="Tbl_SweetOrderFactorItem" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tbl_SweetReservationFactorList_Tbl_SweetReservationFactor" Association="Self.FK_Tbl_SweetReservationFactorList_Tbl_SweetReservationFactor">
+            <End Role="Tbl_SweetReservationFactor" EntitySet="Tbl_SweetReservationFactor" />
+            <End Role="Tbl_SweetReservationFactorList" EntitySet="Tbl_SweetReservationFactorList" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tbl_Sweets_Tbl_Confectionary" Association="Self.FK_Tbl_Sweets_Tbl_Confectionary">
+            <End Role="Tbl_Confectionary" EntitySet="Tbl_Confectionary" />
+            <End Role="Tbl_Sweets" EntitySet="Tbl_Sweets" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tbl_SweetsComment_Tbl_Sweets" Association="Self.FK_Tbl_SweetsComment_Tbl_Sweets">
+            <End Role="Tbl_Sweets" EntitySet="Tbl_Sweets" />
+            <End Role="Tbl_SweetsComment" EntitySet="Tbl_SweetsComment" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tbl_SweetsShoppingCart_Tbl_Sweets" Association="Self.FK_Tbl_SweetsShoppingCart_Tbl_Sweets">
+            <End Role="Tbl_Sweets" EntitySet="Tbl_Sweets" />
+            <End Role="Tbl_SweetsShoppingCart" EntitySet="Tbl_SweetsShoppingCart" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="amirangh_APISiteModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="DataBase" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Tab_comments" EntityType="amirangh_APISiteModel.Tab_comments" />
+          <EntitySet Name="Tab_mail" EntityType="amirangh_APISiteModel.Tab_mail" />
+          <EntitySet Name="tab_products" EntityType="amirangh_APISiteModel.tab_products" />
+          <EntitySet Name="Tab_users" EntityType="amirangh_APISiteModel.Tab_users" />
+          <EntitySet Name="Tbl_Address" EntityType="amirangh_APISiteModel.Tbl_Address" />
+          <EntitySet Name="Tbl_AlbumCart" EntityType="amirangh_APISiteModel.Tbl_AlbumCart" />
+          <EntitySet Name="Tbl_AlbumFactorItem" EntityType="amirangh_APISiteModel.Tbl_AlbumFactorItem" />
+          <EntitySet Name="Tbl_Banner" EntityType="amirangh_APISiteModel.Tbl_Banner" />
+          <EntitySet Name="Tbl_Confectionary" EntityType="amirangh_APISiteModel.Tbl_Confectionary" />
+          <EntitySet Name="Tbl_ConfectioneryUserImage" EntityType="amirangh_APISiteModel.Tbl_ConfectioneryUserImage" />
+          <EntitySet Name="Tbl_Credit" EntityType="amirangh_APISiteModel.Tbl_Credit" />
+          <EntitySet Name="Tbl_CustomizationFood" EntityType="amirangh_APISiteModel.Tbl_CustomizationFood" />
+          <EntitySet Name="Tbl_Floriest" EntityType="amirangh_APISiteModel.Tbl_Floriest" />
+          <EntitySet Name="Tbl_FloristUserImage" EntityType="amirangh_APISiteModel.Tbl_FloristUserImage" />
+          <EntitySet Name="Tbl_Flower" EntityType="amirangh_APISiteModel.Tbl_Flower" />
+          <EntitySet Name="Tbl_FlowerComment" EntityType="amirangh_APISiteModel.Tbl_FlowerComment" />
+          <EntitySet Name="Tbl_FlowerOrder" EntityType="amirangh_APISiteModel.Tbl_FlowerOrder" />
+          <EntitySet Name="Tbl_FlowerOrderItem" EntityType="amirangh_APISiteModel.Tbl_FlowerOrderItem" />
+          <EntitySet Name="Tbl_FlowerReservationFactor" EntityType="amirangh_APISiteModel.Tbl_FlowerReservationFactor" />
+          <EntitySet Name="Tbl_FlowerReservationFactorList" EntityType="amirangh_APISiteModel.Tbl_FlowerReservationFactorList" />
+          <EntitySet Name="Tbl_FlowerShoppingCart" EntityType="amirangh_APISiteModel.Tbl_FlowerShoppingCart" />
+          <EntitySet Name="Tbl_FoodAlbume" EntityType="amirangh_APISiteModel.Tbl_FoodAlbume" />
+          <EntitySet Name="Tbl_FoodItemGroup" EntityType="amirangh_APISiteModel.Tbl_FoodItemGroup" />
+          <EntitySet Name="Tbl_FoodOption" EntityType="amirangh_APISiteModel.Tbl_FoodOption" />
+          <EntitySet Name="Tbl_FoodReservationFactor" EntityType="amirangh_APISiteModel.Tbl_FoodReservationFactor" />
+          <EntitySet Name="Tbl_FoodReservationFactorList" EntityType="amirangh_APISiteModel.Tbl_FoodReservationFactorList" />
+          <EntitySet Name="Tbl_Menu" EntityType="amirangh_APISiteModel.Tbl_Menu" />
+          <EntitySet Name="Tbl_OptionCart" EntityType="amirangh_APISiteModel.Tbl_OptionCart" />
+          <EntitySet Name="Tbl_OptionFactorItem" EntityType="amirangh_APISiteModel.Tbl_OptionFactorItem" />
+          <EntitySet Name="Tbl_OrderFactor" EntityType="amirangh_APISiteModel.Tbl_OrderFactor" />
+          <EntitySet Name="Tbl_OrderFactorItem" EntityType="amirangh_APISiteModel.Tbl_OrderFactorItem" />
+          <EntitySet Name="Tbl_PacketCart" EntityType="amirangh_APISiteModel.Tbl_PacketCart" />
+          <EntitySet Name="Tbl_PacketingFactorItem" EntityType="amirangh_APISiteModel.Tbl_PacketingFactorItem" />
+          <EntitySet Name="Tbl_Packing" EntityType="amirangh_APISiteModel.Tbl_Packing" />
+          <EntitySet Name="Tbl_ResPrintFactor" EntityType="amirangh_APISiteModel.Tbl_ResPrintFactor" />
+          <EntitySet Name="Tbl_ResPrintItem" EntityType="amirangh_APISiteModel.Tbl_ResPrintItem" />
+          <EntitySet Name="Tbl_ResReservationFactor" EntityType="amirangh_APISiteModel.Tbl_ResReservationFactor" />
+          <EntitySet Name="Tbl_ResReservationFactorItem" EntityType="amirangh_APISiteModel.Tbl_ResReservationFactorItem" />
+          <EntitySet Name="Tbl_ResTables" EntityType="amirangh_APISiteModel.Tbl_ResTables" />
+          <EntitySet Name="Tbl_Restaurant" EntityType="amirangh_APISiteModel.Tbl_Restaurant" />
+          <EntitySet Name="Tbl_RestaurantImage" EntityType="amirangh_APISiteModel.Tbl_RestaurantImage" />
+          <EntitySet Name="Tbl_ShoppingCart" EntityType="amirangh_APISiteModel.Tbl_ShoppingCart" />
+          <EntitySet Name="Tbl_SweetOrderFactor" EntityType="amirangh_APISiteModel.Tbl_SweetOrderFactor" />
+          <EntitySet Name="Tbl_SweetOrderFactorItem" EntityType="amirangh_APISiteModel.Tbl_SweetOrderFactorItem" />
+          <EntitySet Name="Tbl_SweetReservationFactor" EntityType="amirangh_APISiteModel.Tbl_SweetReservationFactor" />
+          <EntitySet Name="Tbl_SweetReservationFactorList" EntityType="amirangh_APISiteModel.Tbl_SweetReservationFactorList" />
+          <EntitySet Name="Tbl_Sweets" EntityType="amirangh_APISiteModel.Tbl_Sweets" />
+          <EntitySet Name="Tbl_SweetsComment" EntityType="amirangh_APISiteModel.Tbl_SweetsComment" />
+          <EntitySet Name="Tbl_SweetsShoppingCart" EntityType="amirangh_APISiteModel.Tbl_SweetsShoppingCart" />
+          <EntitySet Name="Tbl_UserImages" EntityType="amirangh_APISiteModel.Tbl_UserImages" />
+          <EntitySet Name="Tbl_Loading" EntityType="amirangh_APISiteModel.Tbl_Loading" />
+          <AssociationSet Name="FK_tab_products_Tab_users" Association="amirangh_APISiteModel.FK_tab_products_Tab_users">
+            <End Role="Tab_users" EntitySet="Tab_users" />
+            <End Role="tab_products" EntitySet="tab_products" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tab_products_Tbl_Menu" Association="amirangh_APISiteModel.FK_tab_products_Tbl_Menu">
+            <End Role="Tbl_Menu" EntitySet="Tbl_Menu" />
+            <End Role="tab_products" EntitySet="tab_products" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tab_products_Tbl_Restaurant" Association="amirangh_APISiteModel.FK_tab_products_Tbl_Restaurant">
+            <End Role="Tbl_Restaurant" EntitySet="Tbl_Restaurant" />
+            <End Role="tab_products" EntitySet="tab_products" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tbl_OrderFactorItem_tab_products" Association="amirangh_APISiteModel.FK_Tbl_OrderFactorItem_tab_products">
+            <End Role="tab_products" EntitySet="tab_products" />
+            <End Role="Tbl_OrderFactorItem" EntitySet="Tbl_OrderFactorItem" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tbl_ShoppingCart_tab_products" Association="amirangh_APISiteModel.FK_Tbl_ShoppingCart_tab_products">
+            <End Role="tab_products" EntitySet="tab_products" />
+            <End Role="Tbl_ShoppingCart" EntitySet="Tbl_ShoppingCart" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tbl_Address_Tab_users" Association="amirangh_APISiteModel.FK_Tbl_Address_Tab_users">
+            <End Role="Tab_users" EntitySet="Tab_users" />
+            <End Role="Tbl_Address" EntitySet="Tbl_Address" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tbl_Credit_Tab_users" Association="amirangh_APISiteModel.FK_Tbl_Credit_Tab_users">
+            <End Role="Tab_users" EntitySet="Tab_users" />
+            <End Role="Tbl_Credit" EntitySet="Tbl_Credit" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tbl_OrderFactor_Tab_users" Association="amirangh_APISiteModel.FK_Tbl_OrderFactor_Tab_users">
+            <End Role="Tab_users" EntitySet="Tab_users" />
+            <End Role="Tbl_OrderFactor" EntitySet="Tbl_OrderFactor" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tbl_Restaurant_Tab_users" Association="amirangh_APISiteModel.FK_Tbl_Restaurant_Tab_users">
+            <End Role="Tab_users" EntitySet="Tab_users" />
+            <End Role="Tbl_Restaurant" EntitySet="Tbl_Restaurant" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tbl_ShoppingCart_Tab_users" Association="amirangh_APISiteModel.FK_Tbl_ShoppingCart_Tab_users">
+            <End Role="Tab_users" EntitySet="Tab_users" />
+            <End Role="Tbl_ShoppingCart" EntitySet="Tbl_ShoppingCart" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tbl_OrderFactor_Tbl_Address" Association="amirangh_APISiteModel.FK_Tbl_OrderFactor_Tbl_Address">
+            <End Role="Tbl_Address" EntitySet="Tbl_Address" />
+            <End Role="Tbl_OrderFactor" EntitySet="Tbl_OrderFactor" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tbl_AlbumCart_Tbl_FoodAlbume" Association="amirangh_APISiteModel.FK_Tbl_AlbumCart_Tbl_FoodAlbume">
+            <End Role="Tbl_FoodAlbume" EntitySet="Tbl_FoodAlbume" />
+            <End Role="Tbl_AlbumCart" EntitySet="Tbl_AlbumCart" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tbl_Sweets_Tbl_Confectionary" Association="amirangh_APISiteModel.FK_Tbl_Sweets_Tbl_Confectionary">
+            <End Role="Tbl_Confectionary" EntitySet="Tbl_Confectionary" />
+            <End Role="Tbl_Sweets" EntitySet="Tbl_Sweets" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tbl_CustomizationFood_Tbl_FoodItemGroup" Association="amirangh_APISiteModel.FK_Tbl_CustomizationFood_Tbl_FoodItemGroup">
+            <End Role="Tbl_FoodItemGroup" EntitySet="Tbl_FoodItemGroup" />
+            <End Role="Tbl_CustomizationFood" EntitySet="Tbl_CustomizationFood" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tbl_FoodOption_Tbl_CustomizationFood" Association="amirangh_APISiteModel.FK_Tbl_FoodOption_Tbl_CustomizationFood">
+            <End Role="Tbl_CustomizationFood" EntitySet="Tbl_CustomizationFood" />
+            <End Role="Tbl_FoodOption" EntitySet="Tbl_FoodOption" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tbl_OptionCart_Tbl_CustomizationFood" Association="amirangh_APISiteModel.FK_Tbl_OptionCart_Tbl_CustomizationFood">
+            <End Role="Tbl_CustomizationFood" EntitySet="Tbl_CustomizationFood" />
+            <End Role="Tbl_OptionCart" EntitySet="Tbl_OptionCart" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tbl_FloristUserImage_Tbl_Floriest" Association="amirangh_APISiteModel.FK_Tbl_FloristUserImage_Tbl_Floriest">
+            <End Role="Tbl_Floriest" EntitySet="Tbl_Floriest" />
+            <End Role="Tbl_FloristUserImage" EntitySet="Tbl_FloristUserImage" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tbl_Flower_Tbl_Floriest" Association="amirangh_APISiteModel.FK_Tbl_Flower_Tbl_Floriest">
+            <End Role="Tbl_Floriest" EntitySet="Tbl_Floriest" />
+            <End Role="Tbl_Flower" EntitySet="Tbl_Flower" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tbl_FlowerOrder_Tbl_Floriest" Association="amirangh_APISiteModel.FK_Tbl_FlowerOrder_Tbl_Floriest">
+            <End Role="Tbl_Floriest" EntitySet="Tbl_Floriest" />
+            <End Role="Tbl_FlowerOrder" EntitySet="Tbl_FlowerOrder" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tbl_FlowerReservationFactor_Tbl_Floriest" Association="amirangh_APISiteModel.FK_Tbl_FlowerReservationFactor_Tbl_Floriest">
+            <End Role="Tbl_Floriest" EntitySet="Tbl_Floriest" />
+            <End Role="Tbl_FlowerReservationFactor" EntitySet="Tbl_FlowerReservationFactor" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tbl_FlowerComment_Tbl_Flower" Association="amirangh_APISiteModel.FK_Tbl_FlowerComment_Tbl_Flower">
+            <End Role="Tbl_Flower" EntitySet="Tbl_Flower" />
+            <End Role="Tbl_FlowerComment" EntitySet="Tbl_FlowerComment" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tbl_FlowerOrderItem_Tbl_Flower" Association="amirangh_APISiteModel.FK_Tbl_FlowerOrderItem_Tbl_Flower">
+            <End Role="Tbl_Flower" EntitySet="Tbl_Flower" />
+            <End Role="Tbl_FlowerOrderItem" EntitySet="Tbl_FlowerOrderItem" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tbl_FlowerReservationFactorList_Tbl_Flower" Association="amirangh_APISiteModel.FK_Tbl_FlowerReservationFactorList_Tbl_Flower">
+            <End Role="Tbl_Flower" EntitySet="Tbl_Flower" />
+            <End Role="Tbl_FlowerReservationFactorList" EntitySet="Tbl_FlowerReservationFactorList" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tbl_FlowerShoppingCart_Tbl_Flower" Association="amirangh_APISiteModel.FK_Tbl_FlowerShoppingCart_Tbl_Flower">
+            <End Role="Tbl_Flower" EntitySet="Tbl_Flower" />
+            <End Role="Tbl_FlowerShoppingCart" EntitySet="Tbl_FlowerShoppingCart" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tbl_FlowerReservationFactorList_Tbl_FlowerReservationFactor" Association="amirangh_APISiteModel.FK_Tbl_FlowerReservationFactorList_Tbl_FlowerReservationFactor">
+            <End Role="Tbl_FlowerReservationFactor" EntitySet="Tbl_FlowerReservationFactor" />
+            <End Role="Tbl_FlowerReservationFactorList" EntitySet="Tbl_FlowerReservationFactorList" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tbl_FoodReservationFactorList_Tbl_FoodReservationFactor" Association="amirangh_APISiteModel.FK_Tbl_FoodReservationFactorList_Tbl_FoodReservationFactor">
+            <End Role="Tbl_FoodReservationFactor" EntitySet="Tbl_FoodReservationFactor" />
+            <End Role="Tbl_FoodReservationFactorList" EntitySet="Tbl_FoodReservationFactorList" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tbl_OrderFactor_Tbl_Restaurant" Association="amirangh_APISiteModel.FK_Tbl_OrderFactor_Tbl_Restaurant">
+            <End Role="Tbl_Restaurant" EntitySet="Tbl_Restaurant" />
+            <End Role="Tbl_OrderFactor" EntitySet="Tbl_OrderFactor" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tbl_OrderFactorItem_Tbl_OrderFactor" Association="amirangh_APISiteModel.FK_Tbl_OrderFactorItem_Tbl_OrderFactor">
+            <End Role="Tbl_OrderFactor" EntitySet="Tbl_OrderFactor" />
+            <End Role="Tbl_OrderFactorItem" EntitySet="Tbl_OrderFactorItem" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tbl_PacketCart_Tbl_Packing" Association="amirangh_APISiteModel.FK_Tbl_PacketCart_Tbl_Packing">
+            <End Role="Tbl_Packing" EntitySet="Tbl_Packing" />
+            <End Role="Tbl_PacketCart" EntitySet="Tbl_PacketCart" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tbl_SweetOrderFactorItem_Tbl_Sweets" Association="amirangh_APISiteModel.FK_Tbl_SweetOrderFactorItem_Tbl_Sweets">
+            <End Role="Tbl_Sweets" EntitySet="Tbl_Sweets" />
+            <End Role="Tbl_SweetOrderFactorItem" EntitySet="Tbl_SweetOrderFactorItem" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tbl_SweetReservationFactorList_Tbl_SweetReservationFactor" Association="amirangh_APISiteModel.FK_Tbl_SweetReservationFactorList_Tbl_SweetReservationFactor">
+            <End Role="Tbl_SweetReservationFactor" EntitySet="Tbl_SweetReservationFactor" />
+            <End Role="Tbl_SweetReservationFactorList" EntitySet="Tbl_SweetReservationFactorList" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tbl_SweetsComment_Tbl_Sweets" Association="amirangh_APISiteModel.FK_Tbl_SweetsComment_Tbl_Sweets">
+            <End Role="Tbl_Sweets" EntitySet="Tbl_Sweets" />
+            <End Role="Tbl_SweetsComment" EntitySet="Tbl_SweetsComment" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tbl_SweetsShoppingCart_Tbl_Sweets" Association="amirangh_APISiteModel.FK_Tbl_SweetsShoppingCart_Tbl_Sweets">
+            <End Role="Tbl_Sweets" EntitySet="Tbl_Sweets" />
+            <End Role="Tbl_SweetsShoppingCart" EntitySet="Tbl_SweetsShoppingCart" />
+          </AssociationSet>
+          <EntitySet Name="Tbl_TempOrder" EntityType="amirangh_APISiteModel.Tbl_TempOrder" />
+        </EntityContainer>
+        <EntityType Name="Tab_comments">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="product_id" Type="Int32" Nullable="false" />
+          <Property Name="name" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="email" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="ip" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="text" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="data" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="confirm" Type="Boolean" Nullable="false" />
+          <Property Name="read" Type="Boolean" Nullable="false" />
+          <Property Name="parent_id" Type="Int32" Nullable="false" />
+          <Property Name="cm_like" Type="Int32" Nullable="false" />
+          <Property Name="cm_dislike" Type="Int32" Nullable="false" />
+          <Property Name="phone" Type="String" Nullable="false" MaxLength="11" FixedLength="true" Unicode="true" />
+          <Property Name="Stars" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Tab_mail">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="email" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="text" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="phonenumber" Type="String" MaxLength="11" FixedLength="true" Unicode="true" />
+        </EntityType>
+        <EntityType Name="tab_products">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="cost" Type="Int32" Nullable="false" />
+          <Property Name="name" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="User_Email" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="resID" Type="Int32" Nullable="false" />
+          <Property Name="menuID" Type="Int32" Nullable="false" />
+          <Property Name="Recipe" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="foodImage" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CreateMaterial" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="bakingTime" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FoodCount" Type="Int32" />
+          <Property Name="OrderType" Type="Boolean" />
+          <NavigationProperty Name="Tab_users" Relationship="amirangh_APISiteModel.FK_tab_products_Tab_users" FromRole="tab_products" ToRole="Tab_users" />
+          <NavigationProperty Name="Tbl_Menu" Relationship="amirangh_APISiteModel.FK_tab_products_Tbl_Menu" FromRole="tab_products" ToRole="Tbl_Menu" />
+          <NavigationProperty Name="Tbl_Restaurant" Relationship="amirangh_APISiteModel.FK_tab_products_Tbl_Restaurant" FromRole="tab_products" ToRole="Tbl_Restaurant" />
+          <NavigationProperty Name="Tbl_OrderFactorItem" Relationship="amirangh_APISiteModel.FK_Tbl_OrderFactorItem_tab_products" FromRole="tab_products" ToRole="Tbl_OrderFactorItem" />
+          <NavigationProperty Name="Tbl_ShoppingCart" Relationship="amirangh_APISiteModel.FK_Tbl_ShoppingCart_tab_products" FromRole="tab_products" ToRole="Tbl_ShoppingCart" />
+        </EntityType>
+        <EntityType Name="Tab_users">
+          <Key>
+            <PropertyRef Name="email" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="email" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="password" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="access" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="name" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="image" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="enable" Type="Boolean" Nullable="false" />
+          <Property Name="mob_phone" Type="String" Nullable="false" MaxLength="11" FixedLength="true" Unicode="true" />
+          <Property Name="ncode" Type="String" MaxLength="11" FixedLength="true" Unicode="true" />
+          <Property Name="home_phone" Type="String" MaxLength="11" FixedLength="true" Unicode="true" />
+          <Property Name="birth_date" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="sex" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="home_address" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="IMEI" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SMS_Enable" Type="Boolean" />
+          <Property Name="activeCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="description" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="SNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Family" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="tab_products" Relationship="amirangh_APISiteModel.FK_tab_products_Tab_users" FromRole="Tab_users" ToRole="tab_products" />
+          <NavigationProperty Name="Tbl_Address" Relationship="amirangh_APISiteModel.FK_Tbl_Address_Tab_users" FromRole="Tab_users" ToRole="Tbl_Address" />
+          <NavigationProperty Name="Tbl_Credit" Relationship="amirangh_APISiteModel.FK_Tbl_Credit_Tab_users" FromRole="Tab_users" ToRole="Tbl_Credit" />
+          <NavigationProperty Name="Tbl_OrderFactor" Relationship="amirangh_APISiteModel.FK_Tbl_OrderFactor_Tab_users" FromRole="Tab_users" ToRole="Tbl_OrderFactor" />
+          <NavigationProperty Name="Tbl_Restaurant" Relationship="amirangh_APISiteModel.FK_Tbl_Restaurant_Tab_users" FromRole="Tab_users" ToRole="Tbl_Restaurant" />
+          <NavigationProperty Name="Tbl_ShoppingCart" Relationship="amirangh_APISiteModel.FK_Tbl_ShoppingCart_Tab_users" FromRole="Tab_users" ToRole="Tbl_ShoppingCart" />
+        </EntityType>
+        <EntityType Name="Tbl_Address">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="userEmail" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Address" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="addressType" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="addressLatLng" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="apartmentName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Floor" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Unit" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Tab_users" Relationship="amirangh_APISiteModel.FK_Tbl_Address_Tab_users" FromRole="Tbl_Address" ToRole="Tab_users" />
+          <NavigationProperty Name="Tbl_OrderFactor" Relationship="amirangh_APISiteModel.FK_Tbl_OrderFactor_Tbl_Address" FromRole="Tbl_Address" ToRole="Tbl_OrderFactor" />
+        </EntityType>
+        <EntityType Name="Tbl_AlbumCart">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AlbumID" Type="Int32" Nullable="false" />
+          <Property Name="ShoppingCartID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Tbl_FoodAlbume" Relationship="amirangh_APISiteModel.FK_Tbl_AlbumCart_Tbl_FoodAlbume" FromRole="Tbl_AlbumCart" ToRole="Tbl_FoodAlbume" />
+        </EntityType>
+        <EntityType Name="Tbl_AlbumFactorItem">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="factorItemID" Type="Int32" Nullable="false" />
+          <Property Name="AlbumID" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Tbl_Banner">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Image" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Tbl_Confectionary">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CAddress" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CPhone" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CLatLng" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="userEmail" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="CImage" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CBusinessLicense" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CEnable" Type="Boolean" Nullable="false" />
+          <Property Name="CPoint" Type="Double" Nullable="false" />
+          <NavigationProperty Name="Tbl_Sweets" Relationship="amirangh_APISiteModel.FK_Tbl_Sweets_Tbl_Confectionary" FromRole="Tbl_Confectionary" ToRole="Tbl_Sweets" />
+        </EntityType>
+        <EntityType Name="Tbl_ConfectioneryUserImage">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ImageName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="UserEmail" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="ConfectioneryID" Type="Int32" Nullable="false" />
+          <Property Name="Text" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Tbl_Credit">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Credit" Type="Int32" Nullable="false" />
+          <Property Name="Date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Time" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="UserEmail" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="TransactionCode" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="RootUser" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Tab_users" Relationship="amirangh_APISiteModel.FK_Tbl_Credit_Tab_users" FromRole="Tbl_Credit" ToRole="Tab_users" />
+        </EntityType>
+        <EntityType Name="Tbl_CustomizationFood">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="foodItem" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="itemPrice" Type="Int32" Nullable="false" />
+          <Property Name="itemGroupID" Type="Int32" Nullable="false" />
+          <Property Name="Used" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Tbl_FoodItemGroup" Relationship="amirangh_APISiteModel.FK_Tbl_CustomizationFood_Tbl_FoodItemGroup" FromRole="Tbl_CustomizationFood" ToRole="Tbl_FoodItemGroup" />
+          <NavigationProperty Name="Tbl_FoodOption" Relationship="amirangh_APISiteModel.FK_Tbl_FoodOption_Tbl_CustomizationFood" FromRole="Tbl_CustomizationFood" ToRole="Tbl_FoodOption" />
+          <NavigationProperty Name="Tbl_OptionCart" Relationship="amirangh_APISiteModel.FK_Tbl_OptionCart_Tbl_CustomizationFood" FromRole="Tbl_CustomizationFood" ToRole="Tbl_OptionCart" />
+        </EntityType>
+        <EntityType Name="Tbl_Floriest">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FAddress" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="FImage" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="userEmail" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="FLatLng" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FPhone" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FBusinessLicense" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FEnable" Type="Boolean" Nullable="false" />
+          <Property Name="FPoints" Type="Double" Nullable="false" />
+          <NavigationProperty Name="Tbl_FloristUserImage" Relationship="amirangh_APISiteModel.FK_Tbl_FloristUserImage_Tbl_Floriest" FromRole="Tbl_Floriest" ToRole="Tbl_FloristUserImage" />
+          <NavigationProperty Name="Tbl_Flower" Relationship="amirangh_APISiteModel.FK_Tbl_Flower_Tbl_Floriest" FromRole="Tbl_Floriest" ToRole="Tbl_Flower" />
+          <NavigationProperty Name="Tbl_FlowerOrder" Relationship="amirangh_APISiteModel.FK_Tbl_FlowerOrder_Tbl_Floriest" FromRole="Tbl_Floriest" ToRole="Tbl_FlowerOrder" />
+          <NavigationProperty Name="Tbl_FlowerReservationFactor" Relationship="amirangh_APISiteModel.FK_Tbl_FlowerReservationFactor_Tbl_Floriest" FromRole="Tbl_Floriest" ToRole="Tbl_FlowerReservationFactor" />
+        </EntityType>
+        <EntityType Name="Tbl_FloristUserImage">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ImageName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="UserEmail" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="FloristID" Type="Int32" Nullable="false" />
+          <Property Name="Text" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Tbl_Floriest" Relationship="amirangh_APISiteModel.FK_Tbl_FloristUserImage_Tbl_Floriest" FromRole="Tbl_FloristUserImage" ToRole="Tbl_Floriest" />
+        </EntityType>
+        <EntityType Name="Tbl_Flower">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FlwName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FlwPrice" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FlwColor" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FlwType" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FlorestID" Type="Int32" Nullable="false" />
+          <Property Name="FlwMaintenance" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="FlwImage" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Tbl_Floriest" Relationship="amirangh_APISiteModel.FK_Tbl_Flower_Tbl_Floriest" FromRole="Tbl_Flower" ToRole="Tbl_Floriest" />
+          <NavigationProperty Name="Tbl_FlowerComment" Relationship="amirangh_APISiteModel.FK_Tbl_FlowerComment_Tbl_Flower" FromRole="Tbl_Flower" ToRole="Tbl_FlowerComment" />
+          <NavigationProperty Name="Tbl_FlowerOrderItem" Relationship="amirangh_APISiteModel.FK_Tbl_FlowerOrderItem_Tbl_Flower" FromRole="Tbl_Flower" ToRole="Tbl_FlowerOrderItem" />
+          <NavigationProperty Name="Tbl_FlowerReservationFactorList" Relationship="amirangh_APISiteModel.FK_Tbl_FlowerReservationFactorList_Tbl_Flower" FromRole="Tbl_Flower" ToRole="Tbl_FlowerReservationFactorList" />
+          <NavigationProperty Name="Tbl_FlowerShoppingCart" Relationship="amirangh_APISiteModel.FK_Tbl_FlowerShoppingCart_Tbl_Flower" FromRole="Tbl_Flower" ToRole="Tbl_FlowerShoppingCart" />
+        </EntityType>
+        <EntityType Name="Tbl_FlowerComment">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="flowerID" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="IP" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Text" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="commentDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="confirm" Type="Boolean" Nullable="false" />
+          <Property Name="read" Type="Boolean" Nullable="false" />
+          <Property Name="Phone" Type="String" Nullable="false" MaxLength="11" FixedLength="true" Unicode="true" />
+          <Property Name="Stars" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Tbl_Flower" Relationship="amirangh_APISiteModel.FK_Tbl_FlowerComment_Tbl_Flower" FromRole="Tbl_FlowerComment" ToRole="Tbl_Flower" />
+        </EntityType>
+        <EntityType Name="Tbl_FlowerOrder">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FloristID" Type="Int32" Nullable="false" />
+          <Property Name="UserEmail" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="OrderStatus" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Time" Type="Time" Nullable="false" Precision="0" />
+          <Property Name="AddresID" Type="Int32" Nullable="false" />
+          <Property Name="Comment" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Date" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Tbl_Floriest" Relationship="amirangh_APISiteModel.FK_Tbl_FlowerOrder_Tbl_Floriest" FromRole="Tbl_FlowerOrder" ToRole="Tbl_Floriest" />
+        </EntityType>
+        <EntityType Name="Tbl_FlowerOrderItem">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FlowerID" Type="Int32" Nullable="false" />
+          <Property Name="ParentID" Type="Int32" Nullable="false" />
+          <Property Name="FlowerCount" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Tbl_Flower" Relationship="amirangh_APISiteModel.FK_Tbl_FlowerOrderItem_Tbl_Flower" FromRole="Tbl_FlowerOrderItem" ToRole="Tbl_Flower" />
+        </EntityType>
+        <EntityType Name="Tbl_FlowerReservationFactor">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FloristID" Type="Int32" Nullable="false" />
+          <Property Name="UserEmail" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Date" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Time" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="OrderTyoe" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Tbl_Floriest" Relationship="amirangh_APISiteModel.FK_Tbl_FlowerReservationFactor_Tbl_Floriest" FromRole="Tbl_FlowerReservationFactor" ToRole="Tbl_Floriest" />
+          <NavigationProperty Name="Tbl_FlowerReservationFactorList" Relationship="amirangh_APISiteModel.FK_Tbl_FlowerReservationFactorList_Tbl_FlowerReservationFactor" FromRole="Tbl_FlowerReservationFactor" ToRole="Tbl_FlowerReservationFactorList" />
+        </EntityType>
+        <EntityType Name="Tbl_FlowerReservationFactorList">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FoodID" Type="Int32" Nullable="false" />
+          <Property Name="FoodFactorID" Type="Int32" Nullable="false" />
+          <Property Name="FoodCount" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Tbl_Flower" Relationship="amirangh_APISiteModel.FK_Tbl_FlowerReservationFactorList_Tbl_Flower" FromRole="Tbl_FlowerReservationFactorList" ToRole="Tbl_Flower" />
+          <NavigationProperty Name="Tbl_FlowerReservationFactor" Relationship="amirangh_APISiteModel.FK_Tbl_FlowerReservationFactorList_Tbl_FlowerReservationFactor" FromRole="Tbl_FlowerReservationFactorList" ToRole="Tbl_FlowerReservationFactor" />
+        </EntityType>
+        <EntityType Name="Tbl_FlowerShoppingCart">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FlowerCount" Type="Int32" Nullable="false" />
+          <Property Name="FlowerID" Type="Int32" Nullable="false" />
+          <Property Name="UserEmail" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Tbl_Flower" Relationship="amirangh_APISiteModel.FK_Tbl_FlowerShoppingCart_Tbl_Flower" FromRole="Tbl_FlowerShoppingCart" ToRole="Tbl_Flower" />
+        </EntityType>
+        <EntityType Name="Tbl_FoodAlbume">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="foodID" Type="Int32" Nullable="false" />
+          <Property Name="albumName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="albumImage" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Tbl_AlbumCart" Relationship="amirangh_APISiteModel.FK_Tbl_AlbumCart_Tbl_FoodAlbume" FromRole="Tbl_FoodAlbume" ToRole="Tbl_AlbumCart" />
+        </EntityType>
+        <EntityType Name="Tbl_FoodItemGroup">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="GroupName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Tbl_CustomizationFood" Relationship="amirangh_APISiteModel.FK_Tbl_CustomizationFood_Tbl_FoodItemGroup" FromRole="Tbl_FoodItemGroup" ToRole="Tbl_CustomizationFood" />
+        </EntityType>
+        <EntityType Name="Tbl_FoodOption">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FoodID" Type="Int32" Nullable="false" />
+          <Property Name="OptionID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Tbl_CustomizationFood" Relationship="amirangh_APISiteModel.FK_Tbl_FoodOption_Tbl_CustomizationFood" FromRole="Tbl_FoodOption" ToRole="Tbl_CustomizationFood" />
+        </EntityType>
+        <EntityType Name="Tbl_FoodReservationFactor">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ResID" Type="Int32" Nullable="false" />
+          <Property Name="UserEmail" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Date" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Time" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="OrderTyoe" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Tbl_FoodReservationFactorList" Relationship="amirangh_APISiteModel.FK_Tbl_FoodReservationFactorList_Tbl_FoodReservationFactor" FromRole="Tbl_FoodReservationFactor" ToRole="Tbl_FoodReservationFactorList" />
+        </EntityType>
+        <EntityType Name="Tbl_FoodReservationFactorList">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FoodID" Type="Int32" Nullable="false" />
+          <Property Name="FoodFactorID" Type="Int32" Nullable="false" />
+          <Property Name="FoodCount" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Tbl_FoodReservationFactor" Relationship="amirangh_APISiteModel.FK_Tbl_FoodReservationFactorList_Tbl_FoodReservationFactor" FromRole="Tbl_FoodReservationFactorList" ToRole="Tbl_FoodReservationFactor" />
+        </EntityType>
+        <EntityType Name="Tbl_Menu">
+          <Key>
+            <PropertyRef Name="menuID" />
+          </Key>
+          <Property Name="menuID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="menuTitle" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="menuType" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="menuImage" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="tab_products" Relationship="amirangh_APISiteModel.FK_tab_products_Tbl_Menu" FromRole="Tbl_Menu" ToRole="tab_products" />
+        </EntityType>
+        <EntityType Name="Tbl_OptionCart">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OptionID" Type="Int32" Nullable="false" />
+          <Property Name="ShoppingCartID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Tbl_CustomizationFood" Relationship="amirangh_APISiteModel.FK_Tbl_OptionCart_Tbl_CustomizationFood" FromRole="Tbl_OptionCart" ToRole="Tbl_CustomizationFood" />
+        </EntityType>
+        <EntityType Name="Tbl_OptionFactorItem">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="factorItemID" Type="Int32" Nullable="false" />
+          <Property Name="OptionItemID" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Tbl_OrderFactor">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ResID" Type="Int32" Nullable="false" />
+          <Property Name="OrderStatus" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Time" Type="Time" Nullable="false" Precision="0" />
+          <Property Name="UserEmail" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="AddressID" Type="Int32" Nullable="false" />
+          <Property Name="Comment" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Credit" Type="Boolean" />
+          <Property Name="Delivery" Type="Boolean" />
+          <Property Name="CreditAmount" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ReceveTime" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Tab_users" Relationship="amirangh_APISiteModel.FK_Tbl_OrderFactor_Tab_users" FromRole="Tbl_OrderFactor" ToRole="Tab_users" />
+          <NavigationProperty Name="Tbl_Address" Relationship="amirangh_APISiteModel.FK_Tbl_OrderFactor_Tbl_Address" FromRole="Tbl_OrderFactor" ToRole="Tbl_Address" />
+          <NavigationProperty Name="Tbl_Restaurant" Relationship="amirangh_APISiteModel.FK_Tbl_OrderFactor_Tbl_Restaurant" FromRole="Tbl_OrderFactor" ToRole="Tbl_Restaurant" />
+          <NavigationProperty Name="Tbl_OrderFactorItem" Relationship="amirangh_APISiteModel.FK_Tbl_OrderFactorItem_Tbl_OrderFactor" FromRole="Tbl_OrderFactor" ToRole="Tbl_OrderFactorItem" />
+        </EntityType>
+        <EntityType Name="Tbl_OrderFactorItem">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FactorID" Type="Int32" Nullable="false" />
+          <Property Name="FoodID" Type="Int32" Nullable="false" />
+          <Property Name="FoodCount" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="tab_products" Relationship="amirangh_APISiteModel.FK_Tbl_OrderFactorItem_tab_products" FromRole="Tbl_OrderFactorItem" ToRole="tab_products" />
+          <NavigationProperty Name="Tbl_OrderFactor" Relationship="amirangh_APISiteModel.FK_Tbl_OrderFactorItem_Tbl_OrderFactor" FromRole="Tbl_OrderFactorItem" ToRole="Tbl_OrderFactor" />
+        </EntityType>
+        <EntityType Name="Tbl_PacketCart">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ShoppingCartID" Type="Int32" Nullable="false" />
+          <Property Name="PacketID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Tbl_Packing" Relationship="amirangh_APISiteModel.FK_Tbl_PacketCart_Tbl_Packing" FromRole="Tbl_PacketCart" ToRole="Tbl_Packing" />
+        </EntityType>
+        <EntityType Name="Tbl_PacketingFactorItem">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="factorItemID" Type="Int32" Nullable="false" />
+          <Property Name="PacketingID" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Tbl_Packing">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="foodID" Type="Int32" Nullable="false" />
+          <Property Name="packingDescription" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="packingImage" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Tbl_PacketCart" Relationship="amirangh_APISiteModel.FK_Tbl_PacketCart_Tbl_Packing" FromRole="Tbl_Packing" ToRole="Tbl_PacketCart" />
+        </EntityType>
+        <EntityType Name="Tbl_ResPrintFactor">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="StartDate" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="EndDate" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ResUserName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ResName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TotalPrice" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Tbl_ResPrintItem">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="Counter" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="OrderDate" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="OrderTime" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="OrderPrice" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SNumber" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+        </EntityType>
+        <EntityType Name="Tbl_ResReservationFactor">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ResID" Type="Int32" Nullable="false" />
+          <Property Name="UserEmail" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="TableID" Type="Int32" Nullable="false" />
+          <Property Name="Date" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Time" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Tbl_ResReservationFactorItem">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FactorID" Type="Int32" Nullable="false" />
+          <Property Name="FoodID" Type="Int32" Nullable="false" />
+          <Property Name="FoodCount" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Tbl_ResTables">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ResID" Type="Int32" Nullable="false" />
+          <Property Name="TableNumber" Type="Int32" Nullable="false" />
+          <Property Name="TableCapacity" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Tbl_Restaurant">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="resName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="resAddress" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="resType" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="resAvgServiceTime" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="resPoints" Type="Double" Nullable="false" />
+          <Property Name="resLatLng" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="resPhone" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="resImage" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="userEmail" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="resEnable" Type="Boolean" Nullable="false" />
+          <Property Name="StudentRes" Type="Boolean" Nullable="false" />
+          <Property Name="ResBusinessLicense" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FoodAvragePrice" Type="Int32" Nullable="false" />
+          <Property Name="isGetOrder" Type="Boolean" Nullable="false" />
+          <Property Name="FirstTime" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SecendTime" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="tab_products" Relationship="amirangh_APISiteModel.FK_tab_products_Tbl_Restaurant" FromRole="Tbl_Restaurant" ToRole="tab_products" />
+          <NavigationProperty Name="Tab_users" Relationship="amirangh_APISiteModel.FK_Tbl_Restaurant_Tab_users" FromRole="Tbl_Restaurant" ToRole="Tab_users" />
+          <NavigationProperty Name="Tbl_OrderFactor" Relationship="amirangh_APISiteModel.FK_Tbl_OrderFactor_Tbl_Restaurant" FromRole="Tbl_Restaurant" ToRole="Tbl_OrderFactor" />
+        </EntityType>
+        <EntityType Name="Tbl_RestaurantImage">
+          <Key>
+            <PropertyRef Name="resImageID" />
+          </Key>
+          <Property Name="resImageID" Type="Int32" Nullable="false" />
+          <Property Name="resID" Type="Int32" Nullable="false" />
+          <Property Name="resImage" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Tbl_ShoppingCart">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FoodCount" Type="Int32" Nullable="false" />
+          <Property Name="FoodID" Type="Int32" Nullable="false" />
+          <Property Name="UserEmail" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="tab_products" Relationship="amirangh_APISiteModel.FK_Tbl_ShoppingCart_tab_products" FromRole="Tbl_ShoppingCart" ToRole="tab_products" />
+          <NavigationProperty Name="Tab_users" Relationship="amirangh_APISiteModel.FK_Tbl_ShoppingCart_Tab_users" FromRole="Tbl_ShoppingCart" ToRole="Tab_users" />
+        </EntityType>
+        <EntityType Name="Tbl_SweetOrderFactor">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ConfectioneryID" Type="Int32" Nullable="false" />
+          <Property Name="UserEmail" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="OrderStatus" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Time" Type="Time" Nullable="false" Precision="0" />
+          <Property Name="AddresID" Type="Int32" Nullable="false" />
+          <Property Name="Comment" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Weight" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Tbl_SweetOrderFactorItem">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SweetsID" Type="Int32" Nullable="false" />
+          <Property Name="FactorID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Tbl_Sweets" Relationship="amirangh_APISiteModel.FK_Tbl_SweetOrderFactorItem_Tbl_Sweets" FromRole="Tbl_SweetOrderFactorItem" ToRole="Tbl_Sweets" />
+        </EntityType>
+        <EntityType Name="Tbl_SweetReservationFactor">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ConfectionaryID" Type="Int32" Nullable="false" />
+          <Property Name="UserEmail" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Date" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Time" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="OrderTyoe" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="OrderWeight" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Tbl_SweetReservationFactorList" Relationship="amirangh_APISiteModel.FK_Tbl_SweetReservationFactorList_Tbl_SweetReservationFactor" FromRole="Tbl_SweetReservationFactor" ToRole="Tbl_SweetReservationFactorList" />
+        </EntityType>
+        <EntityType Name="Tbl_SweetReservationFactorList">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FoodID" Type="Int32" Nullable="false" />
+          <Property Name="FoodFactorID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Tbl_SweetReservationFactor" Relationship="amirangh_APISiteModel.FK_Tbl_SweetReservationFactorList_Tbl_SweetReservationFactor" FromRole="Tbl_SweetReservationFactorList" ToRole="Tbl_SweetReservationFactor" />
+        </EntityType>
+        <EntityType Name="Tbl_Sweets">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="S_Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="S_Type" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="S_Price" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="S_Description" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ConfectionaryID" Type="Int32" Nullable="false" />
+          <Property Name="SImage" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Tbl_Confectionary" Relationship="amirangh_APISiteModel.FK_Tbl_Sweets_Tbl_Confectionary" FromRole="Tbl_Sweets" ToRole="Tbl_Confectionary" />
+          <NavigationProperty Name="Tbl_SweetOrderFactorItem" Relationship="amirangh_APISiteModel.FK_Tbl_SweetOrderFactorItem_Tbl_Sweets" FromRole="Tbl_Sweets" ToRole="Tbl_SweetOrderFactorItem" />
+          <NavigationProperty Name="Tbl_SweetsComment" Relationship="amirangh_APISiteModel.FK_Tbl_SweetsComment_Tbl_Sweets" FromRole="Tbl_Sweets" ToRole="Tbl_SweetsComment" />
+          <NavigationProperty Name="Tbl_SweetsShoppingCart" Relationship="amirangh_APISiteModel.FK_Tbl_SweetsShoppingCart_Tbl_Sweets" FromRole="Tbl_Sweets" ToRole="Tbl_SweetsShoppingCart" />
+        </EntityType>
+        <EntityType Name="Tbl_SweetsComment">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SweetsID" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="IP" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Text" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="CommentDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="confirm" Type="Boolean" Nullable="false" />
+          <Property Name="read" Type="Boolean" Nullable="false" />
+          <Property Name="Phone" Type="String" Nullable="false" MaxLength="11" FixedLength="true" Unicode="true" />
+          <Property Name="Star" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Tbl_Sweets" Relationship="amirangh_APISiteModel.FK_Tbl_SweetsComment_Tbl_Sweets" FromRole="Tbl_SweetsComment" ToRole="Tbl_Sweets" />
+        </EntityType>
+        <EntityType Name="Tbl_SweetsShoppingCart">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SweetCount" Type="Int32" Nullable="false" />
+          <Property Name="SweetID" Type="Int32" Nullable="false" />
+          <Property Name="UserEmail" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Tbl_Sweets" Relationship="amirangh_APISiteModel.FK_Tbl_SweetsShoppingCart_Tbl_Sweets" FromRole="Tbl_SweetsShoppingCart" ToRole="Tbl_Sweets" />
+        </EntityType>
+        <EntityType Name="Tbl_UserImages">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ImageName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="UserEmail" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="ResID" Type="Int32" Nullable="false" />
+          <Property Name="Text" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Tbl_Loading">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_tab_products_Tab_users">
+          <End Type="amirangh_APISiteModel.Tab_users" Role="Tab_users" Multiplicity="1" />
+          <End Type="amirangh_APISiteModel.tab_products" Role="tab_products" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tab_users">
+              <PropertyRef Name="email" />
+            </Principal>
+            <Dependent Role="tab_products">
+              <PropertyRef Name="User_Email" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tab_products_Tbl_Menu">
+          <End Type="amirangh_APISiteModel.Tbl_Menu" Role="Tbl_Menu" Multiplicity="1" />
+          <End Type="amirangh_APISiteModel.tab_products" Role="tab_products" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tbl_Menu">
+              <PropertyRef Name="menuID" />
+            </Principal>
+            <Dependent Role="tab_products">
+              <PropertyRef Name="menuID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tab_products_Tbl_Restaurant">
+          <End Type="amirangh_APISiteModel.Tbl_Restaurant" Role="Tbl_Restaurant" Multiplicity="1" />
+          <End Type="amirangh_APISiteModel.tab_products" Role="tab_products" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tbl_Restaurant">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="tab_products">
+              <PropertyRef Name="resID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tbl_OrderFactorItem_tab_products">
+          <End Type="amirangh_APISiteModel.tab_products" Role="tab_products" Multiplicity="1" />
+          <End Type="amirangh_APISiteModel.Tbl_OrderFactorItem" Role="Tbl_OrderFactorItem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tab_products">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Tbl_OrderFactorItem">
+              <PropertyRef Name="FoodID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tbl_ShoppingCart_tab_products">
+          <End Type="amirangh_APISiteModel.tab_products" Role="tab_products" Multiplicity="1" />
+          <End Type="amirangh_APISiteModel.Tbl_ShoppingCart" Role="Tbl_ShoppingCart" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tab_products">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Tbl_ShoppingCart">
+              <PropertyRef Name="FoodID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tbl_Address_Tab_users">
+          <End Type="amirangh_APISiteModel.Tab_users" Role="Tab_users" Multiplicity="1" />
+          <End Type="amirangh_APISiteModel.Tbl_Address" Role="Tbl_Address" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tab_users">
+              <PropertyRef Name="email" />
+            </Principal>
+            <Dependent Role="Tbl_Address">
+              <PropertyRef Name="userEmail" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tbl_Credit_Tab_users">
+          <End Type="amirangh_APISiteModel.Tab_users" Role="Tab_users" Multiplicity="1" />
+          <End Type="amirangh_APISiteModel.Tbl_Credit" Role="Tbl_Credit" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tab_users">
+              <PropertyRef Name="email" />
+            </Principal>
+            <Dependent Role="Tbl_Credit">
+              <PropertyRef Name="UserEmail" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tbl_OrderFactor_Tab_users">
+          <End Type="amirangh_APISiteModel.Tab_users" Role="Tab_users" Multiplicity="1" />
+          <End Type="amirangh_APISiteModel.Tbl_OrderFactor" Role="Tbl_OrderFactor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tab_users">
+              <PropertyRef Name="email" />
+            </Principal>
+            <Dependent Role="Tbl_OrderFactor">
+              <PropertyRef Name="UserEmail" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tbl_Restaurant_Tab_users">
+          <End Type="amirangh_APISiteModel.Tab_users" Role="Tab_users" Multiplicity="1" />
+          <End Type="amirangh_APISiteModel.Tbl_Restaurant" Role="Tbl_Restaurant" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tab_users">
+              <PropertyRef Name="email" />
+            </Principal>
+            <Dependent Role="Tbl_Restaurant">
+              <PropertyRef Name="userEmail" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tbl_ShoppingCart_Tab_users">
+          <End Type="amirangh_APISiteModel.Tab_users" Role="Tab_users" Multiplicity="1" />
+          <End Type="amirangh_APISiteModel.Tbl_ShoppingCart" Role="Tbl_ShoppingCart" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tab_users">
+              <PropertyRef Name="email" />
+            </Principal>
+            <Dependent Role="Tbl_ShoppingCart">
+              <PropertyRef Name="UserEmail" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tbl_OrderFactor_Tbl_Address">
+          <End Type="amirangh_APISiteModel.Tbl_Address" Role="Tbl_Address" Multiplicity="1" />
+          <End Type="amirangh_APISiteModel.Tbl_OrderFactor" Role="Tbl_OrderFactor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tbl_Address">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Tbl_OrderFactor">
+              <PropertyRef Name="AddressID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tbl_AlbumCart_Tbl_FoodAlbume">
+          <End Type="amirangh_APISiteModel.Tbl_FoodAlbume" Role="Tbl_FoodAlbume" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="amirangh_APISiteModel.Tbl_AlbumCart" Role="Tbl_AlbumCart" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tbl_FoodAlbume">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Tbl_AlbumCart">
+              <PropertyRef Name="AlbumID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tbl_Sweets_Tbl_Confectionary">
+          <End Type="amirangh_APISiteModel.Tbl_Confectionary" Role="Tbl_Confectionary" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="amirangh_APISiteModel.Tbl_Sweets" Role="Tbl_Sweets" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tbl_Confectionary">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Tbl_Sweets">
+              <PropertyRef Name="ConfectionaryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tbl_CustomizationFood_Tbl_FoodItemGroup">
+          <End Type="amirangh_APISiteModel.Tbl_FoodItemGroup" Role="Tbl_FoodItemGroup" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="amirangh_APISiteModel.Tbl_CustomizationFood" Role="Tbl_CustomizationFood" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tbl_FoodItemGroup">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Tbl_CustomizationFood">
+              <PropertyRef Name="itemGroupID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tbl_FoodOption_Tbl_CustomizationFood">
+          <End Type="amirangh_APISiteModel.Tbl_CustomizationFood" Role="Tbl_CustomizationFood" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="amirangh_APISiteModel.Tbl_FoodOption" Role="Tbl_FoodOption" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tbl_CustomizationFood">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Tbl_FoodOption">
+              <PropertyRef Name="OptionID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tbl_OptionCart_Tbl_CustomizationFood">
+          <End Type="amirangh_APISiteModel.Tbl_CustomizationFood" Role="Tbl_CustomizationFood" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="amirangh_APISiteModel.Tbl_OptionCart" Role="Tbl_OptionCart" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tbl_CustomizationFood">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Tbl_OptionCart">
+              <PropertyRef Name="OptionID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tbl_FloristUserImage_Tbl_Floriest">
+          <End Type="amirangh_APISiteModel.Tbl_Floriest" Role="Tbl_Floriest" Multiplicity="1" />
+          <End Type="amirangh_APISiteModel.Tbl_FloristUserImage" Role="Tbl_FloristUserImage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tbl_Floriest">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Tbl_FloristUserImage">
+              <PropertyRef Name="FloristID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tbl_Flower_Tbl_Floriest">
+          <End Type="amirangh_APISiteModel.Tbl_Floriest" Role="Tbl_Floriest" Multiplicity="1" />
+          <End Type="amirangh_APISiteModel.Tbl_Flower" Role="Tbl_Flower" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tbl_Floriest">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Tbl_Flower">
+              <PropertyRef Name="FlorestID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tbl_FlowerOrder_Tbl_Floriest">
+          <End Type="amirangh_APISiteModel.Tbl_Floriest" Role="Tbl_Floriest" Multiplicity="1" />
+          <End Type="amirangh_APISiteModel.Tbl_FlowerOrder" Role="Tbl_FlowerOrder" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tbl_Floriest">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Tbl_FlowerOrder">
+              <PropertyRef Name="FloristID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tbl_FlowerReservationFactor_Tbl_Floriest">
+          <End Type="amirangh_APISiteModel.Tbl_Floriest" Role="Tbl_Floriest" Multiplicity="1" />
+          <End Type="amirangh_APISiteModel.Tbl_FlowerReservationFactor" Role="Tbl_FlowerReservationFactor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tbl_Floriest">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Tbl_FlowerReservationFactor">
+              <PropertyRef Name="FloristID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tbl_FlowerComment_Tbl_Flower">
+          <End Type="amirangh_APISiteModel.Tbl_Flower" Role="Tbl_Flower" Multiplicity="1" />
+          <End Type="amirangh_APISiteModel.Tbl_FlowerComment" Role="Tbl_FlowerComment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tbl_Flower">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Tbl_FlowerComment">
+              <PropertyRef Name="flowerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tbl_FlowerOrderItem_Tbl_Flower">
+          <End Type="amirangh_APISiteModel.Tbl_Flower" Role="Tbl_Flower" Multiplicity="1" />
+          <End Type="amirangh_APISiteModel.Tbl_FlowerOrderItem" Role="Tbl_FlowerOrderItem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tbl_Flower">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Tbl_FlowerOrderItem">
+              <PropertyRef Name="FlowerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tbl_FlowerReservationFactorList_Tbl_Flower">
+          <End Type="amirangh_APISiteModel.Tbl_Flower" Role="Tbl_Flower" Multiplicity="1" />
+          <End Type="amirangh_APISiteModel.Tbl_FlowerReservationFactorList" Role="Tbl_FlowerReservationFactorList" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tbl_Flower">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Tbl_FlowerReservationFactorList">
+              <PropertyRef Name="FoodID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tbl_FlowerShoppingCart_Tbl_Flower">
+          <End Type="amirangh_APISiteModel.Tbl_Flower" Role="Tbl_Flower" Multiplicity="1" />
+          <End Type="amirangh_APISiteModel.Tbl_FlowerShoppingCart" Role="Tbl_FlowerShoppingCart" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tbl_Flower">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Tbl_FlowerShoppingCart">
+              <PropertyRef Name="FlowerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tbl_FlowerReservationFactorList_Tbl_FlowerReservationFactor">
+          <End Type="amirangh_APISiteModel.Tbl_FlowerReservationFactor" Role="Tbl_FlowerReservationFactor" Multiplicity="1" />
+          <End Type="amirangh_APISiteModel.Tbl_FlowerReservationFactorList" Role="Tbl_FlowerReservationFactorList" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tbl_FlowerReservationFactor">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Tbl_FlowerReservationFactorList">
+              <PropertyRef Name="FoodFactorID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tbl_FoodReservationFactorList_Tbl_FoodReservationFactor">
+          <End Type="amirangh_APISiteModel.Tbl_FoodReservationFactor" Role="Tbl_FoodReservationFactor" Multiplicity="1" />
+          <End Type="amirangh_APISiteModel.Tbl_FoodReservationFactorList" Role="Tbl_FoodReservationFactorList" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tbl_FoodReservationFactor">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Tbl_FoodReservationFactorList">
+              <PropertyRef Name="FoodFactorID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tbl_OrderFactor_Tbl_Restaurant">
+          <End Type="amirangh_APISiteModel.Tbl_Restaurant" Role="Tbl_Restaurant" Multiplicity="1" />
+          <End Type="amirangh_APISiteModel.Tbl_OrderFactor" Role="Tbl_OrderFactor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tbl_Restaurant">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Tbl_OrderFactor">
+              <PropertyRef Name="ResID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tbl_OrderFactorItem_Tbl_OrderFactor">
+          <End Type="amirangh_APISiteModel.Tbl_OrderFactor" Role="Tbl_OrderFactor" Multiplicity="1" />
+          <End Type="amirangh_APISiteModel.Tbl_OrderFactorItem" Role="Tbl_OrderFactorItem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tbl_OrderFactor">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Tbl_OrderFactorItem">
+              <PropertyRef Name="FactorID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tbl_PacketCart_Tbl_Packing">
+          <End Type="amirangh_APISiteModel.Tbl_Packing" Role="Tbl_Packing" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="amirangh_APISiteModel.Tbl_PacketCart" Role="Tbl_PacketCart" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tbl_Packing">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Tbl_PacketCart">
+              <PropertyRef Name="PacketID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tbl_SweetOrderFactorItem_Tbl_Sweets">
+          <End Type="amirangh_APISiteModel.Tbl_Sweets" Role="Tbl_Sweets" Multiplicity="1" />
+          <End Type="amirangh_APISiteModel.Tbl_SweetOrderFactorItem" Role="Tbl_SweetOrderFactorItem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tbl_Sweets">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Tbl_SweetOrderFactorItem">
+              <PropertyRef Name="SweetsID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tbl_SweetReservationFactorList_Tbl_SweetReservationFactor">
+          <End Type="amirangh_APISiteModel.Tbl_SweetReservationFactor" Role="Tbl_SweetReservationFactor" Multiplicity="1" />
+          <End Type="amirangh_APISiteModel.Tbl_SweetReservationFactorList" Role="Tbl_SweetReservationFactorList" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tbl_SweetReservationFactor">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Tbl_SweetReservationFactorList">
+              <PropertyRef Name="FoodFactorID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tbl_SweetsComment_Tbl_Sweets">
+          <End Type="amirangh_APISiteModel.Tbl_Sweets" Role="Tbl_Sweets" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="amirangh_APISiteModel.Tbl_SweetsComment" Role="Tbl_SweetsComment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tbl_Sweets">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Tbl_SweetsComment">
+              <PropertyRef Name="SweetsID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tbl_SweetsShoppingCart_Tbl_Sweets">
+          <End Type="amirangh_APISiteModel.Tbl_Sweets" Role="Tbl_Sweets" Multiplicity="1" />
+          <End Type="amirangh_APISiteModel.Tbl_SweetsShoppingCart" Role="Tbl_SweetsShoppingCart" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tbl_Sweets">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Tbl_SweetsShoppingCart">
+              <PropertyRef Name="SweetID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Tbl_TempOrder">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserEmail" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="InTimeStatus" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CreditChecked" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Address" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Comment" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+        </EntityType>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="amirangh_APISiteModelStoreContainer" CdmEntityContainer="DataBase">
+          <EntitySetMapping Name="Tab_comments">
+            <EntityTypeMapping TypeName="amirangh_APISiteModel.Tab_comments">
+              <MappingFragment StoreEntitySet="Tab_comments">
+                <ScalarProperty Name="Stars" ColumnName="Stars" />
+                <ScalarProperty Name="phone" ColumnName="phone" />
+                <ScalarProperty Name="cm_dislike" ColumnName="cm_dislike" />
+                <ScalarProperty Name="cm_like" ColumnName="cm_like" />
+                <ScalarProperty Name="parent_id" ColumnName="parent_id" />
+                <ScalarProperty Name="read" ColumnName="read" />
+                <ScalarProperty Name="confirm" ColumnName="confirm" />
+                <ScalarProperty Name="data" ColumnName="data" />
+                <ScalarProperty Name="text" ColumnName="text" />
+                <ScalarProperty Name="ip" ColumnName="ip" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="product_id" ColumnName="product_id" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tab_mail">
+            <EntityTypeMapping TypeName="amirangh_APISiteModel.Tab_mail">
+              <MappingFragment StoreEntitySet="Tab_mail">
+                <ScalarProperty Name="phonenumber" ColumnName="phonenumber" />
+                <ScalarProperty Name="text" ColumnName="text" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tab_products">
+            <EntityTypeMapping TypeName="amirangh_APISiteModel.tab_products">
+              <MappingFragment StoreEntitySet="tab_products">
+                <ScalarProperty Name="OrderType" ColumnName="OrderType" />
+                <ScalarProperty Name="FoodCount" ColumnName="FoodCount" />
+                <ScalarProperty Name="bakingTime" ColumnName="bakingTime" />
+                <ScalarProperty Name="CreateMaterial" ColumnName="CreateMaterial" />
+                <ScalarProperty Name="foodImage" ColumnName="foodImage" />
+                <ScalarProperty Name="Recipe" ColumnName="Recipe" />
+                <ScalarProperty Name="menuID" ColumnName="menuID" />
+                <ScalarProperty Name="resID" ColumnName="resID" />
+                <ScalarProperty Name="User_Email" ColumnName="User_Email" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="cost" ColumnName="cost" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tab_users">
+            <EntityTypeMapping TypeName="amirangh_APISiteModel.Tab_users">
+              <MappingFragment StoreEntitySet="Tab_users">
+                <ScalarProperty Name="Family" ColumnName="Family" />
+                <ScalarProperty Name="SNumber" ColumnName="SNumber" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="activeCode" ColumnName="activeCode" />
+                <ScalarProperty Name="SMS_Enable" ColumnName="SMS_Enable" />
+                <ScalarProperty Name="IMEI" ColumnName="IMEI" />
+                <ScalarProperty Name="home_address" ColumnName="home_address" />
+                <ScalarProperty Name="sex" ColumnName="sex" />
+                <ScalarProperty Name="birth_date" ColumnName="birth_date" />
+                <ScalarProperty Name="home_phone" ColumnName="home_phone" />
+                <ScalarProperty Name="ncode" ColumnName="ncode" />
+                <ScalarProperty Name="mob_phone" ColumnName="mob_phone" />
+                <ScalarProperty Name="enable" ColumnName="enable" />
+                <ScalarProperty Name="image" ColumnName="image" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="access" ColumnName="access" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tbl_Address">
+            <EntityTypeMapping TypeName="amirangh_APISiteModel.Tbl_Address">
+              <MappingFragment StoreEntitySet="Tbl_Address">
+                <ScalarProperty Name="Unit" ColumnName="Unit" />
+                <ScalarProperty Name="Floor" ColumnName="Floor" />
+                <ScalarProperty Name="apartmentName" ColumnName="apartmentName" />
+                <ScalarProperty Name="addressLatLng" ColumnName="addressLatLng" />
+                <ScalarProperty Name="addressType" ColumnName="addressType" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="userEmail" ColumnName="userEmail" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tbl_AlbumCart">
+            <EntityTypeMapping TypeName="amirangh_APISiteModel.Tbl_AlbumCart">
+              <MappingFragment StoreEntitySet="Tbl_AlbumCart">
+                <ScalarProperty Name="ShoppingCartID" ColumnName="ShoppingCartID" />
+                <ScalarProperty Name="AlbumID" ColumnName="AlbumID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tbl_AlbumFactorItem">
+            <EntityTypeMapping TypeName="amirangh_APISiteModel.Tbl_AlbumFactorItem">
+              <MappingFragment StoreEntitySet="Tbl_AlbumFactorItem">
+                <ScalarProperty Name="AlbumID" ColumnName="AlbumID" />
+                <ScalarProperty Name="factorItemID" ColumnName="factorItemID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tbl_Banner">
+            <EntityTypeMapping TypeName="amirangh_APISiteModel.Tbl_Banner">
+              <MappingFragment StoreEntitySet="Tbl_Banner">
+                <ScalarProperty Name="Image" ColumnName="Image" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tbl_Confectionary">
+            <EntityTypeMapping TypeName="amirangh_APISiteModel.Tbl_Confectionary">
+              <MappingFragment StoreEntitySet="Tbl_Confectionary">
+                <ScalarProperty Name="CPoint" ColumnName="CPoint" />
+                <ScalarProperty Name="CEnable" ColumnName="CEnable" />
+                <ScalarProperty Name="CBusinessLicense" ColumnName="CBusinessLicense" />
+                <ScalarProperty Name="CImage" ColumnName="CImage" />
+                <ScalarProperty Name="userEmail" ColumnName="userEmail" />
+                <ScalarProperty Name="CLatLng" ColumnName="CLatLng" />
+                <ScalarProperty Name="CPhone" ColumnName="CPhone" />
+                <ScalarProperty Name="CAddress" ColumnName="CAddress" />
+                <ScalarProperty Name="CName" ColumnName="CName" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tbl_ConfectioneryUserImage">
+            <EntityTypeMapping TypeName="amirangh_APISiteModel.Tbl_ConfectioneryUserImage">
+              <MappingFragment StoreEntitySet="Tbl_ConfectioneryUserImage">
+                <ScalarProperty Name="Text" ColumnName="Text" />
+                <ScalarProperty Name="ConfectioneryID" ColumnName="ConfectioneryID" />
+                <ScalarProperty Name="UserEmail" ColumnName="UserEmail" />
+                <ScalarProperty Name="ImageName" ColumnName="ImageName" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tbl_Credit">
+            <EntityTypeMapping TypeName="amirangh_APISiteModel.Tbl_Credit">
+              <MappingFragment StoreEntitySet="Tbl_Credit">
+                <ScalarProperty Name="RootUser" ColumnName="RootUser" />
+                <ScalarProperty Name="TransactionCode" ColumnName="TransactionCode" />
+                <ScalarProperty Name="UserEmail" ColumnName="UserEmail" />
+                <ScalarProperty Name="Time" ColumnName="Time" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="Credit" ColumnName="Credit" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tbl_CustomizationFood">
+            <EntityTypeMapping TypeName="amirangh_APISiteModel.Tbl_CustomizationFood">
+              <MappingFragment StoreEntitySet="Tbl_CustomizationFood">
+                <ScalarProperty Name="Used" ColumnName="Used" />
+                <ScalarProperty Name="itemGroupID" ColumnName="itemGroupID" />
+                <ScalarProperty Name="itemPrice" ColumnName="itemPrice" />
+                <ScalarProperty Name="foodItem" ColumnName="foodItem" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tbl_Floriest">
+            <EntityTypeMapping TypeName="amirangh_APISiteModel.Tbl_Floriest">
+              <MappingFragment StoreEntitySet="Tbl_Floriest">
+                <ScalarProperty Name="FPoints" ColumnName="FPoints" />
+                <ScalarProperty Name="FEnable" ColumnName="FEnable" />
+                <ScalarProperty Name="FBusinessLicense" ColumnName="FBusinessLicense" />
+                <ScalarProperty Name="FPhone" ColumnName="FPhone" />
+                <ScalarProperty Name="FLatLng" ColumnName="FLatLng" />
+                <ScalarProperty Name="userEmail" ColumnName="userEmail" />
+                <ScalarProperty Name="FImage" ColumnName="FImage" />
+                <ScalarProperty Name="FAddress" ColumnName="FAddress" />
+                <ScalarProperty Name="FName" ColumnName="FName" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tbl_FloristUserImage">
+            <EntityTypeMapping TypeName="amirangh_APISiteModel.Tbl_FloristUserImage">
+              <MappingFragment StoreEntitySet="Tbl_FloristUserImage">
+                <ScalarProperty Name="Text" ColumnName="Text" />
+                <ScalarProperty Name="FloristID" ColumnName="FloristID" />
+                <ScalarProperty Name="UserEmail" ColumnName="UserEmail" />
+                <ScalarProperty Name="ImageName" ColumnName="ImageName" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tbl_Flower">
+            <EntityTypeMapping TypeName="amirangh_APISiteModel.Tbl_Flower">
+              <MappingFragment StoreEntitySet="Tbl_Flower">
+                <ScalarProperty Name="FlwImage" ColumnName="FlwImage" />
+                <ScalarProperty Name="FlwMaintenance" ColumnName="FlwMaintenance" />
+                <ScalarProperty Name="FlorestID" ColumnName="FlorestID" />
+                <ScalarProperty Name="FlwType" ColumnName="FlwType" />
+                <ScalarProperty Name="FlwColor" ColumnName="FlwColor" />
+                <ScalarProperty Name="FlwPrice" ColumnName="FlwPrice" />
+                <ScalarProperty Name="FlwName" ColumnName="FlwName" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tbl_FlowerComment">
+            <EntityTypeMapping TypeName="amirangh_APISiteModel.Tbl_FlowerComment">
+              <MappingFragment StoreEntitySet="Tbl_FlowerComment">
+                <ScalarProperty Name="Stars" ColumnName="Stars" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="read" ColumnName="read" />
+                <ScalarProperty Name="confirm" ColumnName="confirm" />
+                <ScalarProperty Name="commentDate" ColumnName="commentDate" />
+                <ScalarProperty Name="Text" ColumnName="Text" />
+                <ScalarProperty Name="IP" ColumnName="IP" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="flowerID" ColumnName="flowerID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tbl_FlowerOrder">
+            <EntityTypeMapping TypeName="amirangh_APISiteModel.Tbl_FlowerOrder">
+              <MappingFragment StoreEntitySet="Tbl_FlowerOrder">
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="Comment" ColumnName="Comment" />
+                <ScalarProperty Name="AddresID" ColumnName="AddresID" />
+                <ScalarProperty Name="Time" ColumnName="Time" />
+                <ScalarProperty Name="OrderStatus" ColumnName="OrderStatus" />
+                <ScalarProperty Name="UserEmail" ColumnName="UserEmail" />
+                <ScalarProperty Name="FloristID" ColumnName="FloristID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tbl_FlowerOrderItem">
+            <EntityTypeMapping TypeName="amirangh_APISiteModel.Tbl_FlowerOrderItem">
+              <MappingFragment StoreEntitySet="Tbl_FlowerOrderItem">
+                <ScalarProperty Name="FlowerCount" ColumnName="FlowerCount" />
+                <ScalarProperty Name="ParentID" ColumnName="ParentID" />
+                <ScalarProperty Name="FlowerID" ColumnName="FlowerID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tbl_FlowerReservationFactor">
+            <EntityTypeMapping TypeName="amirangh_APISiteModel.Tbl_FlowerReservationFactor">
+              <MappingFragment StoreEntitySet="Tbl_FlowerReservationFactor">
+                <ScalarProperty Name="OrderTyoe" ColumnName="OrderTyoe" />
+                <ScalarProperty Name="Time" ColumnName="Time" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="UserEmail" ColumnName="UserEmail" />
+                <ScalarProperty Name="FloristID" ColumnName="FloristID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tbl_FlowerReservationFactorList">
+            <EntityTypeMapping TypeName="amirangh_APISiteModel.Tbl_FlowerReservationFactorList">
+              <MappingFragment StoreEntitySet="Tbl_FlowerReservationFactorList">
+                <ScalarProperty Name="FoodCount" ColumnName="FoodCount" />
+                <ScalarProperty Name="FoodFactorID" ColumnName="FoodFactorID" />
+                <ScalarProperty Name="FoodID" ColumnName="FoodID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tbl_FlowerShoppingCart">
+            <EntityTypeMapping TypeName="amirangh_APISiteModel.Tbl_FlowerShoppingCart">
+              <MappingFragment StoreEntitySet="Tbl_FlowerShoppingCart">
+                <ScalarProperty Name="UserEmail" ColumnName="UserEmail" />
+                <ScalarProperty Name="FlowerID" ColumnName="FlowerID" />
+                <ScalarProperty Name="FlowerCount" ColumnName="FlowerCount" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tbl_FoodAlbume">
+            <EntityTypeMapping TypeName="amirangh_APISiteModel.Tbl_FoodAlbume">
+              <MappingFragment StoreEntitySet="Tbl_FoodAlbume">
+                <ScalarProperty Name="albumImage" ColumnName="albumImage" />
+                <ScalarProperty Name="albumName" ColumnName="albumName" />
+                <ScalarProperty Name="foodID" ColumnName="foodID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tbl_FoodItemGroup">
+            <EntityTypeMapping TypeName="amirangh_APISiteModel.Tbl_FoodItemGroup">
+              <MappingFragment StoreEntitySet="Tbl_FoodItemGroup">
+                <ScalarProperty Name="GroupName" ColumnName="GroupName" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tbl_FoodOption">
+            <EntityTypeMapping TypeName="amirangh_APISiteModel.Tbl_FoodOption">
+              <MappingFragment StoreEntitySet="Tbl_FoodOption">
+                <ScalarProperty Name="OptionID" ColumnName="OptionID" />
+                <ScalarProperty Name="FoodID" ColumnName="FoodID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tbl_FoodReservationFactor">
+            <EntityTypeMapping TypeName="amirangh_APISiteModel.Tbl_FoodReservationFactor">
+              <MappingFragment StoreEntitySet="Tbl_FoodReservationFactor">
+                <ScalarProperty Name="OrderTyoe" ColumnName="OrderTyoe" />
+                <ScalarProperty Name="Time" ColumnName="Time" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="UserEmail" ColumnName="UserEmail" />
+                <ScalarProperty Name="ResID" ColumnName="ResID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tbl_FoodReservationFactorList">
+            <EntityTypeMapping TypeName="amirangh_APISiteModel.Tbl_FoodReservationFactorList">
+              <MappingFragment StoreEntitySet="Tbl_FoodReservationFactorList">
+                <ScalarProperty Name="FoodCount" ColumnName="FoodCount" />
+                <ScalarProperty Name="FoodFactorID" ColumnName="FoodFactorID" />
+                <ScalarProperty Name="FoodID" ColumnName="FoodID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tbl_Menu">
+            <EntityTypeMapping TypeName="amirangh_APISiteModel.Tbl_Menu">
+              <MappingFragment StoreEntitySet="Tbl_Menu">
+                <ScalarProperty Name="menuImage" ColumnName="menuImage" />
+                <ScalarProperty Name="menuType" ColumnName="menuType" />
+                <ScalarProperty Name="menuTitle" ColumnName="menuTitle" />
+                <ScalarProperty Name="menuID" ColumnName="menuID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tbl_OptionCart">
+            <EntityTypeMapping TypeName="amirangh_APISiteModel.Tbl_OptionCart">
+              <MappingFragment StoreEntitySet="Tbl_OptionCart">
+                <ScalarProperty Name="ShoppingCartID" ColumnName="ShoppingCartID" />
+                <ScalarProperty Name="OptionID" ColumnName="OptionID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tbl_OptionFactorItem">
+            <EntityTypeMapping TypeName="amirangh_APISiteModel.Tbl_OptionFactorItem">
+              <MappingFragment StoreEntitySet="Tbl_OptionFactorItem">
+                <ScalarProperty Name="OptionItemID" ColumnName="OptionItemID" />
+                <ScalarProperty Name="factorItemID" ColumnName="factorItemID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tbl_OrderFactor">
+            <EntityTypeMapping TypeName="amirangh_APISiteModel.Tbl_OrderFactor">
+              <MappingFragment StoreEntitySet="Tbl_OrderFactor">
+                <ScalarProperty Name="ReceveTime" ColumnName="ReceveTime" />
+                <ScalarProperty Name="CreditAmount" ColumnName="CreditAmount" />
+                <ScalarProperty Name="Delivery" ColumnName="Delivery" />
+                <ScalarProperty Name="Credit" ColumnName="Credit" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="Comment" ColumnName="Comment" />
+                <ScalarProperty Name="AddressID" ColumnName="AddressID" />
+                <ScalarProperty Name="UserEmail" ColumnName="UserEmail" />
+                <ScalarProperty Name="Time" ColumnName="Time" />
+                <ScalarProperty Name="OrderStatus" ColumnName="OrderStatus" />
+                <ScalarProperty Name="ResID" ColumnName="ResID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tbl_OrderFactorItem">
+            <EntityTypeMapping TypeName="amirangh_APISiteModel.Tbl_OrderFactorItem">
+              <MappingFragment StoreEntitySet="Tbl_OrderFactorItem">
+                <ScalarProperty Name="FoodCount" ColumnName="FoodCount" />
+                <ScalarProperty Name="FoodID" ColumnName="FoodID" />
+                <ScalarProperty Name="FactorID" ColumnName="FactorID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tbl_PacketCart">
+            <EntityTypeMapping TypeName="amirangh_APISiteModel.Tbl_PacketCart">
+              <MappingFragment StoreEntitySet="Tbl_PacketCart">
+                <ScalarProperty Name="PacketID" ColumnName="PacketID" />
+                <ScalarProperty Name="ShoppingCartID" ColumnName="ShoppingCartID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tbl_PacketingFactorItem">
+            <EntityTypeMapping TypeName="amirangh_APISiteModel.Tbl_PacketingFactorItem">
+              <MappingFragment StoreEntitySet="Tbl_PacketingFactorItem">
+                <ScalarProperty Name="PacketingID" ColumnName="PacketingID" />
+                <ScalarProperty Name="factorItemID" ColumnName="factorItemID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tbl_Packing">
+            <EntityTypeMapping TypeName="amirangh_APISiteModel.Tbl_Packing">
+              <MappingFragment StoreEntitySet="Tbl_Packing">
+                <ScalarProperty Name="packingImage" ColumnName="packingImage" />
+                <ScalarProperty Name="packingDescription" ColumnName="packingDescription" />
+                <ScalarProperty Name="foodID" ColumnName="foodID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tbl_ResPrintFactor">
+            <EntityTypeMapping TypeName="amirangh_APISiteModel.Tbl_ResPrintFactor">
+              <MappingFragment StoreEntitySet="Tbl_ResPrintFactor">
+                <ScalarProperty Name="TotalPrice" ColumnName="TotalPrice" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="ResName" ColumnName="ResName" />
+                <ScalarProperty Name="ResUserName" ColumnName="ResUserName" />
+                <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+                <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tbl_ResPrintItem">
+            <EntityTypeMapping TypeName="amirangh_APISiteModel.Tbl_ResPrintItem">
+              <MappingFragment StoreEntitySet="Tbl_ResPrintItem">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="SNumber" ColumnName="SNumber" />
+                <ScalarProperty Name="OrderPrice" ColumnName="OrderPrice" />
+                <ScalarProperty Name="OrderTime" ColumnName="OrderTime" />
+                <ScalarProperty Name="OrderDate" ColumnName="OrderDate" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Counter" ColumnName="Counter" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tbl_ResReservationFactor">
+            <EntityTypeMapping TypeName="amirangh_APISiteModel.Tbl_ResReservationFactor">
+              <MappingFragment StoreEntitySet="Tbl_ResReservationFactor">
+                <ScalarProperty Name="Time" ColumnName="Time" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="TableID" ColumnName="TableID" />
+                <ScalarProperty Name="UserEmail" ColumnName="UserEmail" />
+                <ScalarProperty Name="ResID" ColumnName="ResID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tbl_ResReservationFactorItem">
+            <EntityTypeMapping TypeName="amirangh_APISiteModel.Tbl_ResReservationFactorItem">
+              <MappingFragment StoreEntitySet="Tbl_ResReservationFactorItem">
+                <ScalarProperty Name="FoodCount" ColumnName="FoodCount" />
+                <ScalarProperty Name="FoodID" ColumnName="FoodID" />
+                <ScalarProperty Name="FactorID" ColumnName="FactorID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tbl_ResTables">
+            <EntityTypeMapping TypeName="amirangh_APISiteModel.Tbl_ResTables">
+              <MappingFragment StoreEntitySet="Tbl_ResTables">
+                <ScalarProperty Name="TableCapacity" ColumnName="TableCapacity" />
+                <ScalarProperty Name="TableNumber" ColumnName="TableNumber" />
+                <ScalarProperty Name="ResID" ColumnName="ResID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tbl_Restaurant">
+            <EntityTypeMapping TypeName="amirangh_APISiteModel.Tbl_Restaurant">
+              <MappingFragment StoreEntitySet="Tbl_Restaurant">
+                <ScalarProperty Name="SecendTime" ColumnName="SecendTime" />
+                <ScalarProperty Name="FirstTime" ColumnName="FirstTime" />
+                <ScalarProperty Name="isGetOrder" ColumnName="isGetOrder" />
+                <ScalarProperty Name="FoodAvragePrice" ColumnName="FoodAvragePrice" />
+                <ScalarProperty Name="ResBusinessLicense" ColumnName="ResBusinessLicense" />
+                <ScalarProperty Name="StudentRes" ColumnName="StudentRes" />
+                <ScalarProperty Name="resEnable" ColumnName="resEnable" />
+                <ScalarProperty Name="userEmail" ColumnName="userEmail" />
+                <ScalarProperty Name="resImage" ColumnName="resImage" />
+                <ScalarProperty Name="resPhone" ColumnName="resPhone" />
+                <ScalarProperty Name="resLatLng" ColumnName="resLatLng" />
+                <ScalarProperty Name="resPoints" ColumnName="resPoints" />
+                <ScalarProperty Name="resAvgServiceTime" ColumnName="resAvgServiceTime" />
+                <ScalarProperty Name="resType" ColumnName="resType" />
+                <ScalarProperty Name="resAddress" ColumnName="resAddress" />
+                <ScalarProperty Name="resName" ColumnName="resName" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tbl_RestaurantImage">
+            <EntityTypeMapping TypeName="amirangh_APISiteModel.Tbl_RestaurantImage">
+              <MappingFragment StoreEntitySet="Tbl_RestaurantImage">
+                <ScalarProperty Name="resImage" ColumnName="resImage" />
+                <ScalarProperty Name="resID" ColumnName="resID" />
+                <ScalarProperty Name="resImageID" ColumnName="resImageID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tbl_ShoppingCart">
+            <EntityTypeMapping TypeName="amirangh_APISiteModel.Tbl_ShoppingCart">
+              <MappingFragment StoreEntitySet="Tbl_ShoppingCart">
+                <ScalarProperty Name="UserEmail" ColumnName="UserEmail" />
+                <ScalarProperty Name="FoodID" ColumnName="FoodID" />
+                <ScalarProperty Name="FoodCount" ColumnName="FoodCount" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tbl_SweetOrderFactor">
+            <EntityTypeMapping TypeName="amirangh_APISiteModel.Tbl_SweetOrderFactor">
+              <MappingFragment StoreEntitySet="Tbl_SweetOrderFactor">
+                <ScalarProperty Name="Weight" ColumnName="Weight" />
+                <ScalarProperty Name="Comment" ColumnName="Comment" />
+                <ScalarProperty Name="AddresID" ColumnName="AddresID" />
+                <ScalarProperty Name="Time" ColumnName="Time" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="OrderStatus" ColumnName="OrderStatus" />
+                <ScalarProperty Name="UserEmail" ColumnName="UserEmail" />
+                <ScalarProperty Name="ConfectioneryID" ColumnName="ConfectioneryID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tbl_SweetOrderFactorItem">
+            <EntityTypeMapping TypeName="amirangh_APISiteModel.Tbl_SweetOrderFactorItem">
+              <MappingFragment StoreEntitySet="Tbl_SweetOrderFactorItem">
+                <ScalarProperty Name="FactorID" ColumnName="FactorID" />
+                <ScalarProperty Name="SweetsID" ColumnName="SweetsID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tbl_SweetReservationFactor">
+            <EntityTypeMapping TypeName="amirangh_APISiteModel.Tbl_SweetReservationFactor">
+              <MappingFragment StoreEntitySet="Tbl_SweetReservationFactor">
+                <ScalarProperty Name="OrderWeight" ColumnName="OrderWeight" />
+                <ScalarProperty Name="OrderTyoe" ColumnName="OrderTyoe" />
+                <ScalarProperty Name="Time" ColumnName="Time" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="UserEmail" ColumnName="UserEmail" />
+                <ScalarProperty Name="ConfectionaryID" ColumnName="ConfectionaryID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tbl_SweetReservationFactorList">
+            <EntityTypeMapping TypeName="amirangh_APISiteModel.Tbl_SweetReservationFactorList">
+              <MappingFragment StoreEntitySet="Tbl_SweetReservationFactorList">
+                <ScalarProperty Name="FoodFactorID" ColumnName="FoodFactorID" />
+                <ScalarProperty Name="FoodID" ColumnName="FoodID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tbl_Sweets">
+            <EntityTypeMapping TypeName="amirangh_APISiteModel.Tbl_Sweets">
+              <MappingFragment StoreEntitySet="Tbl_Sweets">
+                <ScalarProperty Name="SImage" ColumnName="SImage" />
+                <ScalarProperty Name="ConfectionaryID" ColumnName="ConfectionaryID" />
+                <ScalarProperty Name="S_Description" ColumnName="S_Description" />
+                <ScalarProperty Name="S_Price" ColumnName="S_Price" />
+                <ScalarProperty Name="S_Type" ColumnName="S_Type" />
+                <ScalarProperty Name="S_Name" ColumnName="S_Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tbl_SweetsComment">
+            <EntityTypeMapping TypeName="amirangh_APISiteModel.Tbl_SweetsComment">
+              <MappingFragment StoreEntitySet="Tbl_SweetsComment">
+                <ScalarProperty Name="Star" ColumnName="Star" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="read" ColumnName="read" />
+                <ScalarProperty Name="confirm" ColumnName="confirm" />
+                <ScalarProperty Name="CommentDate" ColumnName="CommentDate" />
+                <ScalarProperty Name="Text" ColumnName="Text" />
+                <ScalarProperty Name="IP" ColumnName="IP" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="SweetsID" ColumnName="SweetsID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tbl_SweetsShoppingCart">
+            <EntityTypeMapping TypeName="amirangh_APISiteModel.Tbl_SweetsShoppingCart">
+              <MappingFragment StoreEntitySet="Tbl_SweetsShoppingCart">
+                <ScalarProperty Name="UserEmail" ColumnName="UserEmail" />
+                <ScalarProperty Name="SweetID" ColumnName="SweetID" />
+                <ScalarProperty Name="SweetCount" ColumnName="SweetCount" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tbl_UserImages">
+            <EntityTypeMapping TypeName="amirangh_APISiteModel.Tbl_UserImages">
+              <MappingFragment StoreEntitySet="Tbl_UserImages">
+                <ScalarProperty Name="Text" ColumnName="Text" />
+                <ScalarProperty Name="ResID" ColumnName="ResID" />
+                <ScalarProperty Name="UserEmail" ColumnName="UserEmail" />
+                <ScalarProperty Name="ImageName" ColumnName="ImageName" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tbl_Loading">
+            <EntityTypeMapping TypeName="amirangh_APISiteModel.Tbl_Loading">
+              <MappingFragment StoreEntitySet="Tbl_Loading">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tbl_TempOrder">
+            <EntityTypeMapping TypeName="amirangh_APISiteModel.Tbl_TempOrder">
+              <MappingFragment StoreEntitySet="Tbl_TempOrder">
+                <ScalarProperty Name="Comment" ColumnName="Comment" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="CreditChecked" ColumnName="CreditChecked" />
+                <ScalarProperty Name="InTimeStatus" ColumnName="InTimeStatus" />
+                <ScalarProperty Name="UserEmail" ColumnName="UserEmail" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

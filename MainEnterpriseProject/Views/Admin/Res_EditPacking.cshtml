@@ -1,0 +1,93 @@
+﻿@model MainEnterpriseProject.Models.Domain.Tbl_Packing
+@{
+    ViewBag.Title = "Res_EditPacking";
+    Layout = "~/Views/Shared/_Admin.cshtml";
+    MainEnterpriseProject.Models.Repository.FoodRepository rep_food = new MainEnterpriseProject.Models.Repository.FoodRepository();
+}
+
+<form method="post" enctype="multipart/form-data">
+    <div class="row">
+        <div class="container">
+            <div class="col-md-4">
+                <div class="form-group">
+                    <div class="col-md-11">
+                        <div class="input-group">
+                            <span class="input-group-addon">
+                                <i class="fa fa-image"></i>
+                            </span>
+                            <button class="btn btn-success form-control1" style="border: 1px solid #ccc;" onclick="document.getElementById('file').click(); return false;">انتخاب عکس</button>
+                            <input oninvalid="setCustomValidity('عکس را انتخاب نمایید')" oninput="setCustomValidity('')" type="file" class="form-control1" id="file" name="file" style="direction:rtl; color:transparent; display:none;">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <div class="col-md-11">
+                        <div class="input-group">
+                            <span class="input-group-addon">
+                                <i class="fa fa-list"></i>
+                            </span>
+                            <select id="foodID" name="foodID" required oninvalid="setCustomValidity('نام غذا را انتخاب نمایید')" oninput="setCustomValidity('')" class="form-control1" style="direction:rtl;">
+
+                                <option value="@rep_food.GetResFood(Model.foodID).id">@rep_food.GetResFood(Model.foodID).name</option>
+                                @foreach (var item in rep_food.GetResFoodlist(Session["email"].ToString()))
+                                {
+                                    <option value="@item.id">@item.name</option>
+                                }
+
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <div class="col-md-11">
+                        <div class="input-group">
+                            <span class="input-group-addon">
+                                <i class="fa fa-check"></i>
+                            </span>
+                            <input required oninvalid="setCustomValidity('نام بسته بندی را وارد نمایید')" oninput="setCustomValidity('')" name="packingDescription" type="text" value="@Model.packingDescription" class="form-control1" id="packingDescription" placeholder=" نام بسته بندی " style="direction:rtl;" autocomplete="off">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="container">
+            <div class="col-md-4">
+                <div class="form-group">
+                    <div class="col-md-11">
+                        <div class="input-group">
+                            <span class="input-group-addon">
+                                <i class="fa fa-save"></i>
+                            </span>
+                            <input required type="submit" name="SaveChange" id="SaveChange" class="form-control1" value="ذخیره" style="direction:rtl; background-color:lightcyan">
+                            <span class="input-group-addon">
+                                <i class="fa fa-save"></i>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+
+            </div>
+            <div class="col-md-4">
+
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+</form>
+
+

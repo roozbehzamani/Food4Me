@@ -1,0 +1,218 @@
+﻿
+@{
+    ViewBag.Title = "TopAdmin_FinancialManager";
+    Layout = "~/Views/Shared/_Admin.cshtml";
+    List<string> lstWeek = new List<string>();
+    List<DateTime> lstDateTime = new List<DateTime>();
+    MainEnterpriseProject.Models.Repository.UserRepository userRep = new MainEnterpriseProject.Models.Repository.UserRepository();
+
+    lstWeek.Add("شنبه");
+    lstWeek.Add("یکشنبه");
+    lstWeek.Add("دوشنبه");
+    lstWeek.Add("سه شنبه");
+    lstWeek.Add("چهارشنبه");
+    lstWeek.Add("پنج شنبه");
+    lstWeek.Add("جمعه");
+
+    int d = (int)System.DateTime.Now.DayOfWeek;
+    DateTime dt = DateTime.Now;
+    if (d == 0)
+    {
+        d = 1;
+        lstDateTime.Add(dt.AddDays(-1));
+        lstDateTime.Add(dt);
+    }
+    else if (d == 1)
+    {
+        d = 2;
+        lstDateTime.Add(dt.AddDays(-2));
+        lstDateTime.Add(dt.AddDays(-1));
+        lstDateTime.Add(dt);
+    }
+    else if (d == 2)
+    {
+        d = 3;
+        lstDateTime.Add(dt.AddDays(-3));
+        lstDateTime.Add(dt.AddDays(-2));
+        lstDateTime.Add(dt.AddDays(-1));
+        lstDateTime.Add(dt);
+    }
+    else if (d == 3)
+    {
+        d = 4;
+        lstDateTime.Add(dt.AddDays(-4));
+        lstDateTime.Add(dt.AddDays(-3));
+        lstDateTime.Add(dt.AddDays(-2));
+        lstDateTime.Add(dt.AddDays(-1));
+        lstDateTime.Add(dt);
+    }
+    else if (d == 4)
+    {
+        d = 5;
+        lstDateTime.Add(dt.AddDays(-5));
+        lstDateTime.Add(dt.AddDays(-4));
+        lstDateTime.Add(dt.AddDays(-3));
+        lstDateTime.Add(dt.AddDays(-2));
+        lstDateTime.Add(dt.AddDays(-1));
+        lstDateTime.Add(dt);
+    }
+    else if (d == 5)
+    {
+        d = 6;
+        lstDateTime.Add(dt.AddDays(-6));
+        lstDateTime.Add(dt.AddDays(-5));
+        lstDateTime.Add(dt.AddDays(-4));
+        lstDateTime.Add(dt.AddDays(-3));
+        lstDateTime.Add(dt.AddDays(-2));
+        lstDateTime.Add(dt.AddDays(-1));
+        lstDateTime.Add(dt);
+    }
+    else if (d == 6)
+    {
+        d = 7;
+        lstDateTime.Add(dt);
+    }
+}
+
+<link href="~/Content/css/manager-icon-button.css" rel="stylesheet" />
+<link href="~/Content/css/popup_style.css" rel="stylesheet" />
+<link href="~/Content/css/font-awesome.css" rel="stylesheet" />
+<style>
+    .lr-sticky-header {
+        color: white;
+        background: lightblue;
+        transition: all 0.6s;
+    }
+
+    #scrollPanel {
+        height: 500px;
+        overflow-y: auto;
+    }
+
+    .table > thead > tr > th {
+        text-align: center;
+        vertical-align: middle;
+    }
+
+    .table > tbody > tr > td {
+        text-align: center;
+    }
+</style>
+
+
+<div class="container">
+    <div class="row">
+
+        <div class="col-md-4">
+
+        </div>
+
+        <div class="col-md-4">
+            <div class="form-group">
+                <div class="col-md-11">
+                    <div class="input-group">
+                        <span class="input-group-addon">
+                            <i class="fa fa-list"></i>
+                        </span>
+                        <select class="form-control1" style="direction:rtl;" id="showType" name="showType">
+                            <option>هفتگی</option>
+                            <option>روزانه</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+
+        </div>
+
+    </div>
+    <div class="row" style="width:95%;word-break: keep-all;">
+        <div style="direction:rtl;">
+            <table class="table table-bordered">
+                <thead style="z-index: 1;">
+                    <tr>
+                        <th class="headerSort headerSortDown" tabindex="0" role="columnheader button" title="Sort descending">
+                            شماره
+                        </th>
+                        <th width="100" class="headerSort" tabindex="0" role="columnheader button" title="Sort ascending">عنوان</th>
+                        <th width="200" class="headerSort" tabindex="0" role="columnheader button" title="Sort ascending">مجموع اعتبار دانشجویان </th>
+                        <th width="300" class="headerSort" tabindex="0" role="columnheader button" title="Sort ascending">مجموع پرداختی دانشجویان</th>
+                        <th width="200" class="headerSort" tabindex="0" role="columnheader button" title="Sort ascending">مجموع بدهکاری کل</th>
+
+                    </tr>
+                </thead>
+                <tbody id="MainBody">
+                    @for (int i = 0; i <= d; i++)
+                    {
+                    <tr>
+                        <td><span style="font-family: monospace, monospace;">@(i + 1)</span></td>
+                        <td>@lstWeek.ElementAt(i)</td>
+                        <td>@(userRep.DailyCredit(lstDateTime.ElementAt(i)))</td>
+                        <td>@(userRep.Date(lstDateTime.ElementAt(i)))</td>
+                        <td>@(userRep.Date(lstDateTime.ElementAt(i)) - userRep.DailyCredit(lstDateTime.ElementAt(i)))</td>
+                    </tr>
+                    }
+                    @for (int i = d + 1; i < 7; i++)
+                    {
+                        <tr>
+                            <td><span style="font-family: monospace, monospace;">@(i + 1)</span></td>
+                            <td>@lstWeek.ElementAt(i)</td>
+                            <td>-------</td>
+                            <td>-------</td>
+                            <td>-------</td>
+                        </tr>
+                    }
+
+
+                </tbody>
+                <tfoot></tfoot>
+            </table>
+        </div>
+    </div>
+</div>
+
+<script>
+    alert("@d.ToString()");
+</script>
+
+
+
+<script src="~/Scripts/lrStickyHeader.js"></script>
+<script>
+    var tables = document.getElementsByTagName('table');
+    lrStickyHeader(tables[0]);
+    lrStickyHeader(tables[1]);
+    lrStickyHeader(tables[2], { parent: document.getElementById('scrollPanel') });
+</script>
+
+<script>
+    var counter = 0;
+    $("#showType").on('change', function (e) {
+        var type = $('select[name=showType]').val();
+        alert(type);
+        if (type == "روزانه") {
+            
+            $.ajax({
+            type: 'GET',
+            dataType: 'Json',
+            url: '@Url.Action("GetAllTransactions", "Admin")',
+            error: function (err) {
+                alert(err.status);
+            }
+        }).done(function (result) {
+            var Text = "";
+            $.each(result, function (index, val) {
+                counter++;
+                alert(counter);
+                Text += "<tr><td><span style='font-family: monospace, monospace;'>" + counter + "</span></td><td>" + val.NowDate + "</td><td>" + val.TotalCredit + "</td><td>" + TotalOrder +"</td><td>---</td></tr>";
+            })
+            $('#MainBody').html(Text);
+        });
+        } else {
+            window.location.reload(true);
+        }
+
+    });
+</script>

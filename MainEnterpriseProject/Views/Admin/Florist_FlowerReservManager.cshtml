@@ -1,0 +1,206 @@
+﻿@model List<MainEnterpriseProject.Models.Domain.Tbl_FlowerReservationFactor>
+@{
+    ViewBag.Title = "FlowerReservManager";
+    Layout = "~/Views/Shared/_Admin.cshtml";
+    MainEnterpriseProject.Models.Repository.FlowerRepository reserve = new MainEnterpriseProject.Models.Repository.FlowerRepository();
+    MainEnterpriseProject.Models.Repository.UserRepository rep_user = new MainEnterpriseProject.Models.Repository.UserRepository();
+    int counter = 1;
+    int listfoodcounter = 10000;
+}
+
+<link href="~/Content/css/manager-icon-button.css" rel="stylesheet" />
+<link href="~/Content/css/popup_style.css" rel="stylesheet" />
+<style>
+    .lr-sticky-header {
+        color: white;
+        background: lightblue;
+        transition: all 0.6s;
+    }
+
+    #scrollPanel {
+        height: 500px;
+        overflow-y: auto;
+    }
+
+    .table > thead > tr > th {
+        text-align: center;
+    }
+
+    .table > tbody > tr > td {
+        text-align: center;
+    }
+</style>
+
+
+<div class="container">
+    <div class="row">
+        <div style="width:95%; direction:rtl;">
+            <table class="table table-bordered">
+                <thead style="z-index: 1;">
+                    <tr>
+                        <th class="headerSort headerSortDown" tabindex="0" role="columnheader button" title="Sort descending">
+                            شماره
+                        </th>
+                        <th width="170" class="headerSort" tabindex="0" role="columnheader button" title="Sort ascending">نام </th>
+                        <th width="110" class="headerSort" tabindex="0" role="columnheader button" title="Sort ascending">نوع سفارش</th>
+                        <th width="70" class="headerSort" tabindex="0" role="columnheader button" title="Sort ascending">ساعت</th>
+                        <th width="120" class="headerSort" tabindex="0" role="columnheader button" title="Sort ascending">وضعیت</th>
+                        <th width="110" class="headerSort" tabindex="0" role="columnheader button" title="Sort ascending">شماره تماس</th>
+                        <th width="220" class="headerSort" tabindex="0" role="columnheader button" title="Sort ascending">ادرس</th>
+
+                        <th class="" title=""></th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td><span style="font-family: monospace, monospace;">@counter</span></td>
+                            <td>@rep_user.GetSingleUserInfo(item.UserEmail).name</td>
+                            <td>@item.OrderTyoe</td>
+                            <td>@item.Time</td>
+                            <td>درحال ارسال</td>
+                            <td>@rep_user.GetSingleUserInfo(item.UserEmail).mob_phone</td>
+                            <td>@rep_user.GetSingleUserInfo(item.UserEmail).home_address.Substring(0, 10)<a data-toggle="modal" data-target="#@counter.ToString()">{ادامه مطلب}</a> </td>
+
+                            <td>
+                                <div class="col-md-3">
+
+                                </div>
+                                <div class="col-md-2">
+                                    <div class="social_lock">
+                                        <div class="social_case3"></div>
+                                        <div class="mk"><a data-toggle="modal" data-target="#@listfoodcounter.ToString()"><i class="fa fa-list vmk1 vm" title="لیست غذا"></i></a></div>
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <div class="social_lock">
+                                        <div class="social_case3"></div>
+                                        <div class="mk"><i class="fa fa-remove vmk1 vm" title="رد"></i></div>
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <div class="social_lock">
+                                        <div class="social_case3"></div>
+                                        <div class="mk"><i class="fa fa-sign-in vmk1 vm" title="تایید"></i></div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+
+                                </div>
+                            </td>
+                        </tr>
+                        <!--MODAL ADDRESS-->
+                        <div class="modal fade" id="@counter.ToString()" role="dialog" aria-labelledby="#@counter.ToString()" tabindex="-1" aria-hidden="true">
+                            <div class="modal-dialog" style=" width: 38% !important; min-width:360px; margin:5em auto 0 !important">
+                                <div style="background:rgba(255,255,255,.28);height:18px;position:absolute;border-radius:10px;border:none;right:3%;left:3%;top:-8px;"></div>
+                                <div style="background:rgba(255,255,255,.08);height:33px;position:absolute;border-radius:10px;border:none;right:5%;left:5%;top:-14px;"></div>
+                                <div class="modal-content" style="border-radius:25px!important;">
+                                    <div class="modal-body">
+                                        <div style="min-width: 360px;">
+                                            <br>
+
+                                            <div class="span3 well">
+                                                @rep_user.GetSingleUserInfo(item.UserEmail).home_address
+                                            </div>
+
+
+                                        </div>
+                                    </div>
+
+                                </div>
+
+
+                            </div>
+                        </div>
+                        <!--END OF MODAL ADDRESS-->
+
+                        <!--MODAL LISTFLOWER-->
+                        <div class="modal fade" id="@listfoodcounter.ToString()" role="dialog" aria-labelledby="#@listfoodcounter.ToString()" tabindex="-1" aria-hidden="true">
+                            <div class="modal-dialog" style=" width: 38% !important; min-width:360px; margin:5em auto 0 !important">
+                                <div style="background:rgba(255,255,255,.28);height:18px;position:absolute;border-radius:10px;border:none;right:3%;left:3%;top:-8px;"></div>
+                                <div style="background:rgba(255,255,255,.08);height:33px;position:absolute;border-radius:10px;border:none;right:5%;left:5%;top:-14px;"></div>
+                                <div class="modal-content" style="border-radius:25px!important;">
+                                    <div class="modal-body">
+                                        <div style="min-width: 360px; ">
+                                            <div class="row">
+
+
+
+                                                <div class="col-md-5" style="text-align:center;">
+
+                                                    تعداد
+                                                </div>
+                                                <div class="col-md-6" style="text-align:center;">
+                                                    نام
+                                                </div>
+                                                <div class="col-md-1">
+
+                                                </div>
+                                            </div>
+                                            <br />
+
+                                            @{
+                                                int foodcounter = 1;
+                                            }
+                                            @foreach (var item2 in reserve.GetFlowerReserv(item.ID))
+                                            {
+
+                                                <div class="row">
+
+
+                                                    <div class="col-md-5" style="text-align:center;">
+                                                        <div class="span3 well">
+                                                            @item2.FoodCount
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6" style="text-align:center;">
+                                                        <div class="span3 well">
+                                                            @item2.Tbl_Flower.FlwName
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-1" style="text-align:center;">
+                                                        <p style="text-align:center;padding:8px;">@foodcounter</p>
+                                                    </div>
+
+                                                </div>
+
+                                                foodcounter++;
+                                            }
+
+
+                                        </div>
+                                    </div>
+                                </div>
+
+
+
+
+                            </div>
+
+
+
+                        </div>
+                        <!--END OF MODAL LISTFLOWER-->
+
+                        counter++;
+                        listfoodcounter++;
+                    }
+
+                </tbody>
+                <tfoot></tfoot>
+            </table>
+        </div>
+    </div>
+</div>
+
+
+<script src="~/Scripts/lrStickyHeader.js"></script>
+<script>
+    var tables = document.getElementsByTagName('table');
+    lrStickyHeader(tables[0]);
+    lrStickyHeader(tables[1]);
+    lrStickyHeader(tables[2], { parent: document.getElementById('scrollPanel') });
+</script>
+

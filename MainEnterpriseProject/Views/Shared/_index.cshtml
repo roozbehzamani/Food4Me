@@ -1,0 +1,1388 @@
+﻿@using CaptchaMvc
+@using CaptchaMvc.HtmlHelpers
+@{
+    MainEnterpriseProject.Models.Repository.Rep_resturant r = new MainEnterpriseProject.Models.Repository.Rep_resturant();
+    MainEnterpriseProject.Models.Utility.AllUtility u = new MainEnterpriseProject.Models.Utility.AllUtility();
+    MainEnterpriseProject.Models.Repository.UserRepository UserRep = new MainEnterpriseProject.Models.Repository.UserRepository();
+    MainEnterpriseProject.Models.Repository.WalletRep walletrep = new MainEnterpriseProject.Models.Repository.WalletRep();
+    bool flag = true;
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>@ViewBag.Title</title>
+    <link href="~/Content/UserContent/css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="~/Content/UserContent/css/style.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="~/Content/UserContent/css/fasthover.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="~/Content/UserContent/css/InputCSS.css" rel="stylesheet" />
+    <link href="~/Content/UserContent/css/PopapSignin.css" rel="stylesheet" />
+    <link href="~/Content/UserContent/css/fontawesome-all.css" rel="stylesheet" />
+    <link rel="stylesheet" href="~/Content/UserContent/css/jquery.countdown.css" />
+    <!-- js -->
+    <script src="~/Scripts/UserScripts/jquery-3.2.1.min.js"></script>
+    <script src="~/Scripts/UserScripts/chat.js"></script>
+    <script type="text/javascript">
+        jQuery(document).ready(function ($) {
+            $(".scroll").click(function (event) {
+                event.preventDefault();
+                $('html,body').animate({ scrollTop: $(this.hash).offset().top }, 1000);
+            });
+        });
+    </script>
+</head>
+<body>
+
+    <script src="~/Scripts/UserScripts/bootstrap-3.1.1.min.js"></script>
+
+    <style>
+        .loading-bar {
+            display: none;
+            position: fixed;
+            z-index: 999999;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url(../../Content/UserContent/images/loading.gif);
+            background-position: 50% 50%;
+            background-color: rgba(255, 255, 255, 0.8);
+            background-repeat: no-repeat;
+        }
+
+        body.loading {
+            overflow: hidden;
+        }
+
+            body.loading .loading-bar {
+                display: block;
+            }
+    </style>
+
+    <div class="loading-bar">
+
+    </div>
+
+    <style>
+        #tab1.active {
+            border-bottom: 2px solid #c39a58d9 !important;
+        }
+
+        #tab2.active {
+            border-bottom: 2px solid #c39a58d9 !important;
+        }
+
+        .material-icons {
+            font-family: 'Material Icons';
+            font-weight: normal;
+            font-style: normal;
+            font-size: 32px; /* Preferred icon size */
+            display: inline-block;
+            color: #fff;
+            line-height: 1;
+            text-transform: none;
+            letter-spacing: normal;
+            word-wrap: normal;
+            white-space: nowrap;
+            direction: ltr;
+            /* Support for all WebKit browsers. */
+            -webkit-font-smoothing: antialiased;
+            /* Support for Safari and Chrome. */
+            text-rendering: optimizeLegibility;
+            /* Support for Firefox. */
+            -moz-osx-font-smoothing: grayscale;
+            /* Support for IE. */
+            font-feature-settings: 'liga';
+        }
+
+        .FABMenu {
+            position: relative;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            margin: auto;
+            width: 380px;
+            height: 80px;
+            text-align: center;
+            margin-top: 10px;
+        }
+
+            .FABMenu input {
+                position: absolute;
+                top: 0%;
+                left: 37%;
+                width: 80px;
+                height: 80px;
+                border-radius: 80px;
+                opacity: 0;
+                cursor: pointer;
+                margin-top: -6px;
+            }
+
+        .hamburger {
+            position: absolute;
+            top: 0%;
+            left: 37%;
+            width: 80px;
+            height: 80px;
+            background-color: #caa66c;
+            border-radius: 100%;
+            box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.15);
+            z-index: 10;
+            cursor: pointer;
+            margin-top: -6px;
+        }
+
+        .dots span {
+            position: absolute;
+            right: 33px;
+            top: 45%;
+            width: 8px;
+            height: 8px;
+            border-radius: 8px;
+            background: #fff;
+            z-index: 20;
+            transition: all .3s ease-in-out;
+        }
+
+        .first {
+            margin-left: 1em;
+        }
+
+        .second {
+            margin-left: 2.3em;
+        }
+
+        .third {
+            margin-left: 3.6em;
+        }
+
+        .FABMenu input:checked ~ .hamburger .dots .first {
+            right: 55px;
+            top: 17px;
+            height: 60px;
+            transform-origin: top;
+            transform: rotate(-45deg);
+            transition: all .3s ease-in-out;
+        }
+
+        .FABMenu input:checked ~ .hamburger .dots .third {
+            top: 17px;
+            right: 13px;
+            height: 60px;
+            transform-origin: top;
+            transform: rotate(45deg);
+            transition: all .3s ease-in-out;
+        }
+
+        .action_items_bar {
+            position: relative;
+            top: 4.5%;
+            width: 380px;
+            height: 60px;
+            background-color: #caa66c;
+            border-radius: 60px;
+            box-shadow: 0px 5px 20px #a09c95f5;
+            z-index: 5;
+            transform: scaleX(0);
+            transition: all .3s ease-in-out;
+        }
+
+        .FABMenu input:checked ~ .action_items_bar {
+            transform: scaleX(1);
+        }
+
+        .action_items span {
+            position: absolute;
+            top: 26%;
+            width: 20px;
+            padding-left: 40px;
+            opacity: 0;
+            transition: all .2s ease-in-out;
+            cursor: pointer;
+        }
+
+        .first_item {
+            left: 0%;
+        }
+
+        .second_item {
+            left: 15%;
+        }
+
+        .third_item {
+            left: 55%;
+        }
+
+        .fourth_item {
+            left: 70%;
+        }
+
+        .FABMenu input:checked ~ .action_items_bar .action_items .first_item {
+            opacity: 1;
+            transition-delay: .45s;
+        }
+
+        .FABMenu input:checked ~ .action_items_bar .action_items .second_item {
+            opacity: 1;
+            transition-delay: .40s;
+        }
+
+        .FABMenu input:checked ~ .action_items_bar .action_items .third_item {
+            opacity: 1;
+            transition-delay: .40s;
+        }
+
+        .FABMenu input:checked ~ .action_items_bar .action_items .fourth_item {
+            opacity: 1;
+            transition-delay: .45s;
+        }
+    </style>
+    <nav class="navbar navbar-default hidden-sm hidden-xs" style="height:41px;  position: fixed;width: 100%;top: 0px;box-shadow: 0px 1px 8px rgba(0,0,0,0.2);background-color: white;z-index: 10000;">
+        <ul class="nav navbar-nav" style="margin-right:10%; width :68%;float:right;margin-top: 0px;margin-bottom:0px;">
+
+            @{
+                if (Session["email"] != null)
+                {
+                    <li class="dropdown" style="margin-right:2%; margin-left:5%;  direction:ltr;display:inline-flex; top:-7px;">
+                        <a style="color:#1a1a1a; " class="dropdown-toggle" data-toggle="dropdown" href="#">
+                            حساب کاربری
+                            <img src="~/Content/UserContent/images/default.jpg" style=" margin-right:0px!important; width:35px; height:35px; border-radius:50%; border: 2px solid #d1b280;" />
+                        </a>
+                        <ul class="dropdown-menu" style="border-radius: 10px; margin-top: 13px;text-align: center; width: 160px; margin-right: 1px;color: #3c3c3c;">
+
+                            <li><p>@UserRep.GetSingleUserInfo(Session["email"].ToString()).name</p></li>
+                            <li>
+                                <div class="col-md-6">
+                                    <p style="direction:rtl">اعتبار :</p>
+                                </div>
+                                <div class="col-md-6">
+                                    <a data-toggle="modal" data-target="#credit" style="cursor:pointer;">@walletrep.ShowCredit(Session["email"].ToString())</a>
+                                </div>
+                            </li>
+                            <li><hr style="margin:0 auto; margin-top:1px; margin-bottom:3px; width:80%; border-top:1px solid #dadada;" /></li>
+                            <li><p style="text-align:center"><a href=""><span style="direction:rtl; text-align:right">پنل کاربری</span></a><span> &ensp;| &ensp;</span><a href="~/Home/SignOut"><span style="direction:rtl"> &ensp;خروج</span></a></p></li>
+                        </ul>
+                    </li>
+                }
+            }
+
+            <li style="direction:ltr"><a style="color:#1a1a1a;" href="~/home">خانه <i class="fa fa-home"></i></a></li>
+            <li style="direction:ltr"><a style="color:#1a1a1a;" href="~/Home/mail">تماس با ما <i class="fa fa-phone"></i></a></li>
+            <li style="direction:ltr"><a style="color:#1a1a1a;" href="~/Home/Resturant">لیست رستوران ها <i class="fa fa-list"></i></a></li>
+            <li style="direction:ltr" id="#btnBascket">
+                @{
+                    if (Session["email"] == null)
+                    {
+                        <a style="color:#1a1a1a;" data-toggle="modal" data-target="#mm" href="">ورود&ensp;|&ensp;ثبت نام <i class="fas fa-user"></i></a>
+                    }
+                    else
+                    {
+                        if (walletrep.TimeToOrder() == 1)
+                        {
+                            <a id='getCart' name='getCart' style="color:#1a1a1a;" data-toggle="modal" data-target="#cf" href="">سبد خرید <i class="fas fa-shopping-cart"></i></a>
+                        }
+                    }
+                }
+            </li>
+
+        </ul>
+        <div style="width:140px;height:50px;float: left;margin-left: 10%;" class="hidden-md">
+            <img src="~/Content/UserContent/images/armtop.png" style="width:170px;" class="img-responsive" alt="Alternate Text" />
+        </div>
+
+    </nav>
+    @{
+        if (Session["email"] != null)
+        {
+            <div class="modal fade" id="credit" role="dialog" aria-labelledby="#credit" tabindex="-1" aria-hidden="true">
+
+
+                <div class="modal-dialog" style=" width: 38% !important; min-width:360px; margin:10em auto 0 !important">
+                    <div style="background:rgba(255,255,255,.28);height:18px;position:absolute;border-radius:10px;border:none;right:3%;left:3%;top:-8px;"></div>
+                    <div style="background:rgba(255,255,255,.08);height:33px;position:absolute;border-radius:10px;border:none;right:5%;left:5%;top:-14px;"></div>
+
+                    <div class="modal-content" style="border-radius:25px!important;">
+                        <div class="modal-body">
+                            <div class="row" style="text-align:center;margin-top:5%">
+                                <div style="border:2px solid #d1b280; border-radius:50%; width:100px; height:100px; margin: 10px auto; ">
+                                    <p style="text-align:center;font-size:18px; margin-top:20px;color:#d1b280;">اعتبار من</p>
+                                    <p style="text-align:center;color:#d1b280;">@walletrep.ShowCredit(Session["email"].ToString())</p>
+                                </div>
+                            </div>
+                            <div class="row" style="direction:rtl">
+                                <p style="text-align:right;font-size:15px; margin-top:20px;color:#d1b280;">مبلغ شارژ  کیف پول</p>
+                            </div>
+                            <div class="row" style=" margin-top:5px; direction :rtl;border: 1px solid #d1b280;border-radius: 20px; background:#e4d5ae;">
+                                <input autocomplete="off" autocorrect="off" id="ChargeValue" name="ChargeValue" type="text" style="text-align:center" value="">
+                            </div>
+                            <div class="row" style="margin-top:10px;">
+                                <div class="col-md-4" style="border: 1px solid #d1b280;border-bottom-right-radius: 20px;border-top-right-radius: 20px;background:#e4d5ae;color: #c39a58d4;">
+                                    <input autocomplete="off" autocorrect="off" id="DefaultChargeOne" value="10000تومان" name="DefaultChargeOne" type="button" style="text-align:center;">
+                                </div>
+                                <div class="col-md-4" style="border: 1px solid #d1b280;background:#e4d5ae; color: #c39a58d4;">
+                                    <input autocomplete="off" autocorrect="off" id="DefaultChargeTwo" value="15000تومان" name="DefaultChargeTwo" type="button" style="text-align:center;">
+                                </div>
+                                <div class="col-md-4" style="border: 1px solid #d1b280;border-bottom-left-radius: 20px;border-top-left-radius: 20px; background:#e4d5ae;color: #c39a58d4;">
+                                    <input autocomplete="off" autocorrect="off" id="DefaultChargeThree" value="25000تومان" name="DefaultChargeThree" type="button" style="text-align:center;">
+                                </div>
+                            </div>
+                            <div class="row" style="margin-top:10%;color: #c39a58d4;">
+                                <input autocomplete="off" autocorrect="off" id="DoCharge" name="DoCharge" type="button" style="text-align:center;border: 1px solid #d1b280;border-radius: 20px; background:#e4d5ae;" value="تایید">
+
+                            </div>
+
+
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    }
+
+    <div class="row">
+        <div class="FABMenu hidden-lg hidden-md hidden-our-custom">
+            <input type="checkbox" checked />
+
+            @{
+                if (Session["email"] == null)
+                {
+
+                    <div class="hamburger">
+                        <div class="dots" style="padding-bottom: 20px;">
+                            <span class="first"></span>
+                            <span class="second"></span>
+                            <span class="third"></span>
+                        </div>
+                    </div>
+                }
+                else
+                {
+                    <div class="hamburger">
+                        <div class="dots" style="padding-bottom: 20px;">
+                            <a style="color:#1a1a1a; " class="dropdown-toggle" data-toggle="dropdown" href="#">
+
+                                <img src="~/Content/UserContent/images/default.jpg" style=" margin-right:0px!important; width:80px; height:80px; border-radius:50%; border: 2px solid #d1b280;" />
+                            </a>
+                            <ul class="dropdown-menu" style="border-radius: 10px; margin-top: 13px;text-align: center; width: 160px; height:auto; margin-right: -45%">
+
+                                <li><p>@UserRep.GetSingleUserInfo(Session["email"].ToString()).name</p></li>
+                                <li style="display:-webkit-inline-box;">
+                                    <span style="direction:ltr">اعتبار </span>
+
+                                    <span style="direction: rtl;margin-right: auto;width: 100%; background: transparent;">
+
+                                        <a id="myCredit" data-toggle="modal" data-target="#credit" style="cursor:pointer; text-align: left;">@walletrep.ShowCreditWithTime(Session["email"].ToString())</a>
+                                    </span>
+                                </li>
+                                <li><hr style="margin:0 auto; margin-top:20px; margin-bottom:5px; width:80%; border-top:1px solid #dadada;" /></li>
+                                <li>
+                                    <div class="row" style=" width: 100%; margin: 0 auto;">
+                                        <div class="col-md-6 col-sm-6 col-xs-6" style="width:auto">
+                                            <a href="" style="text-align:center">پنل کاربری</a>
+                                        </div>
+                                        <div class="col-md-6 col-sm-6 col-xs-6" style="width:auto">
+                                            <a href="~/Home/SignOut" style="text-align:center">خروج</a>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                }
+            }
+
+
+
+
+            <div class="action_items_bar">
+                <div class="action_items" style="font-size: 20px;direction:initial;text-align:center;align-items:center;padding: 10px;">
+                    @{
+                        if (Session["email"] == null)
+                        {
+
+
+                            <span class="first_item">
+                                <a data-toggle="modal" data-target="#mm" href=""> <i class="fas fa-user" style="color:#fff"></i></a>
+                            </span>
+                        }
+                        else
+                        {
+                            <span class="first_item">
+                                <a id="getCart" name="getCart" style="color:#1a1a1a;" data-toggle="modal" data-target="#cf" href=""><i class="fas fa-shopping-cart" style="color:#fff"></i></a>
+                            </span>
+                        }
+                    }
+
+
+                    <span class="second_item">
+                        <a href="~/Home/Resturant"><i class="fa fa-list" style="color:#fff"></i></a>
+                    </span>
+                    <span class="fourth_item">
+                        <a href="~/Home"><i class="fa fa-home" style="color:#fff"></i></a>
+                    </span>
+                    <span class="third_item">
+                        <a href="~/Home/mail"><i class="fa fa-phone" style="color:#fff"></i></a>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="mm" role="dialog" aria-labelledby="#mm" tabindex="-1" aria-hidden="true" style="font-size:13px !important;">
+
+        <div class="modal-dialog" style=" width: 38% !important; min-width:360px; margin:9em auto 0 !important">
+            <div style="background:rgba(255,255,255,.28);height:18px;position:absolute;border-radius:10px;border:none;right:3%;left:3%;top:-8px;"></div>
+            <div style="background:rgba(255,255,255,.08);height:33px;position:absolute;border-radius:10px;border:none;right:5%;left:5%;top:-14px;"></div>
+
+            <div class="modal-content" style="border-radius:25px!important;">
+                <div class="modal-body">
+                    <div class="tabbable-panel">
+                        <div class="tabbable-line">
+                            <ul class="nav nav-tabs " style="padding-right: 9%;">
+                                <li class="active" style="width: 45%!important; text-align: center!important; float:right;">
+                                    <a id="tab1" href="#tab_default_1" data-toggle="tab" style="background-color:#fff!important;color:#000!important;border-bottom:0px solid #c39a58d9;">
+                                        ورود
+                                    </a>
+                                </li>
+                                <li style="width: 45%!important; text-align: center!important; float:right;">
+                                    <a id="tab2" href="#tab_default_2" data-toggle="tab" style="background-color:#fff!important;color:#000!important;border-bottom:0px solid #c39a58d9;;">
+                                        عضویت
+                                    </a>
+                                </li>
+                            </ul>
+                            <div class="tab-content">
+                                <div class="tab-pane active" id="tab_default_1" style="width:100%;">
+                                    <form method="post">
+                                        <div class="wrap">
+
+                                            <div class="row" style="margin-top:10px;">
+                                                <div class="col-md-5" style=" float:right;">
+                                                    <select name="access" id="access" style="outline:none; border-bottom: 2px solid; border-color: #c39a58a1; width:100%; margin-top: 38px; height: 30px;color: #986614; border-top:none; border-left:none; border-right:none;">
+                                                        <option>نوع ثبت نام را انتخاب نمایید</option>
+                                                        <option value="دانشجو">دانشجو</option>
+                                                        <option value="کاربر عادی">کاربر عادی</option>
+                                                        <option value="غیره">غیره</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+
+                                            <div>
+                                                <div class="mat-div" id="SignInPhone">
+                                                    <label for="mob_phone" class="mat-label">شماره تلفن</label>
+                                                    <input type="tel" class="mat-input sign-in-tel" id="mob_phone" name="mob_phone" autocomplete="off">
+                                                </div>
+                                                <span id='TelSignInMessage'></span>
+                                            </div>
+
+                                            <div>
+                                                <div class="mat-div">
+                                                    <label for="password" class="mat-label">رمز ورود</label>
+                                                    <input type="password" class="mat-input pass-sign-in" id="password" name="password" autocomplete="off">
+                                                </div>
+                                                <span id='PasSignInMessage'></span>
+                                            </div>
+
+                                            <button class="btn-sign-in-dis" style="margin: 35px auto 0 auto;width:70%;padding:13px 30px !important;color: #fff;cursor: pointer;" type="button" onclick="SignIn()" value="btnSignIn">ورود</button>
+                                            <button type="button" style="text-align: center;margin-top:0px!important;padding:0 0!important;background: #fff!important;color: #00000070!important;background-color: #c39a58d9;margin: 35px auto 0 auto;cursor: pointer;" data-toggle="modal" data-target="#forgetmodal">فراموشی رمز عبور</button>
+                                        </div>
+                                    </form>
+                                </div>
+                                <div class="tab-pane" id="tab_default_2" style="width:100%;">
+                                    <div class="tab-pane active" id="tab_default_1">
+                                        <form method="post">
+                                            <div class="wrap">
+                                                <div class="row" style="margin-top:10px;">
+                                                    <div class="col-md-5" style=" float:right;">
+                                                        <select name="signUpAccess" id="signUpAccess" style="outline:none; border-bottom: 2px solid; border-color: #c39a58a1; width:100%; margin-top: 38px; height: 30px;color: #986614; border-top:none; border-left:none; border-right:none;">
+                                                            <option>نوع ثبت نام را انتخاب نمایید</option>
+                                                            <option value="دانشجو">دانشجو</option>
+                                                            <option value="کاربر عادی">کاربر عادی</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="col-md-1"></div>
+                                                    <div class="col-md-6" style=" float:right;">
+                                                        <div>
+                                                            <div class="mat-div" id="SNumberDiv" style="display:none">
+                                                                <label for="SNumber" class="mat-label">شماره دانشجویی</label>
+                                                                <input type="text" class="mat-input" id="SNumber" name="SNumber" autocomplete="off">
+                                                            </div>
+                                                            <span id='SNumberMessage'></span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <div class="mat-div">
+                                                            <label for="name" class="mat-label">نام</label>
+                                                            <input type="text" class="mat-input" pattern=".{3,}" id="name" name="name" autocomplete="off">
+                                                        </div>
+                                                        <span id='NameMessage'></span>
+                                                    </div>
+
+                                                    <div class="col-md-6">
+                                                        <div class="mat-div">
+                                                            <label for="family" class="mat-label">نام خانوادگی</label>
+                                                            <input type="text" class="mat-input" pattern=".{3,}" id="family" name="family" autocomplete="off">
+                                                        </div>
+                                                        <span id='FamilyMessage'></span>
+                                                    </div>
+                                                </div>
+
+                                                <div>
+                                                    <div class="mat-div">
+                                                        <label for="email" class="mat-label" style="margin-top:5px;">پست الکترونیک</label>
+                                                        <input type="email" class="mat-input email-input" id="email" name="email" autocomplete="off">
+                                                    </div>
+                                                    <span id='emailMessage'></span>
+                                                </div>
+
+                                                <div>
+                                                    <div class="mat-div">
+                                                        <label for="MyPhone" class="mat-label">تلفن همراه</label>
+                                                        <input type="tel" class="mat-input sign-up-tel" id="MyPhone" name="MyPhone" autocomplete="off">
+                                                    </div>
+                                                    <span id='MobMessage'></span>
+                                                </div>
+
+                                                <div>
+                                                    <div class="mat-div">
+                                                        <label for="myPass" class="mat-label">رمز عبور</label>
+                                                        <input type="password" class="mat-input sign-up-pass" id="myPass" name="myPass" autocomplete="off">
+                                                    </div>
+                                                    <span id='PassMessage'></span>
+                                                </div>
+
+                                                <div>
+                                                    <div class="mat-div">
+                                                        <label for="repassword" class="mat-label">تکرار رمز عبور</label>
+                                                        <input type="password" class="mat-input" id="repassword" name="repassword" autocomplete="off">
+                                                    </div>
+                                                    <span id='PassConfirmMessage'></span>
+                                                </div>
+                                                <button type="button" onclick="SignUp()" value="ثبت نام" style="margin: 35px auto 0 auto;width:70%;padding:13px 30px !important;color: #fff;cursor: pointer;" class="btn-sign-up-dis">عضویت</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="activecode" role="dialog" aria-labelledby="#activecode" tabindex="-1" aria-hidden="true">
+
+
+        <div class="modal-dialog" style=" width: 38% !important; min-width:360px; margin:10em auto 0 !important">
+            <div style="background:rgba(255,255,255,.28);height:18px;position:absolute;border-radius:10px;border:none;right:3%;left:3%;top:-8px;"></div>
+            <div style="background:rgba(255,255,255,.08);height:33px;position:absolute;border-radius:10px;border:none;right:5%;left:5%;top:-14px;"></div>
+
+            <div class="modal-content" style="border-radius:25px!important;">
+                <div class="modal-body">
+                    <div class="row" style=" margin-bottom: 2%; margin-top: 5%;">
+                        <br />
+
+                        <div>
+                            <div class="col-md-1"></div>
+
+                            <div class="col-md-11">
+                                <h4>
+                                    برای تایید حساب کاربری
+                                    <span style="font-weight: 900;">کد 5 رقمی</span>
+
+                                    ارسال شده از طریق پیام کوتاه را وارد نمایید:
+                                </h4>
+                            </div>
+
+
+                        </div>
+                    </div>
+                    <form action="~/Home/ActiveLogin" method="post">
+                        <div class="row" style="margin-bottom:7%">
+                            <div>
+                                <div class="col-md-1"></div>
+                                <div class="col-md-2">
+                                    <input type="text" autocomplete="off" class="mat-input" id="DialFifth" name="DialFifth" maxlength="1" style="width:80%; text-align:center; border-top:none; border-left:none;border-right:none; border-bottom:2px solid #00000038;" value="" />
+                                </div>
+                                <div class="col-md-2">
+                                    <input type="text" autocomplete="off" class="mat-input" id="DialFourth" name="DialFourth" maxlength="1" style="width:80%; text-align:center; border-top:none; border-left:none;border-right:none; border-bottom:2px solid #00000038;" value="" />
+                                </div>
+                                <div class="col-md-2">
+                                    <input type="text" autocomplete="off" class="mat-input" id="DialThird" name="DialThird" maxlength="1" style="width:80%; text-align:center; border-top:none; border-left:none;border-right:none; border-bottom:2px solid #00000038;" value="" />
+                                </div>
+                                <div class="col-md-2">
+                                    <input type="text" autocomplete="off" class="mat-input" id="DialSecond" name="DialSecond" maxlength="1" style="width:80%; text-align:center; border-top:none; border-left:none;border-right:none; border-bottom:2px solid #00000038;" value="" />
+                                </div>
+                                <div class="col-md-2">
+                                    <input type="text" autocomplete="off" class="mat-input" id="DialFirst" name="DialFirst" maxlength="1" style="width:80%; text-align:center; border-top:none; border-left:none;border-right:none; border-bottom:2px solid #00000038;" value="" />
+                                </div>
+                                <div class="col-md-1"></div>
+                            </div>
+                        </div>
+                        <div class="row" style=" text-align: center; margin-bottom: 12%;">
+                            <div class="col-md-12">
+                                <input value="تایید شماره موبایل" type="button" onclick="Active()" style="border:none; outline:none; border-radius:30px; background-color:#c39a58; color:white; padding: 15px 30px;" />
+                            </div>
+                        </div>
+                    </form>
+
+
+                    <div class="row" style="text-align:center;  margin-bottom: 3%;">
+                        <div class="col-md-12">
+                            <h4>
+                                مدت زمان باقیمانده برای ارسال کد تایید
+
+                            </h4>
+                        </div>
+                    </div>
+                    <div class="row" style="text-align:center;">
+                        <div class="col-md-12">
+                            <time id="countdown"></time>
+
+                            <script>
+                                var seconds = 120;
+
+                                function secondPassed() {
+                                    var minutes = Math.round((seconds - 30) / 60),
+                                        remainingSeconds = seconds % 60;
+
+                                    if (remainingSeconds < 10) {
+                                        remainingSeconds = "0" + remainingSeconds;
+                                    }
+
+                                    document.getElementById('countdown').innerHTML = minutes + ":" + remainingSeconds;
+                                    if (seconds == 0) {
+                                        clearInterval(countdownTimer);
+                                        document.getElementById('countdown').innerHTML = "00:00";
+                                    } else {
+                                        seconds--;
+                                    }
+                                }
+
+                                var countdownTimer = setInterval('secondPassed()', 1000);
+
+                            </script>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="forgetmodal" role="dialog" aria-labelledby="#forgetmodal" tabindex="-1" aria-hidden="true">
+
+
+        <div class="modal-dialog" style=" width: 38% !important; min-width:360px; margin:10em auto 0 !important">
+            <div style="background:rgba(255,255,255,.28);height:18px;position:absolute;border-radius:10px;border:none;right:3%;left:3%;top:-8px;"></div>
+            <div style="background:rgba(255,255,255,.08);height:33px;position:absolute;border-radius:10px;border:none;right:5%;left:5%;top:-14px;"></div>
+
+            <div class="modal-content" style="border-radius:25px!important;">
+                <div class="modal-body">
+                    <form method="post">
+                        <div class="wrap">
+                            <div class="mat-div">
+                                <label for="email" class="mat-label" style="margin-top:5px;">پست الکترونیک</label>
+                                <input type="email" class="mat-input" id="email" name="email" autocomplete="off">
+                            </div>
+
+                            <div>
+                                <div class="mat-div">
+                                    <label for="mob_phone" class="mat-label">تلفن همراه</label>
+                                    <input type="tel" class="mat-input forget-tel" id="mob_phone" name="mob_phone" autocomplete="off">
+                                </div>
+                                <span id='ForgetTelMessage'></span>
+                            </div>
+                            <button type="submit" id="btnSignUp" value="btnForgetPass" name="btnSignUp" style="width:70%; padding:13px 30px !important;" class="btn-forget-dis">عضویت</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="wallet" role="dialog" aria-labelledby="#wallet" tabindex="-1" aria-hidden="true">
+
+
+        <div class="modal-dialog" style=" width: 38% !important; min-width:360px; margin:10em auto 0 !important">
+            <div style="background:rgba(255,255,255,.28);height:18px;position:absolute;border-radius:10px;border:none;right:3%;left:3%;top:-8px;"></div>
+            <div style="background:rgba(255,255,255,.08);height:33px;position:absolute;border-radius:10px;border:none;right:5%;left:5%;top:-14px;"></div>
+
+            <div class="modal-content" style="border-radius:25px!important;">
+                <div class="modal-body">
+                    <div style="width:80%; display:-webkit-box;">
+                        <div class="col-md-3">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <button style="padding:1px 6px; position:absolute; left:0px; margin:0 auto 0 auto;">+</button>
+                                </div>
+                                <div class="col-md-4">
+                                    <span>2</span>
+                                </div>
+                                <div class="col-md-4">
+                                    <button style="padding:1px 6px; position:absolute; right:0px; margin:0 auto 0 auto;">-</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+
+                        </div>
+                        <div class="col-md-3">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    @{
+        if (Session["email"] != null && walletrep.TimeToOrder() == 1)
+        {
+            <div class="modal fade" id="cf" role="dialog" aria-labelledby="#cf" tabindex="-1" aria-hidden="true" style="font-size: 13px;font-family: 'B Yekan' !important;color: #666;">
+
+                <div class="modal-dialog" style=" width: 55% !important; min-width:360px; margin:5em auto 0 !important">
+                    <div style="background:rgba(255,255,255,.28);height:18px;position:absolute;border-radius:10px;border:none;right:3%;left:3%;top:-8px;"></div>
+                    <div style="background:rgba(255,255,255,.08);height:33px;position:absolute;border-radius:10px;border:none;right:5%;left:5%;top:-14px;"></div>
+
+                    <div class="modal-content" style="border-radius:25px!important;">
+                        <div class="modal-body" style="height:550px; overflow-y:auto; padding:15px;">
+
+
+                            <div class="row" style=" margin-bottom: 1%; margin-left:0; margin-right:0; height:200px; overflow-y:auto;" id="mainRow">
+
+                            </div>
+                            <div class="row" style=" margin-bottom: 2%; margin-top: 5%;margin-left:0; margin-right:0;">
+                                <div class="row" style="margin:5px 0 10px 0;font-size: 1.1em; position:absolute; bottom:280px;">
+                                    <p style="color:#cdab74;">برای رستوران پیام ای دارین؟در قسمت پایین یاداشت بفرمایید</p>
+                                </div>
+
+                                <div class="row" style="margin:auto; position:absolute; width:94%; bottom:180px;">
+                                    <div>
+
+                                        <div class="span3 well">
+                                            <input autocomplete="off" autocorrect="off" id="txtComment" name="txtComment" type="text" value="">
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                                <div class="row" style="margin:5px 0 10px 0;font-size: 1.1em; position:absolute; bottom:160px;">
+                                    <p style="color:#cdab74;">آدرس:</p>
+                                </div>
+
+                                <div class="row" style="margin:auto; position:absolute; width:94%; bottom:100px;">
+                                    <div>
+
+                                        <div class="span3 well" style="padding:4px;">
+                                            <input autocomplete="off" autocorrect="off" id="txtAddress" name="txtAddress" type="text" value="" list="browsers">
+                                            <datalist id="browsers">
+                                                <option value="خوابگاه صدر">
+                                                <option value="خوابگاه دانش">
+                                                <option value="خوابگاه خلیلی">
+                                                <option value="خوابگاه بهشتی">
+                                            </datalist>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                                <div class="row" style="margin:auto; position:absolute; bottom:0; width:94%;">
+                                    <div style="margin-top:30px;margin-bottom:5px; border:1.5px solid #caa66c; width:100%; height:75px;    border-radius: 5px;">
+
+                                        <div class="row" style="margin:3px auto">
+
+                                            <div class="col-md-4" style="text-align:center">
+                                                <div class="row" style="margin:0">
+
+                                                    <span style="font-size: 1.1em;">مجموع قیمت کل :</span>
+                                                    <span style="font-size: 1.1em; text-align:left" id="txtTotalPrice">@walletrep.TotalPrice(Session["email"].ToString())</span>
+
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4" style="text-align:center">
+                                                <div class="row" style="margin:0">
+                                                    <span style="font-size: 1.1em;">میزان اعتبار :</span>
+                                                    <span style="font-size: 1.1em; text-align:left" id="txtCredit">@walletrep.ShowCreditWithTime(Session["email"].ToString())</span>
+                                                </div>
+
+                                            </div>
+                                            <div class="col-md-4" style="text-align:center">
+                                            
+                                                    <input type="checkbox" value="" name="receveInTime" id="receveInTime" onclick="useCreditCheckBox(this)" />
+                                                    <span style="font-size: 1.1em;">تحویل آنی ، همین الان</span>
+                                             
+                                            </div>
+                                        </div>
+
+                                        <div class="row" style="margin:0">
+
+                                            <div class="col-md-8" style="padding-right:35px;">
+                                                    @if (walletrep.TimeToOrder() == 1)
+                                                    {
+                                                        <input class="btn btn-blue btn-default-xs" style="color:#fff !important; width:100%; background:#c39a58d4; margin:0px; padding:inherit;" type="button" onclick="SaveShoppingCart();" name="SaveChange" id="SaveChange" value="ذخیره">
+                                                    }
+                                            </div>
+
+                                            <div class="col-md-4" style="text-align:center;">
+                                                <input type="checkbox" value="" name="useCreditCheckBox" id="useCreditCheckBox" onclick="useCreditCheckBox(this)" />
+                                                <span style="font-size: 1.1em;">از اعتبار استفاده شود</span>
+                                            </div>
+                                        </div>
+
+
+
+
+
+
+
+
+                                    </div>
+
+
+
+                                </div>
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    }
+
+    @RenderBody()
+    <div id="footer">
+        <div id="footer_spc">
+            <div>
+                <div class="center_width tbl">
+                    <div><a href="#"><img src="~/Content/UserContent/images/arm.png" style="height:50px;" class="img-responsive"></a></div>
+                    <div>
+                        <img src="~/Content/UserContent/images/location_white.png">
+                        تحت حمایت دانشگاه صنعتی ارومیه
+                    </div>
+                    <div class="left_align">028-33654023<span></span></div>
+                </div>
+            </div>
+            <div>
+                <div class="center_width tbl">
+                    <div>
+                        <span>درباره ما بیشتر بدانید ...</span>
+                        سریعترین راه سفارش اینترنتی غذا در ارومیه است ، شما با استفاده از طریق
+                        ما می توانید به راحتی غذای مورد نظر خود را از رستوران مد نظرتان سفارش دهید
+                    </div>
+                    <div id="namad_holder">
+                        <div class="namad_item center_align">
+
+                            <img src="~/Content/UserContent/images/enamad.png" style="width:150px;height:150px;" id="jy6wnmwZt2zYzTb8" class="img-circle" />
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        $(".mat-input").focus(function () {
+            $(this).parent().addClass("is-active is-completed");
+        });
+
+        $(".mat-input").focusout(function () {
+            if ($(this).val() === "")
+                $(this).parent().removeClass("is-completed");
+            $(this).parent().removeClass("is-active");
+        })
+    </script>
+
+    <script>
+        $("#DialFirst").keypress(function () {
+            $("#DialSecond").focus();
+        });
+
+        $("#DialSecond").keypress(function () {
+            $("#DialThird").focus();
+        });
+
+        $("#DialThird").keypress(function () {
+            $("#DialFourth").focus();
+        });
+
+        $("#DialFourth").keypress(function () {
+            $("#DialFifth").focus();
+        });
+    </script>
+
+    <script>
+
+    $(document).ready(function () {
+        $('select[name=access]').change(function () {
+            var signUpType = $(this).val();
+            if (signUpType == "دانشجو") {
+                $("#SNumberDiv").css("display", "block");
+                $('#SignInPhone label').text('شماره دانشجویی');
+                @flag = false;
+            }
+            else {
+                $("#SNumberDiv").css("display", "none");
+                $('#SignInPhone label').text('شماره تلفن');
+                @flag = true;
+            }
+        });
+        });
+
+        $(document).ready(function () {
+            $('select[name=signUpAccess]').change(function () {
+            var signUpType = $(this).val();
+            if (signUpType == "دانشجو") {
+                $("#SNumberDiv").css("display", "block");
+                $('#SignInPhone label').text('شماره دانشجویی');
+                @flag = false;
+            }
+            else {
+                $("#SNumberDiv").css("display", "none");
+                $('#SignInPhone label').text('شماره تلفن');
+                @flag = true;
+            }
+        });
+    });
+
+    $('.sign-up-pass, #repassword').on('keyup', function () {
+        if ($('.sign-up-pass').val() == $('#repassword').val()) {
+            $('#PassConfirmMessage').html('تکرار رمز درست است').css('color', 'green');
+        }else {
+            $('#PassConfirmMessage').html('تکرار رمز با رمز مطابقت ندارد').css('color', 'red');
+        }
+
+    });
+    $('.sign-up-pass').on('keyup', function () {
+        if ($('.sign-up-pass').val().length >= 8) {
+            $('#PassMessage').html('').css('color', 'green');
+        }else {
+            $('#PassMessage').html('رمز باید حداقل 8 کاراکتر باشد').css('color', 'red');
+        }
+
+    });
+    $('.sign-up-tel').on('keyup', function () {
+        if ($('.sign-up-tel').val().length == 11) {
+            $('#MobMessage').html('').css('color', 'green');
+        }else {
+            $('#MobMessage').html('تعداد شماره تلفن باید 11 عدد باشد').css('color', 'red');
+        }
+
+    });
+    $('.forget-tel').on('keyup', function () {
+        if ($('.forget-tel').val().length == 11) {
+            $('#ForgetTelMessage').html('').css('color', 'green');
+        } else {
+            $('#ForgetTelMessage').html('تعداد شماره تلفن باید 11 عدد باشد').css('color', 'red');
+        }
+
+    });
+        $('#name').on('keyup', function () {
+            if ($('#name').val().length >= 3) {
+                $('#NameMessage').html('').css('color', 'green');
+            } else {
+                $('#NameMessage').html('نام حداقل باید 3 کاراکتر باشد').css('color', 'red');
+            }
+
+        });
+
+        $('#family').on('keyup', function () {
+            if ($('#family').val().length >= 3) {
+                $('#FamilyMessage').html('').css('color', 'green');
+            } else {
+                $('#FamilyMessage').html('نام خانوادگی حداقل باید 3 کاراکتر باشد').css('color', 'red');
+            }
+
+        });
+
+        $('.sign-in-tel').on('keyup', function () {
+            if (@flag){
+                if ($('.sign-in-tel').val().length == 11) {
+                    $('#TelSignInMessage').html('').css('color', 'green');
+                } else {
+                    $('#TelSignInMessage').html('شماره تلفن باید 11 کاراکتر باشد').css('color', 'red');
+                }
+            } else {
+                if ($('.sign-in-tel').val().length >= 9) {
+                    $('#TelSignInMessage').html('').css('color', 'green');
+                } else {
+                    $('#TelSignInMessage').html('شماره دانشحویی حداقل باید 9 کاراکتر باشد').css('color', 'red');
+                }
+            }
+        });
+
+        $('.pass-sign-in').on('keyup', function () {
+            if ($('.pass-sign-in').val().length >= 8) {
+                $('#PasSignInMessage').html('').css('color', 'green');
+            } else {
+                $('#PasSignInMessage').html('رمز حداقل باید 8 کاراکتر باشد').css('color', 'red');
+            }
+
+        });
+
+    </script>
+
+    <script>
+        $(".email-input").keyup(function (event) {
+            var text = $(this).val();
+            $.ajax({
+                url: '@Url.Action("Dup_Email", "Home")',
+                data: { email: text },
+                success: function (result) {
+                    if (result == 0) {
+                        $('#emailMessage').html("متن وارد شده ایمیل نیست").css('color', 'red');
+                    } else if (result == 1) {
+                        $('#emailMessage').html("ایمیل تکراری است").css('color', 'red');
+                    } else if (result == 2) {
+                        $('#emailMessage').html("ایمیل تکراری نیست").css('color', 'green');
+                    }
+                }
+            });
+        });
+        $('.email-input').focusout(function () {
+            $('#emailMessage').html("").css('color', 'red');
+        })
+
+        $(".email-input").bind("cut copy paste", function (e) {
+            e.preventDefault();
+        });
+    </script>
+
+    <script>
+        $(".sign-up-tel").focusout(function () {
+            var text = $(this).val();
+            $.ajax({
+                url: '@Url.Action("Dup_Phone", "Home")',
+                data: { phone: text },
+                success: function (result) {
+                    if (result == 0) {
+                        $('#MobMessage').html("تلفن تکراری است").css('color', 'red');
+                    } else if (result == 1) {
+                        $('#MobMessage').html("").css('color', 'red');
+                    }
+                }
+            });
+        });
+    </script>
+
+    <script>
+        var totalPrice;
+        var checked;
+        var inTimeChecked;
+        $("#getCart").on('click', function (e) {
+            document.body.className = "loading";
+            $.ajax({
+                type: 'POST',
+                dataType: 'Json',
+                url: '@Url.Action("ShowShoppingCart", "Home")',
+                error: function (err) {
+                    alert(err.status);
+                }
+            }).done(function (result) {
+                document.body.className = "";
+                var Text = "";
+                $.each(result, function (index, val) {
+                    Text += "<div class='row' style='margin:0px'><div><div class='col-md-10' style='background:#f5f5f5;border-radius:4px;width:100%;border:1px solid #e3e3e3;'><div class='row' style='margin-bottom:1%;margin-top:1%;'><button type='button' onclick='RemoveCart(" + val.ID + ")' style='line-height:initial; left:0px; font-size: 1rem;color: #cdab74;outline: none;background-color: transparent;top: 0;width: 1.5rem;height: 1.5rem;border: .1rem solid #cdab74;padding:0 0;margin: 3px;position: absolute;z-index: 1;'><span style='position: relative;'>X</span></button><div class='col-md-4'><div class='row' style='text-align: center;'><div style='display:inline-flex;-webkit-box-orient:horizontal;-webkit-box-direction:normal;flex-flow:rowwrap;justify-content:space-around;-webkit-box-align:center;align-items:center;width:15rem;'><div class='col-md-4' style='z-index:1000000;'><button type='button' onclick='CountDown(" + val.ID + ")' id='btnsubtrack' name='btnsubtrack' style='font-size:1.7rem;color:#cdab74;outline:none;background-color:transparent;top:0;width:2.8rem;height:2.8rem;border:1.6pxsolid#cdab74;border:.1rem solid #cdab74;display:-webkit-box;padding:0 0;margin:0 0 0 0;'><span style='position:relative;'>-</span></button></div><div class='col-md-4' style='position:absolute;display:-webkit-box;-webkit-box-pack:center;padding:0 0;margin:0 0 0 0;'><span name='CartCounter' id='CartCounter' style='font-size:1.7rem;color:#cdab74;font-weight:700;line-height:48px;line-height:3rem;'>" + val.FoodCount + "</span></div><div class='col-md-4'><button id='btnAdd' onclick='CountUp(" + val.ID + ")' name='btnAdd' style='font-size:1.7rem;color:#cdab74;outline:none;background-color:transparent;top:0;width:2.8rem;height:2.8rem;border:1.6pxsolid#cdab74;border:.1rem solid #cdab74;display:-webkit-box;padding:00;margin:0000;'><span style='position:relative;'>+</span></button></div></div></div></div><div class='col-md-4'><p style='font-size:1.2em;color:#cdab74;text-align:center;margin-top:0.4em'>" + val.FoodName + "</p></div><div class='col-md-4'><p style='font-size:1.2em;color:#cdab74;text-align:center;margin-top:0.4em'>" + val.FoodTotalPrice + "</p></div></div></div></div>";
+                })
+                $('#mainRow').html(Text);
+                CallPrice();
+            });
+        });
+
+        function CountDown(id) {
+            document.body.className = "loading";
+            $.ajax({
+                type: 'POST',
+                dataType: 'Json',
+                url: '@Url.Action("ShoppingcartCountDown", "Home")',
+                data: { ID: id },
+                error: function (err) {
+                    alert(err.status);
+                }
+            }).done(function (result) {
+                document.body.className = "";
+                var Text = "";
+                $.each(result, function (index, val) {
+                    Text += "<div class='row' style='margin:0px'><div><div class='col-md-10' style='background:#f5f5f5;border-radius:4px;width:100%;border:1px solid #e3e3e3;'><div class='row' style='margin-bottom:1%;margin-top:1%;'><button type='button' onclick='RemoveCart(" + val.ID + ")' style='line-height:initial; left:0px; font-size: 1rem;color: #cdab74;outline: none;background-color: transparent;top: 0;width: 1.5rem;height: 1.5rem;border: .1rem solid #cdab74;padding:0 0;margin: 3px;position: absolute;z-index: 1;'><span style='position: relative;'>X</span></button><div class='col-md-4'><div class='row' style='text-align: center;'><div style='display:inline-flex;-webkit-box-orient:horizontal;-webkit-box-direction:normal;flex-flow:rowwrap;justify-content:space-around;-webkit-box-align:center;align-items:center;width:15rem;'><div class='col-md-4' style='z-index:1000000;'><button type='button' onclick='CountDown(" + val.ID + ")' id='btnsubtrack' name='btnsubtrack' style='font-size:1.7rem;color:#cdab74;outline:none;background-color:transparent;top:0;width:2.8rem;height:2.8rem;border:1.6pxsolid#cdab74;border:.1rem solid #cdab74;display:-webkit-box;padding:0 0;margin:0 0 0 0;'><span style='position:relative;'>-</span></button></div><div class='col-md-4' style='position:absolute;display:-webkit-box;-webkit-box-pack:center;padding:0 0;margin:0 0 0 0;'><span name='CartCounter' id='CartCounter' style='font-size:1.7rem;color:#cdab74;font-weight:700;line-height:48px;line-height:3rem;'>" + val.FoodCount + "</span></div><div class='col-md-4'><button id='btnAdd' onclick='CountUp(" + val.ID + ")' name='btnAdd' style='font-size:1.7rem;color:#cdab74;outline:none;background-color:transparent;top:0;width:2.8rem;height:2.8rem;border:1.6pxsolid#cdab74;border:.1rem solid #cdab74;display:-webkit-box;padding:00;margin:0000;'><span style='position:relative;'>+</span></button></div></div></div></div><div class='col-md-4'><p style='font-size:1.2em;color:#cdab74;text-align:center;margin-top:0.4em'>" + val.FoodName + "</p></div><div class='col-md-4'><p style='font-size:1.2em;color:#cdab74;text-align:center;margin-top:0.4em'>" + val.FoodTotalPrice + "</p></div></div></div></div>";
+                })
+                $('#mainRow').html(Text);
+                CallPrice();
+                });
+        }
+
+        function CountUp(id) {
+            document.body.className = "loading";
+            $.ajax({
+                type: 'POST',
+                dataType: 'Json',
+                url: '@Url.Action("ShoppingcartCountUp", "Home")',
+                data: { ID: id },
+                error: function (err) {
+                    alert(err.status);
+                }
+            }).done(function (result) {
+                document.body.className = "";
+                if (result == 0) {
+                    alert("خطایی رخ داده است. لطفا مجددا تلاش نمایید");
+                } else if (result == -1) {
+                    alert("تعداد درخواستی از تعداد موجودی بیشتر است");
+                } else if (result == -2) {
+                    alert("تعداد درخواستی به تعداد موجودی تغییر یافت")
+                } else {
+                    var Text = "";
+                    $.each(result, function (index, val) {
+                        Text += "<div class='row' style='margin:0px'><div><div class='col-md-10' style='background:#f5f5f5;border-radius:4px;width:100%;border:1px solid #e3e3e3;'><div class='row' style='margin-bottom:1%;margin-top:1%;'><button type='button' onclick='RemoveCart(" + val.ID + ")' style='line-height:initial; left:0px; font-size: 1rem;color: #cdab74;outline: none;background-color: transparent;top: 0;width: 1.5rem;height: 1.5rem;border: .1rem solid #cdab74;padding:0 0;margin: 3px;position: absolute;z-index: 1;'><span style='position: relative;'>X</span></button><div class='col-md-4'><div class='row' style='text-align: center;'><div style='display:inline-flex;-webkit-box-orient:horizontal;-webkit-box-direction:normal;flex-flow:rowwrap;justify-content:space-around;-webkit-box-align:center;align-items:center;width:15rem;'><div class='col-md-4' style='z-index:1000000;'><button type='button' onclick='CountDown(" + val.ID + ")' id='btnsubtrack' name='btnsubtrack' style='font-size:1.7rem;color:#cdab74;outline:none;background-color:transparent;top:0;width:2.8rem;height:2.8rem;border:1.6pxsolid#cdab74;border:.1rem solid #cdab74;display:-webkit-box;padding:0 0;margin:0 0 0 0;'><span style='position:relative;'>-</span></button></div><div class='col-md-4' style='position:absolute;display:-webkit-box;-webkit-box-pack:center;padding:0 0;margin:0 0 0 0;'><span name='CartCounter' id='CartCounter' style='font-size:1.7rem;color:#cdab74;font-weight:700;line-height:48px;line-height:3rem;'>" + val.FoodCount + "</span></div><div class='col-md-4'><button id='btnAdd' onclick='CountUp(" + val.ID + ")' name='btnAdd' style='font-size:1.7rem;color:#cdab74;outline:none;background-color:transparent;top:0;width:2.8rem;height:2.8rem;border:1.6pxsolid#cdab74;border:.1rem solid #cdab74;display:-webkit-box;padding:00;margin:0000;'><span style='position:relative;'>+</span></button></div></div></div></div><div class='col-md-4'><p style='font-size:1.2em;color:#cdab74;text-align:center;margin-top:0.4em'>" + val.FoodName + "</p></div><div class='col-md-4'><p style='font-size:1.2em;color:#cdab74;text-align:center;margin-top:0.4em'>" + val.FoodTotalPrice + "</p></div></div></div></div>";
+                    })
+                    $('#mainRow').html(Text);
+                    CallPrice();
+                }
+            });
+        }
+
+        function RemoveCart(id) {
+            document.body.className = "loading";
+            $.ajax({
+                type: 'POST',
+                dataType: 'Json',
+                url: '@Url.Action("RemoveShoppingCart", "Home")',
+                data: { ID: id },
+                error: function (err) {
+                    alert(err.status);
+                }
+            }).done(function (result) {
+                var Text = "";
+                $.each(result, function (index, val) {
+                    Text += "<div class='row' style='margin:0px'><div><div class='col-md-10' style='background:#f5f5f5;border-radius:4px;width:100%;border:1px solid #e3e3e3;'><div class='row' style='margin-bottom:1%;margin-top:1%;'><button type='button' onclick='RemoveCart(" + val.ID + ")' style='line-height:initial; left:0px; font-size: 1rem;color: #cdab74;outline: none;background-color: transparent;top: 0;width: 1.5rem;height: 1.5rem;border: .1rem solid #cdab74;padding:0 0;margin: 3px;position: absolute;z-index: 1;'><span style='position: relative;'>X</span></button><div class='col-md-4'><div class='row' style='text-align: center;'><div style='display:inline-flex;-webkit-box-orient:horizontal;-webkit-box-direction:normal;flex-flow:rowwrap;justify-content:space-around;-webkit-box-align:center;align-items:center;width:15rem;'><div class='col-md-4' style='z-index:1000000;'><button type='button' onclick='CountDown(" + val.ID + ")' id='btnsubtrack' name='btnsubtrack' style='font-size:1.7rem;color:#cdab74;outline:none;background-color:transparent;top:0;width:2.8rem;height:2.8rem;border:1.6pxsolid#cdab74;border:.1rem solid #cdab74;display:-webkit-box;padding:0 0;margin:0 0 0 0;'><span style='position:relative;'>-</span></button></div><div class='col-md-4' style='position:absolute;display:-webkit-box;-webkit-box-pack:center;padding:0 0;margin:0 0 0 0;'><span name='CartCounter' id='CartCounter' style='font-size:1.7rem;color:#cdab74;font-weight:700;line-height:48px;line-height:3rem;'>" + val.FoodCount + "</span></div><div class='col-md-4'><button id='btnAdd' onclick='CountUp(" + val.ID + ")' name='btnAdd' style='font-size:1.7rem;color:#cdab74;outline:none;background-color:transparent;top:0;width:2.8rem;height:2.8rem;border:1.6pxsolid#cdab74;border:.1rem solid #cdab74;display:-webkit-box;padding:00;margin:0000;'><span style='position:relative;'>+</span></button></div></div></div></div><div class='col-md-4'><p style='font-size:1.2em;color:#cdab74;text-align:center;margin-top:0.4em'>" + val.FoodName + "</p></div><div class='col-md-4'><p style='font-size:1.2em;color:#cdab74;text-align:center;margin-top:0.4em'>" + val.FoodTotalPrice + "</p></div></div></div></div>";
+                })
+                $('#mainRow').html(Text);
+                CallPrice();
+            });
+        }
+
+        function CallPrice() {
+            $.ajax({
+                type: 'POST',
+                dataType: 'Json',
+                url: '@Url.Action("UnUseCredit", "Home")',
+                data: { ID: 0 },
+                error: function (err) {
+                    alert(err.status);
+                }
+            }).done(function (result) {
+                document.body.className = "";
+                $('#txtTotalPrice').html(result.price);
+                $('#txtCredit').html(result.credit);
+            });
+        }
+
+        function useCreditCheckBox(checkbox) {
+            document.body.className = "loading";
+            var inTime;
+            var isCredit;
+            if ($('#receveInTime').is(':checked')) {
+                inTime = "true";
+                inTimeChecked = "true";
+            } else {
+                inTime = "false";
+                inTimeChecked = "false";
+            }
+            if ($('#useCreditCheckBox').is(':checked')) {
+                isCredit = "true";
+                checked = "true";
+            } else {
+                isCredit = "false";
+                checked = "false";
+            }
+            $.ajax({
+                type: 'POST',
+                dataType: 'Json',
+                url: '@Url.Action("UseCredit", "Home")',
+                data: { Time: inTime, Credit: isCredit },
+                error: function (err) {
+                    alert(err.status);
+                }
+            }).done(function (result) {
+                document.body.className = "";
+                $('#txtTotalPrice').html(result.price);
+                $('#txtCredit').html(result.credit);
+            });
+        }
+
+        function SaveShoppingCart() {
+            document.body.className = "loading";
+            var address = $('#txtAddress').val();
+            var comment = $('#txtComment').val();
+            var d = new Date();
+            d.getHours(); // => 9
+            d.getMinutes(); // =>  30
+            d.getSeconds(); // => 51
+            if (d.getHours >= 10 && d.getHours <= 20 && inTimeChecked == "false") {
+                if (address != "خوابگاه صدر" && address != "خوابگاه خلیلی" && address != "خوابگاه دانش" && address != "خوابگاه بهشتی") {
+                    alert("لطفا خوابگاه مدنظر خود را از لیست پیشنهادی انتخاب نماببد");
+                    $('#txtAddress').val('');
+                }
+            }
+            if (address != "") {
+                $.ajax({
+                    type: 'POST',
+                    dataType: 'Json',
+                    url: '@Url.Action("PreSaveShoppingCart", "Home")',
+                    data: { InTimeStatus: inTimeChecked, CreditChecked: checked, Address: address, Comment: comment },
+                    error: function (err) {
+                        alert(err.status);
+                    }
+                }).done(function (result) {
+                    document.body.className = "";
+                    location.replace(result);
+                });
+            } else {
+                document.body.className = "";
+                alert("آدرس باید حتما وارد شود");
+            }
+
+        }
+
+    </script>
+
+    <script>
+        $('#DefaultChargeOne').on('click', function (e) {
+            $('#ChargeValue').val("10000");
+        });
+        $('#DefaultChargeTwo').on('click', function (e) {
+            $('#ChargeValue').val("15000");
+        });
+        $('#DefaultChargeThree').on('click', function (e) {
+            $('#ChargeValue').val("25000");
+        });
+        $("#DoCharge").on('click', function (e) {
+            document.body.className = "loading";
+            var chargeValue = $('#ChargeValue').val();
+            $.ajax({
+                type: 'POST',
+                dataType: 'Json',
+                url: '@Url.Action("Dargah", "Home")',
+                data: { price: chargeValue },
+                error: function (err) {
+                    alert(err.status);
+                }
+            }).done(function (result) {
+                if (result == 0) {
+                    alert("خطایی در پرداخت رخ داده . لطفا مجددا تلاش نمایید");
+                } else {
+                    location.replace(result);
+                }
+            });
+        });
+    </script>
+
+    <script>
+        function SignUp() {
+            var MyAccess = $('select[name=signUpAccess]').val();
+            var studentNumber = $('#SNumber').val();
+            var name = $('#name').val();
+            var email = $('#email').val();
+            var mobile = $('#MyPhone').val();
+            var passsssss = $('#myPass').val();
+            var familyy = $('#family').val();
+            if (MyAccess == null) {
+                alert("نوع انتخاب نشده");
+            }
+            if (MyAccess == "دانشجو" && studentNumber == null) {
+                alert("شماره دانشجویی وارد نشده");
+            }
+            if (name == null) {
+                alert("نام و نام خانوادگی وارد نشده است");
+            }
+            if (email == null) {
+                alert("ایمیل خالی میباشد");
+            }
+            if (mobile == null) {
+                alert("شماره تلفن همراه وارد نشده");
+            }
+            if (passsssss == null) {
+                alert("رمز خالی میباشد");
+            }
+            if (familyy == null) {
+                alert("نام خانوادگی خالی میباشد");
+            }
+            $.ajax({
+                type: 'POST',
+                dataType: 'Json',
+                url: '@Url.Action("SignUp", "Home")',
+                data: { access: MyAccess, sNumber: studentNumber, name: name, Email: email, Phone: mobile, Pass: passsssss, Family: familyy },
+                error: function (err) {
+                    alert(err.status);
+                }
+            }).done(function (result) {
+                if (result == "عضویت با موفقیت انجام شد") {
+                    $('#activecode').modal('show');
+                } else {
+                    alert(result);
+                    window.location.reload(true);
+                }
+            });
+        }
+    </script>
+    <script>
+        function SignIn() {
+            var MyAccess = $('select[name=access]').val();
+            var mob_phone = $('#mob_phone').val();
+            var password = $('#password').val();
+            if (MyAccess == null) {
+                alert("نوع انتخاب نشده");
+            }
+            if (mob_phone == null) {
+                alert("شماره تلفن همراه وارد نشده");
+            }
+            if (password == null) {
+                alert("رمز خالی میباشد");
+            }
+            $.ajax({
+                type: 'POST',
+                dataType: 'Json',
+                url: '@Url.Action("SignIn", "Home")',
+                data: { access: MyAccess, Phone: mob_phone, Pass: password },
+                error: function (err) {
+                    alert(err.status);
+                }
+            }).done(function (result) {
+                if (result == 0) {
+                    alert("اطلاعات ورود صحیح نیس");
+                    window.location.reload(true);
+                } else if (result == 1) {
+                    window.location.reload(true);
+                } else {
+                    location.replace("http://localhost:6386/Admin/Index")
+                }
+            });
+        }
+    </script>
+
+    <script>
+        function Active() {
+            var f = $('#DialFifth').val();
+            var g = $('#DialFourth').val();
+            var h = $('#DialThird').val();
+            var j = $('#DialSecond').val();
+            var k = $('#DialFirst').val();
+
+            $.ajax({
+                type: 'POST',
+                dataType: 'Json',
+                url: '@Url.Action("ActiveLogin", "Home")',
+                data: { DialFifth: f, DialFourth: g, DialThird: h, DialSecond: j, DialFirst: k },
+                error: function (err) {
+                    alert(err.status);
+                }
+            }).done(function (result) {
+                alert(result);
+                window.location.reload(true);
+            });
+        }
+    </script>
+
+</body>
+</html>

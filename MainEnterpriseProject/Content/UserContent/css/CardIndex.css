@@ -1,0 +1,75 @@
+﻿
+/* The whole card */
+.m {
+
+    background-color: white;
+    position: absolute;
+ 
+    left: 50%;
+
+
+    border-radius: 25px 25px 5px 5px;
+    box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
+}
+/* The round button */
+
+.round-button {
+    position: absolute;
+    bottom: 118px;
+    right: 10px;
+    height: 40px;
+    width: 40px;
+    border-radius: 25px;
+    background-color: #ab7d32;
+    outline: none;
+    border: 0;
+    color: white;
+}
+
+    .round-button:hover {
+        background-color: #388e3c;
+    }
+
+/* The whole card */
+.card {
+
+
+    /*width: 300px;*/
+
+}
+    /* The image in the card */
+    .card img {
+    
+        height: 170px;
+        border-radius: 25px 25px 0px 0px;
+    }
+
+        .card img:hover {
+          
+            transition: .3s ease-in-out;
+        }
+
+/* The text */
+.card-text {
+    font-family: 'Raleway', Arial;
+}
+
+    .card-text h2 {
+        width: 20px;
+        transition: .3s ease-in-out;
+    }
+
+        .card-text h2:hover {
+            color: green;
+        }
+
+/* The link */
+.active-text p {
+    font-size: 13px;
+    color: #388e3c;
+}
+
+    .active-text p:hover {
+        color: #1b5e20;
+        cursor: pointer;
+    }

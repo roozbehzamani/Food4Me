@@ -1,0 +1,316 @@
+﻿
+@{
+    ViewBag.Title = "ConfectioneryFinancialReport";
+    Layout = "~/Views/Shared/_Admin.cshtml";
+}
+
+<link href="~/Content/css/manager-icon-button.css" rel="stylesheet" />
+<link href="~/Content/css/popup_style.css" rel="stylesheet" />
+<style>
+    .lr-sticky-header {
+        color: white;
+        background: lightblue;
+        transition: all 0.6s;
+    }
+
+    #scrollPanel {
+        height: 500px;
+        overflow-y: auto;
+    }
+
+    .table > thead > tr > th {
+        text-align: center;
+    }
+
+    .table > tbody > tr > td {
+        text-align: center;
+    }
+</style>
+
+<form>
+    <div class="row">
+        <div style="background-color:rgba(177, 176, 176, 0.15); border:1px solid rgba(177, 176, 176, 0.58); border-radius:10px; padding:15px;margin-bottom: 2%; position:inherit;z-index:3;">
+            <div class="row" style="margin:0 0 .25em 0;">
+
+                <div class="col-md-3">
+                    <div class="row">
+                        <div class="form-group">
+                            <div class="col-md-11">
+                                <div class="input-group">
+                                    <span class="input-group-addon">
+                                        <i class="fa fa-mail-forward"></i>
+                                    </span>
+                                    <input required oninvalid="setCustomValidity('تا تاریخ  را وارد نمایید')" oninput="setCustomValidity('')" type="text" class="form-control1" id="exampleInputPassword1" placeholder=" تا تاریخ  " style="direction:rtl;" autocomplete="off">
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="row">
+                        <div class="form-group">
+                            <div class="col-md-11">
+                                <div class="input-group">
+                                    <span class="input-group-addon">
+                                        <i class="fa fa-mail-forward"></i>
+                                    </span>
+                                    <input required oninvalid="setCustomValidity('از تاریخ  را وارد نمایید')" oninput="setCustomValidity('')" type="text" class="form-control1" id="exampleInputPassword1" placeholder="از تاریخ " style="direction:rtl;" autocomplete="off">
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="col-md-3">
+                    <div class="row">
+                        <div class="form-group">
+                            <div class="col-md-11">
+                                <div class="input-group">
+                                    <span class="input-group-addon">
+                                        <i class="fa fa-list"></i>
+                                    </span>
+                                    <select required oninvalid="setCustomValidity('نوع غذا را انتخاب نمایید')" oninput="setCustomValidity('')" class="form-control1" style="direction:rtl;">
+                                        <option value="volvo">نوع غذا</option>
+                                        <option value="saab">پیش غذا</option>
+                                        <option value="opel"> غذای اصلی</option>
+                                        <option value="audi">دسر</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="row">
+                        <div class="form-group">
+                            <div class="col-md-11">
+                                <div class="input-group">
+                                    <span class="input-group-addon">
+                                        <i class="fa fa-list"></i>
+                                    </span>
+                                    <select required oninvalid="setCustomValidity('نام غذا را انتخاب نمایید')" oninput="setCustomValidity('')" class="form-control1" style="direction:rtl;">
+                                        <option value="volvo">نام غذا</option>
+                                        <option value="saab">پیش غذا</option>
+                                        <option value="opel"> غذای اصلی</option>
+                                        <option value="audi">دسر</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row" style="margin:0 0 .25em 0;">
+
+                <div class="col-md-3">
+                    <div class="row">
+                        <div class="form-group">
+                            <div class="col-md-11">
+                                <div class="input-group">
+                                    <span class="input-group-addon">
+                                        <i class="fa fa-mail-forward"></i>
+                                    </span>
+                                    <input required oninvalid="setCustomValidity('تا ساعت  را وارد نمایید')" oninput="setCustomValidity('')" type="text" class="form-control1" id="exampleInputPassword1" placeholder=" تا ساعت " style="direction:rtl;" autocomplete="off">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="row">
+                        <div class="form-group">
+                            <div class="col-md-11">
+                                <div class="input-group">
+                                    <span class="input-group-addon">
+                                        <i class="fa fa-mail-forward"></i>
+                                    </span>
+                                    <input required oninvalid="setCustomValidity('از ساعت  را وارد نمایید')" oninput="setCustomValidity('')" type="text" class="form-control1" id="exampleInputPassword1" placeholder="از ساعت " style="direction:rtl;" autocomplete="off">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-3">
+                    <div class="row">
+                        <div class="form-group">
+                            <div class="col-md-11">
+                                <div class="input-group">
+                                    <span class="input-group-addon">
+                                        <i class="fa fa-mail-forward"></i>
+                                    </span>
+                                    <input required oninvalid="setCustomValidity('قیمت  را وارد نمایید')" oninput="setCustomValidity('')" type="text" class="form-control1" id="exampleInputPassword1" placeholder="قیمت " style="direction:rtl;" autocomplete="off">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="row">
+                        <div class="form-group">
+                            <div class="col-md-11">
+                                <div class="input-group">
+                                    <span class="input-group-addon">
+                                        <i class="fa fa-mail-forward"></i>
+                                    </span>
+                                    <input required oninvalid="setCustomValidity('تعداد  را وارد نمایید')" oninput="setCustomValidity('')" type="text" class="form-control1" id="exampleInputPassword1" placeholder="تعداد " style="direction:rtl;" autocomplete="off">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="row" style="margin:0 0 .25em 0;">
+
+                <div class="col-md-4">
+                </div>
+                <div class="col-md-4">
+                    <div class="row" style="margin:0 0 .75em 0;">
+                        <div class="form-group">
+                            <div class="col-md-11">
+                                <div class="input-group">
+                                    <span class="input-group-addon">
+                                        <i class="fa fa-save"></i>
+                                    </span>
+                                    <input required type="submit" class="form-control1" value="جست وجو" style="direction:rtl; background-color:lightcyan">
+                                    <span class="input-group-addon">
+                                        <i class="fa fa-save"></i>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</form>
+
+<div class="container">
+    <div class="row">
+        <div style="width:95%; direction:rtl;">
+            <table class="table table-bordered">
+                <thead style="z-index: 1;">
+                    <tr>
+                        <th class="headerSort headerSortDown" tabindex="0" role="columnheader button" title="Sort descending">
+                            شماره
+                        </th>
+                        <th width="170" class="headerSort" tabindex="0" role="columnheader button" title="Sort ascending">نام </th>
+                        <th width="110" class="headerSort" tabindex="0" role="columnheader button" title="Sort ascending">نوع سفارش</th>
+                        <th width="70" class="headerSort" tabindex="0" role="columnheader button" title="Sort ascending">ساعت</th>
+                        <th width="120" class="headerSort" tabindex="0" role="columnheader button" title="Sort ascending">تاریخ</th>
+                        <th width="110" class="headerSort" tabindex="0" role="columnheader button" title="Sort ascending">نوع دریافت</th>
+                        <th width="110" class="headerSort" tabindex="0" role="columnheader button" title="Sort ascending">قیمت</th>
+                        <th width="110" class="headerSort" tabindex="0" role="columnheader button" title="Sort ascending">تعداد</th>
+
+                        <th class="" title=""></th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    <tr>
+                        <td><span style="font-family: monospace, monospace;">1</span></td>
+                        <td>شبنم معظم</td>
+                        <td>رزرو</td>
+                        <td>11:22</td>
+                        <td>1397/2030</td>
+                        <td>حضوری</td>
+                        <td>100000</td>
+                        <td>5</td>
+
+                        <td>
+                            <div class="col-md-5">
+
+                            </div>
+                            <div class="col-md-2">
+                                <div class="social_lock">
+                                    <div class="social_case3"></div>
+                                    <div class="mk"><a data-toggle="modal" data-target="#fd" href="#fd"><i class="fa fa-list vmk1 vm" title="لیست شیرینی"></i></a></div>
+                                </div>
+                            </div>
+                            <div class="col-md-5">
+
+                            </div>
+                        </td>
+                    </tr>
+
+                </tbody>
+                <tfoot></tfoot>
+            </table>
+        </div>
+    </div>
+</div>
+
+<!--MODAL LISTFOOD-->
+<div class="modal fade" id="fd" role="dialog" aria-labelledby="#fd" tabindex="-1" aria-hidden="true">
+
+
+    <div class="modal-dialog" width: 38% !important; min-width:360px; margin:5em auto 0 !important">
+        <div style="background:rgba(255,255,255,.28);height:18px;position:absolute;border-radius:10px;border:none;right:3%;left:3%;top:-8px;"></div>
+        <div style="background:rgba(255,255,255,.08);height:33px;position:absolute;border-radius:10px;border:none;right:5%;left:5%;top:-14px;"></div>
+        <div class="row">
+            <div class="modal-content" border-radius:25px!important;">
+                <div class="modal-body">
+                    <div style="min-width: 360px; ">
+                        <div class="row">
+                            <div class="col-md-5" style="text-align:center;">
+                                وزن
+                            </div>
+                            <div class="col-md-6" style="text-align:center;">
+                                نام شیرینی
+                            </div>
+                            <div class="col-md-1">
+
+                            </div>
+
+                            <br />
+                            <div class="row">
+
+
+                                <div class="col-md-5" style="text-align:center;">
+                                    <div class="span3 well">
+
+                                    </div>
+                                </div>
+                                <div class="col-md-6" style="text-align:center;">
+                                    <div class="span3 well">
+
+                                    </div>
+                                </div>
+                                <div class="col-md-1" style="text-align:center;">
+                                    <p style="text-align:center;padding:8px;">1</p>
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+
+    </div>
+
+
+
+</div>
+<!--END OF MODAL LISTFOOD-->
+
+<script src="~/Scripts/lrStickyHeader.js"></script>
+<script>
+    var tables = document.getElementsByTagName('table');
+    lrStickyHeader(tables[0]);
+    lrStickyHeader(tables[1]);
+    lrStickyHeader(tables[2], { parent: document.getElementById('scrollPanel') });
+</script>
+

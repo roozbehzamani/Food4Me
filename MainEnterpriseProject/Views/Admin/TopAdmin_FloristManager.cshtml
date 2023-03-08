@@ -1,0 +1,165 @@
+﻿@model List<MainEnterpriseProject.Models.Domain.Tbl_Floriest>
+@{
+
+    ViewBag.Title = "مدیریت گل فروشی ها";
+    Layout = "~/Views/Shared/_Admin.cshtml";
+    MainEnterpriseProject.Models.Repository.UserRepository rep_user = new MainEnterpriseProject.Models.Repository.UserRepository();
+    int counter = 1;
+    int infocounter = 10000;
+}
+<link href="~/Content/css/manager-icon-button.css" rel="stylesheet" />
+<link href="~/Content/css/popup_style.css" rel="stylesheet" />
+<style>
+    .lr-sticky-header {
+        color: white;
+        background: lightblue;
+        transition: all 0.6s;
+    }
+
+    #scrollPanel {
+        height: 500px;
+        overflow-y: auto;
+    }
+
+    .table > thead > tr > th {
+        text-align: center;
+    }
+
+    .table > tbody > tr > td {
+        text-align: center;
+    }
+</style>
+
+
+<div class="container">
+    <div class="row">
+        <div style="width:95%; direction:rtl;">
+            <table class="table table-bordered">
+                <thead style="z-index: 1;">
+                    <tr>
+                        <th class="headerSort headerSortDown" tabindex="0" role="columnheader button" title="Sort descending">
+                            شماره
+                        </th>
+                        <th class="headerSort" tabindex="0" role="columnheader button" title="Sort ascending">نام گل فروشی</th>
+                        <th width="160" class="headerSort" tabindex="0" role="columnheader button" title="Sort ascending">تلفن گل فروشی</th>
+                        <th width="150" class="headerSort" tabindex="0" role="columnheader button" title="Sort ascending">مسئول گل فروشی</th>
+                        <th width="270" class="headerSort" tabindex="0" role="columnheader button" title="Sort ascending">آدرس</th>
+                        <th class="" title=""></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+
+                        <tr>
+                            <td><span style="font-family: monospace, monospace;">@counter</span></td>
+                            <td>@item.FName</td>
+                            <td>@item.FPhone</td>
+                            <td><a style="color:#333333" data-toggle="modal" data-target="#@counter.ToString()">@rep_user.GetSingleUserInfo(item.userEmail).name</a></td>
+                            <td><span class="nowrap">@item.FAddress</span></td>
+                            <td>
+                                <div class="col-md-3">
+
+                                </div>
+                                <div class="col-md-2">
+                                    <div class="social_lock">
+                                        <div class="social_case3"></div>
+                                        <div class="mk">
+                                            <a href="~/Admin/TopAdmin_EditFlorist/@item.ID">
+                                                <i class="fa fa-edit vmk1 vm" title="ویرایش"></i>
+                                            </a>
+                                        </div>
+                                        
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <div class="social_lock">
+                                        <div class="social_case3"></div>
+                                        <div class="mk">
+                                            <a href="~/Admin/TopAdmin_DeleteFlorist/@item.ID">
+                                                <i class="fa fa-remove vmk1 vm" title="حذف"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <div class="social_lock">
+                                        <div class="social_case3"></div>
+                                        <div class="mk"><a data-toggle="modal" data-target="#@infocounter.ToString()"><i class="fa fa-sign-in vmk1 vm" title="جزییات"></i></a></div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+
+                                </div>
+                            </td>
+                        </tr>
+                        <!--MODAL SIGNIN-->
+                        <div class="modal fade" id="@counter.ToString()" role="dialog" aria-labelledby="#@counter.ToString()" tabindex="-1" aria-hidden="true">
+
+                            <div class="modal-dialog" style=" width: 38% !important; min-width:360px; margin:5em auto 0 !important">
+
+                                <div class="modal-content" style="border-radius:25px!important;">
+                                    <div class="modal-body">
+                                        <div style="min-width: 360px;">
+                                            <br>
+                                            <br>
+
+                                            <div class="span3 well">
+                                                <center>
+                                                    <img src="~/Content/images/@rep_user.GetSingleUserInfo(item.userEmail).image" width="140" height="140" class="img-circle">
+
+                                                    <h3>@rep_user.GetSingleUserInfo(item.userEmail).name</h3>
+                                                    <em>@rep_user.GetSingleUserInfo(item.userEmail).mob_phone</em>
+                                                    <p>@rep_user.GetSingleUserInfo(item.userEmail).birth_date<br></p>
+                                                    <p><a target="_blank" href="#">@rep_user.GetSingleUserInfo(item.userEmail).email</a></p>
+                                                </center>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+
+
+                        </div>
+                        <!--END OF MODAL SIGNIN-->
+
+                        <!-- thank you Modal -->
+                        <div class="modal fade text-center py-5" style="top:30px" id="@infocounter.ToString()" tabindex="-1" role="dialog" aria-labelledby="#@infocounter.ToString()" aria-hidden="true">
+                            <div class="modal-dialog modal-md" style="margin-top:10%" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-body">
+                                        <img src="~/Content/images/@item.FImage" class="modal-img">
+                                        <h3 class="pt-5 mb-0 text-secondary">@item.FName</h3>
+                                        <p class="pb-3 text-muted"><small>@item.FAddress</small></p>
+                                        <p class="pb-3 text-muted"><small>@item.FPhone</small></p>
+                                        <p class="pb-3 text-muted"><small>میزان رضایت از رستوران</small></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- ./thank you Modal -->
+
+
+                        counter++;
+                        infocounter++;
+                    }
+                </tbody>
+                <tfoot></tfoot>
+            </table>
+        </div>
+    </div>
+</div>
+
+
+
+
+<script src="~/Scripts/lrStickyHeader.js"></script>
+<script>
+    var tables = document.getElementsByTagName('table');
+    lrStickyHeader(tables[0]);
+    lrStickyHeader(tables[1]);
+    lrStickyHeader(tables[2], { parent: document.getElementById('scrollPanel') });
+</script>

@@ -1,0 +1,90 @@
+﻿
+@{
+    ViewBag.Title = "AllFinancialTransaction";
+    Layout = "~/Views/Shared/_Admin.cshtml";
+}
+
+<link href="~/Content/css/manager-icon-button.css" rel="stylesheet" />
+<link href="~/Content/css/popup_style.css" rel="stylesheet" />
+<link href="~/Content/css/font-awesome.css" rel="stylesheet" />
+<style>
+    .lr-sticky-header {
+        color: white;
+        background: lightblue;
+        transition: all 0.6s;
+    }
+
+    #scrollPanel {
+        height: 500px;
+        overflow-y: auto;
+    }
+
+    .table > thead > tr > th {
+        text-align: center;
+        vertical-align: middle;
+    }
+
+    .table > tbody > tr > td {
+        text-align: center;
+    }
+</style>
+
+
+<div class="container">
+    <div class="row" style="width:95%;word-break: keep-all;overflow-x: scroll;">
+        <div style="width:200%; direction:rtl;">
+            <table class="table table-bordered">
+                <thead style="z-index: 1;">
+                    <tr>
+                        <th class="headerSort headerSortDown" tabindex="0" role="columnheader button" title="Sort descending">
+                            شماره
+                        </th>
+                        <th width="400" class="headerSort" tabindex="0" role="columnheader button" title="Sort ascending">مجموع سفارش گل</th>
+                        <th width="400" class="headerSort" tabindex="0" role="columnheader button" title="Sort ascending">مجموع سفارش غذا </th>
+                        <th width="400" class="headerSort" tabindex="0" role="columnheader button" title="Sort ascending">مجموع سفارش شیرینی</th>
+                        <th width="600" class="headerSort" tabindex="0" role="columnheader button" title="Sort ascending">مجموع پرداختی به گل</th>
+                        <th width="500" class="headerSort" tabindex="0" role="columnheader button" title="Sort ascending">مجموع پرداختی به  غذا</th>
+                        <th width="600" class="headerSort" tabindex="0" role="columnheader button" title="Sort ascending">مجموع پرداختی به شیرینی</th>
+                        <th width="700" class="headerSort" tabindex="0" role="columnheader button" title="Sort ascending">مجموع سود برای گل</th>
+                        <th width="600" class="headerSort" tabindex="0" role="columnheader button" title="Sort ascending">مجموع سود برای غذا</th>
+                        <th width="600" class="headerSort" tabindex="0" role="columnheader button" title="Sort ascending">مجموع سود برای شیرینی</th>
+                        <th width="700" class="headerSort" tabindex="0" role="columnheader button" title="Sort ascending">مجموع کل سود</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+
+                    <tr>
+                        <td><span style="font-family: monospace, monospace;">1</span></td>
+                        <td>1000000</td>
+                        <td>10000000</td>
+                        <td>10000000</td>
+                        <td>100000000</td>
+                        <td>10000000</td>
+                        <td>10000000</td>
+                        <td>10000000</td>
+                        <td>10000000</td>
+                        <td>1000000</td>
+                        <td>10000000</td>
+
+
+                    </tr>
+
+                </tbody>
+                <tfoot></tfoot>
+            </table>
+        </div>
+    </div>
+</div>
+
+
+
+
+<script src="~/Scripts/lrStickyHeader.js"></script>
+<script>
+    var tables = document.getElementsByTagName('table');
+    lrStickyHeader(tables[0]);
+    lrStickyHeader(tables[1]);
+    lrStickyHeader(tables[2], { parent: document.getElementById('scrollPanel') });
+</script>
+

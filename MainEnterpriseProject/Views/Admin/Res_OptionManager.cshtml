@@ -1,0 +1,95 @@
+﻿
+@{
+    ViewBag.Title = "AddOptionManager";
+    Layout = "~/Views/Shared/_Admin.cshtml";
+}
+
+<link href="~/Content/css/manager-icon-button.css" rel="stylesheet" />
+<link href="~/Content/css/popup_style.css" rel="stylesheet" />
+<style>
+    .lr-sticky-header {
+        color: white;
+        background: lightblue;
+        transition: all 0.6s;
+    }
+
+    #scrollPanel {
+        height: 500px;
+        overflow-y: auto;
+    }
+
+    .table > thead > tr > th {
+        text-align: center;
+    }
+
+    .table > tbody > tr > td {
+        text-align: center;
+    }
+</style>
+
+
+<div class="container">
+    <div class="row">
+        <div style="width:95%; direction:rtl;">
+            <table class="table table-bordered">
+                <thead style="z-index: 1;">
+                    <tr>
+                        <th class="headerSort headerSortDown" tabindex="0" role="columnheader button" title="Sort descending">
+                            شماره
+                        </th>
+                        <th width="180" class="headerSort" tabindex="0" role="columnheader button" title="Sort ascending">عنوان</th>
+                        <th width="250" class="headerSort" tabindex="0" role="columnheader button" title="Sort ascending">نام </th>
+                        <th width="150" class="headerSort" tabindex="0" role="columnheader button" title="Sort ascending">قیمت</th>
+                        <th width="150" class="headerSort" tabindex="0" role="columnheader button" title="Sort ascending">نوع</th>
+                        <th class="" title=""></th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    <tr>
+                        <td><span style="font-family: monospace, monospace;">1</span></td>
+                        <td>پنیر</td>
+                        <td>پنیر پارمزان-200گرم</td>
+                        <td>100000</td>
+                        <td>افزایینده</td>
+                        <td>
+                            <div class="col-md-4">
+
+                            </div>
+                            <div class="col-md-2">
+                                <div class="social_lock">
+                                    <div class="social_case3"></div>
+                                    <div class="mk"><i class="fa fa-edit vmk1 vm" title="ویرایش"></i></div>
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="social_lock">
+                                    <div class="social_case3"></div>
+                                    <div class="mk"><i class="fa fa-remove vmk1 vm" title="حذف"></i></div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4">
+
+                            </div>
+                        </td>
+                    </tr>
+
+                </tbody>
+                <tfoot></tfoot>
+            </table>
+        </div>
+    </div>
+</div>
+
+
+<script src="~/Scripts/lrStickyHeader.js"></script>
+<script>
+    var tables = document.getElementsByTagName('table');
+    lrStickyHeader(tables[0]);
+    lrStickyHeader(tables[1]);
+    lrStickyHeader(tables[2], { parent: document.getElementById('scrollPanel') });
+</script>
+
+
+

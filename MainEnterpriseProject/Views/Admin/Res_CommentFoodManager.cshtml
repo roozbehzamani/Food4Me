@@ -1,0 +1,232 @@
+﻿
+@{
+    ViewBag.Title = "CommentFoodManager";
+    Layout = "~/Views/Shared/_Admin.cshtml";
+    int counter = 1;
+    MainEnterpriseProject.Models.Repository.FoodRepository foodRep = new MainEnterpriseProject.Models.Repository.FoodRepository();
+}
+
+<link href="~/Content/css/manager-icon-button.css" rel="stylesheet" />
+<link href="~/Content/css/popup_style.css" rel="stylesheet" />
+<link href="~/Content/css/font-awesome.css" rel="stylesheet" />
+<style>
+    .lr-sticky-header {
+        color: white;
+        background: lightblue;
+        transition: all 0.6s;
+    }
+
+    #scrollPanel {
+        height: 500px;
+        overflow-y: auto;
+    }
+
+    .table > thead > tr > th {
+        text-align: center;
+    }
+
+    .table > tbody > tr > td {
+        text-align: center;
+    }
+
+    .row {
+        margin: auto !important;
+    }
+</style>
+
+
+<div class="container">
+    <div class="row" style="margin-bottom:20px !important;">
+
+        <div class="col-md-3">
+
+        </div>
+        <div id="starBar" class="col-md-3" style="margin-top:0.7%">
+
+        </div>
+        <div class="col-md-3">
+            <div class="form-group">
+                <div class="col-md-11">
+                    <div class="input-group">
+                        <span class="input-group-addon">
+                            <i class="fa fa-list"></i>
+                        </span>
+
+                        <select class="form-control1" style="direction:rtl;" id="selectFoodName" name="selectFoodName">
+                            <option value="volvo">نام غذا</option>
+                            @foreach (var item in foodRep.getResfoodList(Session["email"].ToString()))
+                            {
+                                <option value="@item.id">@item.name</option>
+                            }
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+
+        </div>
+
+    </div>
+    <div class="row">
+        <div style="width:95%; direction:rtl;">
+            <table class="table table-bordered">
+                <thead style="z-index: 1;">
+                    <tr>
+                        <th class="headerSort headerSortDown" tabindex="0" role="columnheader button" title="Sort descending">
+                            شماره
+                        </th>
+                        <th width="160" class="headerSort" tabindex="0" role="columnheader button" title="Sort ascending">نام </th>
+                        <th width="120" class="headerSort" tabindex="0" role="columnheader button" title="Sort ascending">امتیاز</th>
+                        <th width="140" class="headerSort" tabindex="0" role="columnheader button" title="Sort ascending">تاریخ</th>
+                        <th width="300" class="headerSort" tabindex="0" role="columnheader button" title="Sort ascending">نظر</th>
+                        <th class="" title=""></th>
+                    </tr>
+                </thead>
+                <tbody id="MainCom"></tbody>
+                <tfoot></tfoot>
+            </table>
+        </div>
+    </div>
+</div>
+
+
+
+
+<script src="~/Scripts/lrStickyHeader.js"></script>
+<script>
+    var tables = document.getElementsByTagName('table');
+    lrStickyHeader(tables[0]);
+    lrStickyHeader(tables[1]);
+    lrStickyHeader(tables[2], { parent: document.getElementById('scrollPanel') });
+</script>
+
+
+
+<script>
+    $("#selectFoodName").on('change', function (e) {
+        var selectID = $('select[name=selectFoodName]').val();
+        $.ajax({
+            type: 'POST',
+            dataType: 'Json',
+            url: '@Url.Action("FoodCommentList", "Admin")',
+            data: { foodID: selectID },
+            error: function (err) {
+                alert(err.status);
+            }
+        }).done(function (result) {
+            var counter = 0;
+            var Text = "";
+            var avg = 0;
+            var sum = 0;
+            var starBarText = "";
+            $.each(result, function (index, val) {
+                counter++;
+                sum += val.Stars;
+                if (val.confirm) {
+                    Text += "<tr style='background-color:lightgreen;'><td><span style='font-family: monospace, monospace;'>" + counter + "</span></td><td>" + val.name + "</td><td> <div class='row' style='text-align:center;'> " + val.Stars + " </div> </td> <td>" + val.data + "</td><td><span class='nowrap'>" + val.text + " </span></td><td><div class='col-md-4'> </div><div class='col-md-2'><div class='social_lock'><div class='social_case3' onclick='RemoveComment(" + val.id + ")'></div> <div class='mk'><i onclick='RemoveComment(" + val.id + ")' class='fa fa-remove vmk1 vm' title='حذف'></i></div> </div> </div><div class='col-md-2'> <div class='social_lock'><div class='social_case3' onclick='ConfirmComment(" + val.id + ")'></div> <div class='mk'><i onclick='ConfirmComment(" + val.id + ")' class='fa fa-sign-in vmk1 vm' title='تایید'></i></div></div> </div> <div class='col-md-4'> </div> </td></tr>";
+                } else {
+                    Text += "<tr style='background-color:coral;'><td><span style='font-family: monospace, monospace;'>" + counter + "</span></td><td>" + val.name + "</td><td> <div class='row' style='text-align:center;'> " + val.Stars + " </div> </td> <td>" + val.data + "</td><td><span class='nowrap'>" + val.text + " </span></td><td><div class='col-md-4'> </div><div class='col-md-2'><div class='social_lock'><div class='social_case3' onclick='RemoveComment(" + val.id + ")'></div> <div class='mk'><i onclick='RemoveComment(" + val.id + ")' class='fa fa-remove vmk1 vm' title='حذف'></i></div> </div> </div><div class='col-md-2'> <div class='social_lock'><div class='social_case3' onclick='ConfirmComment(" + val.id + ")'></div> <div class='mk'><i onclick='ConfirmComment(" + val.id + ")' class='fa fa-sign-in vmk1 vm' title='تایید'></i></div></div> </div> <div class='col-md-4'> </div> </td></tr>";
+                }
+            })
+            $('#MainCom').html(Text);
+            avg = sum / counter;
+            if (avg >= 1 && avg < 2) {
+                starBarText = "<div style='text-align:center;'><i class='fa fa-star' style='color:#7b7979;'></i><i class='fa fa-star' style='color:#cbc8c8;'></i><i class='fa fa-star' style='color:#cbc8c8;'></i><i class='fa fa-star' style='color:#cbc8c8;'></i><i class='fa fa-star' style='color:#cbc8c8;'></i></div>";
+            } else if (avg >= 2 && avg < 3) {
+                starBarText = "<div style='text-align:center;'><i class='fa fa-star' style='color:#7b7979;'></i><i class='fa fa-star' style='color:#7b7979;'></i><i class='fa fa-star' style='color:#cbc8c8;'></i><i class='fa fa-star' style='color:#cbc8c8;'></i><i class='fa fa-star' style='color:#cbc8c8;'></i></div>";
+            } else if (avg >= 3 && avg < 4) {
+                starBarText = "<div style='text-align:center;'><i class='fa fa-star' style='color:#7b7979;'></i><i class='fa fa-star' style='color:#7b7979;'></i><i class='fa fa-star' style='color:#7b7979;'></i><i class='fa fa-star' style='color:#cbc8c8;'></i><i class='fa fa-star' style='color:#cbc8c8;'></i></div>";
+            } else if (avg >= 4 && avg < 5) {
+                starBarText = "<div style='text-align:center;'><i class='fa fa-star' style='color:#7b7979;'></i><i class='fa fa-star' style='color:#7b7979;'></i><i class='fa fa-star' style='color:#7b7979;'></i><i class='fa fa-star' style='color:#7b7979;'></i><i class='fa fa-star' style='color:#cbc8c8;'></i></div>";
+            } else if (avg == 5) {
+                starBarText = "<div style='text-align:center;'><i class='fa fa-star' style='color:#7b7979;'></i><i class='fa fa-star' style='color:#7b7979;'></i><i class='fa fa-star' style='color:#7b7979;'></i><i class='fa fa-star' style='color:#7b7979;'></i><i class='fa fa-star' style='color:#7b7979;'></i></div>";
+            }
+            $('#starBar').html(starBarText);
+        });
+    });
+
+    function RemoveComment(id) {
+        $.ajax({
+            type: 'POST',
+            dataType: 'Json',
+            url: '@Url.Action("RemoveComment", "Admin")',
+            data: { ID: id },
+            error: function (err) {
+                alert(err.status);
+            }
+        }).done(function (result) {
+            var counter = 0;
+            var Text = "";
+            var avg = 0;
+            var sum = 0;
+            var starBarText = "";
+            $.each(result, function (index, val) {
+                counter++;
+                sum += val.Stars;
+                if (val.confirm) {
+                    Text += "<tr style='background-color:lightgreen;'><td><span style='font-family: monospace, monospace;'>" + counter + "</span></td><td>" + val.name + "</td><td> <div class='row' style='text-align:center;'> " + val.Stars + " </div> </td> <td>" + val.data + "</td><td><span class='nowrap'>" + val.text + " </span></td><td><div class='col-md-4'> </div><div class='col-md-2'><div class='social_lock'><div class='social_case3' onclick='RemoveComment(" + val.id + ")'></div> <div class='mk'><i onclick='RemoveComment(" + val.id + ")' class='fa fa-remove vmk1 vm' title='حذف'></i></div> </div> </div><div class='col-md-2'> <div class='social_lock'><div class='social_case3' onclick='ConfirmComment(" + val.id + ")'></div> <div class='mk'><i onclick='ConfirmComment(" + val.id + ")' class='fa fa-sign-in vmk1 vm' title='تایید'></i></div></div> </div> <div class='col-md-4'> </div> </td></tr>";
+                } else {
+                    Text += "<tr style='background-color:coral;'><td><span style='font-family: monospace, monospace;'>" + counter + "</span></td><td>" + val.name + "</td><td> <div class='row' style='text-align:center;'> " + val.Stars + " </div> </td> <td>" + val.data + "</td><td><span class='nowrap'>" + val.text + " </span></td><td><div class='col-md-4'> </div><div class='col-md-2'><div class='social_lock'><div class='social_case3' onclick='RemoveComment(" + val.id + ")'></div> <div class='mk'><i onclick='RemoveComment(" + val.id + ")' class='fa fa-remove vmk1 vm' title='حذف'></i></div> </div> </div><div class='col-md-2'> <div class='social_lock'><div class='social_case3' onclick='ConfirmComment(" + val.id + ")'></div> <div class='mk'><i onclick='ConfirmComment(" + val.id + ")' class='fa fa-sign-in vmk1 vm' title='تایید'></i></div></div> </div> <div class='col-md-4'> </div> </td></tr>";
+                }
+            })
+            $('#MainCom').html(Text);
+            avg = sum / counter;
+            if (avg >= 1 && avg < 2) {
+                starBarText = "<div style='text-align:center;'><i class='fa fa-star' style='color:#7b7979;'></i><i class='fa fa-star' style='color:#cbc8c8;'></i><i class='fa fa-star' style='color:#cbc8c8;'></i><i class='fa fa-star' style='color:#cbc8c8;'></i><i class='fa fa-star' style='color:#cbc8c8;'></i></div>";
+            } else if (avg >= 2 && avg < 3) {
+                starBarText = "<div style='text-align:center;'><i class='fa fa-star' style='color:#7b7979;'></i><i class='fa fa-star' style='color:#7b7979;'></i><i class='fa fa-star' style='color:#cbc8c8;'></i><i class='fa fa-star' style='color:#cbc8c8;'></i><i class='fa fa-star' style='color:#cbc8c8;'></i></div>";
+            } else if (avg >= 3 && avg < 4) {
+                starBarText = "<div style='text-align:center;'><i class='fa fa-star' style='color:#7b7979;'></i><i class='fa fa-star' style='color:#7b7979;'></i><i class='fa fa-star' style='color:#7b7979;'></i><i class='fa fa-star' style='color:#cbc8c8;'></i><i class='fa fa-star' style='color:#cbc8c8;'></i></div>";
+            } else if (avg >= 4 && avg < 5) {
+                starBarText = "<div style='text-align:center;'><i class='fa fa-star' style='color:#7b7979;'></i><i class='fa fa-star' style='color:#7b7979;'></i><i class='fa fa-star' style='color:#7b7979;'></i><i class='fa fa-star' style='color:#7b7979;'></i><i class='fa fa-star' style='color:#cbc8c8;'></i></div>";
+            } else if (avg == 5) {
+                starBarText = "<div style='text-align:center;'><i class='fa fa-star' style='color:#7b7979;'></i><i class='fa fa-star' style='color:#7b7979;'></i><i class='fa fa-star' style='color:#7b7979;'></i><i class='fa fa-star' style='color:#7b7979;'></i><i class='fa fa-star' style='color:#7b7979;'></i></div>";
+            }
+            $('#starBar').html(starBarText);
+
+        });
+    }
+
+    function ConfirmComment(id) {
+        $.ajax({
+            type: 'POST',
+            dataType: 'Json',
+            url: '@Url.Action("CommentConfirm", "Admin")',
+            data: { ID: id },
+            error: function (err) {
+                alert(err.status);
+            }
+        }).done(function (result) {
+            var counter = 0;
+            var Text = "";
+            var avg = 0;
+            var sum = 0;
+            var starBarText = "";
+            $.each(result, function (index, val) {
+                counter++;
+                sum += val.Stars;
+                if (val.confirm) {
+                    Text += "<tr style='background-color:lightgreen;'><td><span style='font-family: monospace, monospace;'>" + counter + "</span></td><td>" + val.name + "</td><td> <div class='row' style='text-align:center;'> " + val.Stars + " </div> </td> <td>" + val.data + "</td><td><span class='nowrap'>" + val.text + " </span></td><td><div class='col-md-4'> </div><div class='col-md-2'><div class='social_lock'><div class='social_case3' onclick='RemoveComment(" + val.id + ")'></div> <div class='mk'><i onclick='RemoveComment(" + val.id + ")' class='fa fa-remove vmk1 vm' title='حذف'></i></div> </div> </div><div class='col-md-2'> <div class='social_lock'><div class='social_case3' onclick='ConfirmComment(" + val.id + ")'></div> <div class='mk'><i onclick='ConfirmComment(" + val.id + ")' class='fa fa-sign-in vmk1 vm' title='تایید'></i></div></div> </div> <div class='col-md-4'> </div> </td></tr>";
+                } else {
+                    Text += "<tr style='background-color:coral;'><td><span style='font-family: monospace, monospace;'>" + counter + "</span></td><td>" + val.name + "</td><td> <div class='row' style='text-align:center;'> " + val.Stars + " </div> </td> <td>" + val.data + "</td><td><span class='nowrap'>" + val.text + " </span></td><td><div class='col-md-4'> </div><div class='col-md-2'><div class='social_lock'><div class='social_case3' onclick='RemoveComment(" + val.id + ")'></div> <div class='mk'><i onclick='RemoveComment(" + val.id + ")' class='fa fa-remove vmk1 vm' title='حذف'></i></div> </div> </div><div class='col-md-2'> <div class='social_lock'><div class='social_case3' onclick='ConfirmComment(" + val.id + ")'></div> <div class='mk'><i onclick='ConfirmComment(" + val.id + ")' class='fa fa-sign-in vmk1 vm' title='تایید'></i></div></div> </div> <div class='col-md-4'> </div> </td></tr>";
+                }
+            })
+            $('#MainCom').html(Text);
+            avg = sum / counter;
+            if (avg >= 1 && avg < 2) {
+                starBarText = "<div style='text-align:center;'><i class='fa fa-star' style='color:#7b7979;'></i><i class='fa fa-star' style='color:#cbc8c8;'></i><i class='fa fa-star' style='color:#cbc8c8;'></i><i class='fa fa-star' style='color:#cbc8c8;'></i><i class='fa fa-star' style='color:#cbc8c8;'></i></div>";
+            } else if (avg >= 2 && avg < 3) {
+                starBarText = "<div style='text-align:center;'><i class='fa fa-star' style='color:#7b7979;'></i><i class='fa fa-star' style='color:#7b7979;'></i><i class='fa fa-star' style='color:#cbc8c8;'></i><i class='fa fa-star' style='color:#cbc8c8;'></i><i class='fa fa-star' style='color:#cbc8c8;'></i></div>";
+            } else if (avg >= 3 && avg < 4) {
+                starBarText = "<div style='text-align:center;'><i class='fa fa-star' style='color:#7b7979;'></i><i class='fa fa-star' style='color:#7b7979;'></i><i class='fa fa-star' style='color:#7b7979;'></i><i class='fa fa-star' style='color:#cbc8c8;'></i><i class='fa fa-star' style='color:#cbc8c8;'></i></div>";
+            } else if (avg >= 4 && avg < 5) {
+                starBarText = "<div style='text-align:center;'><i class='fa fa-star' style='color:#7b7979;'></i><i class='fa fa-star' style='color:#7b7979;'></i><i class='fa fa-star' style='color:#7b7979;'></i><i class='fa fa-star' style='color:#7b7979;'></i><i class='fa fa-star' style='color:#cbc8c8;'></i></div>";
+            } else if (avg == 5) {
+                starBarText = "<div style='text-align:center;'><i class='fa fa-star' style='color:#7b7979;'></i><i class='fa fa-star' style='color:#7b7979;'></i><i class='fa fa-star' style='color:#7b7979;'></i><i class='fa fa-star' style='color:#7b7979;'></i><i class='fa fa-star' style='color:#7b7979;'></i></div>";
+            }
+            $('#starBar').html(starBarText);
+        });
+    }
+</script>

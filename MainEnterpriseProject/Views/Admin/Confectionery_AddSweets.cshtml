@@ -1,0 +1,98 @@
+﻿
+@{
+    ViewBag.Title = "AddSweets";
+    Layout = "~/Views/Shared/_Admin.cshtml";
+}
+
+
+<form method="post" enctype="multipart/form-data">
+    <div class="row">
+        <div class="container">
+            <div class="col-md-4">
+                <div class="form-group">
+                    <div class="col-md-11">
+                        <div class="input-group">
+                            <span class="input-group-addon">
+                                <i class="fa fa-image"></i>
+                            </span>
+                            <button class="btn btn-success form-control1" style="border: 1px solid #ccc;" onclick="document.getElementById('file').click(); return false;">انتخاب عکس</button>
+                            <input required oninvalid="setCustomValidity('عکس پروفایلتان را انتخاب نمایید')" oninput="setCustomValidity('')" type="file" class="form-control1" id="file" name="file" style="direction:rtl; color:transparent; display:none;">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <div class="col-md-11">
+                        <div class="input-group">
+                            <span class="input-group-addon">
+                                <i class="fa fa-mail-forward"></i>
+                            </span>
+                            <input required oninvalid="setCustomValidity('قیمت  را وارد نمایید')" oninput="setCustomValidity('')" type="text" class="form-control1" id="S_Price"name="S_Price" placeholder="قیمت " style="direction:rtl;" autocomplete="off">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <div class="col-md-11">
+                        <div class="input-group">
+                            <span class="input-group-addon">
+                                <i class="fa fa-check"></i>
+                            </span>
+                            <input required oninvalid="setCustomValidity('نام شیرینی را وارد نمایید')" oninput="setCustomValidity('')" type="text" class="form-control1" id="S_Name"name="S_Name" placeholder=" نام شیرینی " style="direction:rtl;" autocomplete="off">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="row">
+        <div class="container">
+            <div class="col-md-4">
+                <div class="form-group">
+                    <div class="col-md-11">
+                        <div class="input-group">
+                            <span class="input-group-addon">
+                                <i class="fa fa-save"></i>
+                            </span>
+                            <input required type="submit"name="SaveChange" id="SaveChange" class="form-control1" value="ذخیره" style="direction:rtl; background-color:lightcyan">
+                            <span class="input-group-addon">
+                                <i class="fa fa-save"></i>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <div class="col-md-11">
+                        <div class="input-group">
+                            <span class="input-group-addon">
+                                <i class="fa fa-list"></i>
+                            </span>
+                            <select id="S_Type"name="S_Type" required oninvalid="setCustomValidity('نوع شیرینی را انتخاب نمایید')" oninput="setCustomValidity('')" class="form-control1" style="direction:rtl;">
+                                <option>نوع شیرینی</option>
+                                <option>کیک تولد</option>
+                                <option>کیک خیس</option>
+                                <option>آجیل</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+
+            </div>
+        </div>
+    </div>
+
+
+
+
+</form>
+
+
+

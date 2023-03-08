@@ -1,0 +1,196 @@
+﻿@using MainEnterpriseProject.Models.Utility
+@{
+    ViewBag.Title = "لبست تمام سفارشات";
+    Layout = "~/Views/Shared/_Admin.cshtml";
+    int Counter = 1;
+    MainEnterpriseProject.Models.Repository.UserRepository userRepository = new MainEnterpriseProject.Models.Repository.UserRepository();
+    MainEnterpriseProject.Models.Repository.OrderRepository orderRepository = new MainEnterpriseProject.Models.Repository.OrderRepository();
+    MainEnterpriseProject.Models.Repository.Rep_resturant resturantRepository = new MainEnterpriseProject.Models.Repository.Rep_resturant();
+    int popupCounter = 1;
+    int subCounter = 1;
+    int addressCounter = 10000000;
+}
+
+<link href="~/Content/css/manager-icon-button.css" rel="stylesheet" />
+<link href="~/Content/css/popup_style.css" rel="stylesheet" />
+<link href="~/Content/MdBootstrapPersianDateTimePicker/jquery.Bootstrap-PersianDateTimePicker.css" rel="stylesheet" />
+<style>
+    .lr-sticky-header {
+        color: white;
+        background: lightblue;
+        transition: all 0.6s;
+    }
+
+    #scrollPanel {
+        height: 500px;
+        overflow-y: auto;
+    }
+
+    .table > thead > tr > th {
+        text-align: center;
+    }
+
+    .table > tbody > tr > td {
+        text-align: center;
+        vertical-align: middle;
+    }
+</style>
+
+
+<div class="container">
+    <div class="row" style="text-align:center;">
+
+        <div class="col-md-8">
+            <div id="dateSelectorDiv" style="display:none;">
+                <input type="button" onclick="SendData()" value="اعمال" style="width: 6%; border-radius: 5px; outline: none !important; background-color: transparent; box-shadow: none; -webkit-font-smoothing: none; height: 35px; border:1px solid black;" />
+                <button class="btn btn-default" data-MdDateTimePicker="true" data-TargetSelector="#input2" data-EnableTimePicker="false" data-Placement="left" data-Trigger="click">انتخاب تاریخ تا</button>
+                <input type="text" name="input2" id="input2" value="" style="height:35px; border:none; width:20%; border-radius:5px; outline:none; margin-top:-20px" />`
+                <button class="btn btn-default" data-MdDateTimePicker="true" data-TargetSelector="#input1" data-EnableTimePicker="false" data-Placement="left" data-Trigger="click">انتخاب تاریخ از</button>
+                <input type="text" name="input1" id="input1" value="" style="height:35px; border:none; width:20%; border-radius:5px; outline:none; margin-top:-20px" />`
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="form-group">
+                <div class="col-md-11">
+                    <div class="input-group">
+                        <span class="input-group-addon">
+                            <i class="fa fa-list"></i>
+                        </span>
+                        <select class="form-control1" style="direction:rtl;" id="selectResName" name="selectResName">
+                            <option value="0">ابتدا نام رستوران را انتخاب نمایید</option>
+                            @foreach (var item in resturantRepository.getResturant())
+                            {
+                                <option value="@item.ID">@item.resName</option>
+                            }
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="row">
+        <div style="width:95%; direction:rtl;">
+            <table class="table table-bordered">
+                <thead style="z-index: 1;">
+                    <tr>
+                        <th width="80" class="headerSort headerSortDown" tabindex="0" role="columnheader button" title="Sort descending">شماره</th>
+                        <th width="120" class="headerSort" tabindex="0" role="columnheader button" title="Sort ascending">نام </th>
+                        <th width="110" class="headerSort" tabindex="0" role="columnheader button" title="Sort ascending">تاریخ</th>
+                        <th width="70" class="headerSort" tabindex="0" role="columnheader button" title="Sort ascending">ساعت</th>
+                        <th width="120" class="headerSort" tabindex="0" role="columnheader button" title="Sort ascending">وضعیت</th>
+                        <th width="110" class="headerSort" tabindex="0" role="columnheader button" title="Sort ascending">شماره تماس</th>
+                        <th width="120" class="headerSort" tabindex="0" role="columnheader button" title="Sort ascending">ادرس</th>
+                        <th width="100" class="headerSort" tabindex="0" role="columnheader button" title="Sort ascending">مبلغ</th>
+                    </tr>
+                </thead>
+                <tbody id="MainBody">
+
+                    
+
+                </tbody>
+                <tfoot></tfoot>
+            </table>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="col-md-4">
+
+    </div>
+    <div class="col-md-4">
+        <input type="button" onclick="location.href='http://localhost:6386/Admin/FinancialAdminFactorPrint'" value="پرینت" style="width: 100%; border-radius: 5px; outline: none !important; background-color: transparent; box-shadow: none; -webkit-font-smoothing: none; height: 35px; border:1px solid black;" />
+    </div>
+    <div class="col-md-4">
+
+    </div>
+</div>
+
+<!--MODAL ADDRESS-->
+
+
+
+
+<script src="~/Scripts/lrStickyHeader.js"></script>
+<script>
+    var tables = document.getElementsByTagName('table');
+    lrStickyHeader(tables[0]);
+    lrStickyHeader(tables[1]);
+    lrStickyHeader(tables[2], { parent: document.getElementById('scrollPanel') });
+</script>
+
+<script src="~/Scripts/MdBootstrapPersianDateTimePicker/jquery.Bootstrap-PersianDateTimePicker.js"></script>
+<script src="~/Scripts/MdBootstrapPersianDateTimePicker/jalaali.js"></script>
+
+<script type="text/javascript">
+    $('#textBoxInputId').MdPersianDateTimePicker({
+        Placement: 'bottom', // default is 'bottom'
+        Trigger: 'focus', // default is 'focus',
+        EnableTimePicker: true, // default is true,
+        TargetSelector: '', // default is empty,
+        GroupId: '', // default is empty,
+        ToDate: false, // default is false,
+        FromDate: false, // default is false,
+    });
+</script>
+
+
+<script>
+    function SendData() {
+        var date1 = $('#input1').val();
+        var data2 = $('#input2').val();
+        var count = 1;
+        var MyRes = $('select[name=selectResName]').val();
+        $.ajax({
+            type: 'POST',
+            dataType: 'Json',
+            url: '@Url.Action("SpecialResOrderFilterByDate", "Admin")',
+            data: { startDate: date1, endDate: data2, resID: MyRes },
+            error: function (err) {
+                alert(err.status);
+            }
+        }).done(function (result) {
+            var Text = "";
+            $.each(result, function (index, val) {
+                Text += "<tr><td><span style='font-family: monospace, monospace;'>" + count + "</span></td><td>" + val.Name + "</td><td>" + val.Date + "</td><td>" + val.Time + "</td><td>" + val.Status + "</td><td>" + val.Phone + "</td><td>" + val.Address + "</td><td>" + val.Price + "</td></tr>";
+                count++;
+            })
+            $('#MainBody').html(Text);
+        });
+    }
+</script>
+
+<script>
+    $(document).ready(function () {
+        $('select[name=selectResName]').change(function () {
+            var MyRes = $('select[name=selectResName]').val();
+            var count = 1;
+            if (MyRes != 0) {
+                $("#dateSelectorDiv").css("display", "block");
+                $.ajax({
+                    type: 'POST',
+                    dataType: 'Json',
+                    url: '@Url.Action("SpecialResOrders", "Admin")',
+                    data: { ResID: MyRes },
+                    error: function (err) {
+                        alert(err.status);
+                    }
+                }).done(function (result) {
+                    var Text = "";
+                    $.each(result, function (index, val) {
+                        Text += "<tr><td><span style='font-family: monospace, monospace;'>" + count + "</span></td><td>" + val.Name + "</td><td>" + val.Date + "</td><td>" + val.Time + "</td><td>" + val.Status + "</td><td>" + val.Phone + "</td><td>" + val.Address + "</td><td>" + val.Price + "</td></tr>";
+                        count++;
+                    })
+                    $('#MainBody').html(Text);
+                });
+            } else {
+                $("#dateSelectorDiv").css("display", "none");
+                $('#MainBody').html("");
+            }
+        });
+    });
+</script>
+
+

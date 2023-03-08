@@ -1,0 +1,115 @@
+﻿
+@{
+    ViewBag.Title = "AddOption";
+    Layout = "~/Views/Shared/_Admin.cshtml";
+}
+
+
+<div class="row">
+    <div class="container">
+        <div class="col-md-4">
+            <div class="form-group">
+                <div class="col-md-11">
+                    <div class="input-group">
+                        <span class="input-group-addon">
+                            <i class="fa fa-check"></i>
+                        </span>
+                        <input type="text" class="form-control1" id="itemPrice" name="itemPrice" placeholder=" قیمت  " style="direction:rtl;" autocomplete="off">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group">
+                <div class="col-md-11">
+                    <div class="input-group">
+                        <span class="input-group-addon">
+                            <i class="fa fa-check"></i>
+                        </span>
+                        <input type="text" class="form-control1" id="optionName" name="optionName" placeholder=" نام  " style="direction:rtl;" autocomplete="off">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group">
+                <div class="col-md-11">
+                    <div class="input-group">
+                        <span class="input-group-addon">
+                            <i class="fa fa-check"></i>
+                        </span>
+                        <input type="text" class="form-control1" id="optiongroupName" name="optiongroupName" placeholder=" عنوان  " style="direction:rtl;" autocomplete="off">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="container">
+        <div class="col-md-4">
+            <div class="form-group">
+                <div class="col-md-11">
+                    <div class="input-group">
+                        <span class="input-group-addon">
+                            <i class="fa fa-save"></i>
+                        </span>
+                        <input required type="button" class="form-control1" id="btnSave" name="btnSave" value="ذخیره" style="direction:rtl; background-color:lightcyan">
+                        <span class="input-group-addon">
+                            <i class="fa fa-save"></i>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+
+        </div>
+        <div class="col-md-4">
+            <div class="form-group">
+                <div class="col-md-11">
+                    <div class="input-group">
+                        <span class="input-group-addon">
+                            <i class="fa fa-list"></i>
+                        </span>
+                        <select class="form-control1" style="direction:rtl;" id="itemType" name="itemType">
+                            <option>نوع </option>
+                            <option>کاهنده</option>
+                            <option>افزاینده</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    
+    $("#btnSave").on('click', function (e) {
+        var itemName = $('#optionName').val();
+        var itemPrice = $('#itemPrice').val();
+        var itemGroupName = $('#optiongroupName').val();
+        var itemType = $('select[name=itemType]').val();
+        $.ajax({
+            type: 'POST',
+            dataType: 'Json',
+            url: '@Url.Action("AddOption", "Admin")',
+            data: { opName: itemName, opPrice: itemPrice, opGroupName: itemGroupName, opType: itemType },
+            error: function (err) {
+                alert(err.status);
+            }
+        }).done(function (result) {
+            if (result == 1) {
+                $('#toast-name-2').fadeIn(400).delay(2000).fadeOut(400);
+            } else {
+                $('#toast-name-1').fadeIn(400).delay(2000).fadeOut(400);
+            }
+            $('#optionName').val('');
+            $('#itemPrice').val('');
+            $('#itemType').val('انتخاب نوع');
+        });
+    });
+</script>
+
+

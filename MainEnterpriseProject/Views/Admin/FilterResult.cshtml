@@ -1,0 +1,252 @@
+﻿@model List<MainEnterpriseProject.Models.Domain.Tbl_OrderFactor>
+@{
+    ViewBag.Title = "FoodOrderManager";
+    Layout = "~/Views/Shared/_Admin.cshtml";
+    int Counter = 1;
+    MainEnterpriseProject.Models.Repository.UserRepository userRepository = new MainEnterpriseProject.Models.Repository.UserRepository();
+    MainEnterpriseProject.Models.Repository.OrderRepository orderRepository = new MainEnterpriseProject.Models.Repository.OrderRepository();
+    int popupCounter = 1;
+    int subCounter = 1;
+    int addressCounter = 10000000;
+}
+
+<link href="~/Content/css/manager-icon-button.css" rel="stylesheet" />
+<link href="~/Content/css/popup_style.css" rel="stylesheet" />
+<link href="~/Content/MdBootstrapPersianDateTimePicker/jquery.Bootstrap-PersianDateTimePicker.css" rel="stylesheet" />
+<style>
+    .lr-sticky-header {
+        color: white;
+        background: lightblue;
+        transition: all 0.6s;
+    }
+
+    #scrollPanel {
+        height: 500px;
+        overflow-y: auto;
+    }
+
+    .table > thead > tr > th {
+        text-align: center;
+    }
+
+    .table > tbody > tr > td {
+        text-align: center;
+    }
+</style>
+
+
+<div class="container">
+    <div class="row" style="text-align:center;">
+        <input type="button" onclick="SendData()" name="submit" id="submit" value="اعمال" style="width: 6%; border-radius: 5px; outline: none !important; background-color: transparent; box-shadow: none; -webkit-font-smoothing: none; height: 35px; border:1px solid black;" />
+        <button class="btn btn-default" data-MdDateTimePicker="true" data-TargetSelector="#input1" data-EnableTimePicker="false" data-Placement="left" data-Trigger="click">انتخاب تاریخ</button>
+        <input type="text" name="input1" id="input1" value="" style="height:35px; border:none; width:10%; border-radius:5px; outline:none; margin-top:-20px" />`
+
+    </div>
+    <div class="row">
+        <div style="width:95%; direction:rtl;">
+            <table class="table table-bordered">
+                <thead style="z-index: 1;">
+                    <tr>
+                        <th width="80" class="headerSort headerSortDown" tabindex="0" role="columnheader button" title="Sort descending">شماره</th>
+                        <th width="120" class="headerSort" tabindex="0" role="columnheader button" title="Sort ascending">نام </th>
+                        <th width="110" class="headerSort" tabindex="0" role="columnheader button" title="Sort ascending">تاریخ</th>
+                        <th width="70" class="headerSort" tabindex="0" role="columnheader button" title="Sort ascending">ساعت</th>
+                        <th width="120" class="headerSort" tabindex="0" role="columnheader button" title="Sort ascending">وضعیت</th>
+                        <th width="110" class="headerSort" tabindex="0" role="columnheader button" title="Sort ascending">شماره تماس</th>
+                        <th width="120" class="headerSort" tabindex="0" role="columnheader button" title="Sort ascending">ادرس</th>
+                        <th width="100" class="headerSort" tabindex="0" role="columnheader button" title="Sort ascending">مبلغ</th>
+
+                        <th class="" title=""></th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td><span style="font-family: monospace, monospace;">@Counter</span></td>
+                            <td>@userRepository.GetSingleUserInfo(item.UserEmail).name</td>
+                            <td>@item.Date.ToString("D")</td>
+                            <td>@item.Time.ToString("t")</td>
+                            <td>
+                                <select class="form-control1" style="direction:rtl;" id="@item.ID.ToString()" name="@item.ID.ToString()">
+                                    <option value="@item.ID">@item.OrderStatus</option>
+                                    <option value="@item.ID,درحال بررسی">درحال بررسی</option>
+                                    <option value="@item.ID,تایید">تایید </option>
+                                    <option value="@item.ID,درحال آماده سازی"> درحال آماده سازی</option>
+                                    <option value="@item.ID,تحویل پیک">تحویل پیک</option>
+                                    <option value="@item.ID,تحویل مشتری">تحویل مشتری</option>
+                                </select>
+                            </td>
+                            <td>@userRepository.GetSingleUserInfo(item.UserEmail).mob_phone</td>
+                            <td>@item.Tbl_Address.Address.Substring(0, 5)<a data-toggle="modal" data-target="#@addressCounter.ToString()" style="cursor:pointer; color:cornflowerblue; font-size:15px;">[ادامه...]</a></td>
+                            <td>@orderRepository.TotalfactorPrice(item.ID)</td>
+
+                            <td>
+                                <div class="col-md-4">
+
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="social_lock">
+                                        <div class="social_case3"></div>
+                                        <div class="mk"><a data-toggle="modal" data-target="#@popupCounter.ToString()"><i class="fa fa-list vmk1 vm" title="لیست غذا"></i></a></div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+
+                                </div>
+                            </td>
+                        </tr>
+
+                        <script>
+                            $("#@item.ID.ToString()").on('change', function (e) {
+                                var factorID = $('select[name=@item.ID.ToString()]').val();
+                                $.ajax({
+                                    type: 'POST',
+                                    dataType: 'Json',
+                                    url: '@Url.Action("EditOrderStatus", "Admin")',
+                                    data: { factorID: factorID },
+                                    error: function (err) {
+                                        alert(err.status);
+                                    }
+                                }).done(function (result) {
+                                    window.location.reload(true);
+                                });
+                            });
+                        </script>
+
+                        <div class="modal fade" id="@popupCounter.ToString()" role="dialog" aria-labelledby="#@popupCounter.ToString()" tabindex="-1" aria-hidden="true">
+                            <div class="modal-dialog" style=" width: 38% !important; min-width:360px; margin:5em auto 0 !important">
+                                <div style="background:rgba(255,255,255,.28);height:18px;position:absolute;border-radius:10px;border:none;right:3%;left:3%;top:-8px;"></div>
+                                <div style="background:rgba(255,255,255,.08);height:33px;position:absolute;border-radius:10px;border:none;right:5%;left:5%;top:-14px;"></div>
+                                <div class="modal-content" style="border-radius:25px!important;">
+                                    <div class="modal-body">
+                                        <div style="min-width: 360px; ">
+                                            <div class="row">
+                                                <div class="col-md-5" style="text-align:center;">
+                                                    تعداد
+                                                </div>
+                                                <div class="col-md-6" style="text-align:center;">
+                                                    نام
+                                                </div>
+                                                <div class="col-md-1">
+
+                                                </div>
+
+                                                <br />
+                                                @foreach (var item2 in orderRepository.lstOrderFactorItems(item.ID))
+                                                {
+                                                    <div class="row">
+
+
+                                                        <div class="col-md-5" style="text-align:center;">
+                                                            <div class="span3 well">
+                                                                @item2.FoodCount
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-6" style="text-align:center;">
+                                                            <div class="span3 well">
+                                                                @item2.tab_products.name
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-1" style="text-align:center;">
+                                                            <p style="text-align:center;padding:8px;">@subCounter</p>
+                                                        </div>
+
+                                                    </div>
+
+                                                    subCounter++;
+                                                }
+
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+
+                            </div>
+                        </div>
+
+                        <div class="modal fade" id="@addressCounter.ToString()" role="dialog" aria-labelledby="#@addressCounter.ToString()" tabindex="-1" aria-hidden="true">
+                            <div class="modal-dialog" style=" width: 38% !important; min-width:360px; margin:5em auto 0 !important">
+                                <div style="background:rgba(255,255,255,.28);height:18px;position:absolute;border-radius:10px;border:none;right:3%;left:3%;top:-8px;"></div>
+                                <div style="background:rgba(255,255,255,.08);height:33px;position:absolute;border-radius:10px;border:none;right:5%;left:5%;top:-14px;"></div>
+                                <div class="modal-content" style="border-radius:25px!important;">
+                                    <div class="modal-body">
+                                        <div style="min-width: 360px;">
+                                            <br>
+
+                                            <div class="span3 well">
+                                                @item.Tbl_Address.Address
+                                            </div>
+
+
+                                        </div>
+                                    </div>
+
+                                </div>
+
+
+                            </div>
+                        </div>
+                        popupCounter++;
+                        Counter++;
+                        addressCounter++;
+                    }
+
+                </tbody>
+                <tfoot></tfoot>
+            </table>
+        </div>
+    </div>
+</div>
+
+<!--MODAL ADDRESS-->
+
+
+
+
+<script src="~/Scripts/lrStickyHeader.js"></script>
+<script>
+    var tables = document.getElementsByTagName('table');
+    lrStickyHeader(tables[0]);
+    lrStickyHeader(tables[1]);
+    lrStickyHeader(tables[2], { parent: document.getElementById('scrollPanel') });
+</script>
+
+<script src="~/Scripts/MdBootstrapPersianDateTimePicker/jquery.Bootstrap-PersianDateTimePicker.js"></script>
+<script src="~/Scripts/MdBootstrapPersianDateTimePicker/jalaali.js"></script>
+
+<script type="text/javascript">
+    $('#textBoxInputId').MdPersianDateTimePicker({
+        Placement: 'bottom', // default is 'bottom'
+        Trigger: 'focus', // default is 'focus',
+        EnableTimePicker: true, // default is true,
+        TargetSelector: '', // default is empty,
+        GroupId: '', // default is empty,
+        ToDate: false, // default is false,
+        FromDate: false, // default is false,
+    });
+</script>
+
+
+<script>
+    function SendData() {
+        var date = $('#input1').val();
+        alert(date);
+        $.ajax({
+                type: 'POST',
+                dataType: 'Json',
+                url: '@Url.Action("OrderFilterByDate", "Admin")',
+                data: { date: date },
+                error: function (err) {
+                    alert(err.status);
+                }
+            }).done(function (result) {
+
+            });
+    }
+</script>
+

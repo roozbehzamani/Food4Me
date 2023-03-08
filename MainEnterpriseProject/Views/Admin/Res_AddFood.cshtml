@@ -1,0 +1,161 @@
+﻿
+@{
+    ViewBag.Title = "Res_AddFood";
+    Layout = "~/Views/Shared/_Admin.cshtml";
+}
+
+<form method="post" enctype="multipart/form-data">
+
+
+    <div class="row">
+        <div class="container">
+            <div class="col-md-4">
+                <div class="form-group">
+                    <div class="col-md-11">
+                        <div class="input-group">
+                            <span class="input-group-addon">
+                                <i class="fa fa-image"></i>
+                            </span>
+                            <button class="btn btn-success form-control1" style="border: 1px solid #ccc;" onclick="document.getElementById('file').click(); return false;">انتخاب عکس</button>
+                            <input type="file" class="form-control1" id="file" style="direction:rtl; color:transparent; display:none;" name="file">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <div class="col-md-11">
+                        <div class="input-group">
+                            <span class="input-group-addon">
+                                <i class="fa fa-dollar"></i>
+                            </span>
+                            <input type="text" class="form-control1" id="cost" name="cost" value="" placeholder="قیمت " style="direction:rtl;" autocomplete="off">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <div class="col-md-11">
+                        <div class="input-group">
+                            <span class="input-group-addon">
+                                <i class="fa fa-check"></i>
+                            </span>
+                            <input type="text" class="form-control1" id="name" name="name" value="" placeholder=" نام غذا " style="direction:rtl;" autocomplete="off">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="container">
+            <div class="col-md-4">
+                <div class="form-group">
+                    <div class="col-md-11">
+                        <div class="input-group">
+                            <span class="input-group-addon">
+                                <i class="fa fa-list"></i>
+                            </span>
+                            <input type="text" class="form-control1" id="CreateMaterial" value="" name="CreateMaterial" placeholder="مواد تشکیل دهنده" style="direction:rtl;" autocomplete="off">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <div class="col-md-11">
+                        <div class="input-group">
+                            <span class="input-group-addon">
+                                <i class="fa fa-calendar-times-o"></i>
+                            </span>
+                            <input type="text" class="form-control1" id="bakingTime" name="bakingTime" value="" placeholder="مدت زمان اماده سازی" style="direction:rtl;" autocomplete="off">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <div class="col-md-11">
+                        <div class="input-group">
+                            <span class="input-group-addon">
+                                <i class="fa fa-list"></i>
+                            </span>
+                            <select class="form-control1" style="direction:rtl;" id="menuID" name="menuID">
+                                    <option value="7">پیش غذا</option>
+                                    <option value="8">غذای اصلی</option>
+                                    <option value="9">دسر</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="container">
+            <div class="col-md-12">
+                <div class="form-group">
+                    <div class="col-md-11">
+                        <div class="input-group">
+                            <span class="input-group-addon">
+                                <i class="fa fa-question"></i>
+                            </span>
+                            <textarea name="Recipe" id="Recipe" rows="5" cols="124" placeholder="طرز پخت را وارد نمایید" class="uikit ng-pristine ng-valid ng-empty ng-touched" style="direction:rtl; margin-bottom: -6px;">
+                
+                         </textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="container">
+            <div class="col-md-4">
+                <div class="form-group">
+                    <div class="col-md-11">
+                        <div class="input-group">
+                            <span class="input-group-addon">
+                                <i class="fa fa-save"></i>
+                            </span>
+                            <input required type="submit" id="SaveChange" name="SaveChange" class="form-control1" value="ذخیره" style="direction:rtl; background-color:lightcyan">
+                            <span class="input-group-addon">
+                                <i class="fa fa-save"></i>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <div class="col-md-11">
+                        <div class="input-group">
+                            <span class="input-group-addon">
+                                <i class="fa fa-check"></i>
+                            </span>
+                            <input type="text" class="form-control1" id="FoodCount" name="FoodCount" value="" placeholder=" تعداد موجودی " style="direction:rtl;" autocomplete="off">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <div class="col-md-11" style="direction:rtl;">
+                        <div class="input-group">
+                            <input type="checkbox" id="OrderType" name="OrderType" checked style="direction:rtl;" autocomplete="off" value="True">
+                            <label for="OrderType">اطلاع یک روز قبل</label>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</form>
+
+

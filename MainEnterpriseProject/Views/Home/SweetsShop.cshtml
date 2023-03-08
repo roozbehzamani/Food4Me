@@ -1,0 +1,697 @@
+﻿@model MainEnterpriseProject.Models.Domain.Tbl_Sweets
+@{
+    ViewBag.Title = "SweetsSingle";
+    Layout = "~/Views/Shared/_index.cshtml";
+    MainEnterpriseProject.Models.Repository.SweetsAllRep SweetsAvg = new MainEnterpriseProject.Models.Repository.SweetsAllRep();
+}
+
+
+
+<link href="~/Content/UserContent/css/css_20.css" rel="stylesheet" />
+<link href="~/Content/UserContent/css/931be1e.css" rel="stylesheet" />
+<link href="~/Content/UserContent/css/jquery.rateyo.min.css" rel="stylesheet" />
+<link href="~/Content/UserContent/css/PopapSignin.css" rel="stylesheet" />
+<script src="~/Scripts/UserScripts/scarab-v2.js"></script>
+<script src="~/Scripts/UserScripts/js_82.js"></script>
+<link href="~/Content/UserContent/css/Toast.css" rel="stylesheet" />
+<link href="~/Content/UserContent/css/RatingSingle.css" rel="stylesheet" />
+<link href="~/Content/UserContent/css/fontawesome-all.css" rel="stylesheet" />
+
+
+
+<style>
+    .sdiv {
+        padding: 0px !important;
+    }
+</style>
+
+<br />
+<br />
+<div id="restaurant_banner">
+    <div class="center_width tbl">
+        <div>
+            <div class="tbl" id="restaurant_info">
+                <div>
+
+                    <img src="~/Content/UserContent/images/@SweetsAvg.ConfectioneryInfo(Model.ConfectionaryID).CImage" />
+                </div>
+                <div>
+                    <span id="rest_info_name">@SweetsAvg.ConfectioneryInfo(Model.ConfectionaryID).CName<span id="rest_info_off">@SweetsAvg.ConfectioneryInfo(Model.ConfectionaryID).CPhone</span></span>
+                    <div id="rest_info_open">
+                        <span class="gray_back"></span>بسته است ...
+                    </div>
+
+
+                    <div class="rest_fo"><span>آدرس</span>@SweetsAvg.ConfectioneryInfo(Model.ConfectionaryID).CAddress</div>
+
+                </div>
+            </div>
+        </div>
+        <div class="left_align hidden-sm hidden-xs" id="restaurant_info_2" style="padding-left:0px;">
+            <div class="tbl" id="restaurant_info">
+                <div>
+                    <img src="~/Content/UserContent/images/@SweetsAvg.ConfectioneryInfo(Model.ConfectionaryID).CImage" />
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</div>
+
+
+
+<div class="inner-page vendor detail-page rtl" itemscope itemtype="http://schema.org/Restaurant">
+
+
+    <div id="main-container" class="container">
+        <div class="row "><div class="col-lg-offset-6 col-lg-3 col-md-offset-5 col-md-4  col-sm-offset-6 col-sm-6 col-xs-offset-0 col-xs-12 zf-filter-vendor view-mode-top"></div></div><div class="row">
+            <div class="col-md-1">
+
+            </div>
+            <div class="col-md-10">
+                <div class="vendor-content-wrapper box" style="border-top:none">
+                    <!-- Nav tabs -->
+                    <ul class="nav nav-tabs nav-justified" role="tablist">
+                        <li class="active">
+                            <a href="satarkhan.htm#vendor-menu" aria-controls="vendor-menu" role="tab" data-toggle="tab">
+                                جزئیات
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="satarkhan.htm#vendor-review" aria-controls="vendor-review" role="tab" data-toggle="tab"
+                               id="vendor-review-link">
+                                نظرات
+                            </a>
+                        </li>
+                    </ul><!-- Tab panes -->
+                    <div class="tab-content">
+
+
+                        <div role="tabpanel" style="width:100%;" class="tab-pane fade in active" id="vendor-menu">
+
+
+                            <div class="col-md-5">
+
+                                <div class="my_slider_dt">
+                                    <h3 class="my_productTitle">
+                                        <span style="position: relative; right: 0px;">@Model.S_Name</span>
+                                    </h3>
+
+                                    <ul class=" rating-review my_productRate">
+                                        <li class="zf-rate-vendor rate-color-8">
+                                            <span>@SweetsAvg.SweetsAverageRateSingle(Model.ID)</span>
+                                        </li>
+                                        <li style="margin-right:4%!important;" class="kk-pp-stars vcenter jq-ry-container" dir="ltr" id="myrateYoo" data-rate="@SweetsAvg.SweetsAverageRateSingle(Model.ID)" readonly="readonly" style="width: 75px;">
+                                            <div class="jq-ry-group-wrapper">
+                                                <div class="jq-ry-normal-group jq-ry-group">
+                                                    <!--?xml version="1.0" encoding="utf-8"?-->
+                                                    <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 12.705 512 486.59" x="0px" y="0px" xml:space="preserve" width="15px" height="15px" fill="#d8d8d8"><polygon points="256.814,12.705 317.205,198.566 512.631,198.566 354.529,313.435 414.918,499.295 256.814,384.427 98.713,499.295 159.102,313.435 1,198.566 196.426,198.566 "></polygon></svg><!--?xml version="1.0" encoding="utf-8"?-->
+                                                    <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 12.705 512 486.59" x="0px" y="0px" xml:space="preserve" width="15px" height="15px" fill="#d8d8d8" style="margin-left: 0px;"><polygon points="256.814,12.705 317.205,198.566 512.631,198.566 354.529,313.435 414.918,499.295 256.814,384.427 98.713,499.295 159.102,313.435 1,198.566 196.426,198.566 "></polygon></svg><!--?xml version="1.0" encoding="utf-8"?-->
+                                                    <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 12.705 512 486.59" x="0px" y="0px" xml:space="preserve" width="15px" height="15px" fill="#d8d8d8" style="margin-left: 0px;"><polygon points="256.814,12.705 317.205,198.566 512.631,198.566 354.529,313.435 414.918,499.295 256.814,384.427 98.713,499.295 159.102,313.435 1,198.566 196.426,198.566 "></polygon></svg><!--?xml version="1.0" encoding="utf-8"?-->
+                                                    <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 12.705 512 486.59" x="0px" y="0px" xml:space="preserve" width="15px" height="15px" fill="#d8d8d8" style="margin-left: 0px;"><polygon points="256.814,12.705 317.205,198.566 512.631,198.566 354.529,313.435 414.918,499.295 256.814,384.427 98.713,499.295 159.102,313.435 1,198.566 196.426,198.566 "></polygon></svg><!--?xml version="1.0" encoding="utf-8"?-->
+                                                    <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 12.705 512 486.59" x="0px" y="0px" xml:space="preserve" width="15px" height="15px" fill="#d8d8d8" style="margin-left: 0px;"><polygon points="256.814,12.705 317.205,198.566 512.631,198.566 354.529,313.435 414.918,499.295 256.814,384.427 98.713,499.295 159.102,313.435 1,198.566 196.426,198.566 "></polygon></svg>
+                                                </div>
+                                                <div class="jq-ry-rated-group jq-ry-group" style="width: @(SweetsAvg.SweetsAverageRateSingle(Model.ID)*20)%;">
+                                                    <!--?xml version="1.0" encoding="utf-8"?-->
+                                                    <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 12.705 512 486.59" x="0px" y="0px" xml:space="preserve" width="15px" height="15px" fill="#868686"><polygon points="256.814,12.705 317.205,198.566 512.631,198.566 354.529,313.435 414.918,499.295 256.814,384.427 98.713,499.295 159.102,313.435 1,198.566 196.426,198.566 "></polygon></svg><!--?xml version="1.0" encoding="utf-8"?-->
+                                                    <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 12.705 512 486.59" x="0px" y="0px" xml:space="preserve" width="15px" height="15px" fill="#868686" style="margin-left: 0px;"><polygon points="256.814,12.705 317.205,198.566 512.631,198.566 354.529,313.435 414.918,499.295 256.814,384.427 98.713,499.295 159.102,313.435 1,198.566 196.426,198.566 "></polygon></svg><!--?xml version="1.0" encoding="utf-8"?-->
+                                                    <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 12.705 512 486.59" x="0px" y="0px" xml:space="preserve" width="15px" height="15px" fill="#868686" style="margin-left: 0px;"><polygon points="256.814,12.705 317.205,198.566 512.631,198.566 354.529,313.435 414.918,499.295 256.814,384.427 98.713,499.295 159.102,313.435 1,198.566 196.426,198.566 "></polygon></svg><!--?xml version="1.0" encoding="utf-8"?-->
+                                                    <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 12.705 512 486.59" x="0px" y="0px" xml:space="preserve" width="15px" height="15px" fill="#868686" style="margin-left: 0px;"><polygon points="256.814,12.705 317.205,198.566 512.631,198.566 354.529,313.435 414.918,499.295 256.814,384.427 98.713,499.295 159.102,313.435 1,198.566 196.426,198.566 "></polygon></svg><!--?xml version="1.0" encoding="utf-8"?-->
+                                                    <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 12.705 512 486.59" x="0px" y="0px" xml:space="preserve" width="15px" height="15px" fill="#868686" style="margin-left: 0px;"><polygon points="256.814,12.705 317.205,198.566 512.631,198.566 354.529,313.435 414.918,499.295 256.814,384.427 98.713,499.295 159.102,313.435 1,198.566 196.426,198.566 "></polygon></svg>
+                                                </div>
+                                            </div>
+                                        </li>
+                                    </ul>
+
+                                    <div class="my_productAllPrice kk-price-container kk-discount" style="position: relative; top: 0px;">
+
+                                        <div class="kk-price-wrapper kk-secondary">
+                                            <span class="kk-price kk-apply-comma kk-comma-done">@Model.S_Price</span>
+                                            <span class="kk-price-unit">تومان</span>
+                                        </div>
+                                    </div>
+                                    <div class="my_all_p_b" style="position: relative; top: 0px; right: 0px; left: 0px;">
+
+                                        <div class="my_productPlusButton">
+                                            <a class="add-product-btn kk-add-product-btn" data-hashtags="pzng4j::1799902::1" title="افزودن در سبد خرید"><span>افزودن به سبد خرید</span></a>
+                                        </div>
+                                        <div class="afteradd_productPlusButton">
+
+                                            <a data-hashtags="pzng4j::1799902::2" class="inc action-btn" id="decbtn-1799902">
+                                                <i class="zfi zf-android-add"></i>
+                                            </a>
+
+                                            <span class="quantity" qnt="0">
+                                                <span class="kk-fa-digit my_detail_quantity kk-fa-digit-done">۰</span>
+                                            </span>
+
+                                            <a data-hashtags="pzng4j::1799902::3" class="dec action-btn" id="incbtn-1799902">
+                                                <i class="zfi zf-android-remove"></i>
+                                            </a>
+
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                            <div class="col-md-7">
+
+
+
+                                <img src="~/Content/UserContent/images/@Model.SImage" class="img-responsive" style="width:513px !important; height:300px !important;">
+
+
+                            </div>
+
+
+
+
+
+
+
+
+
+                        </div>
+
+                        <div role="tabpanel" style="width:100%;" class="tab-pane fade" id="vendor-review">
+
+                            <div class="col-md-12">
+
+
+
+
+                                <div class="kk-review-container">
+                                    <ul class="col-md-offset-3 col-md-6 col-xs-12 rating-review">
+                                        <li class="zf-rate-vendor rate-color-8">
+                                            <span>@SweetsAvg.SweetsAverageRateSingle(Model.ID)</span>
+                                        </li>
+                                        <li class="kk-pp-stars vcenter" dir="ltr" id="rateYoo"
+                                            data-rate="@SweetsAvg.SweetsAverageRateSingle(Model.ID)"></li>
+                                        <li class="reviewCount">
+                                            از
+                                            مجموع @SweetsAvg.SweetsCommentCountSingle(Model.ID) رای
+                                        </li>
+                                    </ul>
+                                    <ul class="col-md-offset-3 col-md-6 col-xs-12 feelingList">
+                                        <li class="happy row">
+                                            <div class="col-sm-offset-0 col-sm-3 col-xs-offset-1 col-xs-1">
+                                                <span class="happyIcon"></span>
+                                            </div>
+                                            <span class="col-sm-6 col-xs-7 ratingBar"><span></span></span>
+                                            <span class="col-xs-3" style="padding-left:0">
+                                                <span class="blackFont">%۸۱.۴</span> راضی
+                                            </span>
+                                        </li>
+                                        <li class="nothing row">
+                                            <div class="col-sm-offset-0 col-sm-3 col-xs-offset-1 col-xs-1">
+                                                <span class="NothingIcon"></span>
+                                            </div>
+                                            <span class="col-sm-6 col-xs-7 ratingBar"><span></span></span>
+                                            <span class="col-xs-3" style="padding-left:0">
+                                                <span class="blackFont">%۴.۳</span> بدون نظر
+                                            </span>
+                                        </li>
+                                        <li class="sad row">
+                                            <div class="col-sm-offset-0 col-sm-3 col-xs-offset-1 col-xs-1">
+                                                <span class="SadIcon"></span>
+                                            </div>
+                                            <span class="col-sm-6 col-xs-7 ratingBar"><span></span></span>
+                                            <span class="col-xs-3" style="padding-left:0">
+                                                <span class="blackFont">%۱۴.۳</span> ناراضی
+                                            </span>
+                                        </li>
+                                    </ul>
+                                    <div class="col-md-offset-1 col-md-10 col-xs-12"></div>
+                                    <div class="col-md-offset-1 col-md-10 col-xs-12" id="user-reviews"></div>
+                                    <div class="clear"></div>
+                                </div>
+                                <div class="kk-review-container">
+
+
+                                    <div class="row">
+                                        <form action="" id="myForm" method="post" style="text-align:center !important; margin-right:40px;">
+
+                                            <div class="form-inline">
+
+
+                                                <div class="row">
+                                                    <div class="col-md-3"></div>
+                                                    <div class="col-md-5">
+                                                        <fieldset class="rating" style="margin-bottom:0px;">
+                                                            <input type="radio" id="star5" name="rating" value="5" /><label for="star5" title="Rocks!"></label>
+                                                            <input type="radio" id="star4" name="rating" value="4" /><label for="star4" title="Pretty good"></label>
+                                                            <input type="radio" id="star3" name="rating" value="3" /><label for="star3" title="Meh"></label>
+                                                            <input type="radio" id="star2" name="rating" value="2" /><label for="star2" title="Kinda bad"></label>
+                                                            <input type="radio" id="star1" name="rating" value="1" /><label for="star1" title="Sucks big time"></label>
+                                                        </fieldset>
+                                                    </div>
+                                                    <div class="col-md-2"></div>
+
+                                                </div>
+
+                                                <input type="hidden" name="Rate" id="Rate" value="" />
+
+
+                                                <div class="form-horizontal">
+                                                    <div class="form-group" style="display:block !important; margin-top:10px;">
+
+
+                                                        <textarea name="Text" id="Text" cols="48" rows="5" style="background-color:#efdab9d6 !important;border: 1px solid #efdab9d6; border-radius:5px;"></textarea>
+
+                                                    </div>
+                                                    <input class="form-control" style="display:none;" value="@Model.ID" name="SweetsID" id="SweetsID">
+                                                </div>
+
+                                                <div class="form-group" style="display:block !important; margin-top:10px;">
+
+
+                                                    <input id="submit" name="submit" type="submit" class="form-control" value="ارسال" style="background-color:#c39a58a3 !important;width: 48%; color:#fff!important;border: 1px solid #c39a58a3;">
+
+                                                </div>
+
+                                            </div>
+
+                                        </form>
+                                    </div>
+
+                                    <br />
+                                    <br />
+
+                                    @foreach (var item in SweetsAvg.lstAllComment(Model.ID))
+                                    {
+                                        <div class="row" style="margin-top:15px;">
+                                            <div class="container" style="border: 2px solid #d9be94;width:90%;padding-top: 5px;border-radius: 5px;">
+
+
+
+                                                <div class="col-md-2">
+
+                                                    <div class="row" style="text-align:center;">
+                                                        <p style="color:#c39a58; margin-bottom:0px!important;">@item.Name</p>
+                                                    </div>
+
+                                                    <div class="row" style="text-align:center;">
+
+
+
+                                                        @for (int i = 0; i < (5 - item.Star); i++)
+                                                        {
+                                                            <i class="fa fa-star" style="color:#f2e0c4;"></i>
+                                                        }
+                                                        @for (int i = 0; i < item.Star; i++)
+                                                        {
+                                                            <i class="fa fa-star" style="color:#caa66d;"></i>
+                                                        }
+
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-md-2">
+
+                                                    <div class="row" style="text-align:center;">
+                                                        <p style="color:#ad7c2b;">@item.CommentDate.ToString("D")</p>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-md-8">
+                                                    <p style="width:100%;color:#ad7c2b;word-break: break-all;overflow-y: auto;height: 40px;">@item.Text</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    }
+                                </div>
+
+
+
+                            </div>
+
+
+
+
+
+
+
+
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-1">
+
+            </div>
+        </div>
+    </div><div id="kk-topping-cloneable"
+               style="display:none;width: 400px;margin: 0 auto;border: 1px solid #555;background-color: #fff;">
+        <div class="kk-topping-container clone"></div><div class="kk-topping-container">
+            <div class="kk-group">
+                <span class="kk-title"></span><div class="kk-desc">
+                    حداقل <span class="kk-fa-digit min-limit"></span>
+                    عدد                     محدودیت <span class="kk-fa-digit limit"></span>
+                    عدد
+                </div>
+            </div><div class="kk-item">
+                <div class="kk-img"><div class="kk-plus plusIcon"></div></div><div class="kk-text"></div><div class="kk-desc"></div><div class="kk-price">
+                    <span class="kk-apply-comma"></span><span class="kk-unit">
+                        تومان
+                    </span>
+                </div><div class="kk-control"></div>
+            </div>
+        </div>
+    </div>
+    <style>
+        .fiexd-footer.is--hidden {
+            display: block !important;
+        }
+
+        #default-footer {
+            display: none !important;
+        }
+    </style>
+</div>
+
+
+
+
+@{
+    if (ViewBag.SweetsCommentResult == "S")
+    {
+        <div id="toast">
+            <div id="img">
+                <img src="~/Content/UserContent/Content/images/Success1.png" />
+            </div>
+            <div id="desc">
+                نظر با موفقیت ثبت شد
+            </div>
+        </div>
+    }
+    else if (ViewBag.SweetsCommentResult == "F")
+    {
+        <div id="toast">
+            <div id="img">
+                <img src="~/Content/UserContent/Content/images/Close.png" />
+            </div>
+            <div id="desc">
+                نظر ثبت نشد
+            </div>
+        </div>
+    }
+    else
+    {
+
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<style>
+    .modal {
+        z-index: 10400 !important;
+    }
+</style>
+
+
+
+
+
+
+<script>
+    jQuery(document).ready(function ($) { ZF_FrameWork.init(); $('.up_button').click(function () { $('html,body').animate({ scrollTop: 0 }, 'slow'); }); }); $(window).scroll(function () {
+        var windscroll = $(window).scrollTop(); if (windscroll >= 400) { $('.up_button').fadeIn(); }
+        else { $('.up_button').fadeOut(); }
+    }); function callbackMap() {
+        if ($('#area-name-english').length > 0) { $('#area-name-english').unbind(); var element = $('#area-name-english')[0]; var options = { componentRestrictions: { country: "ir" } }; var autocomplete = new google.maps.places.Autocomplete(element, options); $('#area_search_submit').click(function () { var place = autocomplete.getPlace(); if (place) { var lat = place.geometry.location.lat(); var long = place.geometry.location.lng(); $.ajax({ url: Routing.generate('frontend_vendor_search-get-location'), type: 'POST', data: { lat: lat, long: long } }).done(function (data) { var cityName = $('input[name="city_id"]').val(); url = Routing.generate('frontend_vendor_search_index_3', { 'city_name': cityName, 'key1': 'near', 'value1': data.areaId, 'lat': lat, 'long': long }); window.location = url; }); }; }); }
+        if (typeof (initial) == 'function') { $(document).ready(function () { initial(); }); }
+    }
+    $(document).ready(function () {
+        $('.heart_from_top').click(function () {
+            var bookmarkSem = true; if (bookmarkSem) { bookmarkSem = false; var src = $(this).attr('data-src'); var favVendorObj = $(this); $.get(src, function (data, status) { if (data.result == 1) { favVendorObj.children('div').addClass('happy_heart'); animated = true; } else if (data.result == -1) { favVendorObj.children('div').removeClass('happy_heart').removeClass('sia_heart_fill'); animated = false; } }); bookmarkSem = true; }
+            if (!animated) { $(this).children('div').addClass('happy_heart'); animated = true; }
+            else { $(this).children('div').removeClass('happy_heart').removeClass('sia_heart_fill'); animated = false; }
+        });
+    });</script>
+
+
+
+<script>
+    function initMap() {
+        vendorDetail.initGoogleMap();
+    }
+
+    $(document).ready(function () {
+
+        //statement for check how to load breadCrumb Filters
+        if (document.referrer.match(/zoodfood.com\/restaurant/) === null) {
+            localStorage.removeItem('filterIDs');
+            localStorage.removeItem('cuisinesIDs');
+            // localStorage.removeItem('links');
+        }
+
+        orderProcess.productComments = [];
+        vendorDetail.vendorId = 11533;
+        vendorDetail.vendorCode = '0qmo93';
+
+        orderProcess.vendor.code = '0qmo93';
+        orderProcess.vendor.minOrderValue = 10000;
+        orderProcess.vendor.preOrderOnly = 0;
+
+        vendorDetail.vendorState = 2;
+        vendorDetail.vendorStateText = '';
+
+
+        if ($(window).width() > 990) {
+            orderProcess.kkAnimate = true;
+        }
+
+
+        var sItem = null;
+
+        sItem = { "weekday": 1, "allDay": false, "startHour": "11:30", "stopHour": "23:59" };
+        vendorDetail.kkSchedule.push({
+            weekDay: sItem.weekday - 1,
+            startHour: sItem.startHour,
+            stopHour: sItem.stopHour,
+            start: 0,
+            stop: 0,
+            sortTemp: ''
+        });
+
+        sItem = { "weekday": 2, "allDay": false, "startHour": "11:30", "stopHour": "23:59" };
+        vendorDetail.kkSchedule.push({
+            weekDay: sItem.weekday - 1,
+            startHour: sItem.startHour,
+            stopHour: sItem.stopHour,
+            start: 0,
+            stop: 0,
+            sortTemp: ''
+        });
+
+        sItem = { "weekday": 3, "allDay": false, "startHour": "11:30", "stopHour": "23:59" };
+        vendorDetail.kkSchedule.push({
+            weekDay: sItem.weekday - 1,
+            startHour: sItem.startHour,
+            stopHour: sItem.stopHour,
+            start: 0,
+            stop: 0,
+            sortTemp: ''
+        });
+
+        sItem = { "weekday": 4, "allDay": false, "startHour": "11:30", "stopHour": "23:59" };
+        vendorDetail.kkSchedule.push({
+            weekDay: sItem.weekday - 1,
+            startHour: sItem.startHour,
+            stopHour: sItem.stopHour,
+            start: 0,
+            stop: 0,
+            sortTemp: ''
+        });
+
+        sItem = { "weekday": 5, "allDay": false, "startHour": "11:30", "stopHour": "23:59" };
+        vendorDetail.kkSchedule.push({
+            weekDay: sItem.weekday - 1,
+            startHour: sItem.startHour,
+            stopHour: sItem.stopHour,
+            start: 0,
+            stop: 0,
+            sortTemp: ''
+        });
+
+        sItem = { "weekday": 6, "allDay": false, "startHour": "11:30", "stopHour": "23:59" };
+        vendorDetail.kkSchedule.push({
+            weekDay: sItem.weekday - 1,
+            startHour: sItem.startHour,
+            stopHour: sItem.stopHour,
+            start: 0,
+            stop: 0,
+            sortTemp: ''
+        });
+
+        sItem = { "weekday": 7, "allDay": false, "startHour": "11:30", "stopHour": "23:59" };
+        vendorDetail.kkSchedule.push({
+            weekDay: sItem.weekday - 1,
+            startHour: sItem.startHour,
+            stopHour: sItem.stopHour,
+            start: 0,
+            stop: 0,
+            sortTemp: ''
+        });
+
+
+
+        orderProcess.init();
+        vendorDetail.init();
+
+
+
+
+
+        $('#vendor-info-btn').click(function () {
+
+            setTimeout(function () {
+                initMap();
+                google.maps.event.trigger(vendorDetail.map, 'resize');
+            }, 1000);
+
+
+        });
+
+        vendorDetail.selected_address_id = '';
+
+        vendorDetail.loadBasket(true);
+
+        $('#vendor-review-link').click(function () {
+            vendorDetail.initKKRating();
+            var str;
+            str = 'SAD';
+            str = str.toLowerCase();
+            $('.' + str + ' .ratingBar span').animate({ width: 14.3 + '%' });
+            str = 'HAPPY';
+            str = str.toLowerCase();
+            $('.' + str + ' .ratingBar span').animate({ width: 81.4 + '%' });
+            str = 'NOTHING';
+            str = str.toLowerCase();
+            $('.' + str + ' .ratingBar span').animate({ width: 4.3 + '%' });
+            if ($('#btn-more-reviews').length == 0)
+                vendorDetail.loadComment();
+        });
+
+
+        $('.review-images li:last-child span').on('click', function () {
+            $('#vendor-gallery-link').trigger('click');
+        });
+
+
+        $(window).scroll(function () {
+            var ajaxEvent = 'SCROLL';
+            var winTop = $(window).scrollTop();
+            var docHeight = $(document).height();
+            var winHeight = $(window).height();
+            var scrolltrigger = 0.9;
+            if ((winTop / (docHeight - winHeight)) > scrolltrigger && $('#vendor-review').hasClass('in') && $('#btn-more-reviews').length == 0 && vendorDetail.is_processing === false) {
+                vendorDetail.loadComment();
+            }
+        });
+
+        $(document).on('click', '#btn-more-reviews', function () {
+            $('#btn-more-reviews').remove();
+            vendorDetail.loadComment();
+        });
+    });
+</script>
+
+<script type="text/javascript" src="https://snappfood.ir/js/routing?callback=fos.Router.setData"></script>
+
+
+
+
+
+
+
+<script async>(function (w, d, s, l, i) { w[l] = w[l] || []; w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' }); var f = d.getElementsByTagName(s)[0], j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src = '//www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f); })(window, document, 'script', 'dataLayer', 'GTM-MBPHF2');</script><!-- End Google Tag Manager -->
+
+
+
+
+<script src="https://snappfood.ir/js/32cf0af.js"></script>
+
+
+<script type="text/javascript">
+
+    var rate;
+
+    $("#star5").on("click", function () {
+        rate = 5;
+        $('#Rate').val(rate);
+    });
+
+    $("#star4").on("click", function () {
+        rate = 4;
+        $('#Rate').val(rate);
+    });
+
+    $("#star3").on("click", function () {
+        rate = 3;
+        $('#Rate').val(rate);
+    });
+
+    $("#star2").on("click", function () {
+        rate = 2;
+        $('#Rate').val(rate);
+    });
+
+    $("#star1").on("click", function () {
+        rate = 1;
+        $('#Rate').val(rate);
+    });
+
+
+
+
+</script>
+
+
+<script>
+    ScarabQueue.push(['view', '11533']);
+    ScarabQueue.push(['category', 'پیتزا']);
+    ScarabQueue.push(['category', 'ساندویچ']);
+    ScarabQueue.push(['category', 'برگر']);
+    ScarabQueue.push(['category', 'فست فود']);
+    ScarabQueue.push(['go']);
+
+
+</script>
+<script>if (!String.Zoodfoodformat) { String.Zoodfoodformat = function (format) { var args = Array.prototype.slice.call(arguments, 1); return format.replace(/{(\d+)}/g, function (match, number) { return typeof args[number] != 'undefined' ? args[number] : match; }); }; }</script>
+
+
+<script src="~/Scripts/UserScripts/CollapsSingle.js"></script>
+<script src="~/Scripts/UserScripts/Switch.js"></script>
+<script src="~/Scripts/UserScripts/toast.js"></script>
+</div>
+
+
+
+
+
+

@@ -1,0 +1,53 @@
+﻿@charset "utf-8";
+
+@font-face {
+    font-family: IRANSans;
+    font-style: normal;
+    font-weight: 400;
+    src: url(/assets/fonts/fa/IRANSansWeb_Medium.woff2) format('woff2'),url(/assets/fonts/fa/IRANSansWeb_Medium.woff) format('woff')
+}
+
+.site-main {
+    position: relative;
+    height: 100%
+}
+
+.is-visible {
+    opacity: 1 !important;
+    visibility: visible !important;
+    -webkit-transition: opacity .3s 0s,visibility .3s 0s;
+    transition: opacity .3s 0s,visibility .3s 0s
+}
+
+#site-map {
+    height: 100%;
+    width: 100%
+}
+
+#location .wrapper {
+    overflow: hidden;
+    border-radius: .25rem
+}
+
+#location input {
+    -webkit-box-ordinal-group: 21;
+    -ms-flex-order: 20;
+    order: 20;
+    font-size: 1rem;
+    text-align: center;
+    direction: ltr;
+    color: #ff0871;
+    line-height: 3rem;
+    width: 150px;
+    padding: 0 1rem
+}
+
+#location .icon-background {
+    -webkit-box-ordinal-group: 11;
+    -ms-flex-order: 10;
+    order: 10
+}
+
+#location span {
+    cursor: pointer
+}

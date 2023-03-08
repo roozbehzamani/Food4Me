@@ -1,0 +1,228 @@
+﻿@model List<MainEnterpriseProject.Models.Domain.Tab_users>
+@{
+    ViewBag.Title = "ContactManager";
+    Layout = "~/Views/Shared/_Admin.cshtml";
+    int counter = 1;
+    int sendcounter = 10000;
+}
+
+<link href="~/Content/css/manager-icon-button.css" rel="stylesheet" />
+<link href="~/Content/css/popup_style.css" rel="stylesheet" />
+<style>
+    .lr-sticky-header {
+        color: white;
+        background: lightblue;
+        transition: all 0.6s;
+    }
+
+    #scrollPanel {
+        height: 500px;
+        overflow-y: auto;
+    }
+
+    .table > thead > tr > th {
+        text-align: center;
+    }
+
+    .table > tbody > tr > td {
+        text-align: center;
+    }
+</style>
+
+
+<div class="container">
+    <div class="row">
+        <div style="width:95%; direction:rtl;">
+            <table class="table table-bordered">
+                <thead style="z-index: 1;">
+                    <tr>
+                        <th class="headerSort headerSortDown" tabindex="0" role="columnheader button" title="Sort descending">
+                            شماره
+                        </th>
+                        <th width="180" class="headerSort" tabindex="0" role="columnheader button" title="Sort ascending">نام</th>
+                        <th width="120" class="headerSort" tabindex="0" role="columnheader button" title="Sort ascending">سمت</th>
+                        <th width="260" class="headerSort" tabindex="0" role="columnheader button" title="Sort ascending">ایمیل</th>
+                        <th width="140" class="headerSort" tabindex="0" role="columnheader button" title="Sort ascending">شماره تماس</th>
+                        <th width="140" class="headerSort" tabindex="0" role="columnheader button" title="Sort ascending">شماره دانشجویی</th>
+                        <th class="" title=""></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        string style = "";
+                        if (item.enable == false)
+                        {
+                            style = "background-color:#f6c6c2;"; ;
+                        }
+                        else
+                        {
+                            style = "background-color:#d0f4da;";
+                        }
+
+
+                        <tr style="@style">
+                            <td><span style="font-family: monospace, monospace;">@counter</span></td>
+                            <td>@item.name</td>
+                            <td>@item.access</td>
+                            <td><a style="color:#333333" data-toggle="modal" data-target="#@sendcounter.ToString()" href="">@item.email</a></td>
+                            <td><a style="color:#333333">@item.mob_phone</a></td>
+                            <td><span class="nowrap">@item.SNumber</span></td>
+                            <td>
+                                <div class="col-md-4">
+
+                                </div>
+                                <div class="col-md-2" style="margin-right:5px;">
+                                    <div class="social_lock">
+                                        <div class="social_case3"></div>
+                                        <div class="mk">
+                                            @if (!item.enable)
+                                            {
+                                                <a href="~/Admin/TopAdmin_EnableUser/@item.id">
+                                                    <i class="fa fa-check vmk1 vm" title="فعال سازی"></i>
+                                                </a>
+                                            }
+                                            else
+                                            {
+                                                <a href="~/Admin/TopAdmin_DisableUser/@item.id">
+                                                    <i class="fa fa-remove vmk1 vm" title="غیر فعال سازی"></i>
+                                                </a>
+                                            }
+
+
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <div class="social_lock">
+                                        <div class="social_case3"></div>
+                                        <div class="mk"><a data-toggle="modal" data-target="#@counter.ToString()"><i class="fa fa-sign-in vmk1 vm" title="جزییات"></i></a></div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+
+                                </div>
+                            </td>
+                        </tr>
+                        <!--MODAL SIGNIN-->
+                        <div class="modal fade" id="@counter.ToString()" role="dialog" aria-labelledby="#@counter.ToString()" tabindex="-1" aria-hidden="true">
+
+                            <div class="modal-dialog" style=" width: 38% !important; min-width:360px; margin:5em auto 0 !important">
+
+                                <div class="modal-content" style="border-radius:25px!important;">
+                                    <div class="modal-body">
+                                        <div style="min-width: 360px;">
+                                            <br>
+                                            <br>
+                                            <div class="span3 well">
+                                                <center>
+                                                    <img src="~/Content/images/@item.image" width="140" height="140" class="img-circle">
+                                                    <div class="row">
+                                                        <div class="col-md-6">
+                                                            <h3>@item.name</h3>
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            نام و نام خانوادگی :
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-md-6">
+                                                            <em>@item.home_phone</em>
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            شماره ثابت :
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-md-6">
+                                                            <p>@item.birth_date<br></p>
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            تاریخ تولد :
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-md-6">
+                                                            <p>@item.ncode</p>
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            کد ملی :
+                                                        </div>
+                                                    </div>
+                                                </center>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+
+
+                        </div>
+                        <!--END OF MODAL SIGNIN-->
+
+                        <!--MODALSENDCONTACT -->
+                        <div class="modal fade" id="@sendcounter.ToString()" role="dialog" aria-labelledby="#@sendcounter.ToString()" tabindex="-1" aria-hidden="true">
+                            <div class="modal-dialog" style=" width: 38% !important; min-width:360px; margin:5em auto 0 !important">
+                                <div style="background:rgba(255,255,255,.28);height:18px;position:absolute;border-radius:10px;border:none;right:3%;left:3%;top:-8px;"></div>
+                                <div style="background:rgba(255,255,255,.08);height:33px;position:absolute;border-radius:10px;border:none;right:5%;left:5%;top:-14px;"></div>
+                                <div class="modal-content" style="border-radius:25px!important;">
+                                    <div class="modal-body">
+                                        <div style="min-width: 360px;">
+                                            <br>
+
+
+                                            <form method="post" action="TopAdmin_SendEmailForUser">
+                                                <div class="span3 well">
+                                                    <input type="text" name="answerText" id="answerText" placeholder="متن پاسخ" value="" style="border:none; width:100%; outline:none; background-color:transparent; direction:rtl;" />
+                                                </div>
+
+                                                <div style="display: -webkit-box;">
+                                                    <div class="col-md-2"></div>
+                                                    <div class="col-md-4">
+                                                        <input type="hidden" id="userEmail" name="userEmail" value="@item.email" />
+                                                        <input id="sendAnswer" name="sendAnswer" type="submit" class="form-control" value="ارسال" style="background-color:#c39a58a3 !important;box-shadow: 0px 1px 8px #c39a5894; width: 90%; color:#fff!important;border: 1px solid #c39a58a3;">
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <input type="button" data-dismiss="modal" class="form-control" value="بستن" style="background-color:#c39a58a3 !important;box-shadow: 0px 1px 8px #c39a5894; width: 90%; color:#fff!important;border: 1px solid #c39a58a3;">
+                                                    </div>
+                                                    <div class="col-md-2"></div>
+
+
+                                                </div>
+                                            </form>
+
+
+
+
+                                        </div>
+                                    </div>
+
+                                </div>
+
+
+                            </div>
+                        </div>
+                        <!--END OF MODAL SENDCONTACT-->
+                        counter++;
+                        sendcounter++;
+                    }
+                </tbody>
+                <tfoot></tfoot>
+            </table>
+        </div>
+    </div>
+</div>
+
+
+<script src="~/Scripts/lrStickyHeader.js"></script>
+<script>
+    var tables = document.getElementsByTagName('table');
+    lrStickyHeader(tables[0]);
+    lrStickyHeader(tables[1]);
+    lrStickyHeader(tables[2], { parent: document.getElementById('scrollPanel') });
+</script>
+

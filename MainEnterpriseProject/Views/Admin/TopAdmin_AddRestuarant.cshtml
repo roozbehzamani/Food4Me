@@ -1,0 +1,178 @@
+﻿@model MainEnterpriseProject.Models.Domain.Tbl_Restaurant
+@{
+    ViewBag.Title = "افزودن رستوران";
+    Layout = "~/Views/Shared/_Admin.cshtml";
+}
+
+
+<form method="post" enctype="multipart/form-data">
+    <div class="row">
+        <div class="container">
+            <div class="col-md-4">
+                <div class="form-group">
+                    <div class="col-md-11">
+                        <div class="input-group">
+                            <span class="input-group-addon">
+                                <i class="fa fa-list"></i>
+                            </span>
+                            <select id="resType" name="resType" required oninvalid="setCustomValidity('نوع رستوران را انتخاب نمایید')" oninput="setCustomValidity('')" class="form-control1" style="direction:rtl;">
+                                <option value="volvo">نوع رستوران</option>
+                                <option value="saab">رستوران</option>
+                                <option value="opel">فست فود</option>
+                                <option value="audi">کافی شاپ</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <div class="col-md-11">
+                        <div class="input-group">
+                            <span class="input-group-addon">
+                                <i class="fa fa-phone"></i>
+                            </span>
+                            <input required oninvalid="setCustomValidity('شماره تلفن را وارد نمایید')" oninput="setCustomValidity('')" type="text" class="form-control1" name="resPhone" id="resPhone" placeholder="شماره تلفن" style="direction:rtl;" autocomplete="off">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <div class="col-md-11">
+                        <div class="input-group">
+                            <span class="input-group-addon">
+                                <i class="fa fa-check"></i>
+                            </span>
+                            <input required oninvalid="setCustomValidity('نام رستوران را وارد نمایید')" oninput="setCustomValidity('')" type="text" class="form-control1" id="resName" name="resName" placeholder="نام رستوران" style="direction:rtl;" autocomplete="off">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="container">
+            <div class="col-md-4">
+                <div class="form-group">
+                    <div class="col-md-11">
+                        <div class="input-group">
+                            <span class="input-group-addon">
+                                <i class="fa fa-image"></i>
+                            </span>
+                            <button class="btn btn-success form-control1" style="border: 1px solid #ccc;" onclick="document.getElementById('file').click(); return false;">انتخاب عکس</button>
+                            <input required oninvalid="setCustomValidity('عکس رستوران را انتخاب نمایید')" oninput="setCustomValidity('')" type="file" class="form-control1" id="file" name="file" style="direction:rtl; color:transparent; display:none;">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-8">
+                <div class="form-group">
+                    <div class="col-md-12">
+                        <div class="input-group">
+                            <span class="input-group-addon">
+                                <i class="fa fa-map"></i>
+                            </span>
+                            <input required oninvalid="setCustomValidity('ادرس رستوران را وارد نمایید')" oninput="setCustomValidity('')" type="text" class="form-control1" id="resAddress" name="resAddress" placeholder="آدرس رستوران" style="direction:rtl; width:95.5% !important;" autocomplete="off">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="row">
+        <div class="col-md-5">
+            <hr style="border-top: 1px solid black;" />
+        </div>
+
+        <div class="col-md-2" style="text-align:center;">
+            <p style="font-size:20px;">اطلاعات مالک</p>
+        </div>
+
+        <div class="col-md-5">
+            <hr style="border-top: 1px solid black;" />
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="container">
+            <div class="col-md-4">
+                <div class="form-group">
+                    <div class="col-md-11">
+                        <div class="input-group">
+                            <span class="input-group-addon">
+                                <i class="fa fa-phone"></i>
+                            </span>
+                            <input required oninvalid="setCustomValidity('شماره مالک را وارد نمایید')" oninput="setCustomValidity('')" type="text" class="form-control1" id="mob_phone" name="mob_phone" placeholder="شماره مالک" style="direction:rtl;" autocomplete="off">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <div class="col-md-11">
+                        <div class="input-group">
+                            <span class="input-group-addon">
+                                <i class="fa fa-mail-forward"></i>
+                            </span>
+                            <input required oninvalid="setCustomValidity('ایمیل مالک را وارد نمایید')" oninput="setCustomValidity('')" type="text" class="form-control1" id="email" name="email" placeholder="ایمیل مالک" style="direction:rtl;" autocomplete="off">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <div class="col-md-11">
+                        <div class="input-group">
+                            <span class="input-group-addon">
+                                <i class="fa fa-user"></i>
+                            </span>
+                            <input required oninvalid="setCustomValidity('نام مالک را وارد نمایید')" oninput="setCustomValidity('')" type="text" class="form-control1" id="name" name="name" placeholder="نام مالک" style="direction:rtl;" autocomplete="off">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="container">
+            <div class="col-md-4">
+                <div class="form-group">
+                    <div class="col-md-11">
+                        <div class="input-group">
+                            <span class="input-group-addon">
+                                <i class="fa fa-save"></i>
+                            </span>
+                            <input required type="submit" name="SaveChange" id="SaveChange" class="form-control1" value="ذخیره" style="direction:rtl; background-color:lightcyan">
+                            <span class="input-group-addon">
+                                <i class="fa fa-save"></i>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <div class="col-md-11">
+                        <div class="input-group">
+                            <span class="input-group-addon">
+                                <i class="fa fa-user"></i>
+                            </span>
+                            <input required oninvalid="setCustomValidity('کد ملی مالک را وارد نمایید')" oninput="setCustomValidity('')" type="text" class="form-control1" id="ncode" name="ncode" placeholder="کد ملی مالک" style="direction:rtl;" autocomplete="off">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+</form>
+
+

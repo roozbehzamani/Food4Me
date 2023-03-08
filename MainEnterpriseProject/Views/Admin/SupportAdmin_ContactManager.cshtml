@@ -1,0 +1,212 @@
+﻿@model List<MainEnterpriseProject.Models.Domain.Tab_mail>
+@{
+    ViewBag.Title = "ContactManager";
+    Layout = "~/Views/Shared/_Admin.cshtml";
+    int counter = 1;
+    int answerEmailCounter = 30000;
+    int signincounter = 10000;
+}
+
+<link href="~/Content/css/manager-icon-button.css" rel="stylesheet" />
+<link href="~/Content/css/popup_style.css" rel="stylesheet" />
+<style>
+    .lr-sticky-header {
+        color: white;
+        background: lightblue;
+        transition: all 0.6s;
+    }
+
+    #scrollPanel {
+        height: 500px;
+        overflow-y: auto;
+    }
+
+    .table > thead > tr > th {
+        text-align: center;
+    }
+
+    .table > tbody > tr > td {
+        text-align: center;
+    }
+</style>
+
+
+<div class="container">
+    <div class="row">
+        <div style="width:95%; direction:rtl;">
+            <table class="table table-bordered">
+                <thead style="z-index: 1;">
+                    <tr>
+                        <th class="headerSort headerSortDown" tabindex="0" role="columnheader button" title="Sort descending">
+                            شماره
+                        </th>
+                        <th class="headerSort" tabindex="0" role="columnheader button" title="Sort ascending">نام فرستنده</th>
+                        <th width="160" class="headerSort" tabindex="0" role="columnheader button" title="Sort ascending">ایمیل</th>
+                        <th width="150" class="headerSort" tabindex="0" role="columnheader button" title="Sort ascending">شماره تماس</th>
+                        <th width="270" class="headerSort" tabindex="0" role="columnheader button" title="Sort ascending">متن</th>
+                        <th class="" title=""></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+
+                        <tr>
+                            <td><span style="font-family: monospace, monospace;">@counter</span></td>
+                            <td>@item.name</td>
+                            <td>@item.email</td>
+                            <td><a style="color:#333333" data-toggle="modal" data-target="#@signincounter.ToString()">@item.phonenumber</a></td>
+                            <td><span class="nowrap">@item.text.Substring(0, 10) </span><a data-toggle="modal" data-target="#@counter.ToString()">{ادامه ...}</a></td>
+                            <td>
+                                <div class="col-md-5">
+
+                                </div>
+
+                                <div class="col-md-2">
+                                    <div class="social_lock">
+                                        <div class="social_case3"></div>
+                                        <div class="mk">
+                                            <a href="~/Admin/SupportAdmin_DeleteContact/@item.id">
+                                                <i class="fa fa-remove vmk1 vm" title="حذف"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-5">
+
+                                </div>
+                            </td>
+                        </tr>
+
+                        <!--MODAL CONTACT-->
+                        <div class="modal fade" id="@counter.ToString()" role="dialog" aria-labelledby="#@counter.ToString()" tabindex="-1" aria-hidden="true">
+                            <div class="modal-dialog" style=" width: 38% !important; min-width:360px; margin:5em auto 0 !important">
+                                <div style="background:rgba(255,255,255,.28);height:18px;position:absolute;border-radius:10px;border:none;right:3%;left:3%;top:-8px;"></div>
+                                <div style="background:rgba(255,255,255,.08);height:33px;position:absolute;border-radius:10px;border:none;right:5%;left:5%;top:-14px;"></div>
+                                <div class="modal-content" style="border-radius:25px!important;">
+                                    <div class="modal-body">
+                                        <div style="min-width: 360px;">
+                                            <br>
+
+                                            <div class="span3 well">
+                                                @item.text
+                                            </div>
+
+                                            <div style="display: -webkit-box;">
+                                                <div class="col-md-2"></div>
+                                                <div class="col-md-4">
+                                                    <input data-toggle="modal" data-target="#@answerEmailCounter.ToString()" type="button" class="form-control" value="پاسخ" style="background-color:#c39a58a3 !important;box-shadow: 0px 1px 8px #c39a5894; width: 90%; color:#fff!important;border: 1px solid #c39a58a3;">
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <input type="submit" class="form-control" value="بستن" style="background-color:#c39a58a3 !important;box-shadow: 0px 1px 8px #c39a5894; width: 90%; color:#fff!important;border: 1px solid #c39a58a3;">
+                                                </div>
+                                                <div class="col-md-2"></div>
+
+
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+                                </div>
+
+
+                            </div>
+                        </div>
+                        <!--END OF MODAL CONTACT-->
+                        <!--MODAL SIGNIN-->
+                        <div class="modal fade" id="@signincounter.ToString()" role="dialog" aria-labelledby="#@signincounter.ToString()" tabindex="-1" aria-hidden="true">
+
+                            <div class="modal-dialog" style=" width: 38% !important; min-width:360px; margin:5em auto 0 !important">
+
+                                <div class="modal-content" style="border-radius:25px!important;">
+                                    <div class="modal-body">
+                                        <div style="min-width: 360px;">
+                                            <br>
+                                            <br>
+                                            <div class="span3 well">
+                                                <center>
+                                                    <img src="~/Content/images/defaultman.png" width="140" height="140" class="img-circle">
+
+                                                    <h3>@item.name</h3>
+                                                    <em>@item.phonenumber</em>
+                                                    <p><a target="_blank" href="#">@item.email</a></p>
+                                                </center>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+
+
+                        </div>
+                        <!--END OF MODAL SIGNIN-->
+                        <!--MODALSENDCONTACT -->
+                        <div class="modal fade" id="@answerEmailCounter.ToString()" role="dialog" aria-labelledby="#@answerEmailCounter.ToString()" tabindex="-1" aria-hidden="true">
+                            <div class="modal-dialog" style=" width: 38% !important; min-width:360px; margin:5em auto 0 !important">
+                                <div style="background:rgba(255,255,255,.28);height:18px;position:absolute;border-radius:10px;border:none;right:3%;left:3%;top:-8px;"></div>
+                                <div style="background:rgba(255,255,255,.08);height:33px;position:absolute;border-radius:10px;border:none;right:5%;left:5%;top:-14px;"></div>
+                                <div class="modal-content" style="border-radius:25px!important;">
+                                    <div class="modal-body">
+                                        <div style="min-width: 360px;">
+                                            <br>
+
+
+                                            <form method="post" action="SupportAdmin_SendAnswerEmail">
+                                                <div class="span3 well">
+                                                    <input type="text" name="answerText" id="answerText" placeholder="متن پاسخ" value="" style="border:none; width:100%; outline:none; background-color:transparent; direction:rtl;" />
+                                                </div>
+
+                                                <div style="display: -webkit-box;">
+                                                    <div class="col-md-2"></div>
+                                                    <div class="col-md-4">
+                                                        <input type="hidden" id="userEmail" name="userEmail" value="@item.email" />
+                                                        <input id="sendAnswer" name="sendAnswer" type="submit" class="form-control" value="ارسال" style="background-color:#c39a58a3 !important;box-shadow: 0px 1px 8px #c39a5894; width: 90%; color:#fff!important;border: 1px solid #c39a58a3;">
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <input type="button" data-dismiss="modal" class="form-control" value="بستن" style="background-color:#c39a58a3 !important;box-shadow: 0px 1px 8px #c39a5894; width: 90%; color:#fff!important;border: 1px solid #c39a58a3;">
+                                                    </div>
+                                                    <div class="col-md-2"></div>
+
+
+                                                </div>
+                                            </form>
+
+
+
+
+                                        </div>
+                                    </div>
+
+                                </div>
+
+
+                            </div>
+                        </div>
+                        <!--END OF MODAL SENDCONTACT-->
+
+
+
+                        counter++;
+                        signincounter++;
+                        answerEmailCounter++;
+                    }
+                </tbody>
+                <tfoot></tfoot>
+            </table>
+        </div>
+    </div>
+</div>
+
+
+<script src="~/Scripts/lrStickyHeader.js"></script>
+<script>
+    var tables = document.getElementsByTagName('table');
+    lrStickyHeader(tables[0]);
+    lrStickyHeader(tables[1]);
+    lrStickyHeader(tables[2], { parent: document.getElementById('scrollPanel') });
+</script>
+

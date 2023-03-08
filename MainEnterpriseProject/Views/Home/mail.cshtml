@@ -1,0 +1,224 @@
+﻿
+
+@{
+    ViewBag.Title = "index_view";
+    Layout = "~/Views/Shared/_index.cshtml";
+}
+<link href="~/Content/UserContent/css/fontawesome-all.css" rel="stylesheet" />
+
+<div style="background:#c39a583b;">
+    <div class="col-lg-10" style="text-align:  center;margin-top:23px;margin-right:127px;">
+
+
+        <div style="text-align:center; @ViewBag.style">@ViewBag.mailMessage</div>
+        <h4 style="font-size: 23px;">
+            تماس با ما
+        </h4>
+
+
+
+
+
+
+
+
+    </div>
+    <div class="col-md-2"></div>
+
+    <div class="col-md-4" style="margin-left:10px; border:3px solid #c39a58d9; border-radius:10px; margin-top:70px;margin-bottom:30px;background:white;">
+    
+        <div class="static-content-box contact-form ng-scope">
+            <p style="margin-top: 10px;text-align:  center;font-size: 20px;margin-bottom: 25px;">
+                فرم تماس
+
+
+            </p>
+
+
+            <form  action="mail" method="post" ng-if="!sendText" name="contactForm" class="ng-pristine ng-valid ng-valid-email" style="margin-bottom:15px;">
+
+
+                <div style="border:2px solid #d3d2d2; border-radius:4px; display:inline;position:absolute; padding-left:10px; padding-right:10px;">
+                    <i class="fas fa-user" style="width:  30px; height: 30px;text-align:  center;padding-top: 6px;"></i>
+                </div>
+                <div style="display:inline;">
+                    <div class="form-group inner-addon right-inner-addon">
+
+                        <input name="name" id="name" style="padding-right:60px;"  type="text" placeholder="نام و نام&zwnj;خانوادگی" class="form-control default-input singleline-input ng-pristine ng-valid ng-empty ng-touched">
+                    </div>
+                </div>
+
+
+
+                <div style="border:2px solid #d3d2d2; border-radius:4px; display:inline;position:absolute; padding-left:10px; padding-right:10px;">
+                    <i class="fas fa-envelope" style="width:  30px;height: 30px;text-align:  center;padding-top: 6px;"></i>
+                </div>
+                <div style="display:inline;">
+
+                    <div class="form-group inner-addon right-inner-addon">
+
+                        <input name="email" id="email" style="padding-right:60px;"  type="email" placeholder="ایمیل" class="form-control default-input singleline-input ng-pristine ng-untouched ng-valid ng-empty ng-valid-email" name="mail">
+
+                    </div>
+
+                </div>
+
+
+
+                <div style="border:2px solid #d3d2d2; border-radius:4px; display:inline;position:absolute; padding-left:10px; padding-right:10px;">
+                    <i class="fas fa-phone" style="width:  30px;height: 30px;text-align:  center;padding-top: 6px;"></i>
+                </div>
+                <div style="display:inline;">
+
+                    <div class="form-group inner-addon right-inner-addon">
+
+                        <input name="phonenumber" id="phonenumber" style="padding-right:60px;"  type="text" placeholder="تلفن"  class="form-control default-input singleline-input ng-pristine ng-untouched ng-valid ng-empty"><span class="form-icon icon icon-avatar"></span>
+                    </div>
+
+                </div>
+
+
+                @*<div class="form-group inner-addon right-inner-addon">
+                        <label class="form-label control-label"></label>
+                        <input ng-model="textMessage.contactPhone" type="text" placeholder="تلفن" ng-blur="checkPhoneBlur(textMessage.contactPhone)" name="phone" class="form-control default-input singleline-input ng-pristine ng-untouched ng-valid ng-empty"><span class="form-icon icon icon-avatar"></span>
+                    </div>*@
+
+
+
+                <textarea name="text" placeholder="متن پیام خود را بنویسید" class="uikit ng-pristine ng-valid ng-empty ng-touched" style="margin: 0px; width: 100% !important; height: 92px!important;"></textarea>
+
+                <div class="smt">
+                    <input id="submit" name="submit" type="submit" class="form-control" value="ارسال" style="background-color:#c39a58a3 !important;width: 48%; color:#fff!important;border: 1px solid #c39a58a3;">
+                  
+
+                    @*<input type="submit" name="submit" value="ارسال پیام"/>*@
+                </div>
+
+
+
+            </form>
+
+        </div>
+
+        </div>
+
+
+        <div class="col-md-4" style="margin-top:70px; border:3px solid #c39a58d9; border-radius:10px; margin-bottom:30px;background:white;">
+
+            <div class="static-content-box ctabout" style="margin-top:30px;">
+                <div class="title-bar-3">
+
+                    <i class="fas fa-user" style="width:  30px;height: 30px;text-align:  center;padding-top: 6px;"></i>
+                    شماره تماس<p></p><span>۰۲۱-۴۲۰۹۱۰۰۰</span> <span>و</span> <span>۰۲۱-۴۲۰۹۱۷۰۰</span>
+                </div>
+                <br />
+
+                <div class="title-bar-3">
+                    <i class="fas fa-envelope" style="width:  30px;height: 30px;text-align:  center;padding-top: 6px;"></i>
+                    ایمیل<p></p><span>cs@chilivery.com</span>
+                </div>
+                <br />
+
+
+                <div class="title-bar-3">
+                    <i class="fas fa-map-marker" style="width:  30px;height: 30px;text-align:  center;padding-top: 6px;"></i>
+                    آدرس شرکت<p></p><span>تهران ، احمد قصیر (بخارست) ، کوچه یکم ، پلاک 12 ، طبقه 3</span>
+                </div>
+                <br />
+                <br />
+
+                @*<div class="title-bar-3">
+                    <i class="form-icon icon icon-pin-2"></i>
+                    <p>آدرس شرکت</p><span>تهران ، احمد قصیر (بخارست) ، کوچه یکم ، پلاک 12 ، طبقه 3</span>
+                </div>*@
+                <div class="title-bar-3 hidden-sm hidden-xs">
+                    <i class="form-icon icon icon-avatar"></i>
+                    <p>شبکه های اجتماعی</p>
+                    <ul class="list-unstyled list-inline social-links" style="margin-right:130px;margin-bottom:40px;margin-top:15px;">
+                        <li>
+                            <a href="https://telegram.me/mychilivery">
+                                <i class="fab fa-telegram fa-2x"></i>
+
+
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://twitter.com/mychilivery">
+                                <i class="fab fa-twitter fa-2x"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.facebook.com/mychilivery">
+                                <i class="fab fa-facebook-f fa-2x"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="http://instagram.com/mychilivery">
+                                <i class="fab fa-instagram fa-2x"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.linkedin.com/company/chilivery">
+                                <i class="fab fa-linkedin-in fa-2x"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+
+
+
+
+        </div>
+        <div class="col-md-2"></div>
+
+        <div class="clearfix"> </div>
+
+        <div class="col-md-2">
+
+        </div>
+        <div class="col-md-8" style="margin-right:5px;">
+            <div class="google-maps" style="background-color:white; border:2px solid #c39a58d9; border-radius:10px; padding:15px;margin-bottom: 2%;">
+                @*<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1145.123319176969!2d51.41705433644568!3d35.728730505290756!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzXCsDQzJzQzLjYiTiA1McKwMjQnNTguNiJF!5e0!3m2!1sar!2seg!4v1463222630093" width="860" height="240" frameborder="0" style="border:0" allowfullscreen=""></iframe>*@
+
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d809.8975196477321!2d51.37345995217509!3d35.71170383001896!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3f8e00c5845fe793%3A0x830f612c012aae39!2sTehran+Province%2C+Tehran%2C+Gonabad+St!5e0!3m2!1sen!2sir!4v1508418483450" width="100%" height="240" frameborder="0" style="border:0" allowfullscreen=""></iframe>
+
+            </div>
+        </div>
+        <div class="col-md-2">
+
+        </div>
+
+        <div class="clearfix"> </div>
+        @*<div style="text-align:center;width: 70%;margin-right: 210px;">
+
+
+
+
+        </div>*@
+
+
+
+
+
+
+
+
+
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

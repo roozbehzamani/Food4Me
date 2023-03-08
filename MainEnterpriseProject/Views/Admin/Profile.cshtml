@@ -1,0 +1,213 @@
+﻿@model MainEnterpriseProject.Models.Domain.Tab_users
+@{
+    ViewBag.Title = "Profile";
+    Layout = "~/Views/Shared/_Admin.cshtml";
+}
+
+
+
+
+<form method="post" enctype="multipart/form-data">
+    <div class="row">
+        <div class="container">
+            <div class="col-md-4">
+                <div class="form-group">
+                    <div class="col-md-11">
+                        <div class="input-group">
+                            <span class="input-group-addon">
+                                <i class="fa fa-image"></i>
+                            </span>
+                           
+                            <input type="text" value="@Model.access" class="form-control1" id="access" name="access" disabled style="direction:rtl;" autocomplete="off">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <div class="col-md-11">
+                        <div class="input-group">
+                            <span class="input-group-addon">
+                                <i class="fa fa-mail-forward"></i>
+                            </span>
+                            <input type="text" value="@Model.email" class="form-control1" id="email"name="email" placeholder="ایمیل " disabled style="direction:rtl;" autocomplete="off">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <div class="col-md-11">
+                        <div class="input-group">
+                            <span class="input-group-addon">
+                                <i class="fa fa-check"></i>
+                            </span>
+                            <input required oninvalid="setCustomValidity('نام را وارد نمایید')" oninput="setCustomValidity('')" type="text" class="form-control1" value="@Model.name" id="name" name="name" placeholder="نام " style="direction:rtl;" autocomplete="off">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="container">
+            <div class="col-md-4">
+                <div class="form-group">
+                    <div class="col-md-11">
+                        <div class="input-group">
+                            <span class="input-group-addon">
+                                <i class="fa fa-phone"></i>
+                            </span>
+                            <input type="text" class="form-control1" value="@Model.SNumber" id="SNumber" name="SNumber" disabled placeholder="شماره دانشجویی" style="direction:rtl;" autocomplete="off">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <div class="col-md-11">
+                        <div class="input-group">
+                            <span class="input-group-addon">
+                                <i class="fa fa-phone"></i>
+                            </span>
+                            <input required oninvalid="setCustomValidity('شماره تلفن را وارد نمایید')" oninput="setCustomValidity('')" type="text" class="form-control1"value="@Model.mob_phone" disabled id="mob_phone" name="mob_phone" placeholder="شماره تلفن" style="direction:rtl;" autocomplete="off">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <div class="col-md-11">
+                        <div class="input-group">
+                            <span class="input-group-addon">
+                                <i class="fa fa-user"></i>
+                            </span>
+                            <input type="text" class="form-control1" id="sex" name="sex"value="@Model.sex" placeholder="جنسیت" style="direction:rtl;" autocomplete="off">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-5">
+            <hr style="border-top: 1px solid black;" />
+        </div>
+
+        <div class="col-md-2" style="text-align:center;">
+            <p style="font-size:20px;">اطلاعات تکمیلی</p>
+        </div>
+
+        <div class="col-md-5">
+            <hr style="border-top: 1px solid black;" />
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="container">
+            <div class="col-md-4">
+                <div class="form-group">
+                    <div class="col-md-11">
+                        <div class="input-group">
+                            <span class="input-group-addon">
+                                <i class="fa fa-user"></i>
+                            </span>
+                            <input type="text" class="form-control1"value="@Model.home_phone" id="home_phone" name="home_phone" placeholder="شماره منزل" style="direction:rtl;" autocomplete="off">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-8">
+                <div class="form-group">
+                    <div class="col-md-12">
+                        <div class="input-group">
+                            <span class="input-group-addon">
+                                <i class="fa fa-map"></i>
+                            </span>
+                            <input type="text" class="form-control1" id="home_address"value="@Model.home_address" name="home_address" placeholder="آدرس" style="direction:rtl; width:95.5% !important;" autocomplete="off">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="container">
+            <div class="col-md-4">
+                <div class="form-group">
+                    <div class="col-md-11">
+                        <div class="input-group">
+                            <span class="input-group-addon">
+                                <i class="fa fa-image"></i>
+                            </span>
+                            <button class="btn btn-success form-control1" style="border: 1px solid #ccc;" onclick="document.getElementById('file').click(); return false;">انتخاب عکس</button>
+                            <input type="file" class="form-control1" id="file" name="file"value="@Model.image" style="direction:rtl; color:transparent; display:none;">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <div class="col-md-11">
+                        <div class="input-group">
+                            <span class="input-group-addon">
+                                <i class="fa fa-user"></i>
+                            </span>
+                            <input type="text" class="form-control1" id="ncode" name="ncode"value="@Model.ncode" placeholder="کد ملی " style="direction:rtl;" autocomplete="off">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <div class="col-md-11">
+                        <div class="input-group">
+                            <span class="input-group-addon">
+                                <i class="fa fa-user"></i>
+                            </span>
+                            <input type="text" class="form-control1" id="birth_date" name="birth_date" value="@Model.birth_date" placeholder="تاریخ تولد" style="direction:rtl;" autocomplete="off">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="container">
+            <div class="col-md-4">
+                <div class="form-group">
+                    <div class="col-md-11">
+                        <div class="input-group">
+                            <span class="input-group-addon">
+                                <i class="fa fa-save"></i>
+                            </span>
+                            <input required type="submit" name="SaveChange" id="SaveChange" class="form-control1" value="ذخیره" style="direction:rtl; background-color:lightcyan">
+                            <span class="input-group-addon">
+                                <i class="fa fa-save"></i>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+
+            </div>
+            <div class="col-md-4">
+
+            </div>
+        </div>
+    </div>
+
+
+
+</form>
+
+
+
+
+

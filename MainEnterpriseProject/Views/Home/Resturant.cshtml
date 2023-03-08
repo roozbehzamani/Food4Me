@@ -1,0 +1,195 @@
+﻿@model List<MainEnterpriseProject.Models.Domain.Tbl_Restaurant>
+@{
+    ViewBag.Title = "لیست تمام رستوران ها";
+    Layout = "~/Views/Shared/_index.cshtml";
+    MainEnterpriseProject.Models.Repository.Rep_resturant resAverage = new MainEnterpriseProject.Models.Repository.Rep_resturant();
+
+}
+<link href="~/Content/UserContent/css/931be1e.css" rel="stylesheet" />
+<script src="~/Scripts/UserScripts/85297ff.js"></script>
+<script src="~/Scripts/UserScripts/scarab-v2.js"></script>
+<script src="~/Scripts/UserScripts/js.JS"></script>
+<link href="~/Content/UserContent/css/jquery.rateyo.min.css" rel="stylesheet" />
+
+<br />
+<br />
+<br />
+
+
+<link href="~/Content/UserContent/css/fontawesome-all.min.css" rel="stylesheet" />
+
+
+
+<div id="main-container">
+    <div class="row" style="transform: none;">
+        <div id="social-float" class="col-md-3 hidden-sm hidden-xs sticky-filter" style="overflow: visible; box-sizing: border-box; min-height: 1px; right:10px;">
+            <div class="theiaStickySidebar">
+                <div id="vendors-filter">
+                    <div class="filter-wrapper kk-open">
+                        <span class="filter-title">مرتب کردن بر اساس            <span class="filter-toggle kk-h-flip" style="transform: rotateX(0deg) !important;"><i class="fas fa-filter" style="font-size: 17px;"></i></span></span>
+                        <hr style="margin:0px;" />
+                        <ul style="display: block;">
+                            <li class="filter-item">
+                                <p class="required" onclick="Sorting(this.innerText)">بیشترین امتیاز</p>
+                            </li>
+                            <li class="filter-item">
+                                <p class="required" onclick="Sorting(this.innerText)">گرانترین</p>
+                            </li>
+                            <li class="filter-item" style="padding: 8px 21px 8px 0;">
+                                <p class="required" onclick="Sorting(this.innerText)">ارزان ترین</p>
+                            </li>
+                        </ul>
+                    </div>
+                    <br />
+                    <div class="filter-wrapper kk-cuisine kk-open">
+                        <ul style="display: block;">
+                            <li class="filter-item ">
+                                <p class="required" onclick="Sorting(this.innerText)">نمایش همه</p>
+                            </li>
+                            <li class="filter-item ">
+                                <p class="required" onclick="Sorting(this.innerText)">رستوران</p>
+                            </li>
+                            <li class="filter-item ">
+                                <p class="required" onclick="Sorting(this.innerText)">فست فود</p>
+                            </li>
+                            <li class="filter-item " style="padding: 8px 21px 8px 0;">
+                                <p class="required" onclick="Sorting(this.innerText)">کافی شاپ</p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <section class="col-md-9 col-sm-12 col-xs-12" style="float:left;">
+            <div class="vendor-list-wrapper row kk-restaurant kk-grid-view">
+                <div id="productsss">
+                    @foreach (var item in Model)
+                    {
+
+                        <div class="col-md-4 col-xs-12 kk-grid-view">
+                            <div class="kk-item kk-has-cover">
+                                <div class="kk-pp-bg">
+
+                                    <div class="kk-image-container">
+                                        <a href="~/Home/Menu/@item.ID">
+                                            <div class="vendor-logo-no-shadow" style="background: url(../../Content/UserContent/images/@item.resImage) no-repeat center center; background-size:100%"></div>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="kk-pp-title">
+                                    <a class="idn-restaurant-title" href="~/Home/Menu/@item.ID">
+                                        @item.resName
+                                    </a>
+                                </div>
+                                <ul class="vendor-comments vendor-comments-grid">
+                                    <li class="kk-comments  idn-rate-txt vcenter rate-color-9">
+                                        <span> @item.resPoints </span>
+                                    </li>
+                                    <li class="kk-pp-stars  vcenter" data-rate="@item.resPoints ">
+                                        <div dir="ltr" class="rateYoo jq-ry-container" style="margin-top: -5px; width: 75px;" data-rate="@item.resPoints " readonly="readonly">
+                                            <div class="jq-ry-group-wrapper">
+                                                <div class="jq-ry-normal-group jq-ry-group">
+                                                    <!--?xml version="1.0" encoding="utf-8"?-->
+                                                    <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 12.705 512 486.59" x="0px" y="0px" xml:space="preserve" width="15px" height="15px" fill="#d8d8d8"><polygon points="256.814,12.705 317.205,198.566 512.631,198.566 354.529,313.435 414.918,499.295 256.814,384.427 98.713,499.295 159.102,313.435 1,198.566 196.426,198.566 "></polygon></svg><!--?xml version="1.0" encoding="utf-8"?-->
+                                                    <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 12.705 512 486.59" x="0px" y="0px" xml:space="preserve" width="15px" height="15px" fill="#d8d8d8" style="margin-left: 0px;"><polygon points="256.814,12.705 317.205,198.566 512.631,198.566 354.529,313.435 414.918,499.295 256.814,384.427 98.713,499.295 159.102,313.435 1,198.566 196.426,198.566 "></polygon></svg><!--?xml version="1.0" encoding="utf-8"?-->
+                                                    <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 12.705 512 486.59" x="0px" y="0px" xml:space="preserve" width="15px" height="15px" fill="#d8d8d8" style="margin-left: 0px;"><polygon points="256.814,12.705 317.205,198.566 512.631,198.566 354.529,313.435 414.918,499.295 256.814,384.427 98.713,499.295 159.102,313.435 1,198.566 196.426,198.566 "></polygon></svg><!--?xml version="1.0" encoding="utf-8"?-->
+                                                    <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 12.705 512 486.59" x="0px" y="0px" xml:space="preserve" width="15px" height="15px" fill="#d8d8d8" style="margin-left: 0px;"><polygon points="256.814,12.705 317.205,198.566 512.631,198.566 354.529,313.435 414.918,499.295 256.814,384.427 98.713,499.295 159.102,313.435 1,198.566 196.426,198.566 "></polygon></svg><!--?xml version="1.0" encoding="utf-8"?-->
+                                                    <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 12.705 512 486.59" x="0px" y="0px" xml:space="preserve" width="15px" height="15px" fill="#d8d8d8" style="margin-left: 0px;"><polygon points="256.814,12.705 317.205,198.566 512.631,198.566 354.529,313.435 414.918,499.295 256.814,384.427 98.713,499.295 159.102,313.435 1,198.566 196.426,198.566 "></polygon></svg>
+                                                </div>
+                                                <div class="jq-ry-rated-group jq-ry-group" style="width: @(item.resPoints  * 20)%;">
+                                                    <!--?xml version="1.0" encoding="utf-8"?-->
+                                                    <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 12.705 512 486.59" x="0px" y="0px" xml:space="preserve" width="15px" height="15px" fill="#868686"><polygon points="256.814,12.705 317.205,198.566 512.631,198.566 354.529,313.435 414.918,499.295 256.814,384.427 98.713,499.295 159.102,313.435 1,198.566 196.426,198.566 "></polygon></svg><!--?xml version="1.0" encoding="utf-8"?-->
+                                                    <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 12.705 512 486.59" x="0px" y="0px" xml:space="preserve" width="15px" height="15px" fill="#868686" style="margin-left: 0px;"><polygon points="256.814,12.705 317.205,198.566 512.631,198.566 354.529,313.435 414.918,499.295 256.814,384.427 98.713,499.295 159.102,313.435 1,198.566 196.426,198.566 "></polygon></svg><!--?xml version="1.0" encoding="utf-8"?-->
+                                                    <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 12.705 512 486.59" x="0px" y="0px" xml:space="preserve" width="15px" height="15px" fill="#868686" style="margin-left: 0px;"><polygon points="256.814,12.705 317.205,198.566 512.631,198.566 354.529,313.435 414.918,499.295 256.814,384.427 98.713,499.295 159.102,313.435 1,198.566 196.426,198.566 "></polygon></svg><!--?xml version="1.0" encoding="utf-8"?-->
+                                                    <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 12.705 512 486.59" x="0px" y="0px" xml:space="preserve" width="15px" height="15px" fill="#868686" style="margin-left: 0px;"><polygon points="256.814,12.705 317.205,198.566 512.631,198.566 354.529,313.435 414.918,499.295 256.814,384.427 98.713,499.295 159.102,313.435 1,198.566 196.426,198.566 "></polygon></svg><!--?xml version="1.0" encoding="utf-8"?-->
+                                                    <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 12.705 512 486.59" x="0px" y="0px" xml:space="preserve" width="15px" height="15px" fill="#868686" style="margin-left: 0px;"><polygon points="256.814,12.705 317.205,198.566 512.631,198.566 354.529,313.435 414.918,499.295 256.814,384.427 98.713,499.295 159.102,313.435 1,198.566 196.426,198.566 "></polygon></svg>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class=" vcenter">
+                                        <span class="vendor-comments-btn" data-src="/restaurant/vendor-customer-comment" vendor-id="13700"> (@resAverage.resCommentCount(item.ID)    نظر) </span>
+                                    </li>
+                                </ul>
+                                <div class="kk-pp-address">
+                                    <span>@item.resAddress.Substring(0, 7)  &ensp; ...</span>
+                                    <br>
+                                    <span>
+                                        @item.resType
+                                    </span>
+                                    <span class="kk-cover-ids">|1||1|</span>
+                                </div>
+                                <div class="kk-pp-btn">
+                                    <a href="~/Home/Menu/@item.ID"><span>نمایش منو</span></a>
+                                </div>
+                                <hr style="margin-bottom:0px;" />
+                                <div class="kk-pp-address">
+                                    @if (@item.FirstTime.Split('-')[1].Equals(@item.SecendTime.Split('-')[0]))
+                                    {
+                                        <span>@item.FirstTime.Split('-')[0] الی @item.SecendTime.Split('-')[1] </span>
+                                    }
+                                    else
+                                    {
+                                        <span>@item.FirstTime.Split('-')[0] الی @item.FirstTime.Split('-')[1] </span>
+                                        <br />
+                                        <span>@item.SecendTime.Split('-')[0] الی @item.SecendTime.Split('-')[1] </span>
+                                    }
+                                    <br />
+                                    @if (item.isGetOrder)
+                                    {
+                                        
+                                    }
+                                    else
+                                    {
+                                        <span style="color:#8b0404;margin-bottom:10px;">درحال حاضر رستوران قادر به دریافت سفارش نمی باشد</span>
+                                    }
+                                </div>
+                                <br />
+                            </div>
+                        </div>
+
+                    }
+                </div>
+
+
+
+
+                <a class="btn btn-pink btn-increase-area" data-text="/restaurant/city/tehran?page=2&amp;sort=&amp;filters=&amp;cuisines=&amp;services=&amp;min_radius=&amp;max_radius=">نمایش موارد بیشتر</a>
+            </div>
+            <div class="vendor-loading-wrapper col-xs-12" style="display: none;">
+                <div class="loader loading">
+                    <svg><circle class="loader-circle" cx="50%" cy="50%" r="40%"></circle></svg>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>
+
+
+
+
+<div class="clearfix"> </div>
+
+
+<script>
+    function Sorting(labelText) {
+        document.body.className = "loading";
+        $.ajax({
+            type: 'POST',
+            dataType: 'Json',
+            url: '@Url.Action("ResFilter", "Home")',
+            data: { filterType: labelText },
+            error: function (err) {
+                alert(err.status);
+            }
+        }).done(function (result) {
+            document.body.className = "";
+            var Text = "";
+            $.each(result, function (index, val) {
+                Text += "<div class='col-md-4 col-xs-12 kk-grid-view'><div class='kk-item kk-has-cover'><div class='kk-pp-bg'><div class='kk-image-container'><a href='~/Home/Menu/" + val.ID + "'><div class='vendor-logo-no-shadow' style='background: url(../../Content/UserContent/images/" + val.resImage + ") no-repeat center center; background-size:100%'></div></a></div></div><div class='kk-pp-title'><a class='idn-restaurant-title' href='~/Home/Menu/" + val.ID + "'>" + val.resName + "</a></div><ul class='vendor-comments vendor-comments-grid'><li class='kk-comments  idn-rate-txt vcenter rate-color-9'><span> " + val.resPoints + " </span></li><li class='kk-pp-stars  vcenter' data-rate='" + val.resPoints + " '><div dir='ltr' class='rateYoo jq-ry-container' style='margin-top: -5px; width: 75px;' data-rate='" + val.resPoints + " ' readonly='readonly'><div class='jq-ry-group-wrapper'><div class='jq-ry-normal-group jq-ry-group'><svg version='1.1' xmlns='http://www.w3.org/2000/svg' viewBox='0 12.705 512 486.59' x='0px' y='0px' xml:space='preserve' width='15px' height='15px' fill='#d8d8d8'><polygon points='256.814,12.705 317.205,198.566 512.631,198.566 354.529,313.435 414.918,499.295 256.814,384.427 98.713,499.295 159.102,313.435 1,198.566 196.426,198.566 '></polygon></svg><svg version='1.1' xmlns='http://www.w3.org/2000/svg' viewBox='0 12.705 512 486.59' x='0px' y='0px' xml:space='preserve' width='15px' height='15px' fill='#d8d8d8' style='margin-left: 0px;'><polygon points='256.814,12.705 317.205,198.566 512.631,198.566 354.529,313.435 414.918,499.295 256.814,384.427 98.713,499.295 159.102,313.435 1,198.566 196.426,198.566 '></polygon></svg><svg version='1.1' xmlns='http://www.w3.org/2000/svg' viewBox='0 12.705 512 486.59' x='0px' y='0px' xml:space='preserve' width='15px' height='15px' fill='#d8d8d8' style='margin-left: 0px;'><polygon points='256.814,12.705 317.205,198.566 512.631,198.566 354.529,313.435 414.918,499.295 256.814,384.427 98.713,499.295 159.102,313.435 1,198.566 196.426,198.566 '></polygon></svg><svg version='1.1' xmlns='http://www.w3.org/2000/svg' viewBox='0 12.705 512 486.59' x='0px' y='0px' xml:space='preserve' width='15px' height='15px' fill='#d8d8d8' style='margin-left: 0px;'><polygon points='256.814,12.705 317.205,198.566 512.631,198.566 354.529,313.435 414.918,499.295 256.814,384.427 98.713,499.295 159.102,313.435 1,198.566 196.426,198.566 '></polygon></svg><svg version='1.1' xmlns='http://www.w3.org/2000/svg' viewBox='0 12.705 512 486.59' x='0px' y='0px' xml:space='preserve' width='15px' height='15px' fill='#d8d8d8' style='margin-left: 0px;'><polygon points='256.814,12.705 317.205,198.566 512.631,198.566 354.529,313.435 414.918,499.295 256.814,384.427 98.713,499.295 159.102,313.435 1,198.566 196.426,198.566 '></polygon></svg></div><div class='jq-ry-rated-group jq-ry-group' style='width: " + (val.resPoints * 20) + "%;'><svg version='1.1' xmlns='http://www.w3.org/2000/svg' viewBox='0 12.705 512 486.59' x='0px' y='0px' xml:space='preserve' width='15px' height='15px' fill='#868686'><polygon points='256.814,12.705 317.205,198.566 512.631,198.566 354.529,313.435 414.918,499.295 256.814,384.427 98.713,499.295 159.102,313.435 1,198.566 196.426,198.566 '></polygon></svg><svg version='1.1' xmlns='http://www.w3.org/2000/svg' viewBox='0 12.705 512 486.59' x='0px' y='0px' xml:space='preserve' width='15px' height='15px' fill='#868686' style='margin-left: 0px;'><polygon points='256.814,12.705 317.205,198.566 512.631,198.566 354.529,313.435 414.918,499.295 256.814,384.427 98.713,499.295 159.102,313.435 1,198.566 196.426,198.566 '></polygon></svg><svg version='1.1' xmlns='http://www.w3.org/2000/svg' viewBox='0 12.705 512 486.59' x='0px' y='0px' xml:space='preserve' width='15px' height='15px' fill='#868686' style='margin-left: 0px;'><polygon points='256.814,12.705 317.205,198.566 512.631,198.566 354.529,313.435 414.918,499.295 256.814,384.427 98.713,499.295 159.102,313.435 1,198.566 196.426,198.566 '></polygon></svg><svg version='1.1' xmlns='http://www.w3.org/2000/svg' viewBox='0 12.705 512 486.59' x='0px' y='0px' xml:space='preserve' width='15px' height='15px' fill='#868686' style='margin-left: 0px;'><polygon points='256.814,12.705 317.205,198.566 512.631,198.566 354.529,313.435 414.918,499.295 256.814,384.427 98.713,499.295 159.102,313.435 1,198.566 196.426,198.566 '></polygon></svg><svg version='1.1' xmlns='http://www.w3.org/2000/svg' viewBox='0 12.705 512 486.59' x='0px' y='0px' xml:space='preserve' width='15px' height='15px' fill='#868686' style='margin-left: 0px;'><polygon points='256.814,12.705 317.205,198.566 512.631,198.566 354.529,313.435 414.918,499.295 256.814,384.427 98.713,499.295 159.102,313.435 1,198.566 196.426,198.566 '></polygon></svg></div></div></div></li><li class=' vcenter'><span class='vendor-comments-btn' data-src='/restaurant/vendor-customer-comment' vendor-id='13700'> (" + val.ResCommentCount + "    نظر) </span></li></ul><div class='kk-pp-address'><span>" + val.resAddress + "  &ensp; ...</span><br><span>" + val.resType + "</span><span class='kk-cover-ids'>|1||1|</span></div><div class='kk-pp-btn'><a href='~/Home/Menu/" + val.ID + "'><span>نمایش منو</span></a></div></div></div>";
+            })
+            $('#productsss').html(Text);
+        });
+    }
+</script>
+

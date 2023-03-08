@@ -1,0 +1,13 @@
+﻿@using Stimulsoft.Report.Mvc
+@{
+    ViewBag.Title = "پرینت";
+    Layout = "~/Views/Shared/_ReportLayout.cshtml";
+}
+
+
+@Html.Stimulsoft().StiMvcViewer(new StiMvcViewerOptions()
+{
+    Theme = StiTheme.Office2003,
+    ActionGetReportSnapshot = "FinancialAdminReport",
+    ActionViewerEvent = "FinancialAdminViewerEvent"
+})

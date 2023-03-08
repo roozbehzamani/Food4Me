@@ -1,0 +1,252 @@
+﻿
+@{
+    ViewBag.Title = "FinancialAdmin_AddCreditManager";
+    Layout = "~/Views/Shared/_Admin.cshtml";
+}
+
+<link href="~/Content/css/manager-icon-button.css" rel="stylesheet" />
+<link href="~/Content/css/popup_style.css" rel="stylesheet" />
+<style>
+    .lr-sticky-header {
+        color: white;
+        background: lightblue;
+        transition: all 0.6s;
+    }
+
+    #scrollPanel {
+        height: 500px;
+        overflow-y: auto;
+    }
+
+    .table > thead > tr > th {
+        text-align: center;
+        vertical-align: middle;
+    }
+
+    .table > tbody > tr > td {
+        text-align: center;
+        vertical-align: middle;
+    }
+</style>
+<div class="row">
+
+    <div class="col-md-3">
+        <div class="row" style="border:1px solid #dddddd">
+            <div class="row" style="border:1px;height:40px; margin:0;"></div>
+            <div class="row">
+                <div class="form-group">
+                    <div class="col-md-11">
+                        <div class="input-group">
+                            <span class="input-group-addon">
+                                <i class="fa fa-list"></i>
+                            </span>
+                            <select class="form-control1" style="direction:rtl;" id="SelectAccess" name="SelectAccess">
+                                <option>سمت</option>
+                                <option>دانشجو </option>
+                                <option> کاربر عادی</option>
+                                <option>کارمند</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group">
+                    <div class="col-md-11">
+                        <div class="input-group">
+                            <span class="input-group-addon">
+                                <i class="fa fa-save"></i>
+                            </span>
+                            <input onclick="CreditForAll()" type="button" class="form-control1" value=" اعمال به همه" style="direction:rtl; background-color:lightcyan">
+                            <span class="input-group-addon">
+                                <i class="fa fa-save"></i>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group">
+                    <div class="col-md-11">
+                        <div class="input-group">
+                            <span class="input-group-addon">
+                                <i class="fa fa-list"></i>
+                            </span>
+                            <select class="form-control1" style="direction:rtl;" id="selectCredit" name="selectCredit">
+                                <option>مبلغ اعتبار</option>
+                                <option>10000</option>
+                                <option> 4000</option>
+                                <option>50000</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group">
+                    <div class="col-md-11">
+                        <div class="input-group">
+                            <span class="input-group-addon">
+                                <i class="fa fa-save"></i>
+                            </span>
+                            <input required type="button" onclick="CreditForSomeUsers();" class="form-control1" value=" اعمال" style="direction:rtl; background-color:lightcyan">
+                            <span class="input-group-addon">
+                                <i class="fa fa-save"></i>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-9">
+        <div class="row" style="border:1px solid #dddddd">
+            <div class="row" style="border:1px solid #dddddd;height:40px; margin:0;"></div>
+            <div class="row">
+                <div style="direction: rtl;">
+                    <table class="table table-bordered">
+                        <thead style="z-index: 1;">
+                            <tr>
+                                <th class="headerSort headerSortDown" tabindex="0" role="columnheader button" title="Sort descending">
+
+                                </th>
+                                <th class="headerSort headerSortDown" tabindex="0" role="columnheader button" title="Sort descending">
+                                    شماره
+                                </th>
+
+                                <th width="130" class="headerSort" tabindex="0" role="columnheader button" title="Sort ascending">نام </th>
+                                <th width="100" class="headerSort" tabindex="0" role="columnheader button" title="Sort ascending">شماره دانشجویی</th>
+                                <th width="110" class="headerSort" tabindex="0" role="columnheader button" title="Sort ascending">شماره تماس</th>
+                                <th width="110" class="headerSort" tabindex="0" role="columnheader button" title="Sort ascending">مقدار اعتبار</th>
+
+                                <th class="" title=""></th>
+                            </tr>
+                        </thead>
+                        <tbody id="MainBody"></tbody>
+                        <tfoot></tfoot>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+<script src="~/Scripts/lrStickyHeader.js"></script>
+<script>
+    var tables = document.getElementsByTagName('table');
+    lrStickyHeader(tables[0]);
+    lrStickyHeader(tables[1]);
+    lrStickyHeader(tables[2], { parent: document.getElementById('scrollPanel') });
+</script>
+
+<script>
+    $("#SelectAccess").on('change', function (e) {
+        var counter = 1;
+        var selectText = $('select[name=SelectAccess]').val();
+        $.ajax({
+            type: 'POST',
+            dataType: 'Json',
+            url: '@Url.Action("GetUserList", "Admin")',
+            data: { access: selectText },
+            error: function (err) {
+                alert(err.status);
+            }
+        }).done(function (result) {
+            var Text = "";
+            $.each(result, function (index, val) {
+                Text += "<tr><td><span style='font-family: monospace, monospace;'></span><input type='checkbox' onclick='useCreditCheckBox(this , " + val.ID + ")' value='' /></td><td><span style='font-family: monospace, monospace;'>" + counter + "</span></td><td>" + val.Name + "</td><td>" + val.SNumber + "</td><td>" + val.Phone + "</td><td>" + val.Credit + "</td><td><div class='col-md-2' style='padding-right:0px;'><div class='social_lock'><div class='social_case3' onclick='AddSingleUserCredit(" + val.ID + ")'></div><div class='mk'><i onclick='AddSingleUserCredit(" + val.ID + ")' class='fa fa-check vmk1 vm' title='تایید'></i></div></div></div><div class='col-md-10' style='padding-right:0px;padding-left:0px;'><div class='row' style='margin:0px;'><div class='form-group'><div class='col-md-12'><div class='input-group'><input type='text' class='form-control1' id='" + val.ID + "' placeholder=' مبلغ اعتبار ' style='direction:rtl;' autocomplete='off'></div></div></div></div></div></td></tr>";
+                counter++;
+            })
+            $('#MainBody').html(Text);
+        });
+    });
+</script>
+
+<script>
+
+    function AddSingleUserCredit(inputID) {
+        var counter = 1;
+        var MyID = $('#' + inputID).val();
+        var MyAccess = $('select[name=SelectAccess]').val();
+        $.ajax({
+            type: 'POST',
+            dataType: 'Json',
+            url: '@Url.Action("AddSingleUserCredit", "Admin")',
+            data: { credit: MyID, UserID: inputID },
+            error: function (err) {
+                alert(err.status);
+            }
+        }).done(function (result) {
+            var Text = "";
+            $.each(result, function (index, val) {
+                Text += "<tr><td><span style='font-family: monospace, monospace;'></span><input type='checkbox' onclick='useCreditCheckBox(this , " + val.ID + ")' value='' /></td><td><span style='font-family: monospace, monospace;'>" + counter + "</span></td><td>" + val.Name + "</td><td>" + val.SNumber + "</td><td>" + val.Phone + "</td><td>" + val.Credit + "</td><td><div class='col-md-2' style='padding-right:0px;'><div class='social_lock'><div class='social_case3' onclick='AddSingleUserCredit(" + val.ID + ")'></div><div class='mk'><i onclick='AddSingleUserCredit(" + val.ID + ")' class='fa fa-check vmk1 vm' title='تایید'></i></div></div></div><div class='col-md-10' style='padding-right:0px;padding-left:0px;'><div class='row' style='margin:0px;'><div class='form-group'><div class='col-md-12'><div class='input-group'><input type='text' class='form-control1' id='" + val.ID + "' placeholder=' مبلغ اعتبار ' style='direction:rtl;' autocomplete='off'></div></div></div></div></div></td></tr>";
+                counter++;
+            })
+            $('#MainBody').html(Text);
+        });
+    }
+
+    function CreditForAll() {
+        var counter = 1;
+        var MyAccess = $('select[name=SelectAccess]').val();
+        var MyCredit = $('select[name=selectCredit]').val();
+        $.ajax({
+            type: 'POST',
+            dataType: 'Json',
+            url: '@Url.Action("CreditForAll", "Admin")',
+            data: { access: MyAccess, credit: MyCredit },
+            error: function (err) {
+                alert(err.status);
+            }
+        }).done(function (result) {
+            var Text = "";
+            $.each(result, function (index, val) {
+                Text += "<tr><td><span style='font-family: monospace, monospace;'></span><input type='checkbox' onclick='useCreditCheckBox(this , " + val.ID + ")' value='' /></td><td><span style='font-family: monospace, monospace;'>" + counter + "</span></td><td>" + val.Name + "</td><td>" + val.SNumber + "</td><td>" + val.Phone + "</td><td>" + val.Credit + "</td><td><div class='col-md-2' style='padding-right:0px;'><div class='social_lock'><div class='social_case3' onclick='AddSingleUserCredit(" + val.ID + ")'></div><div class='mk'><i onclick='AddSingleUserCredit(" + val.ID + ")' class='fa fa-check vmk1 vm' title='تایید'></i></div></div></div><div class='col-md-10' style='padding-right:0px;padding-left:0px;'><div class='row' style='margin:0px;'><div class='form-group'><div class='col-md-12'><div class='input-group'><input type='text' class='form-control1' id='" + val.ID + "' placeholder=' مبلغ اعتبار ' style='direction:rtl;' autocomplete='off'></div></div></div></div></div></td></tr>";
+                counter++;
+            })
+            $('#MainBody').html(Text);
+        });
+    }
+</script>
+
+<script>
+    var userIDList = [];
+    function useCreditCheckBox(checkbox , ID) {
+        if (checkbox.checked) {
+            userIDList.push(ID);
+        } else {
+            var index = userIDList.indexOf(ID);
+            userIDList.splice(index, 1);
+        }
+    }
+
+    function CreditForSomeUsers() {
+        var counter = 1;
+        for (var i = 0; i < userIDList.length; i++) {
+            var MyAccess = $('select[name=SelectAccess]').val();
+            var MyCredit = $('select[name=selectCredit]').val();
+            var MyID = userIDList[i];
+            alert(userIDList.length);
+            $.ajax({
+                type: 'POST',
+                dataType: 'Json',
+                url: '@Url.Action("CreditForSomeUsers", "Admin")',
+                data: { access: MyAccess, credit: MyCredit, userList: MyID },
+                error: function (err) {
+                    alert(err.status);
+                }
+            }).done(function (result) {
+                var Text = "";
+                $.each(result, function (index, val) {
+                    Text += "<tr><td><span style='font-family: monospace, monospace;'></span><input type='checkbox' onclick='useCreditCheckBox(this , " + val.ID + ")' value='' /></td><td><span style='font-family: monospace, monospace;'>" + counter + "</span></td><td>" + val.Name + "</td><td>" + val.SNumber + "</td><td>" + val.Phone + "</td><td>" + val.Credit + "</td><td><div class='col-md-2' style='padding-right:0px;'><div class='social_lock'><div class='social_case3' onclick='AddSingleUserCredit(" + val.ID + ")'></div><div class='mk'><i onclick='AddSingleUserCredit(" + val.ID + ")' class='fa fa-check vmk1 vm' title='تایید'></i></div></div></div><div class='col-md-10' style='padding-right:0px;padding-left:0px;'><div class='row' style='margin:0px;'><div class='form-group'><div class='col-md-12'><div class='input-group'><input type='text' class='form-control1' id='" + val.ID + "' placeholder=' مبلغ اعتبار ' style='direction:rtl;' autocomplete='off'></div></div></div></div></div></td></tr>";
+                    counter++;
+                })
+                $('#MainBody').html(Text);
+            });
+        }
+        userIDList.splice(0, userIDList.length);
+    }
+
+</script>

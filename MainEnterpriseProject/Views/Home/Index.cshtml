@@ -1,0 +1,629 @@
+﻿@{
+    ViewBag.Title = "صفحه نخست|یوفود";
+    Layout = "~/Views/Shared/_index.cshtml";
+    MainEnterpriseProject.Models.Repository.Rep_resturant Food = new MainEnterpriseProject.Models.Repository.Rep_resturant();
+    MainEnterpriseProject.Models.Repository.FlowerAllRep Flower = new MainEnterpriseProject.Models.Repository.FlowerAllRep();
+    MainEnterpriseProject.Models.Repository.SweetsAllRep Sweets = new MainEnterpriseProject.Models.Repository.SweetsAllRep();
+}
+
+<style type="text/css">
+    html, body {
+        margin: 0;
+        padding: 0;
+        font-family: Arial;
+    }
+
+    .container {
+        max-width: 960px;
+        margin: 0 auto;
+        padding: 50px 0 0 0;
+    }
+
+    hr {
+        margin: 50px 0;
+    }
+
+    .dropdown {
+        position: relative;
+        display: inline-block;
+    }
+
+    .dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: #fff;
+        min-width: 160px;
+        overflow: auto;
+        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+        z-index: 1;
+        left: 0;
+        width: 78%;
+    }
+
+        .dropdown-content a {
+            color: #c39a58;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            border-radius: 2px;
+        }
+
+    .dropdown a:hover {
+        background-color: transparent;
+    }
+
+    .show {
+        display: block;
+    }
+</style>
+<link href="~/Content/UserContent/css/ContainerTab.css" rel="stylesheet" />
+<link href="~/Content/UserContent/css/CardIndex.css" rel="stylesheet" />
+<link href="~/Content/UserContent/css/TabIndex.css" rel="stylesheet" />
+<link href="~/Content/UserContent/css/SensorButton.css" rel="stylesheet" />
+<link href="~/Content/UserContent/css/Toast.css" rel="stylesheet" />
+
+<div id="search_background" style="background: url(../../Content/UserContent/images/food.jpg) no-repeat center 0px !important; height:100% !important;">
+    <div class="tbl">
+        <div class="center_align">
+            <h2>سفارش اینترنتی </h2>
+
+            <div class="dropdown">
+                <a href="~/Home/resRegister" id="food_list_button">
+                    <div><img src="~/Content/UserContent/images/rest.png" alt="لیست رستوران های "></div>
+                    <div class="dropbtn" style="background-color:#caa66c;border-bottom:#caa66c;">ثبت نام رستوران</div>
+                </a>
+            </div>
+
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+<!-- //banner -->
+<!-- banner-bottom -->
+<div class="banner-bottom mytopbannerpro">
+    <div class="discountRestaurantTitle">
+        <img src="~/Content/UserContent/images/off_2.png" class="discountRestaurantTitleImgTagLeft hidden-sm hidden-xs" />
+        <img src="~/Content/UserContent/images/off_2.png" class="discountRestaurantTitleImgTagRight hidden-sm hidden-xs" />
+        <p class="discountRestaurantTitlePTag">جدیدترین ها</p>
+        <span class="discountRestaurantTitleSpanTag">آخرین عضویت ها در سیستم</span>
+    </div>
+    <div class="row" style="margin-top:3%;">
+
+        <div class="col-md-5 hidden-sm hidden-xs" style="margin-top: -35px;margin-right: 15px;direction: ltr;">
+
+            <button class="btn" style="width: 470px;height: 40px;background-color:#c39a58e0;margin-right:-80px; color:white;">رستوران های اطراف شما</button>
+
+            <iframe src="https://www.google.com/maps/embed?pb=!1m10!1m8!1m3!1d6327.328300412127!2d45.07945501796876!3d37.53941349332744!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sus!4v1524667138978" width="470" height="250" frameborder="0" style="border:0; margin-right:-80px;" allowfullscreen></iframe>
+
+
+            <script src="~/Scripts/UserScripts/jquery.magnific-popup.js"></script>
+            <script>
+                $(document).ready(function () {
+                    $('.popup-with-zoom-anim').magnificPopup({
+                        type: 'inline',
+                        fixedContentPos: false,
+                        fixedBgPos: true,
+                        overflowY: 'auto',
+                        closeBtnInside: true,
+                        preloader: false,
+                        midClick: true,
+                        removalDelay: 300,
+                        mainClass: 'my-mfp-zoom-in'
+                    });
+
+                });
+            </script>
+        </div>
+
+
+        <div class="col-md-6 wthree_banner_bottom_right col-sm-12 col-xs-12">
+            <div class="bs-example bs-example-tabs" role="tabpanel" data-example-id="togglable-tabs">
+                <ul id="myTab" class="nav nav-tabs" role="tablist">
+                    <li role="presentation" class="active bestRestaurantTab"><a href="#home" id="home-tab" role="tab" data-toggle="tab" aria-controls="home">رستوران</a></li>
+                    <li role="presentation" class="bestRestaurantTab"><a href="#tvv" role="tab" id="tvv-tab" data-toggle="tab" aria-controls="tvv">فست فود</a></li>
+                    <li role="presentation" class="bestRestaurantTab"><a href="#tvvv" role="tab" id="tvvv-tab" data-toggle="tab" aria-controls="tvvv">کافی شاپ</a></li>
+                </ul>
+                <div class="col-md-2"></div>
+                <div id="myTabContent" class="tab-content" style=" border: 2px solid #c39a58e0; border-radius: 10px; background: white;width: 100%; text-align: center;">
+                    <div role="tabpanel" class="tab-pane fade active in" id="home" aria-labelledby="home-tab">
+                        <div class="agile_ecommerce_tabs">
+                            @{
+                                int i = 0, p = 0;
+                                foreach (var item in Food.getResturant())
+                                {
+                                    if (item.resType == "رستوران")
+                                    {
+                                        <div class="col-md-4 agile_ecommerce_tab_left bestRestaurantTabPackage">
+                                            <div class="bestRestaurantTabImage">
+                                                <a href="/Home/Menu/@item.ID"><img src="~/Content/UserContent/images/@item.resImage" alt=" " class="img-responsive" style="height:100% !important; width:100%" /></a>
+                                            </div>
+                                            <h5 class="bestRestaurantTabName">
+                                                <a href="/Home/Menu/@item.ID" style="color:black !important; width:100%;">@item.resName</a>
+                                            </h5>
+                                        </div>
+                                        i++;
+                                        if (i == 3)
+                                        {
+                                            break;
+                                        }
+
+                                        p++;
+                                    }
+                                }
+                            }
+                            <div class="clearfix"> </div>
+                        </div>
+                    </div>
+                    <div role="tabpanel" class="tab-pane fade" id="tvv" aria-labelledby="tvv-tab">
+                        <div class="agile_ecommerce_tabs">
+                            @{
+                                int j = 0, o = 3;
+                                foreach (var item1 in Food.getResturant())
+                                {
+                                    if (item1.resType == "فست فود")
+                                    {
+                                        <div class="col-md-4 agile_ecommerce_tab_left bestRestaurantTabPackage">
+                                            <div class="bestRestaurantTabImage">
+                                                <a href="/Home/Menu/@item1.ID"> <img src="~/Content/UserContent/images/@item1.resImage" alt=" " class="img-responsive" style="height:100% !important;" /></a>
+                                            </div>
+                                            <h5 class="bestRestaurantTabName">
+                                                <a href="/Home/Menu/@item1.ID" style="color:black !important; width:100%;">@item1.resName</a>
+                                            </h5>
+                                        </div>
+                                        j++;
+                                        if (j == 3)
+                                        {
+                                            break;
+                                        }
+
+                                        o++;
+                                    }
+                                }
+                            }
+
+
+                            <div class="clearfix"> </div>
+                        </div>
+                    </div>
+                    <div role="tabpanel" class="tab-pane fade" id="tvvv" aria-labelledby="tvvv-tab">
+                        <div class="agile_ecommerce_tabs">
+                            @{
+                                int z = 0, u = 6;
+                                foreach (var item2 in Food.getResturant())
+                                {
+                                    if (item2.resType == "کافی شاپ")
+                                    {
+                                        <div class="col-md-4 agile_ecommerce_tab_left bestRestaurantTabPackage">
+                                            <div class="bestRestaurantTabImage">
+                                                <a href="/Home/Menu/@item2.ID"> <img src="~/Content/UserContent/images/@item2.resImage" alt=" " class="img-responsive" style="height:100% !important;" /></a>
+                                            </div>
+                                            <h5 class="bestRestaurantTabName">
+                                                <a href="/Home/Menu/@item2.ID" style="color:black !important; width:100%;">@item2.resName</a>
+                                            </h5>
+
+                                        </div>
+
+                                        z++;
+                                        if (z == 3)
+                                        {
+                                            break;
+                                        }
+
+                                        u++;
+                                    }
+                                }
+                            }
+                            <div class="clearfix"> </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="clearfix"> </div>
+    </div>
+</div>
+
+<br />
+<br />
+<br />
+<br />
+
+<div class="appBackground">
+
+    <div class="col-md-6 col-sm-12 col-xs-12">
+
+        <p style="margin-top:-160px;">
+            <h2 style="text-align:center;">
+                دریافت اپلیکیشن
+            </h2>
+        </p>
+        <br />
+
+        <p>
+            <h4 style="text-align:center;">
+                برای دریافت لینک دانلود ، ایمیل خود را در زیر وارد کنید
+            </h4>
+        </p>
+        <br />
+
+        <form style="text-align:center;">
+
+            <input type="email" id="phoneNo" name="phoneNo" value="" style="border-radius:20px; width:100%; height:40px; border:none; outline:none; text-align:center;" autocomplete="off" />
+
+            <input type="button" onclick="SendAppDownloadLink()" id="Send" name="Send" value="ارسال" style="border:none; background-color:#c39a58c2; outline:none; border-radius:20px; height:37px; color:white; left:17px; position:absolute; display:inline; width:120px; top:-95px;" />
+        </form>
+        <br />
+        <div class="row hidden-sm hidden-xs">
+
+            <div class="col-md-3">
+                <a href="#" style="background:url(../../Content/images/appstore.png);  padding-right:120px; padding-bottom:22px;"></a>
+            </div>
+
+            <div class="col-md-3">
+                <a href="#" style="background:url(../../Content/images/sibapp.png); padding-right:120px; padding-bottom:22px;"></a>
+            </div>
+
+            <div class="col-md-3">
+                <a href="#" style="background:url(../../Content/images/googleplay.png); padding-right:120px; padding-bottom:22px;"></a>
+            </div>
+
+            <div class="col-md-3">
+                <a href="#" style="background:url(../../Content/images/cafebazar.png); padding-right:120px; padding-bottom:22px;"></a>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="col-md-6 hidden-sm hidden-xs">
+        <div class="col-md-4"></div>
+        <div class="col-md-4">
+            <div class="row">
+                <img src="~/Content/UserContent/images/app.png" alt="اپلیکیشن" style="top:-292px; display: inline; position: absolute;" />
+            </div>
+        </div>
+        <div class="col-md-4">
+        </div>
+    </div>
+    <div class="clearfix"> </div>
+</div>
+<br />
+<br />
+
+<br />
+
+<div>
+    <div class="wrapper">
+        <nav class="tabs" style=" width: 60%; height:41px; margin-bottom: 1%;">
+            <div class="selector"></div>
+            <a href="#homeee" role="tab" data-toggle="tab" aria-controls="homeee" class="active">خدمات</a>
+            <a href="#homeeee" role="tab" data-toggle="tab" aria-controls="homeeee">مزایا</a>
+            <a href="#homeeeee" role="tab" data-toggle="tab" aria-controls="homeeeee">اطلاعات</a>
+        </nav>
+        <div class="tab-content" style="background: white; text-align: center; direction: rtl; padding-bottom: 3%;">
+            <div role="tabpanel" class="tab-pane fade active in" id="homeee" aria-labelledby="home-tab">
+                <div class="col-md-3"></div>
+                <div class="col-md-6" style="border: 2px solid #c39a5857; border-radius: 10px;">
+                    <div class="agile_ecommerce_tabs">
+                        <div class="row" style=" margin-bottom: 2%; margin-top: 2%; ">
+                            <br />
+                            <div>
+                                <div class="col-md-12">
+                                    <h4 style="font-size:15px!important;">
+                                        امکان رویت رستوران ها و گل فروشی ها و شیرینی فروشی های اطراف
+                                    </h4>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row" style=" margin-bottom: 2%;">
+                            <br />
+
+                            <div>
+                                <div class="col-md-12">
+                                    <h4 style="font-size:15px!important;">
+                                        افزودن اپشن هایی به غذا و انتخاب تزیین و بسته بندی
+                                    </h4>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row" style=" margin-bottom: 2%; ">
+                            <br />
+
+                            <div>
+                                <div class="col-md-12">
+                                    <h4 style="font-size:15px!important;">
+                                        نظردهی و امکان امتیاز دادن به غذا وگل و شیرینی
+                                    </h4>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row" style=" margin-bottom: 2%; ">
+                            <br />
+
+                            <div>
+                                <div class="col-md-12">
+                                    <h4 style="font-size:15px!important;">
+                                        وجود دستور پخت غذا و طرز نگه داری گل
+                                    </h4>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row" style=" margin-bottom: 2%; ">
+                            <br />
+
+                            <div>
+                                <div class="col-md-12">
+                                    <h4 style="font-size:15px!important;">
+                                        امکان شارژ و استفاده از کیف پول
+                                    </h4>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row" style=" margin-bottom: 2%; ">
+                            <br />
+
+                            <div>
+                                <div class="col-md-12">
+                                    <h4 style="font-size:15px!important;">
+                                        رزرو غذا و گل و شیرینی
+                                    </h4>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="clearfix"> </div>
+                    </div>
+                </div>
+                <div class="col-md-3"></div>
+
+            </div>
+            <div role="tabpanel" class="tab-pane fade" id="homeeee" aria-labelledby="home-tab">
+                <div class="col-md-3"></div>
+                <div class="col-md-6" style="border: 2px solid #c39a5857; border-radius: 10px;">
+                    <div class="agile_ecommerce_tabs">
+
+                        <div class="row" style=" margin-bottom: 2%; margin-top: 2%; ">
+                            <br />
+
+                            <div>
+                                <div class="col-md-12">
+                                    <h4 style="font-size:15px!important;">
+                                        چرا از جترونی خرید کنیم؟
+                                    </h4>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row" style=" margin-bottom: 2%; ">
+                            <br />
+
+                            <div>
+                                <div class="col-md-12">
+                                    <h4 style="font-size:15px!important;">
+                                        سهولت استفاده از سایت و یا نرم افزار
+                                    </h4>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row" style=" margin-bottom: 2%;">
+                            <br />
+                            <div>
+                                <div class="col-md-12">
+                                    <h4 style="font-size:15px!important;">
+                                        خرید ارزان تر باکیفیت بالا در کوتاه ترین زمان ممکن
+                                    </h4>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row" style=" margin-bottom: 2%; ">
+                            <br />
+
+                            <div>
+                                <div class="col-md-12">
+                                    <h4 style="font-size:15px!important;">
+                                        امکان پرداخت به دو صورت درب منزل و یا غیر حضوری از طریق در گاه های بانکی
+                                    </h4>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                        <div class="clearfix"> </div>
+                    </div>
+                </div>
+                <div class="col-md-3"></div>
+            </div>
+            <div role="tabpanel" class="tab-pane fade" id="homeeeee" aria-labelledby="home-tab">
+
+
+                <div class="col-md-3"></div>
+                <div class="col-md-6" style="border: 2px solid #c39a5857; border-radius: 10px;">
+                    <div class="agile_ecommerce_tabs">
+                        <div class="sectiontitle">
+                            <h2>اطلاعات سازمانی</h2>
+                            <span class="headerLine"></span>
+                        </div>
+                        <div id="projectFacts" class="sectionClass">
+                            <div class="fullWidth eight columns">
+                                <div class="projectFactsWrap ">
+                                    <div class="item wow fadeInUpBig animated animated" data-number="12" style="visibility: visible; width:20%; padding:35px 0px;">
+
+                                        <p id="number10" class="number">12</p>
+                                        <span></span>
+                                        <p>رستوران</p>
+                                    </div>
+                                    <div class="item wow fadeInUpBig animated animated" data-number="55" style="visibility: visible;width:20%; padding:35px 0px;">
+
+                                        <p id="number12" class="number">55</p>
+                                        <span></span>
+                                        <p>فست فود</p>
+                                    </div>
+                                    <div class="item wow fadeInUpBig animated animated" data-number="359" style="visibility: visible;width:20%; padding:35px 0px;">
+
+                                        <p id="number13" class="number">359</p>
+                                        <span></span>
+                                        <p>کافی شاپ</p>
+                                    </div>
+                                    <div class="item wow fadeInUpBig animated animated" data-number="246" style="visibility: visible; width:20%; padding:35px 0px;">
+
+                                        <p id="number14" class="number">246</p>
+                                        <span></span>
+                                        <p>گل فروشی</p>
+                                    </div>
+                                    <div class="item wow fadeInUpBig animated animated" data-number="246" style="visibility: visible; background-color: #c39a58a6; width:20%; padding:35px 0px;">
+
+                                        <p id="number5" class="number">246</p>
+                                        <span></span>
+                                        <p>شیرنی فروشی</p>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                </div>
+                <div class="col-md-3"></div>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+
+</div>
+<br />
+
+
+@{
+    if (ViewBag.ForgetPassResult == "S")
+    {
+        <div id="toast">
+            <div id="img" style="text-align:center;">
+                <img src="~/Content/UserContent/images/Success1.png" class="img-responsive" style="width:50px; height:50px;"/>
+            </div>
+            <div id="desc">
+                لطفا ایمیل خود را چک کنید
+            </div>
+        </div>
+    }
+    else if (ViewBag.ForgetPassResult == "F")
+    {
+        <div id="toast">
+            <div id="img">
+                <img src="~/Content/UserContent/images/close.png" class="img-responsive" style="width:50px; height:50px;"/>
+            </div>
+            <div id="desc">
+                ایمیل را شماره همراه صحیح نمیباشد . مجددا تلاش نمایید
+            </div>
+        </div>
+        {
+            <script>
+                $('#forgetmodal').modal('show');
+            </script>
+        }
+    }
+    else
+    {
+
+    }
+}
+
+<script>
+
+    $.fn.jQuerySimpleCounter = function (options) {
+        var settings = $.extend({
+            start: 0,
+            end: 100,
+            easing: 'swing',
+            duration: 400,
+            complete: ''
+        }, options);
+
+        var thisElement = $(this);
+
+        $({ count: settings.start }).animate({ count: settings.end }, {
+            duration: settings.duration,
+            easing: settings.easing,
+            step: function () {
+                var mathCount = Math.ceil(this.count);
+                thisElement.text(mathCount);
+            },
+            complete: settings.complete
+        });
+    };
+
+
+    $('#number10').jQuerySimpleCounter({ end: @Food.getCountRes(), duration: 10000 });
+    $('#number12').jQuerySimpleCounter({ end:  @Food.getCountFast(), duration: 10000 });
+    $('#number13').jQuerySimpleCounter({ end:  @Food.getCountCafe(), duration: 10000 });
+    $('#number14').jQuerySimpleCounter({ end:  @Flower.getCountFlorist(), duration: 10000 });
+    $('#number5').jQuerySimpleCounter({ end: @Sweets.getCountSweets(), duration: 10000 });
+
+
+    /* AUTHOR LINK */
+    $('.about-me-img').hover(function () {
+        $('.authorWindowWrapper').stop().fadeIn('fast').find('p').addClass('trans');
+    }, function () {
+        $('.authorWindowWrapper').stop().fadeOut('fast').find('p').removeClass('trans');
+    });
+</script>
+
+
+<script src="~/Scripts/UserScripts/chat.js"></script>
+<script src="~/Scripts/UserScripts/TabIndex.js"></script>
+<script src="~/Scripts/UserScripts/containertab.js"></script>
+<script src="~/Scripts/UserScripts/toast.js"></script>
+
+
+<script>
+    /* When the user clicks on the button,
+    toggle between hiding and showing the dropdown content */
+    function myFunction() {
+        document.getElementById("myDropdown").classList.toggle("show");
+    }
+
+    // Close the dropdown if the user clicks outside of it
+    window.onclick = function (event) {
+        if (!event.target.matches('.dropbtn')) {
+            var dropdowns = document.getElementsByClassName("dropdown-content");
+            var i;
+            for (i = 0; i < dropdowns.length; i++) {
+                var openDropdown = dropdowns[i];
+                if (openDropdown.classList.contains('show')) {
+                    openDropdown.classList.remove('show');
+                }
+            }
+        }
+    }
+</script>
+
+
+
+<script>
+    function SendAppDownloadLink() {
+        var phoneNoo = $('#phoneNo').val();
+        if (phoneNoo == "") {
+            alert("ایمیل وارد نشده است");
+        } else {
+            $.ajax({
+                type: 'POST',
+                dataType: 'Json',
+                url: '@Url.Action("Download", "Home")',
+                data: { phoneNo: phoneNoo, Send: "ارسال" },
+                error: function (err) {
+                    alert(err.status);
+                }
+            }).done(function (result) {
+                if (result == 0) {
+                    alert("مشکلی در ارسال ایمیل پیش آمده. مجددا تلاش نمایید");
+                } else if (result == 1) {
+                    alert("لینک دانلود برایتان ارسال شد");
+                }
+            });
+        }
+    }
+</script>

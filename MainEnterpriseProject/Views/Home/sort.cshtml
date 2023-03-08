@@ -1,0 +1,239 @@
+﻿@{
+  
+
+    ViewBag.Title = "Resturant";
+    Layout = "~/Views/Shared/_index.cshtml";
+
+}
+<link href="~/Content/css/931be1e.css" rel="stylesheet" />
+<link href="~/Content/css/23b5458.css" rel="stylesheet" />
+<script src="~/Scripts/85297ff.js"></script>
+<script src="~/Scripts/scarab-v2.js"></script>
+<script src="~/Scripts/da46b67.js"></script>
+<script src="~/Scripts/smartbanner.min.js"></script>
+<script src="~/Scripts/js.JS"></script>
+<link href="~/Content/css/jquery.rateyo.min.css" rel="stylesheet" />
+
+<br />
+<br />
+<br />
+<br />
+<br />
+
+<script>
+    function Search() {
+        jQuery('.loading').fadeIn();
+        $.ajax({
+            url: '/Home/mysearch',
+            type: 'POST',
+            datatype: 'json',
+            data: { nameproduct: Txt_Title.value, cost: Txt_FirstDate.value, tacost: Txt_LastDate.value, selectbasic: quality.value },
+            error: function (err) {
+                alert(err.status + "  " + err.statusText);
+            }
+
+        }).done(function (data) {
+            $('#productsss').html(data);
+        });
+        //jQuery('.loading').fadeOut();
+    }
+</script>
+
+<link href="~/Content/css/fontawesome-all.min.css" rel="stylesheet" />
+
+
+<div id="main-container" class="container" style="transform: none;">
+    <div class="row" style="transform: none;">
+        <div id="social-float" class="col-md-3 col-sm-12 col-xs-12 sticky-filter" style="position: fixed; overflow: visible; box-sizing: border-box; min-height: 1px; right:10px;">
+            <div class="theiaStickySidebar" style="padding-top: 0px; padding-bottom: 1px; position: static; top: 20px; left: 982px;">
+                <div id="vendors-filter">
+                    <form action="~/Home/sort" method="post">
+                        <div class="filter-wrapper kk-open">
+                            <span class="filter-title">مرتب کردن بر اساس            <span class="filter-toggle kk-h-flip" style="transform: rotateX(0deg) !important;"><i class="fas fa-filter" style="font-size: 17px;"></i></span></span>
+                            <ul style="display: block;">
+                                <li class="filter-item">
+                                    <input id="Rate" type="radio" name="sortType" class="kk-sort-radio sort-list" value="Rate">
+                                    <label for="Rate" class="required">بیشترین امتیاز</label>
+                                </li>
+                                <li class="filter-item">
+                                    <input id="Nearest" type="radio" name="sortType" class="kk-sort-radio sort-list" value="Nearest">
+                                    <label for="Nearest" class="required"> نزدیک ترین</label>
+                                </li>
+                                <li class="filter-item">
+                                    <input id="BestSelling" type="radio" name="sortType" class="kk-sort-radio sort-list" value="BestSelling">
+                                    <label for="BestSelling" class="required">پرفروش ترین</label>
+                                </li>
+                                <li class="filter-item">
+                                    <input id="MostExpensive" type="radio" name="sortType" class="kk-sort-radio sort-list" value="MostExpensive">
+                                    <label for="MostExpensive" class="required">گرانترین</label>
+                                </li>
+                                <li class="filter-item">
+                                    <input id="LowestExpensive" type="radio" name="sortType" class="kk-sort-radio sort-list" value="LowestExpensive">
+                                    <label for="LowestExpensive" class="required">ارزان ترین</label>
+                                </li>
+                                <li class="filter-item" style="padding:0 !important;">
+                                    <input type="submit" name="sorting" style="width: 100%; border: none; height: 40px;" value="اعمال">
+
+                                </li>
+                            </ul>
+                        </div>
+                    </form>
+                    <br />
+                    <form action="~/Home/sort" method="post">
+                        <div class="filter-wrapper kk-cuisine kk-open">
+                            <span class="filter-title"> نوع رستوران            <span class="filter-toggle kk-h-flip"><i class="fas fa-chevron-up" style="font-size: 17px;"></i></span></span>
+                            <ul style="display: block;">
+                                <li class="filter-item ">
+                                    <input id="restuarant" type="checkbox" class="c-filter kk-sort-radio" value="restuarant">
+                                    <label for="restuarant-2" class="required">رستوران</label>
+                                </li>
+                                <li class="filter-item ">
+                                    <input id="fastfood" type="checkbox" class="c-filter kk-sort-radio" value="fastfood">
+                                    <label for="fastfood" class="required">فست فود</label>
+                                </li>
+                                <li class="filter-item ">
+                                    <input id="caffi" type="checkbox" class="c-filter kk-sort-radio" value="caffi">
+                                    <label for="caffi" class="required">کافی شاپ</label>
+                                </li>
+                                <li class="filter-item ">
+                                    <input id="confectionary" type="checkbox" class="c-filter kk-sort-radio" value="confectionary">
+                                    <label for="confectionary" class="required">قنادی</label>
+                                </li>
+                                <li class="filter-item" style="padding:0 !important;">
+                                    <input type="submit" name="sorting" style="width: 100%; border: none; height: 40px;" value="اعمال">
+
+                                </li>
+                            </ul>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <section class="col-md-9 col-sm-12 col-xs-12" style="float:left;">
+            <div class="vendor-list-wrapper row kk-restaurant kk-grid-view" itemscope="" itemtype="http://schema.org/Restaurant">
+                <div id="productsss">
+
+
+                        <div class="col-md-4 col-xs-12 kk-grid-view">
+                            <div class="kk-item kk-has-cover">
+                                <div class="kk-pp-bg" style="background-image: url('https://static.zoodfood.com/bundles/bodofoodfrontend/images/vendor-cover-app/RESTAURANT/4/5.jpg');">
+                                    <span class="discount-badge discount-badge-grid">
+                                        ۱۴%
+                                    </span>
+                                    <div class="kk-image-container">
+                                        <a href="/restaurant/menu/0wlr8p/burgerator/tehran">
+                                            <div class="vendor-logo-no-shadow" style="background: url('http://snapp-food.com/media/cache/vendor_logo/uploads/images/vendors/logos/58b6bcaf38a23.jpg') no-repeat center center; background-size:100%"></div>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="kk-pp-title">
+                                    <a class="idn-restaurant-title" href="/restaurant/menu/0wlr8p/burgerator/tehran">
+                                        @*@item.resName*@
+                                    </a>
+                                </div>
+                                <ul class="vendor-comments vendor-comments-grid">
+                                    <li class="kk-comments  idn-rate-txt vcenter rate-color-9">
+                                        <span> @*@resList.resAverageRate(item.ID)*@ </span>
+                                    </li>
+                                    <li class="kk-pp-stars  vcenter" data-rate="@*@resList.resAverageRate(item.ID)*@">
+                                        <div dir="ltr" class="rateYoo jq-ry-container" style="margin-top: -5px; width: 75px;" data-rate="@*@resList.resAverageRate(item.ID)*@" readonly="readonly">
+                                            <div class="jq-ry-group-wrapper">
+                                                <div class="jq-ry-normal-group jq-ry-group">
+                                                    <!--?xml version="1.0" encoding="utf-8"?-->
+                                                    <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 12.705 512 486.59" x="0px" y="0px" xml:space="preserve" width="15px" height="15px" fill="#d8d8d8"><polygon points="256.814,12.705 317.205,198.566 512.631,198.566 354.529,313.435 414.918,499.295 256.814,384.427 98.713,499.295 159.102,313.435 1,198.566 196.426,198.566 "></polygon></svg><!--?xml version="1.0" encoding="utf-8"?-->
+                                                    <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 12.705 512 486.59" x="0px" y="0px" xml:space="preserve" width="15px" height="15px" fill="#d8d8d8" style="margin-left: 0px;"><polygon points="256.814,12.705 317.205,198.566 512.631,198.566 354.529,313.435 414.918,499.295 256.814,384.427 98.713,499.295 159.102,313.435 1,198.566 196.426,198.566 "></polygon></svg><!--?xml version="1.0" encoding="utf-8"?-->
+                                                    <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 12.705 512 486.59" x="0px" y="0px" xml:space="preserve" width="15px" height="15px" fill="#d8d8d8" style="margin-left: 0px;"><polygon points="256.814,12.705 317.205,198.566 512.631,198.566 354.529,313.435 414.918,499.295 256.814,384.427 98.713,499.295 159.102,313.435 1,198.566 196.426,198.566 "></polygon></svg><!--?xml version="1.0" encoding="utf-8"?-->
+                                                    <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 12.705 512 486.59" x="0px" y="0px" xml:space="preserve" width="15px" height="15px" fill="#d8d8d8" style="margin-left: 0px;"><polygon points="256.814,12.705 317.205,198.566 512.631,198.566 354.529,313.435 414.918,499.295 256.814,384.427 98.713,499.295 159.102,313.435 1,198.566 196.426,198.566 "></polygon></svg><!--?xml version="1.0" encoding="utf-8"?-->
+                                                    <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 12.705 512 486.59" x="0px" y="0px" xml:space="preserve" width="15px" height="15px" fill="#d8d8d8" style="margin-left: 0px;"><polygon points="256.814,12.705 317.205,198.566 512.631,198.566 354.529,313.435 414.918,499.295 256.814,384.427 98.713,499.295 159.102,313.435 1,198.566 196.426,198.566 "></polygon></svg>
+                                                </div>
+                                                <div class="jq-ry-rated-group jq-ry-group" style="width: @*@(resList.resAverageRate(item.ID)*20)*@%;">
+                                                    <!--?xml version="1.0" encoding="utf-8"?-->
+                                                    <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 12.705 512 486.59" x="0px" y="0px" xml:space="preserve" width="15px" height="15px" fill="#868686"><polygon points="256.814,12.705 317.205,198.566 512.631,198.566 354.529,313.435 414.918,499.295 256.814,384.427 98.713,499.295 159.102,313.435 1,198.566 196.426,198.566 "></polygon></svg><!--?xml version="1.0" encoding="utf-8"?-->
+                                                    <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 12.705 512 486.59" x="0px" y="0px" xml:space="preserve" width="15px" height="15px" fill="#868686" style="margin-left: 0px;"><polygon points="256.814,12.705 317.205,198.566 512.631,198.566 354.529,313.435 414.918,499.295 256.814,384.427 98.713,499.295 159.102,313.435 1,198.566 196.426,198.566 "></polygon></svg><!--?xml version="1.0" encoding="utf-8"?-->
+                                                    <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 12.705 512 486.59" x="0px" y="0px" xml:space="preserve" width="15px" height="15px" fill="#868686" style="margin-left: 0px;"><polygon points="256.814,12.705 317.205,198.566 512.631,198.566 354.529,313.435 414.918,499.295 256.814,384.427 98.713,499.295 159.102,313.435 1,198.566 196.426,198.566 "></polygon></svg><!--?xml version="1.0" encoding="utf-8"?-->
+                                                    <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 12.705 512 486.59" x="0px" y="0px" xml:space="preserve" width="15px" height="15px" fill="#868686" style="margin-left: 0px;"><polygon points="256.814,12.705 317.205,198.566 512.631,198.566 354.529,313.435 414.918,499.295 256.814,384.427 98.713,499.295 159.102,313.435 1,198.566 196.426,198.566 "></polygon></svg><!--?xml version="1.0" encoding="utf-8"?-->
+                                                    <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 12.705 512 486.59" x="0px" y="0px" xml:space="preserve" width="15px" height="15px" fill="#868686" style="margin-left: 0px;"><polygon points="256.814,12.705 317.205,198.566 512.631,198.566 354.529,313.435 414.918,499.295 256.814,384.427 98.713,499.295 159.102,313.435 1,198.566 196.426,198.566 "></polygon></svg>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class=" vcenter">
+                                        <span class="vendor-comments-btn" data-src="/restaurant/vendor-customer-comment" vendor-id="13700"> (@*@resList.commentCount(item.ID)*@    نظر) </span>
+                                    </li>
+                                </ul>
+                                <div class="kk-pp-address">
+                                    <span>@*@item.resAddress.Substring(0, 3)*@، ...</span>
+                                    <br>
+                                    <span>
+                                نوع رستوران
+                                    </span>
+                                    <span class="kk-cover-ids">|1||1|</span>
+                                </div>
+                                <div class="grid-bedge-view">
+                                    <ul class="kk-badge-container">
+                                        <li class="dis-badge">
+                                            <span class="discount-badge">
+                                                ۱۴%
+                                            </span>
+                                        </li>
+                                        <li class="snapp-biker">
+                                            <a href="/landing/zfe" target="_blank" title="ارسال با اسنپ&zwnj;اکسپرس"></a>
+                                        </li>
+                                        <li class="delivery-fee" style="display: none;">
+                                            <a href="">
+
+                                                اسنپ&zwnj;اکسپرس :
+                                                رایگان
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="kk-pp-btn">
+                                    <a href="/restaurant/menu/0wlr8p/burgerator/tehran"><span>نمایش منو</span></a>
+                                </div>
+                            </div>
+                        </div>
+             
+
+                </div>
+
+
+
+
+                <a class="btn btn-pink btn-increase-area" data-text="/restaurant/city/tehran?page=2&amp;sort=&amp;filters=&amp;cuisines=&amp;services=&amp;min_radius=&amp;max_radius=">نمایش موارد بیشتر</a>
+            </div>
+            <div class="vendor-loading-wrapper col-xs-12" style="display: none;">
+                <div class="loader loading">
+                    <svg><circle class="loader-circle" cx="50%" cy="50%" r="40%"></circle></svg>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>
+
+
+
+
+<div class="clearfix"> </div>
+
+
+
+<script>
+    function checkOffset() {
+        if ($('#social-float').offset().top + $('#social-float').height()
+            >= $('#footer').offset().top - 100) {
+            $('#social-float').css('position', 'absolute');
+            $('#social-float').css('bottom', '248px');
+        }
+        if ($(document).scrollTop() + window.innerHeight < $('#footer').offset().top) {
+            $('#social-float').css('position', 'fixed'); // restore when you scroll up
+            $('#social-float').css('bottom', 'unset');
+        }
+
+
+    }
+    $(document).scroll(function () {
+        checkOffset();
+    });
+</script>
+
